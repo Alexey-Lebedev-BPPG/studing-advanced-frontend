@@ -8,6 +8,23 @@ export const buildLoaders = ({
 }: BuildOptions): webpack.RuleSetRule[] => {
   // порядок лоадеров имеет значение, поэтому выносим в отдельные переменные
 
+  // svg loader
+  const svgLoader = {
+    test: /\.svg$/,
+    use: ["@svgr/webpack"],
+  };
+
+  // loader для определенных форматов файлов (в данном случае .png, .jpeg, .gif. Сюда же можно подключать шрифты, просто
+  // добавив их в регулярку)
+  const fileLoader = {
+    test: /\.(png|jpe?g|gif)$/i,
+    use: [
+      {
+        loader: "file-loader",
+      },
+    ],
+  };
+
   // typescript loader
   const typescriptLoader = {
     // ловим файлы с .ts, .tsx
@@ -50,6 +67,8 @@ export const buildLoaders = ({
 
   return [
     // если писать на нативном js (без typescript), то нужно установить babel-loader вместо typescriptLoader
+    fileLoader,
+    svgLoader,
     typescriptLoader,
     scssLoaders,
   ];
