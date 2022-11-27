@@ -1,0 +1,37 @@
+{
+  "compilerOptions": {
+    // если сборка с помощью typescript, то куда будет сделана сборка
+    "outDir": "./dist/",
+    // не дает исп. any
+    "noImplicitAny": true,
+    // указываем модульную систему
+    "module": "ESNext",
+    // во что копилируем
+    "target": "es5",
+    // позволяет использовать jsx (если указать react-jsx, то не нужно в каждый файл импортить React) + Нажать комбинацию
+    // клавиш "CTRL + Shift + P", в палитре команд ввести "typescript version" и выбрать "Использовать версию рабочей
+    // области" ("Use workspace version")
+    "jsx": "react-jsx",
+    // компилятор обрабатывает не только .ts, но и .js
+    "allowJs": true,
+    // второе значение "classic", но по ум. "node"
+    "moduleResolution": "node",
+    // для абсолютных импортов (без соплей)
+    "baseUrl": ".",
+    "paths": {
+      "*": ["./src/*"]
+    },
+    // для использования привычных импортов (вместо commonjs(require()))
+    "esModuleInterop": true,
+    // для использования привычных default импортов (вместо import * as ...)
+    "allowSyntheticDefaultImports": true,
+    // чтоб сработал автокомплит для модулей
+    "plugins": [{ "name": "typescript-plugin-css-modules" }]
+  },
+  // чтоб при сборке не ругался на импорты
+  "ts-node": {
+    "compilerOptions": {
+      "module": "CommonJS"
+    }
+  }
+}
