@@ -23,3 +23,6 @@ declare module "*.svg" {
   const SVG: React.VFC<React.SVGProps<SVGSVGElement>>;
   export default SVG;
 }
+
+// декларируем константу из вебпака
+declare const __IS_DEV__: boolean;
