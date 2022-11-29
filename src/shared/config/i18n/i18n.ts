@@ -14,6 +14,7 @@ i18n
     // язык по ум.
     fallbackLng: "ru",
     // чтоб в консоли показывало данные библиотеки
+    // eslint-disable-next-line no-undef
     debug: __IS_DEV__,
 
     interpolation: {

@@ -3,7 +3,9 @@ import { MainPage } from "pages/MainPage";
 import { RouteProps } from "react-router-dom";
 
 export enum AppRoutes {
+  // eslint-disable-next-line no-unused-vars
   MAIN = "main",
+  // eslint-disable-next-line no-unused-vars
   ABOUT = "about",
 }
 

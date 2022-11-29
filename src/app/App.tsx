@@ -6,7 +6,7 @@ import { Navbar } from "widgets/Navbar";
 import { SideBar } from "widgets/SideBar";
 import { Suspense } from "react";
 
-const App = () => {
+function App() {
   const { theme } = useTheme();
 
   return (
@@ -21,6 +21,6 @@ const App = () => {
       </Suspense>
     </div>
   );
-};
+}
 
 export default App;

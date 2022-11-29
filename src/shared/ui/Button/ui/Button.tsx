@@ -3,6 +3,7 @@ import { classNames } from "shared/lib/classNames/classNames";
 import cls from "./Button.module.scss";
 
 export enum ThemeButton {
+  // eslint-disable-next-line no-unused-vars
   CLEAR = "clear",
 }
 
@@ -16,13 +17,13 @@ export const Button: FC<IButtonProps> = ({
   children,
   theme,
   ...otherProps
-}) => {
-  return (
-    <button
-      className={classNames(cls.button, {}, [className, cls[theme]])}
-      {...otherProps}
-    >
-      {children}
-    </button>
-  );
-};
+}) => (
+  <button
+    type="button"
+    className={classNames(cls.button, {}, [className, cls[theme]])}
+    // eslint-disable-next-line react/jsx-props-no-spreading
+    {...otherProps}
+  >
+    {children}
+  </button>
+);

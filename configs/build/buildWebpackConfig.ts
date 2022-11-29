@@ -1,6 +1,5 @@
-import { buildDevServer } from "./buildDevServer";
 import webpack from "webpack";
-import path from "path";
+import { buildDevServer } from "./buildDevServer";
 import { BuildOptions } from "./types/config";
 import { buildLoaders } from "./buildLoaders";
 import { buildPlugins } from "./buildPlugins";
