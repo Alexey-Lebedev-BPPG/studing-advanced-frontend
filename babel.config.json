@@ -1,0 +1,5 @@
+{
+  "presets": ["@babel/preset-env"],
+  // добавляем плагин в конфиг
+  "plugins": ["i18next-extract"]
+}
