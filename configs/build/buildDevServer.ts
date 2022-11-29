@@ -12,5 +12,7 @@ export const buildDevServer = (
     open: true,
     // чтоб страницы не валились при перезагрузке
     historyApiFallback: true,
+    // для горячей перезагрузки (чтоб при изменениях в коде не обновлять страницу)
+    hot: true,
   };
 };
