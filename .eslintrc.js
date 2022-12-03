@@ -7,7 +7,6 @@ module.exports = {
   },
   // расширяем стандартный плагин для реакта и подключаем модуль стандарта тайпскрипта и airbnb
   extends: ["plugin:react/recommended", "airbnb", "plugin:i18next/recommended"],
-  // extends: ["plugin:react/recommended", "standard-with-typescript", "airbnb"],
   overrides: [],
   parser: "@typescript-eslint/parser",
   parserOptions: {
