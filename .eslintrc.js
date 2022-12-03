@@ -5,7 +5,7 @@ module.exports = {
     es2021: true,
   },
   // расширяем стандартный плагин для реакта и подключаем модуль стандарта тайпскрипта и airbnb
-  extends: ["plugin:react/recommended", "airbnb"],
+  extends: ["plugin:react/recommended", "airbnb", "plugin:i18next/recommended"],
   // extends: ["plugin:react/recommended", "standard-with-typescript", "airbnb"],
   overrides: [],
   parser: "@typescript-eslint/parser",
@@ -16,7 +16,7 @@ module.exports = {
     ecmaVersion: "latest",
     sourceType: "module",
   },
-  plugins: ["react", "@typescript-eslint"],
+  plugins: ["react", "@typescript-eslint", "i18next"],
   rules: {
     quotes: [2, "double", { avoidEscape: true }],
     "react/jsx-filename-extension": [
@@ -41,6 +41,7 @@ module.exports = {
     "operator-linebreak": "off",
     "no-underscore-dangle": "off",
     "new-cap": "off",
+    "i18next/no-literal-string": ["error", { markupOnly: true }],
   },
   globals: {
     __IS_DEV__: true,
