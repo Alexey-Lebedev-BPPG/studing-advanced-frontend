@@ -13,7 +13,9 @@ export const classNames = (
     rootCls,
     // проходим по объекту, преобразовываем его в массив, фильтруем по трушному value и возвращаем только массив ключей
     ...Object.entries(mods)
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       .filter(([classKey, classValue]) => Boolean(classValue))
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       .map(([classKey, classValue]) => classKey),
     // добавляем доп. классы и фильтруем их от ложных значений
     ...additional.filter(Boolean),

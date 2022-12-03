@@ -3,6 +3,7 @@ module.exports = {
   env: {
     browser: true,
     es2021: true,
+    jest: true,
   },
   // расширяем стандартный плагин для реакта и подключаем модуль стандарта тайпскрипта и airbnb
   extends: ["plugin:react/recommended", "airbnb", "plugin:i18next/recommended"],
