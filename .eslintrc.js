@@ -40,8 +40,11 @@ module.exports = {
     "@typescript-eslint/no-shadow": "error",
     "operator-linebreak": "off",
     "no-underscore-dangle": "off",
+    // прописываем, чтоб ругался на необработанные слова
+    // "i18next/no-literal-string": ["error", { markupOnly: true }],
+    // отключаем, чтоб не ругался на необработанные слова
+    "i18next/no-literal-string": 0,
     "new-cap": "off",
-    "i18next/no-literal-string": ["error", { markupOnly: true }],
   },
   globals: {
     __IS_DEV__: true,
