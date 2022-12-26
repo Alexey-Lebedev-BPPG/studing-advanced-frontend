@@ -1,6 +1,7 @@
 import webpack, { DefinePlugin, HotModuleReplacementPlugin } from "webpack";
 import htmlWebpackPlugin from "html-webpack-plugin";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
+import { BundleAnalyzerPlugin } from "webpack-bundle-analyzer";
 import { BuildOptions } from "./types/config";
 
 export const buildPlugins = ({
@@ -28,4 +29,6 @@ export const buildPlugins = ({
   // для горячей перезагрузки (чтоб при изменениях в коде не обновлять страницу)
   // впоследствии поменяем на ReactRefreshWebpackPlugin
   new HotModuleReplacementPlugin(),
+  // включаем плагин анализа размера пакетов
+  isDev && new BundleAnalyzerPlugin(),
 ];
