@@ -1,0 +1,53 @@
+// даем название
+name: linting, testing, building
+run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+on:
+	// отрабатывать будет на любой пуш в гит
+	// [push]
+	// отрабатывать будет, если будет пуш в мастер
+	push:
+		branches: [master]
+	// отрабатывать будет при создании пул-реквеста в мастер
+	pull_request:
+		branches: [master]
+// джобы, которые будут отрабатывать
+jobs:
+	// меняем название на свое (вместо Explore-GitHub-Actions)
+  pipelines:
+		// указываем, где будем запускать (по ум. Ubuntu последней версии)
+    runs-on: ubuntu-latest
+		// указываем в стратегии, на какой ноде будем запускать
+		strategy:
+			matrix:
+				node-version: [ 17.x ]
+    steps:
+      - uses: actions/checkout@v2
+			// запускаем экшен ноды
+      - name: Starting Node.js ${{ matrix.node-version }}
+				// устанавливаем ноду
+				uses: actions/setup-node@v1
+				with:
+					node-version: ${{ matrix.node-version }}
+			// устанавливаем зависимости
+			- name: install modules
+				run: npm install
+			// делаем сборку
+			- name: build production project
+				run: npm run build:prod
+			// запускаем линтинг тайпскрипта
+			- name: linting typescript
+				run: npm run lint:ts
+			// запускаем линтинг scss
+			- name: linting scss
+				run: npm run lint:scss
+			// запускаем юнит тестирование
+			- name: linting unit testing
+				run: npm run test:unit
+			// запускаем сборку сторибука
+			- name: build storybook
+				run: npm run storybook:build
+			// запускаем тестинг сриншотов
+			- name: screenshot testing
+				run: npm run test:ui:ci
+
+				
