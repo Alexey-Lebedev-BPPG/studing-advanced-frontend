@@ -7,7 +7,6 @@ module.exports = {
   },
   // расширяем стандартный плагин для реакта и подключаем модуль стандарта тайпскрипта и airbnb
   extends: ["plugin:react/recommended", "airbnb", "plugin:i18next/recommended"],
-  overrides: [],
   parser: "@typescript-eslint/parser",
   parserOptions: {
     ecmaFeatures: {
@@ -35,13 +34,13 @@ module.exports = {
     "comma-dangle": "off",
     "react/require-default-props": "off",
     "react/function-component-definition": "off",
-    "react/jsx-props-no-spreading": "warn",
+    "react/jsx-props-no-spreading": "off",
     "no-shadow": "off",
     "@typescript-eslint/no-shadow": "error",
     "operator-linebreak": "off",
     "no-underscore-dangle": "off",
-    // прописываем, чтоб ругался на необработанные слова
-    // "i18next/no-literal-string": ["error", { markupOnly: true }],
+    // прописываем, чтоб ругался на необработанные слова + отключаем плагин для атрибутов
+    // "i18next/no-literal-string": ["error", { markupOnly: true, ignoreAttribute: ["data-testid"] }],
     // отключаем, чтоб не ругался на необработанные слова
     "i18next/no-literal-string": 0,
     "new-cap": "off",
@@ -49,4 +48,13 @@ module.exports = {
   globals: {
     __IS_DEV__: true,
   },
+  // отключаем проверку необработанных слов в тестовых файлах
+  overrides: [
+    {
+      files: ["**/src/**/*.test.{ts, tsx}"],
+      rules: {
+        "i18next/no-literal-string": "off",
+      },
+    },
+  ],
 };

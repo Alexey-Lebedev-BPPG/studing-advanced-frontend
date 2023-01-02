@@ -33,5 +33,7 @@
     "compilerOptions": {
       "module": "CommonJS"
     }
-  }
+  },
+  // добавляем путь к файлу, где импортится @testing-library/jest-dom, чтоб пользоваться фунциями
+  "include": ["./configs/jest/setupTests.ts", "./src/**/*.ts", "./src/**/*.tsx"]
 }
