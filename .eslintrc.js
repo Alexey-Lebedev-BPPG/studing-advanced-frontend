@@ -5,8 +5,13 @@ module.exports = {
     es2021: true,
     jest: true,
   },
-  // расширяем стандартный плагин для реакта и подключаем модуль стандарта тайпскрипта и airbnb
-  extends: ["plugin:react/recommended", "airbnb", "plugin:i18next/recommended"],
+  // расширяем стандартный плагин для реакта и подключаем модуль стандарта тайпскрипта и airbnb + автоматом добавился сторибук
+  extends: [
+    "plugin:react/recommended",
+    "airbnb",
+    "plugin:i18next/recommended",
+    "plugin:storybook/recommended",
+  ],
   parser: "@typescript-eslint/parser",
   parserOptions: {
     ecmaFeatures: {
@@ -40,7 +45,7 @@ module.exports = {
     "operator-linebreak": "off",
     "no-underscore-dangle": "off",
     // прописываем, чтоб ругался на необработанные слова + отключаем плагин для атрибутов
-    // "i18next/no-literal-string": ["error", { markupOnly: true, ignoreAttribute: ["data-testid"] }],
+    // "i18next/no-literal-string": ["error", { markupOnly: true, ignoreAttribute: ["data-testid", "to"] }],
     // отключаем, чтоб не ругался на необработанные слова
     "i18next/no-literal-string": 0,
     "new-cap": "off",

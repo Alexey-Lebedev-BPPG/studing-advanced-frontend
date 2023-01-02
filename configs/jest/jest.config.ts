@@ -1,9 +1,4 @@
-/*
- * For a detailed explanation regarding each configuration property and type check, visit:
- * https://jestjs.io/docs/configuration
- */
-
-import path from "path/posix";
+import path from "path";
 
 export default {
   // удалять моки после тестов
@@ -20,16 +15,16 @@ export default {
   moduleFileExtensions: ["js", "jsx", "ts", "tsx", "json", "node"],
   // т.к. файл конфигурации лежит не в корне, то нужно выйти в корень проекта
   rootDir: "../../",
+  modulePaths: ["<rootDir>src"],
   // регулярка для поиска файлов тестирования (rootDir заменяется на вышестоящий путь)
   testMatch: ["<rootDir>src/**/*(*.)@(spec|test).[tj]s?(x)"],
   // добавляем файл импорта @testing-library/jest-dom, предварительно создав для него файл импорта
-  setupFilesAfterEnv: ["<rootDir>/configs/jest/setupTests.ts"],
+  setupFilesAfterEnv: ["<rootDir>configs/jest/setupTests.ts"],
   // добавляем css, scss файлы для распознавания джестом
   moduleNameMapper: {
     "\\.s?css$": "identity-obj-proxy",
     // мок для всех импортов, в которых будет присутствовать svg
     "\\.svg": path.resolve(__dirname, "jestEmptyComponent.tsx"),
-    "@/(.*)": "<rootDir>src/$1",
   },
   // All imported modules in your tests should be mocked automatically
   // automock: false,
