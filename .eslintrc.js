@@ -43,7 +43,6 @@ module.exports = {
     "no-shadow": "off",
     "@typescript-eslint/no-shadow": "error",
     "operator-linebreak": "off",
-    "linebreak-style": 0,
     "no-underscore-dangle": "off",
     // прописываем, чтоб ругался на необработанные слова + отключаем плагин для атрибутов
     // "i18next/no-literal-string": ["error", { markupOnly: true, ignoreAttribute: ["data-testid", "to"] }],
