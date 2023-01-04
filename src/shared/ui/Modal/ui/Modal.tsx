@@ -1,4 +1,3 @@
-import { useTheme } from "app/providers/ThemeProvider";
 import React, {
   FC,
   ReactNode,
@@ -29,9 +28,6 @@ export const Modal: FC<IModalProps> = ({
   // обработаем анимацию закрытия модального окна
   const [isClosing, setIsClosing] = useState(false);
   const timerRef = useRef<ReturnType<typeof setTimeout>>();
-
-  // так делать не нужно!!!!!!!!!!!!позже поправим
-  const { theme } = useTheme();
 
   // функция закрытия модалки
   const closeHandler = useCallback(() => {
@@ -72,14 +68,13 @@ export const Modal: FC<IModalProps> = ({
   const mods = {
     [cls.opened]: isOpen,
     [cls.isClosing]: isClosing,
-    // так делать не нужно!!!!!!!!!!!!позже поправим
-    // @ts-ignore
-    [cls[theme]]: true,
   };
 
   return (
     <Portal>
-      <div className={classNames(cls.modal, mods, [className])}>
+      <div
+        className={classNames(cls.modal, mods, [className])}
+      >
         <div className={cls.overlay} onClick={closeHandler}>
           <div className={cls.content} onClick={onContentClick}>
             {children}

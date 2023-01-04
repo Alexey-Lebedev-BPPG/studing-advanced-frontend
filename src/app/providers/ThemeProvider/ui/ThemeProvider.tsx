@@ -21,6 +21,8 @@ interface ThemeProviderProps {
 // чтоб иметь глобальный доступ к темам в любых компонентах
 const ThemeProvider: FC<ThemeProviderProps> = ({ children, initialTheme }) => {
   const [theme, setTheme] = useState<Theme>(initialTheme || defaultTheme);
+  // навешиваем стили темы на боди
+  document.body.className = theme;
 
   const defaultProps = useMemo(
     () => ({
