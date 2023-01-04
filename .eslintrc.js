@@ -61,6 +61,7 @@ module.exports = {
     "react-hooks/exhaustive-deps": "warn",
     "react/no-unused-prop-types": "warn",
     "no-param-reassign": "off",
+    "no-console": "off",
   },
   globals: {
     __IS_DEV__: true,
