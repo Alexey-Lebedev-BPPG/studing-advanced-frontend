@@ -20,7 +20,13 @@ module.exports = {
     ecmaVersion: "latest",
     sourceType: "module",
   },
-  plugins: ["react", "@typescript-eslint", "i18next"],
+  plugins: [
+    "react",
+    "@typescript-eslint",
+    "i18next",
+    // чтоб зависимости useeffect подсвечивались
+    "react-hooks",
+  ],
   rules: {
     quotes: [2, "double", { avoidEscape: true }],
     "react/jsx-filename-extension": [
@@ -49,6 +55,10 @@ module.exports = {
     // отключаем, чтоб не ругался на необработанные слова
     "i18next/no-literal-string": 0,
     "new-cap": "off",
+    "jsx-a11y/click-events-have-key-events": "off",
+    "jsx-a11y/no-static-element-interactions": "off",
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
   },
   globals: {
     __IS_DEV__: true,
@@ -56,7 +66,7 @@ module.exports = {
   // отключаем проверку необработанных слов в тестовых файлах
   overrides: [
     {
-      files: ["**/src/**/*.test.{ts, tsx}"],
+      files: ["**/src/**/*.{test,stories}.{ts, tsx}"],
       rules: {
         "i18next/no-literal-string": "off",
       },

@@ -5,6 +5,8 @@ import ThemeProvider from "app/providers/ThemeProvider/ui/ThemeProvider";
 import { ErrorBoundary } from "app/providers/ErrorBoundary";
 // импортим конфиг переводов
 import "shared/config/i18n/i18n";
+// импорт глобальных стилей
+import "app/styles/index.scss";
 
 render(
   <BrowserRouter>
