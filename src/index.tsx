@@ -1,21 +1,26 @@
 import App from "app/App";
-import { render } from "react-dom";
-import { BrowserRouter } from "react-router-dom";
-import ThemeProvider from "app/providers/ThemeProvider/ui/ThemeProvider";
-import { ErrorBoundary } from "app/providers/ErrorBoundary";
 // импортим конфиг переводов
 import "shared/config/i18n/i18n";
 // импорт глобальных стилей
 import "app/styles/index.scss";
+import { render } from "react-dom";
+import { BrowserRouter } from "react-router-dom";
+// для темы
+import ThemeProvider from "app/providers/ThemeProvider/ui/ThemeProvider";
+// для отлова ошибок
+import { ErrorBoundary } from "app/providers/ErrorBoundary";
+// для редакса
+import { StoreProvider } from "app/providers/StoreProvider";
 
 render(
-  <BrowserRouter>
-    {/* чтоб обработать ошибки */}
-    <ErrorBoundary>
-      <ThemeProvider>
-        <App />
-      </ThemeProvider>
-    </ErrorBoundary>
-  </BrowserRouter>,
+  <StoreProvider>
+    <BrowserRouter>
+      <ErrorBoundary>
+        <ThemeProvider>
+          <App />
+        </ThemeProvider>
+      </ErrorBoundary>
+    </BrowserRouter>
+  </StoreProvider>,
   document.getElementById("root")
 );
