@@ -62,6 +62,8 @@ module.exports = {
     "react/no-unused-prop-types": "warn",
     "no-param-reassign": "off",
     "no-console": "off",
+    "react/prop-types": "off",
+    "object-curly-newline": "off",
   },
   globals: {
     __IS_DEV__: true,

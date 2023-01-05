@@ -15,6 +15,7 @@ interface IModalProps {
   children?: ReactNode;
   isOpen?: boolean;
   onClose?: () => void;
+  lazy?: boolean;
 }
 
 const ANIMATION_DELAY = 300;
@@ -24,9 +25,13 @@ export const Modal: FC<IModalProps> = ({
   children,
   isOpen,
   onClose,
+  lazy,
 }) => {
   // обработаем анимацию закрытия модального окна
   const [isClosing, setIsClosing] = useState(false);
+  // состояние, отвечающее за то, смонтирована модалка или нет
+  const [isMounting, setIsMounting] = useState(false);
+
   const timerRef = useRef<ReturnType<typeof setTimeout>>();
 
   // функция закрытия модалки
@@ -65,16 +70,21 @@ export const Modal: FC<IModalProps> = ({
     };
   }, [isOpen, onKeyDown]);
 
+  useEffect(() => {
+    if (isOpen) {
+      setIsMounting(true);
+    }
+  }, [isOpen]);
+
   const mods = {
     [cls.opened]: isOpen,
     [cls.isClosing]: isClosing,
   };
-
+  // если lazy и компонент не вмонтирован, то модалку не отрисовываем
+  if (lazy && !isMounting) return null;
   return (
     <Portal>
-      <div
-        className={classNames(cls.modal, mods, [className])}
-      >
+      <div className={classNames(cls.modal, mods, [className])}>
         <div className={cls.overlay} onClick={closeHandler}>
           <div className={cls.content} onClick={onContentClick}>
             {children}
