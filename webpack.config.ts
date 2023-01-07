@@ -18,7 +18,7 @@ export default (env: BuildEnv) => {
     build: path.resolve(__dirname, "build"),
     // сообщаем где главный файл html лежит и куда будем встраивать скрипты
     html: path.resolve(__dirname, "public", "index.html"),
-    // указываем путь до папки srcб чтоб использовать его в buildResolves
+    // указываем путь до папки src, чтоб использовать его в buildResolves
     src: path.resolve(__dirname, "src"),
   };
 

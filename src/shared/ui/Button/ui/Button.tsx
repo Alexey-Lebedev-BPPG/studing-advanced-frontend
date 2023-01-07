@@ -31,6 +31,7 @@ export const Button: FC<IButtonProps> = ({
   theme,
   square,
   size = ButtonSize.M,
+  disabled,
   ...otherProps
 }) => {
   const mods: Record<string, boolean> = {
@@ -38,6 +39,7 @@ export const Button: FC<IButtonProps> = ({
     [cls.square]: square,
     // @ts-ignore
     [cls[size]]: true,
+    [cls.disabled]: disabled,
   };
   return (
     <button

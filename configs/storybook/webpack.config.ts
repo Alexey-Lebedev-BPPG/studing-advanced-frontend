@@ -1,5 +1,5 @@
 import path from "path";
-import webpack, { RuleSetRule } from "webpack";
+import webpack, { DefinePlugin, RuleSetRule } from "webpack";
 import { buildCssLoaders } from "../build/loaders/buildCssLoaders";
 import { buildSvgLoader } from "../build/loaders/buildSvgLoader";
 import { BuildPaths } from "../build/types/config";
@@ -15,7 +15,7 @@ export default ({ config }: { config: webpack.Configuration }) => {
     src: path.resolve(__dirname, "..", "..", "src"),
   };
   // добавляем путь в конфиг
-  config.resolve?.modules?.push(paths.src);
+  config.resolve!.modules = [paths.src, "node_modules"];
   // добавляем расширения для TS в конфиг
   config.resolve?.extensions?.push(".ts", ".tsx");
 
@@ -41,6 +41,13 @@ export default ({ config }: { config: webpack.Configuration }) => {
 
   // добавляем css лоадер для сторибука со значением isDev как true, т.к. сторибук будет использоваться только в дев-разработке
   config.module?.rules?.push(buildCssLoaders(true));
+
+  // добавляем глобальную переменную
+  config.plugins?.push(
+    new DefinePlugin({
+      __IS_DEV__: true,
+    })
+  );
 
   return config;
 };
