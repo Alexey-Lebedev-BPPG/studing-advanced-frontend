@@ -21,7 +21,7 @@ export interface StateSchema {
 // создаем тип всех ключей стейта
 export type StateSchemaKey = keyof StateSchema;
 
-// типизация для редьюсер-менеджера 
+// типизация для редьюсер-менеджера
 export interface ReducerManager {
   getReducerMap: () => ReducersMapObject<StateSchema>;
   reduce: (state: StateSchema, action: AnyAction) => CombinedState<StateSchema>;
