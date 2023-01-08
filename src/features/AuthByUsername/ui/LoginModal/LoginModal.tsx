@@ -1,7 +1,8 @@
-import React, { FC } from "react";
+import React, { FC, Suspense } from "react";
 import { classNames } from "shared/lib/classNames/classNames";
+import { Loader } from "shared/ui/Loader";
 import { Modal } from "shared/ui/Modal";
-import { LoginForm } from "../LoginForm";
+import { LoginFormAsync } from "../LoginForm/LoginForm.async";
 import cls from "./LoginModal.module.scss";
 
 interface ILoginModalProps {
@@ -21,6 +22,9 @@ export const LoginModal: FC<ILoginModalProps> = ({
     onClose={onClose}
     lazy
   >
-    <LoginForm />
+    {/* Оборачиваем в Suspense, т.к. подгружаем асинхронно  */}
+    <Suspense fallback={<Loader />}>
+      <LoginFormAsync />
+    </Suspense>
   </Modal>
 );
