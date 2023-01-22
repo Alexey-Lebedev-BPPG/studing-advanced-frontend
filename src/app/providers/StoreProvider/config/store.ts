@@ -41,3 +41,6 @@ export const createReduxStore = (
 
   return store;
 };
+
+// создаем тип для диспатча, чтоб подхватывались используемые типы
+export type AppDispatch = ReturnType<typeof createReduxStore>["dispatch"];

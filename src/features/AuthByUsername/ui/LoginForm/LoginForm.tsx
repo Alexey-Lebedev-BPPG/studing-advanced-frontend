@@ -1,6 +1,6 @@
 import { FC, memo, useCallback } from "react";
 import { useTranslation } from "react-i18next";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { classNames } from "shared/lib/classNames/classNames";
 import { Button } from "shared/ui/Button";
 import { ButtonTheme } from "shared/ui/Button/ui/Button";
@@ -11,6 +11,7 @@ import {
   DynamicModuleLoader,
   ReducersList,
 } from "shared/lib/components/DynamicModuleLoader/DynamicModuleLoader";
+import { useAppDispatch } from "shared/lib/hooks/useAppDispatch/useAppDispatch";
 import { getLoginPassword } from "../../model/selectors/getLoginPassword/getLoginPassword";
 import { getLoginIsLoading } from "../../model/selectors/getLoginIsLoading/getLoginIsLoading";
 import { getLoginError } from "../../model/selectors/getLoginError/getLoginError";
@@ -21,6 +22,7 @@ import cls from "./LoginForm.module.scss";
 
 export interface ILoginFormProps {
   className?: string;
+  onSuccess?: () => void;
 }
 
 // чтоб напрямую не передавать в пропсы объект такого типа reducers={{ loginForm: loginReducer }}, т.к. это каждый раз будет создавать новый объект, мы делаем редьюсер по ум.
@@ -28,9 +30,9 @@ const initialReducers: ReducersList = {
   loginForm: loginReducer,
 };
 
-const LoginForm: FC<ILoginFormProps> = memo(({ className }) => {
+const LoginForm: FC<ILoginFormProps> = memo(({ className, onSuccess }) => {
   const { t } = useTranslation();
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   // ввиду того, что мы достаем данные до того, как у нас сработает useEffect, нам необходимо либо сделать инишиал стейт для getLoginState или сделать для каждого поля getLoginState свой селектор (сейчас сделаем для каждого свой)
   // вместо:
@@ -55,10 +57,14 @@ const LoginForm: FC<ILoginFormProps> = memo(({ className }) => {
     [dispatch]
   );
 
-  const onLoginClick = useCallback(() => {
+  const onLoginClick = useCallback(async () => {
     // вызываем наш thunk для передачи данных на бэк
-    dispatch(loginByUsername({ username, password }));
-  }, [dispatch, password, username]);
+    const result = await dispatch(loginByUsername({ username, password }));
+    // вызываем функцию, которая сработает (здесь закрытие модалки), если запрос прошел успешно
+    if (result.meta.requestStatus === "fulfilled") {
+      onSuccess();
+    }
+  }, [dispatch, onSuccess, password, username]);
 
   return (
     <DynamicModuleLoader removeAfterUnmount reducers={initialReducers}>

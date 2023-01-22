@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, memo } from "react";
 import { classNames } from "shared/lib/classNames/classNames";
 import cls from "./Text.module.scss";
 
@@ -14,16 +14,15 @@ interface ITextProps {
   theme?: TextTheme;
 }
 
-export const Text: FC<ITextProps> = ({
-  className,
-  title,
-  text,
-  theme = TextTheme.PRIMARY,
-}) => (
-  <div
-    className={classNames(cls.textWrapper, { [cls[theme]]: true }, [className])}
-  >
-    {title && <div className={cls.title}>{title}</div>}
-    {text && <div className={cls.text}>{text}</div>}
-  </div>
+export const Text: FC<ITextProps> = memo(
+  ({ className, title, text, theme = TextTheme.PRIMARY }) => (
+    <div
+      className={classNames(cls.textWrapper, { [cls[theme]]: true }, [
+        className,
+      ])}
+    >
+      {title && <div className={cls.title}>{title}</div>}
+      {text && <div className={cls.text}>{text}</div>}
+    </div>
+  )
 );

@@ -24,7 +24,7 @@ export const LoginModal: FC<ILoginModalProps> = ({
   >
     {/* Оборачиваем в Suspense, т.к. подгружаем асинхронно  */}
     <Suspense fallback={<Loader />}>
-      <LoginFormAsync />
+      <LoginFormAsync onSuccess={onClose} />
     </Suspense>
   </Modal>
 );

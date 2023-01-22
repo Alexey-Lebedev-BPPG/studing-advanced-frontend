@@ -1,4 +1,4 @@
-import { ButtonHTMLAttributes, FC } from "react";
+import { ButtonHTMLAttributes, FC, memo } from "react";
 import { classNames } from "shared/lib/classNames/classNames";
 import cls from "./Button.module.scss";
 
@@ -25,29 +25,32 @@ interface IButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   size?: ButtonSize;
 }
 
-export const Button: FC<IButtonProps> = ({
-  className,
-  children,
-  theme,
-  square,
-  size = ButtonSize.M,
-  disabled,
-  ...otherProps
-}) => {
-  const mods: Record<string, boolean> = {
-    [cls[theme]]: true,
-    [cls.square]: square,
-    // @ts-ignore
-    [cls[size]]: true,
-    [cls.disabled]: disabled,
-  };
-  return (
-    <button
-      type="button"
-      className={classNames(cls.button, mods, [className])}
-      {...otherProps}
-    >
-      {children}
-    </button>
-  );
-};
+// обернем кнопку тоже в memo, хоть она и принимает чилдрены, но они будут в виде простого примитива без сложной древовидной структуры
+export const Button: FC<IButtonProps> = memo(
+  ({
+    className,
+    children,
+    theme,
+    square,
+    size = ButtonSize.M,
+    disabled,
+    ...otherProps
+  }) => {
+    const mods: Record<string, boolean> = {
+      [cls[theme]]: true,
+      [cls.square]: square,
+      // @ts-ignore
+      [cls[size]]: true,
+      [cls.disabled]: disabled,
+    };
+    return (
+      <button
+        type="button"
+        className={classNames(cls.button, mods, [className])}
+        {...otherProps}
+      >
+        {children}
+      </button>
+    );
+  }
+);

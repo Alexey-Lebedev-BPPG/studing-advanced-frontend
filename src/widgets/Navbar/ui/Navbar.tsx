@@ -1,7 +1,7 @@
 import { getUserAuthData, userActions } from "entities/User";
 import { LoginModal } from "features/AuthByUsername";
 import { t } from "i18next";
-import { useCallback, useState } from "react";
+import { memo, useCallback, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { classNames } from "shared/lib/classNames/classNames";
 import { Button, ButtonTheme } from "shared/ui/Button/ui/Button";
@@ -12,7 +12,7 @@ interface NavbarProps {
 }
 // все, что в виджете будет экспортиться не по дефолту
 // навбар будет принимать доп класс, чтоб извне можно было поправить какие-то стили в нем
-export const Navbar = ({ className }: NavbarProps) => {
+export const Navbar = memo(({ className }: NavbarProps) => {
   const dispatch = useDispatch();
   const authData = useSelector(getUserAuthData);
   const [isAuthModal, setIsAuthModal] = useState(false);
@@ -60,4 +60,4 @@ export const Navbar = ({ className }: NavbarProps) => {
       )}
     </div>
   );
-};
+});

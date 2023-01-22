@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { FC, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Input } from "shared/ui/Input";
 import { BugButton } from "widgets/PageError";
 
-const MainPage = () => {
+const MainPage: FC = () => {
   const { t } = useTranslation();
   const [value, setValue] = useState("");
 
