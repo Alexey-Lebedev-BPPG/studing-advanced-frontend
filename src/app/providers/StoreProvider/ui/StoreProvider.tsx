@@ -1,6 +1,7 @@
 import { DeepPartial, ReducersMapObject } from "@reduxjs/toolkit";
 import { FC, ReactNode } from "react";
 import { Provider } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { StateSchema } from "../config/stateSchema";
 import { createReduxStore } from "../config/store";
 
@@ -16,10 +17,13 @@ export const StoreProvider: FC<IStoreProviderProps> = ({
   initialState,
   asyncReducers,
 }) => {
+  const navigate = useNavigate();
   const store = createReduxStore(
     initialState as StateSchema,
     // прокидываем его дальше в функцию создания стора
-    asyncReducers as ReducersMapObject<StateSchema>
+    asyncReducers as ReducersMapObject<StateSchema>,
+    // прокидываем функцию из хука, чоб потом можно было ее использовать в thunk-ах
+    navigate
   );
 
   return <Provider store={store}>{children}</Provider>;
