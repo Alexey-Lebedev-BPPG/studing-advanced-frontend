@@ -15,7 +15,7 @@ i18n
     fallbackLng: "ru",
     // чтоб в консоли показывало данные библиотеки
     // eslint-disable-next-line no-undef
-    debug: __IS_DEV__,
+    debug: __IS_DEV_DEBUG__,
 
     interpolation: {
       escapeValue: false, // not needed for react as it escapes by default

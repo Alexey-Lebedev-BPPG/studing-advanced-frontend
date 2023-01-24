@@ -67,6 +67,7 @@ module.exports = {
   },
   globals: {
     __IS_DEV__: true,
+    __IS_DEV_DEBUG__: true,
     __API__: true,
   },
   // отключаем проверку необработанных слов в тестовых файлах

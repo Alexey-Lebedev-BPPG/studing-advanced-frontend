@@ -6,7 +6,7 @@ type Mods = Record<string, string | boolean>;
 export const classNames = (
   rootCls: string,
   mods: Mods = {},
-  additional: string[] = []
+  additional: Array<string | undefined> = []
 ): string =>
   [
     // возвращаем главный класс

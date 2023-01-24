@@ -7,6 +7,7 @@ import { BuildOptions } from "./types/config";
 export const buildPlugins = ({
   paths,
   isDev,
+  isDevDebug,
   apiURL,
 }: BuildOptions): webpack.WebpackPluginInstance[] => {
   const plugins = [
@@ -27,6 +28,7 @@ export const buildPlugins = ({
     new DefinePlugin({
       // называем переменные таким образом, чтоб четко понимать где переменные вебпака, а где приложения
       __IS_DEV__: JSON.stringify(isDev), // теперь эта переменная доступна в коде (например, файл i18n.ts)
+      __IS_DEV_DEBUG__: JSON.stringify(isDevDebug), // теперь эта переменная доступна в коде (например, файл i18n.ts)
       __API__: JSON.stringify(apiURL),
     }),
   ];
@@ -36,6 +38,9 @@ export const buildPlugins = ({
     // для горячей перезагрузки (чтоб при изменениях в коде не обновлять страницу)
     // впоследствии поменяем на ReactRefreshWebpackPlugin
     plugins.push(new HotModuleReplacementPlugin());
+  }
+
+  if (isDevDebug) {
     // включаем плагин анализа размера пакетов
     plugins.push(new BundleAnalyzerPlugin());
   }

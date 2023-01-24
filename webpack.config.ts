@@ -28,12 +28,14 @@ export default (env: BuildEnv) => {
   const apiURL = env.apiURL || "http://localhost:8000";
 
   const isDev = mode === "development";
+  const isDevDebug = env.modeDebug || false;
 
   // генерируем общий конфиг webpack
   const config: webpack.Configuration = buildWebpackConfig({
     mode,
     paths,
     isDev,
+    isDevDebug,
     port: PORT,
     apiURL,
   });

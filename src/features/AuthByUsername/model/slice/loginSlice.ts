@@ -22,7 +22,7 @@ export const loginSlice = createSlice({
       state.password = payload;
     },
   },
-  // исользуется для асинхронного изменения стейта
+  // используется для асинхронного изменения стейта
   extraReducers: (builder) => {
     // у каждого thunka есть 3 состояния: 1. pending, 2. fulfilled, 3. rejected
     // все 3 состояния можно здесь обработать

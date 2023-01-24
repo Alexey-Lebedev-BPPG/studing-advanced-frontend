@@ -4,6 +4,7 @@ export default {
   // чтоб объявлять глобальные переменные
   globals: {
     __IS_DEV__: true,
+    __IS_DEV_DEBUG__: true,
     __API__: "",
   },
   // удалять моки после тестов
