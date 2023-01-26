@@ -64,6 +64,8 @@ module.exports = {
     "no-console": "off",
     "react/prop-types": "off",
     "object-curly-newline": "off",
+    // отключаем запрет на использование глобальых переменных
+    "no-undef": "off",
   },
   globals: {
     __IS_DEV__: true,

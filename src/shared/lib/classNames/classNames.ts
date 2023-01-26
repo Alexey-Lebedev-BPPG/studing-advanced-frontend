@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 // позволяет создавать объекты с ключом строки и значением строки или булевого типа
-type Mods = Record<string, string | boolean>;
+type Mods = Record<string, string | boolean | undefined>;
 
 // принимает главный класс(rootCls), модификаторы(mods), массив доп. классов
 export const classNames = (

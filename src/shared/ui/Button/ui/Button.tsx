@@ -30,16 +30,15 @@ export const Button: FC<IButtonProps> = memo(
   ({
     className,
     children,
-    theme,
+    theme = ButtonTheme.OUTLINE,
     square,
     size = ButtonSize.M,
     disabled,
     ...otherProps
   }) => {
-    const mods: Record<string, boolean> = {
+    const mods = {
       [cls[theme]]: true,
       [cls.square]: square,
-      // @ts-ignore
       [cls[size]]: true,
       [cls.disabled]: disabled,
     };

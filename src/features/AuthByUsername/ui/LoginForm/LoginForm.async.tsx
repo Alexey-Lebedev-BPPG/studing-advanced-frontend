@@ -6,7 +6,6 @@ export const LoginFormAsync = lazy<FC<ILoginFormProps>>(
   () =>
     // используем задержку только в учебных целях
     new Promise((resolve) => {
-      // @ts-ignore
       setTimeout(() => resolve(import("./LoginForm")), 1500);
     })
 );

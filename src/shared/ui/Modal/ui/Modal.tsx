@@ -32,7 +32,7 @@ export const Modal: FC<IModalProps> = ({
   // состояние, отвечающее за то, смонтирована модалка или нет
   const [isMounting, setIsMounting] = useState(false);
 
-  const timerRef = useRef<ReturnType<typeof setTimeout>>();
+  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   // функция закрытия модалки
   const closeHandler = useCallback(() => {
@@ -64,7 +64,9 @@ export const Modal: FC<IModalProps> = ({
       window.addEventListener("keydown", onKeyDown);
     }
     return () => {
-      clearTimeout(timerRef.current);
+      if (timerRef?.current) {
+        clearTimeout(timerRef.current);
+      }
       // обязательно очищаем слушателя, чтоб он не был доступен вне модалки
       window.removeEventListener("keydown", onKeyDown);
     };

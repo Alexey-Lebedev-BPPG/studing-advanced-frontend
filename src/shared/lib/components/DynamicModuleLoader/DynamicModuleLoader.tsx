@@ -11,9 +11,6 @@ export type ReducersList = {
   [keyReducer in StateSchemaKey]?: Reducer;
 };
 
-// тип для перебора массива переданных редьсеров
-type ReducerListEntry = [StateSchemaKey, Reducer];
-
 interface IDynamicModuleLoaderProps {
   reducers: ReducersList;
   // флаг, чтоб можно было удалять редьюсер после размонтирования
@@ -33,20 +30,18 @@ export const DynamicModuleLoader: FC<IDynamicModuleLoaderProps> = ({
   // делаем юзеффект, в котором будем подгружать/удалять используемые редьюсеры в данном компоненте
   useEffect(() => {
     // пробегаем по объекту редьюсеров, создаем на каждой итерации массив из названия редьюсера и самого редьюсера и выполняем необходимые действия
-    Object.entries(reducers).forEach(
-      ([keyReducer, reducer]: ReducerListEntry) => {
-        // это позволяет изолировать редьюсер внути модуля и в паблик апи его можно удалять. Этот редьюсер будет подгружаться только тогда, когда будет загружен данный компонент
-        store.reducerManager.add(keyReducer, reducer);
-        // чтоб просматривать сработало ли или нет (если убрать, то действие сработает, однако в девтулзах не обновится. Обновление происходит после следущего действия)
-        dispatch({ type: `@INIT ${keyReducer} reducer` });
-      }
-    );
+    Object.entries(reducers).forEach(([keyReducer, reducer]) => {
+      // это позволяет изолировать редьюсер внути модуля и в паблик апи его можно удалять. Этот редьюсер будет подгружаться только тогда, когда будет загружен данный компонент
+      store.reducerManager.add(keyReducer as StateSchemaKey, reducer);
+      // чтоб просматривать сработало ли или нет (если убрать, то действие сработает, однако в девтулзах не обновится. Обновление происходит после следущего действия)
+      dispatch({ type: `@INIT ${keyReducer} reducer` });
+    });
 
     // при демонтировании компонента, редьюсер также удаляется из стора
     return () => {
       if (removeAfterUnmount) {
-        Object.entries(reducers).forEach(([keyReducer]: ReducerListEntry) => {
-          store.reducerManager.remove(keyReducer);
+        Object.entries(reducers).forEach(([keyReducer]) => {
+          store.reducerManager.remove(keyReducer as StateSchemaKey);
           // чтоб просматривать сработало ли или нет (если убрать, то действие сработает, однако в девтулзах не обновится. Обновление происходит после следущего действия)
           dispatch({ type: `@DESTROY ${keyReducer} reducer` });
         });

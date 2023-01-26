@@ -1,4 +1,9 @@
-import { configureStore, ReducersMapObject } from "@reduxjs/toolkit";
+import {
+  CombinedState,
+  configureStore,
+  Reducer,
+  ReducersMapObject,
+} from "@reduxjs/toolkit";
 import { CounterReducer } from "entities/Counter";
 import { userReducer } from "entities/User";
 import { NavigateOptions, To } from "react-router-dom";
@@ -30,8 +35,8 @@ export const createReduxStore = (
   // указываем тип стейта в дженерике (убираем при указании мидлвеара)
   const store = configureStore({
     // чтоб для взаимодействия с асинхронными редьюсерами в компонентах, нам нужно передавать редьюсером не rootReducer, а функцию reduce из reduceManager
-    // reducer: rootReducers,
-    reducer: reducerManager.reduce,
+    // reducer: rootReducers, + !!! нужно править типизацию
+    reducer: reducerManager.reduce as Reducer<CombinedState<StateSchema>>,
     // отключаем девтулзы для продакшена
     devTools: __IS_DEV__,
     // делаем инитиал стейт по ум.
@@ -42,10 +47,7 @@ export const createReduxStore = (
       getDefaultMiddleware({
         thunk: {
           // сюда можно передать все что угодно
-          extraArgument: {
-            api: $api,
-            navigate,
-          },
+          extraArgument: { api: $api, navigate },
         },
       }),
   });
