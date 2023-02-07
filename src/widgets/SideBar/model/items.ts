@@ -9,6 +9,7 @@ export interface SidebarItemType {
   text: string;
   // ввиду того, что компоненты пишутся с большой буквы, поле icon пишем также с большой буквы
   Icon: VFC<SVGProps<SVGSVGElement>>;
+  authOnly?: boolean;
 }
 
 export const SidebarItemsList: SidebarItemType[] = [
@@ -26,5 +27,6 @@ export const SidebarItemsList: SidebarItemType[] = [
     path: RoutePath.profile,
     text: "Профиль",
     Icon: ProfileIcon,
+    authOnly: true,
   },
 ];
