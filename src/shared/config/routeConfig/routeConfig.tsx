@@ -5,7 +5,7 @@ import { ProfilePage } from "pages/ProfilePage";
 import { RouteProps } from "react-router-dom";
 
 // расширяем типизацию стандартных роутов, чтоб сделать роуты только для авторизованных пользователей
-type AppRoutesProps = RouteProps & {
+export type AppRoutesProps = RouteProps & {
   authOnly?: boolean;
 };
 

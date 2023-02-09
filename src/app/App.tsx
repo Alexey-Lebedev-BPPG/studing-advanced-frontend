@@ -3,13 +3,14 @@ import { AppRouter } from "app/providers/router";
 import { Navbar } from "widgets/Navbar";
 import { SideBar } from "widgets/SideBar";
 import { Suspense, useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { userActions } from "entities/User";
+import { useDispatch, useSelector } from "react-redux";
+import { getUserInited, userActions } from "entities/User";
 import { useTheme } from "./providers/ThemeProvider";
 
 function App() {
   const { theme } = useTheme();
   const dispatch = useDispatch();
+  const inited = useSelector(getUserInited);
 
   // при инициализации приложения проверяем авторизованность юзера из локал стораджа
   useEffect(() => {
@@ -22,7 +23,7 @@ function App() {
         <Navbar />
         <div className="content-page">
           <SideBar />
-          <AppRouter />
+          {inited && <AppRouter />}
         </div>
       </Suspense>
     </div>

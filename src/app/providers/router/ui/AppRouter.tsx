@@ -1,35 +1,35 @@
-import { getUserAuthData } from "entities/User";
-import { FC, memo, Suspense, useMemo } from "react";
-import { useSelector } from "react-redux";
+import { FC, memo, Suspense, useCallback } from "react";
 import { Routes, Route } from "react-router-dom";
-import { routeConfig } from "shared/config/routeConfig/routeConfig";
+import {
+  AppRoutesProps,
+  routeConfig,
+} from "shared/config/routeConfig/routeConfig";
 import { PageLoader } from "shared/ui/PageLoader";
+import { RequireAuth } from "./RequireAuth";
 
 const AppRouter: FC = () => {
-  const isAuth = useSelector(getUserAuthData);
+  // создаем функцию для перебора массива роутов
+  const renderWithWrapper = useCallback((route: AppRoutesProps) => {
+    // создаем сам элемент, обернутый в suspense
+    const element = (
+      <Suspense fallback={<PageLoader />}>
+        <div className="page-wrapper">{route.element}</div>
+      </Suspense>
+    );
 
-  const routes = useMemo(
-    () =>
-      Object.values(routeConfig).filter(
-        (route) => !(route.authOnly && !isAuth)
-      ),
-    [isAuth]
-  );
+    return (
+      <Route
+        key={route.path}
+        path={route.path}
+        // проверяем, если роут авторизован, то добавляем обертку защитника роута. Иначе просто рендерим элемент
+        element={
+          route.authOnly ? <RequireAuth>{element}</RequireAuth> : element
+        }
+      />
+    );
+  }, []);
 
-  return (
-    <Suspense fallback={<PageLoader />}>
-      <Routes>
-        {/* преобразовываем наш конфиг в массив */}
-        {routes.map(({ path, element }) => (
-          <Route
-            key={path}
-            path={path}
-            element={<div className="page-wrapper">{element}</div>}
-          />
-        ))}
-      </Routes>
-    </Suspense>
-  );
+  return <Routes>{Object.values(routeConfig).map(renderWithWrapper)}</Routes>;
 };
 
 export default memo(AppRouter);
