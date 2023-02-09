@@ -21,4 +21,6 @@ export interface BuildOptions {
   isDevDebug: boolean;
   port: number;
   apiURL: string;
+  // создаем переменную для разделения сред выполнения
+  project: "storybook" | "frontend" | "jest";
 }

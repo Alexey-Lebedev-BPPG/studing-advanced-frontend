@@ -29,6 +29,7 @@ declare module "*.svg" {
 declare const __IS_DEV__: boolean;
 declare const __IS_DEV_DEBUG__: boolean;
 declare const __API__: string;
+declare const __PROJECT__: "storybook" | "frontend" | "jest";
 
 // используем глобальный тип для DeepPartial по всему проекту
 type DeepPartial<T> = T extends object

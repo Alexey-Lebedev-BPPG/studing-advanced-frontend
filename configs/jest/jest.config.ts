@@ -6,6 +6,7 @@ export default {
     __IS_DEV__: true,
     __IS_DEV_DEBUG__: true,
     __API__: "",
+    __PROJECT__: "jest",
   },
   // удалять моки после тестов
   clearMocks: true,

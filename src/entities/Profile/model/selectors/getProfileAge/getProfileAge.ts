@@ -1,4 +1,3 @@
 import { StateSchema } from "app/providers/StoreProvider";
 
-export const getProfileAge = (state: StateSchema) =>
-  state?.profile?.data?.age || "";
+export const getProfileAge = (state: StateSchema) => state?.profile?.data?.age;

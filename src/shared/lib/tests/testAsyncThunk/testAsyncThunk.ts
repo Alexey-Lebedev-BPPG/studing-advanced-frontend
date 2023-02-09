@@ -30,10 +30,15 @@ export class TestAsyncThunk<Return, Arg, RejectedValue> {
   navigate: jest.MockedFn<any>;
 
   // принимает аргументом сам thunk (например loginByUsername) из вне и остальные аргументы
-  constructor(actionCreator: ActionCreatorType<Return, Arg, RejectedValue>) {
+  // также принимаем значение дефолтного стейта, чтоб из вне можно было задавать его
+  constructor(
+    actionCreator: ActionCreatorType<Return, Arg, RejectedValue>,
+    state?: DeepPartial<StateSchema>
+  ) {
     this.actionCreator = actionCreator;
     this.dispatch = jest.fn();
-    this.getState = jest.fn();
+    // добавляем наш прокинутый стейт в в функцию получения стейта
+    this.getState = jest.fn(() => state as StateSchema);
     this.api = mockedAxios;
     this.navigate = jest.fn();
   }

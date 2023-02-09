@@ -9,6 +9,7 @@ export const buildPlugins = ({
   isDev,
   isDevDebug,
   apiURL,
+  project,
 }: BuildOptions): webpack.WebpackPluginInstance[] => {
   const plugins = [
     // генерим главный html (index.tsx) из пути src, чтоб в него встраивались скрипты
@@ -30,6 +31,7 @@ export const buildPlugins = ({
       __IS_DEV__: JSON.stringify(isDev), // теперь эта переменная доступна в коде (например, файл i18n.ts)
       __IS_DEV_DEBUG__: JSON.stringify(isDevDebug), // теперь эта переменная доступна в коде (например, файл i18n.ts)
       __API__: JSON.stringify(apiURL),
+      __PROJECT__: JSON.stringify(project),
     }),
   ];
 
