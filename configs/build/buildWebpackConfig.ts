@@ -19,6 +19,8 @@ export const buildWebpackConfig = (
       filename: "[name].[contenthash].js",
       path: paths.build,
       clean: true,
+      // добавляем для получения чанков из билда
+      publicPath: "/"
     },
     // вызываем функцию со списком плагинов
     plugins: buildPlugins(options),
