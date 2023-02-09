@@ -1,6 +1,7 @@
 @import "./reset";
 @import "./themes/dark";
 @import "./themes/normal";
+@import "./themes/orange";
 @import "./variables/global";
 
 body {
@@ -8,7 +9,8 @@ body {
   color: var(--primary-color);
 }
 
-.app {
+.app,
+.app_modal {
   background: var(--bg-color);
   min-height: 100vh;
 }
