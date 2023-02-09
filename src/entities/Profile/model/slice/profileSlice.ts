@@ -17,6 +17,7 @@ export const profileSlice = createSlice({
     },
     cancelEdit: (state) => {
       state.readonly = true;
+      state.validateError = undefined;
       state.form = state.data;
     },
     updateProfile: (state, { payload }: PayloadAction<Profile>) => {
@@ -52,7 +53,7 @@ export const profileSlice = createSlice({
       .addCase(updateProfileData.pending, (state) => {
         // это состояние, когда наш thunk начинается
         // обнуляем ошибку, если она была и делаем isLoading true
-        state.error = undefined;
+        state.validateError = undefined;
         state.isLoading = true;
       })
       .addCase(
@@ -63,12 +64,13 @@ export const profileSlice = createSlice({
           state.data = action.payload;
           state.form = action.payload;
           state.readonly = true;
+          state.validateError = undefined;
         }
       )
       .addCase(updateProfileData.rejected, (state, action) => {
         // action - поле, которое мы возвращаем из thunka при ошибке(3 аргумент в дженерике)
         state.isLoading = false;
-        state.error = action.payload;
+        state.validateError = action.payload;
       });
   },
 });

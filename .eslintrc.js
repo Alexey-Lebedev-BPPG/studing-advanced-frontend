@@ -66,6 +66,8 @@ module.exports = {
     "object-curly-newline": "off",
     // отключаем запрет на использование глобальых переменных
     "no-undef": "off",
+    "nonblock-statement-body-position": "off",
+    curly: "off",
   },
   globals: {
     __IS_DEV__: true,
