@@ -22,7 +22,7 @@ export const buildLoaders = ({
   const typescriptLoader = buildTypesciptLoader();
 
   // babelLoader
-  const babelLoader = buildBabelLoader();
+  const babelLoader = buildBabelLoader(isDev);
 
   // scss лоадер
   const scssLoaders = buildCssLoaders(isDev);

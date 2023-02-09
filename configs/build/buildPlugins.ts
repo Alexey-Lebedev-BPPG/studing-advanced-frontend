@@ -2,6 +2,7 @@ import webpack, { DefinePlugin, HotModuleReplacementPlugin } from "webpack";
 import htmlWebpackPlugin from "html-webpack-plugin";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import { BundleAnalyzerPlugin } from "webpack-bundle-analyzer";
+import ReactRefreshWebpackPlugin from "@pmmmwh/react-refresh-webpack-plugin";
 import { BuildOptions } from "./types/config";
 
 export const buildPlugins = ({
@@ -37,6 +38,8 @@ export const buildPlugins = ({
 
   // данные плагины добавляем, только если не продакш сборка
   if (isDev) {
+    // добавляем плагин для hot reload
+    plugins.push(new ReactRefreshWebpackPlugin());
     // для горячей перезагрузки (чтоб при изменениях в коде не обновлять страницу)
     // впоследствии поменяем на ReactRefreshWebpackPlugin
     plugins.push(new HotModuleReplacementPlugin());

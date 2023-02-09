@@ -1,4 +1,4 @@
-export const buildBabelLoader = () => ({
+export const buildBabelLoader = (isDev: boolean) => ({
   // ловим файлы .js, .jsx, .tsx
   test: /\.(js|jsx|tsx)$/,
   // исключаем node_modules
@@ -19,7 +19,10 @@ export const buildBabelLoader = () => ({
             keyAsDefaultValue: true,
           },
         ],
-      ],
+        // добавляем плагин для горячей перезагрузки
+        isDev && require.resolve("react-refresh/babel"),
+        // если у нас какой-то плагин не добавится из-за условий, то в массив добавляется false.чтоб не подхватить этот false, делаем фильтрацию трушных занчений
+      ].filter(Boolean),
     },
   },
 });
