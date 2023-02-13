@@ -25,7 +25,7 @@ export const RoutePath: Record<AppRoutes, string> = {
   [AppRoutes.ABOUT]: "/about",
   [AppRoutes.PROFILE]: "/profile",
   [AppRoutes.ARTICLES]: "/articles",
-  [AppRoutes.ARTICLE_DETAILS]: "/article_details/", // плюс сюда должен добавляться айдишник
+  [AppRoutes.ARTICLE_DETAILS]: "/articles/", // плюс сюда должен добавляться айдишник
   [AppRoutes.NOT_FOUND]: "*",
 };
 
