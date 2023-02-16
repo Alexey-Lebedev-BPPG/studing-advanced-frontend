@@ -10,11 +10,7 @@ const initialState: ArticleDetailsSchema = {
 export const articleDetailsSlice = createSlice({
   name: "articleDetails",
   initialState,
-  reducers: {
-    // setReadonly: (state, { payload }: PayloadAction<boolean>) => {
-    //   state.readonly = payload;
-    // },
-  },
+  reducers: {},
   // исgользуется для асинхронного изменения стейта
   extraReducers: (builder) => {
     // у каждого thunka есть 3 состояния: 1. pending, 2. fulfilled, 3. rejected

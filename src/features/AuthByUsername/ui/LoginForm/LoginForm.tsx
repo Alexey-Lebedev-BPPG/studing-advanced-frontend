@@ -2,11 +2,9 @@ import { FC, memo, useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import { classNames } from "shared/lib/classNames/classNames";
-import { Button } from "shared/ui/Button";
-import { ButtonTheme } from "shared/ui/Button/ui/Button";
-import { Input } from "shared/ui/Input";
-import { Text } from "shared/ui/Text";
-import { TextTheme } from "shared/ui/Text/ui/Text";
+import { Button, ButtonTheme } from "shared/ui/Button/Button";
+import { Input } from "shared/ui/Input/Input";
+import { Text, TextTheme } from "shared/ui/Text/Text";
 import {
   DynamicModuleLoader,
   ReducersList,

@@ -18,7 +18,7 @@ import {
 } from "shared/lib/components/DynamicModuleLoader/DynamicModuleLoader";
 import { Currency } from "entities/Currency";
 import { Country } from "entities/Country";
-import { Text, TextTheme } from "shared/ui/Text/ui/Text";
+import { Text, TextTheme } from "shared/ui/Text/Text";
 import { ValidateProfileError } from "entities/Profile/model/types/profile";
 import { useTranslation } from "react-i18next";
 import { ProfilePageHeader } from "./ProfilePageHeader/ProfilePageHeader";

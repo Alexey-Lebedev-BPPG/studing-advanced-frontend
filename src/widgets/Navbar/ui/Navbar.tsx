@@ -4,7 +4,7 @@ import { t } from "i18next";
 import { memo, useCallback, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { classNames } from "shared/lib/classNames/classNames";
-import { Button, ButtonTheme } from "shared/ui/Button/ui/Button";
+import { Button, ButtonTheme } from "shared/ui/Button/Button";
 import cls from "./Navbar.module.scss";
 
 interface NavbarProps {

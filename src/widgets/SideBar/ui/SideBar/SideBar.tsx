@@ -1,9 +1,8 @@
 import { FC, memo, useMemo, useState } from "react";
 import { classNames } from "shared/lib/classNames/classNames";
-import { Button } from "shared/ui/Button";
-import { ButtonSize, ButtonTheme } from "shared/ui/Button/ui/Button";
-import { LanguageSwitcher } from "shared/ui/LanguageSwitcher";
-import { ThemeSwitcher } from "shared/ui/ThemeSwitcher";
+import { Button, ButtonSize, ButtonTheme } from "shared/ui/Button/Button";
+import { LanguageSwitcher } from "shared/ui/LanguageSwitcher/LanguageSwitcher";
+import { ThemeSwitcher } from "shared/ui/ThemeSwitcher/ThemeSwitcher";
 import { SidebarItemsList } from "../../model/items";
 import { SidebarItem } from "../SidebarItem";
 import cls from "./SideBar.module.scss";
@@ -22,11 +21,7 @@ export const SideBar: FC<ISideBarProps> = memo(({ className }) => {
   const itemsList = useMemo(
     () =>
       SidebarItemsList.map((item) => (
-        <SidebarItem
-          item={item}
-          collapsed={collapsed}
-          key={item.path}
-        />
+        <SidebarItem item={item} collapsed={collapsed} key={item.path} />
       )),
     [collapsed]
   );

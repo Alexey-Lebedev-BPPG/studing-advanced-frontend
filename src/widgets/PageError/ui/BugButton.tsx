@@ -1,5 +1,5 @@
 import React, { FC, useEffect, useState } from "react";
-import { Button } from "shared/ui/Button";
+import { Button } from "shared/ui/Button/Button";
 
 // компонент для имитации ошибки в приложении
 export const BugButton: FC = () => {

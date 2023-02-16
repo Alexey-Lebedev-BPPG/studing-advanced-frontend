@@ -7,7 +7,7 @@ import React, {
   useState,
 } from "react";
 import { classNames } from "shared/lib/classNames/classNames";
-import { Portal } from "shared/ui/Portal";
+import { Portal } from "shared/ui/Portal/Portal";
 import cls from "./Modal.module.scss";
 
 interface IModalProps {

@@ -68,6 +68,7 @@ module.exports = {
     "no-undef": "off",
     "nonblock-statement-body-position": "off",
     curly: "off",
+    "react/no-array-index-key": "off",
   },
   globals: {
     __IS_DEV__: true,

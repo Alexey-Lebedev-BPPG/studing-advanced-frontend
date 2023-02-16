@@ -19,9 +19,9 @@ declare module "*.jpeg";
 declare module "*.jpg";
 
 declare module "*.svg" {
-  import React from "react";
+  import { SVGProps, VFC } from "react";
 
-  const SVG: React.VFC<React.SVGProps<SVGSVGElement>>;
+  const SVG: VFC<SVGProps<SVGSVGElement>>;
   export default SVG;
 }
 

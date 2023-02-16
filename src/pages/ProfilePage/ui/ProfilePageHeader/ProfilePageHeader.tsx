@@ -1,12 +1,15 @@
-import { getProfileIsReadonly, profileActions, updateProfileData } from "entities/Profile";
+import {
+  getProfileIsReadonly,
+  profileActions,
+  updateProfileData,
+} from "entities/Profile";
 import { FC, useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import { classNames } from "shared/lib/classNames/classNames";
 import { useAppDispatch } from "shared/lib/hooks/useAppDispatch/useAppDispatch";
-import { Button } from "shared/ui/Button";
-import { ButtonTheme } from "shared/ui/Button/ui/Button";
-import { Text } from "shared/ui/Text";
+import { Button, ButtonTheme } from "shared/ui/Button/Button";
+import { Text } from "shared/ui/Text/Text";
 import cls from "./ProfilePageHeader.module.scss";
 
 interface IProfilePageHeaderProps {
