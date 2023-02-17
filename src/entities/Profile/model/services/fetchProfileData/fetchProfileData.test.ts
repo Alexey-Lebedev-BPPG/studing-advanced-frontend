@@ -19,8 +19,8 @@ describe("fetchProfileData", () => {
     const thunk = new TestAsyncThunk(fetchProfileData);
     // имитируем отправку get запроса, который возвращает валидные данные
     thunk.api.get.mockReturnValue(Promise.resolve({ data }));
-    // вызываем функцию внутри класса для создания экшена (ничего не прокидываем туда, т.к. наш thunk ничего не принимает)
-    const result = await thunk.callThunk();
+    // вызываем функцию внутри класса для создания экшена (наш thunk ничего не принимает, то ничего не прокидываем туда)
+    const result = await thunk.callThunk("1");
 
     expect(thunk.api.get).toHaveBeenCalled();
     expect(result.meta.requestStatus).toBe("fulfilled");
@@ -32,7 +32,7 @@ describe("fetchProfileData", () => {
     const thunk = new TestAsyncThunk(fetchProfileData);
     // имитируем отправку post запроса, который возвращает нам ошибку
     thunk.api.get.mockReturnValue(Promise.resolve({ status: 403 }));
-    const result = await thunk.callThunk();
+    const result = await thunk.callThunk("1");
     expect(result.meta.requestStatus).toBe("rejected");
   });
 });

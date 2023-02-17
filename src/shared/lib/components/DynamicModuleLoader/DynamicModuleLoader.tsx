@@ -21,7 +21,7 @@ interface IDynamicModuleLoaderProps {
 export const DynamicModuleLoader: FC<IDynamicModuleLoaderProps> = ({
   children,
   reducers,
-  removeAfterUnmount,
+  removeAfterUnmount = true,
 }) => {
   const dispatch = useDispatch();
   // получаем стор, чтоб посмотреть что там

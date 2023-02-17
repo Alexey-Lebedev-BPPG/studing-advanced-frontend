@@ -16,6 +16,15 @@ export const CommentList: FC<ICommentListProps> = memo(
   ({ className, comments, isLoading }) => {
     const { t } = useTranslation();
 
+    if (isLoading)
+      return (
+        <div className={classNames(cls.commentList, {}, [className])}>
+          <CommentCard isLoading />
+          <CommentCard isLoading />
+          <CommentCard isLoading />
+        </div>
+      );
+
     return (
       <div className={classNames(cls.commentList, {}, [className])}>
         {comments?.length ? (

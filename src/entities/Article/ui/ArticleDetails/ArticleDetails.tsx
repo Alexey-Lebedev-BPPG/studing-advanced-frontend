@@ -129,7 +129,7 @@ export const ArticleDetails: FC<IArticleDetailsProps> = memo(
 
     return (
       // обертка для использования асинхронных редьюсеров в асинхронных компонентах
-      <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
+      <DynamicModuleLoader reducers={reducers}>
         <div className={classNames(cls.articleDetails, {}, [className])}>
           {content}
         </div>

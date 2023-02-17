@@ -6,13 +6,15 @@ import { Profile } from "../../types/profile";
 // первым аргументом дженерика - что возвращаем, второй - что передаем, а третим можно передать свои типизацию объекта thunkAPI, в котором есть методы для использования в thunke
 export const fetchProfileData = createAsyncThunk<
   Profile,
-  void,
+  string,
   ThunkConfig<string>
->("profile/fetchProfileData", async (_, thunkApi) => {
+  // если колбек ничего не принимает, то прокидываем первым аргументом _
+  // >("profile/fetchProfileData", async (_, thunkApi) => {
+>("profile/fetchProfileData", async (profileId, thunkApi) => {
   const { extra, rejectWithValue } = thunkApi;
 
   try {
-    const response = await extra.api.get<Profile>("/profile");
+    const response = await extra.api.get<Profile>(`/profile/${profileId}`);
 
     if (!response.data) throw new Error();
 
