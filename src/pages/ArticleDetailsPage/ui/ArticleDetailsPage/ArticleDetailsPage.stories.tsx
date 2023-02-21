@@ -5,18 +5,18 @@ import {
   ArticleType,
 } from "entities/Article/model/types/article";
 import { StoreDecorator } from "shared/config/storybook/StoreDecorator/StoreDecorator";
-import ArticlesPage from "./ArticlesPage";
+import ArticleDetailsPage from "./ArticleDetailsPage";
 
 export default {
-  title: "pages/ArticlesPage",
-  component: ArticlesPage,
+  title: "page/ArticleDetailsPage",
+  component: ArticleDetailsPage,
   argTypes: {
     backgroundColor: { control: "color" },
   },
-} as ComponentMeta<typeof ArticlesPage>;
+} as ComponentMeta<typeof ArticleDetailsPage>;
 
-const Template: ComponentStory<typeof ArticlesPage> = (args) => (
-  <ArticlesPage {...args} />
+const Template: ComponentStory<typeof ArticleDetailsPage> = (arg) => (
+  <ArticleDetailsPage {...arg} />
 );
 
 const article: Article = {

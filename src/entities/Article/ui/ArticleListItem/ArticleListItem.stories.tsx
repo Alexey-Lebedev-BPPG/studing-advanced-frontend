@@ -3,20 +3,20 @@ import {
   Article,
   ArticleBlockType,
   ArticleType,
-} from "entities/Article/model/types/article";
-import { StoreDecorator } from "shared/config/storybook/StoreDecorator/StoreDecorator";
-import ArticlesPage from "./ArticlesPage";
+  ArticleView,
+} from "../../model/types/article";
+import { ArticleListItem } from "./ArticleListItem";
 
 export default {
-  title: "pages/ArticlesPage",
-  component: ArticlesPage,
+  title: "entities/Article/ArticleListItem",
+  component: ArticleListItem,
   argTypes: {
     backgroundColor: { control: "color" },
   },
-} as ComponentMeta<typeof ArticlesPage>;
+} as ComponentMeta<typeof ArticleListItem>;
 
-const Template: ComponentStory<typeof ArticlesPage> = (args) => (
-  <ArticlesPage {...args} />
+const Template: ComponentStory<typeof ArticleListItem> = (arg) => (
+  <ArticleListItem {...arg} />
 );
 
 const article: Article = {
@@ -93,32 +93,14 @@ const article: Article = {
   ],
 };
 
-export const Normal = Template.bind({});
-Normal.args = {};
-Normal.decorators = [
-  StoreDecorator({
-    articleDetails: {
-      data: article,
-    },
-  }),
-];
+export const Big = Template.bind({});
+Big.args = {
+  view: ArticleView.BIG,
+  article,
+};
 
-export const WithError = Template.bind({});
-WithError.args = {};
-WithError.decorators = [
-  StoreDecorator({
-    articleDetails: {
-      error: "error",
-    },
-  }),
-];
-
-export const Loading = Template.bind({});
-Loading.args = {};
-Loading.decorators = [
-  StoreDecorator({
-    articleDetails: {
-      isLoading: true,
-    },
-  }),
-];
+export const Small = Template.bind({});
+Small.args = {
+  view: ArticleView.SMALL,
+  article,
+};
