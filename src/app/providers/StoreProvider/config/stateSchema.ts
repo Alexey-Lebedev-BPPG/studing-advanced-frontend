@@ -13,6 +13,7 @@ import { UserSchema } from "entities/User";
 import { AddCommentFormSchema } from "features/AddCommentForm";
 import { LoginSchema } from "features/AuthByUsername";
 import { ArticleDetailsCommentSchema } from "pages/ArticleDetailsPage";
+import { ArticlesPageSchema } from "pages/ArticlesPage";
 import { To, NavigateOptions } from "react-router-dom";
 
 // типизация всего стейта
@@ -26,6 +27,7 @@ export interface StateSchema {
   articleDetails?: ArticleDetailsSchema;
   articleDetailsComments?: ArticleDetailsCommentSchema;
   addCommentForm?: AddCommentFormSchema;
+  articlesPage?: ArticlesPageSchema;
 }
 
 // создаем тип всех ключей стейта

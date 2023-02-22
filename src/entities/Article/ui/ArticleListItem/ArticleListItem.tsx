@@ -1,6 +1,5 @@
 import { FC, memo, useCallback } from "react";
 import { classNames } from "shared/lib/classNames/classNames";
-import { useTranslation } from "react-i18next";
 import { Text } from "shared/ui/Text/Text";
 import EyeIcon from "shared/assets/icons/eye-20-20.svg";
 import { Icon } from "shared/ui/Icon/Icon";
@@ -27,7 +26,6 @@ export interface IArticleListItemProps {
 
 export const ArticleListItem: FC<IArticleListItemProps> = memo(
   ({ className, article, view }) => {
-    const { t } = useTranslation();
     const navigate = useNavigate();
     // const [isHover, bindHover] = useHover();
 
@@ -66,7 +64,7 @@ export const ArticleListItem: FC<IArticleListItemProps> = memo(
               />
             )}
             <div className={cls.footer}>
-              <Button onClick={onOpenArticle}>{t("Читать далее...")}</Button>
+              <Button onClick={onOpenArticle}>Читать далее...</Button>
               {views}
             </div>
           </Card>
