@@ -22,13 +22,6 @@ const getSkeletons = (view: ArticleView) =>
 
 export const ArticleList: FC<IArticleListProps> = memo(
   ({ className, articles, isLoading, view = ArticleView.SMALL }) => {
-    if (isLoading)
-      return (
-        <div className={classNames("", {}, [className, cls[view]])}>
-          {getSkeletons(view)}
-        </div>
-      );
-
     const renderArticle = (article: Article) => (
       <ArticleListItem
         article={article}
@@ -43,6 +36,7 @@ export const ArticleList: FC<IArticleListProps> = memo(
         {articles.length > 0
           ? articles.map((article) => renderArticle(article))
           : null}
+        {isLoading && getSkeletons(view)}
       </div>
     );
   }

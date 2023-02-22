@@ -6,4 +6,9 @@ export interface ArticlesPageSchema extends EntityState<Article> {
   isLoading?: boolean;
   error?: string;
   view: ArticleView;
+  // данные пагинации
+  page: number;
+  limit?: number;
+  // показывает, загрузили мы все статьи или есть еще
+  hasMore: boolean;
 }

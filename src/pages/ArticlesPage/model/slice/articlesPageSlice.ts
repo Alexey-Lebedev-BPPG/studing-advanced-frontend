@@ -30,16 +30,23 @@ const articlesPageSlice = createSlice({
     ids: [],
     entities: {},
     view: ArticleView.SMALL,
+    page: 1,
+    hasMore: true,
   }),
   reducers: {
     setView: (state, { payload }: PayloadAction<ArticleView>) => {
       state.view = payload;
       localStorage.setItem(ARTICLE_VIEW_LOCALSTORAGE_KEY, payload);
     },
+    setPage: (state, { payload }: PayloadAction<number>) => {
+      state.page = payload;
+    },
     initState: (state) => {
-      state.view = localStorage.getItem(
+      const view = localStorage.getItem(
         ARTICLE_VIEW_LOCALSTORAGE_KEY
       ) as ArticleView;
+      state.view = view;
+      state.limit = view === ArticleView.BIG ? 4 : 9;
     },
   },
   // исgользуется для асинхронного изменения стейта
@@ -59,8 +66,10 @@ const articlesPageSlice = createSlice({
         (state, action: PayloadAction<Article[]>) => {
           // здесь обрабатываем ответ сервера
           state.isLoading = false;
-          // заменяем данные. полученные из запроса, в адаптере
-          articlesAdapter.setAll(state, action.payload);
+          // зддесь мы не будем заменять все с помощью setAll, а будем использовать addMany, чтоб добавлять данные в конец
+          articlesAdapter.addMany(state, action.payload);
+          // если нам с бека придет массив хотя бы с одним элементом, то мы знаем, что данные еще прилетят
+          state.hasMore = action.payload.length > 0;
         }
       )
       .addCase(fetchArticlesList.rejected, (state, action) => {

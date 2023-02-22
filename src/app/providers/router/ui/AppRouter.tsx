@@ -12,9 +12,7 @@ const AppRouter: FC = () => {
   const renderWithWrapper = useCallback((route: AppRoutesProps) => {
     // создаем сам элемент, обернутый в suspense
     const element = (
-      <Suspense fallback={<PageLoader />}>
-        <div className="page-wrapper">{route.element}</div>
-      </Suspense>
+      <Suspense fallback={<PageLoader />}>{route.element}</Suspense>
     );
 
     return (
