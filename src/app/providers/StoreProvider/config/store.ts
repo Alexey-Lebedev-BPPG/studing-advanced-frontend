@@ -6,6 +6,7 @@ import {
 } from "@reduxjs/toolkit";
 import { CounterReducer } from "entities/Counter";
 import { userReducer } from "entities/User";
+import { scrollSaveReducer } from "features/ScrollSave";
 import { $api } from "shared/api/api";
 import { createReducerManager } from "./reducerManager";
 import { StateSchema } from "./stateSchema";
@@ -26,6 +27,7 @@ export const createReduxStore = (
     ...asyncReducers,
     counter: CounterReducer,
     user: userReducer,
+    scrollSave: scrollSaveReducer,
   };
 
   // Ввиду того, что сам компонент мы сделали асинхронным, но импортируемые редьюсеры и т.п. из него загружаются в главный бандл, сделаем асинхронную подгрузку редьюсеров через редьюсер-менеджера
