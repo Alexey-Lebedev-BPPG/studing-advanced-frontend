@@ -4,8 +4,14 @@ import {
   PayloadAction,
 } from "@reduxjs/toolkit";
 import { StateSchema } from "app/providers/StoreProvider";
-import { Article, ArticleView } from "entities/Article/model/types/article";
+import {
+  Article,
+  ArticleSortFields,
+  ArticleType,
+  ArticleView,
+} from "entities/Article";
 import { ARTICLE_VIEW_LOCALSTORAGE_KEY } from "shared/const/localStorage";
+import { SortOrder } from "shared/types";
 import { fetchArticlesList } from "../services/fetchArticlesList/fetchArticlesList";
 import { ArticlesPageSchema } from "../types/articlesPageSchema";
 
@@ -33,6 +39,11 @@ const articlesPageSlice = createSlice({
     page: 1,
     hasMore: true,
     _inited: false,
+    limit: 9,
+    sort: ArticleSortFields.CREATED,
+    order: "asc",
+    search: "",
+    type: ArticleType.ALL,
   }),
   reducers: {
     setView: (state, { payload }: PayloadAction<ArticleView>) => {
@@ -41,6 +52,18 @@ const articlesPageSlice = createSlice({
     },
     setPage: (state, { payload }: PayloadAction<number>) => {
       state.page = payload;
+    },
+    setOrder: (state, { payload }: PayloadAction<SortOrder>) => {
+      state.order = payload;
+    },
+    setSort: (state, { payload }: PayloadAction<ArticleSortFields>) => {
+      state.sort = payload;
+    },
+    setSearch: (state, { payload }: PayloadAction<string>) => {
+      state.search = payload;
+    },
+    setType: (state, { payload }: PayloadAction<ArticleType>) => {
+      state.type = payload;
     },
     initState: (state) => {
       const view = localStorage.getItem(
@@ -57,23 +80,29 @@ const articlesPageSlice = createSlice({
     // все 3 состояния можно здесь обработать
     builder
       // используем наш thunk
-      .addCase(fetchArticlesList.pending, (state) => {
+      .addCase(fetchArticlesList.pending, (state, action) => {
         // это состояние, когда наш thunk начинается
         // обнуляем ошибку, если она была и делаем isLoading true
         state.error = undefined;
         state.isLoading = true;
-      })
-      .addCase(
-        fetchArticlesList.fulfilled,
-        (state, action: PayloadAction<Article[]>) => {
-          // здесь обрабатываем ответ сервера
-          state.isLoading = false;
-          // зддесь мы не будем заменять все с помощью setAll, а будем использовать addMany, чтоб добавлять данные в конец
-          articlesAdapter.addMany(state, action.payload);
-          // если нам с бека придет массив хотя бы с одним элементом, то мы знаем, что данные еще прилетят
-          state.hasMore = action.payload.length > 0;
+        // если у нас есть флаг реплейс, то зачищаем массив данных
+        if (action.meta.arg.replace) {
+          articlesAdapter.removeAll(state);
         }
-      )
+      })
+      .addCase(fetchArticlesList.fulfilled, (state, action) => {
+        // здесь обрабатываем ответ сервера
+        state.isLoading = false;
+        // если у нас есть флаг реплейса, то заменяем все новыми данными
+        if (action.meta.arg.replace) {
+          articlesAdapter.setAll(state, action.payload);
+        } else {
+          // если у нас нет флага реплейса, то будем использовать addMany, чтоб добавлять данные в конец
+          articlesAdapter.addMany(state, action.payload);
+        }
+        // если нам с бека придет массив длина которого больше лимита, то мы знаем, что данные еще прилетят
+        state.hasMore = action.payload.length >= state.limit;
+      })
       .addCase(fetchArticlesList.rejected, (state, action) => {
         // action - поле, которое мы возвращаем из thunka при ошибке(3 аргумент в дженерике)
         state.isLoading = false;

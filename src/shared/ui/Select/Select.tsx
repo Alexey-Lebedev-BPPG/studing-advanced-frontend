@@ -1,26 +1,35 @@
-import { ChangeEvent, FC, memo, useMemo } from "react";
+import { ChangeEvent, memo, useMemo } from "react";
 import { classNames } from "shared/lib/classNames/classNames";
 import cls from "./Select.module.scss";
 
-export interface SelectOption {
+export interface SelectOption<T> {
   // значение опции
-  valueOpt: string;
+  valueOpt: T;
   // отображение опции
   content: string;
 }
 
-interface ISelectProps {
+interface ISelectProps<T> {
   className?: string;
   label?: string;
-  options?: SelectOption[];
+  options?: SelectOption<T>[];
   // выбранное значение
-  value?: string;
-  onChange?: (value: string) => void;
+  value?: T;
+  onChange?: (value: T) => void;
   readonly?: boolean;
 }
+// делаем обертку для того, чтоб принимать дженериком тип для пропсов в компоненте, который использует мемо
+const typedMemo: <T>(c: T) => T = memo;
 
-export const Select: FC<ISelectProps> = memo(
-  ({ className, label, options, value, onChange, readonly }) => {
+export const Select = typedMemo(
+  <T extends string>({
+    className,
+    label,
+    options,
+    value,
+    onChange,
+    readonly,
+  }: ISelectProps<T>) => {
     const mods = {};
 
     const optionList = useMemo(
@@ -34,7 +43,7 @@ export const Select: FC<ISelectProps> = memo(
     );
 
     const onChangeHandler = (event: ChangeEvent<HTMLSelectElement>) => {
-      onChange?.(event.target.value);
+      onChange?.(event.target.value as T);
     };
 
     return (
