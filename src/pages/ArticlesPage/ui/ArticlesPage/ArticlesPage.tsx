@@ -19,7 +19,7 @@ import {
   articlesPageReducer,
   getArticles,
 } from "../../model/slice/articlesPageSlice";
-import { fetchArticlesList } from "../../model/services/fetchArticlesList/fetchArticlesList";
+import { initArticlesPage } from "../../model/services/initArticlesPage/initArticlesPage";
 import cls from "./ArticlesPage.module.scss";
 import {
   getArticlesPageIsLoading,
@@ -53,16 +53,11 @@ const ArticlesPage: FC<IArticlesPageProps> = ({ className }) => {
   }, [dispatch]);
 
   useInitialEffect(() => {
-    dispatch(articlesPageActions.initState());
-    dispatch(
-      fetchArticlesList({
-        page: 1,
-      })
-    );
+    dispatch(initArticlesPage());
   });
 
   return (
-    <DynamicModuleLoader reducers={reducers}>
+    <DynamicModuleLoader reducers={reducers} removeAfterUnmount={false}>
       <Page
         onScrollEnd={onLoadNextPart}
         className={classNames(cls.articlesPage, {}, [className])}

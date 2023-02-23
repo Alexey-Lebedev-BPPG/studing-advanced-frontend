@@ -4,7 +4,12 @@ import {
   Reducer,
   ReducersMapObject,
 } from "@reduxjs/toolkit";
-import { ReducerManager, StateSchema, StateSchemaKey } from "./stateSchema";
+import {
+  MountedReducers,
+  ReducerManager,
+  StateSchema,
+  StateSchemaKey,
+} from "./stateSchema";
 
 // https://redux.js.org/usage/code-splitting
 // предназанчен для того, чтоб в реальном времени подгружать/удалять редьюсеры в стейте
@@ -17,6 +22,9 @@ export function createReducerManager(
   let combinedReducer = combineReducers(reducers);
   // массив для названий редьюсеров, которые мы хотим удалить
   let keysToRemove: StateSchemaKey[] = [];
+  // объект со всеми редьюсерами
+  const mountedReducers: MountedReducers = {};
+
   return {
     // функци получения всех редьюсеров
     getReducerMap: () => reducers,
@@ -37,6 +45,7 @@ export function createReducerManager(
         return;
       }
       reducers[key] = reducer;
+      mountedReducers[key] = true;
       combinedReducer = combineReducers(reducers);
     },
     // эту функция добавляет ключ в массив для удаления и удаляет его из главного редьюсера
@@ -46,7 +55,9 @@ export function createReducerManager(
       }
       delete reducers[key];
       keysToRemove.push(key);
+      mountedReducers[key] = false;
       combinedReducer = combineReducers(reducers);
     },
+    getMountedReducers: () => mountedReducers,
   };
 }

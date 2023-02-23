@@ -14,7 +14,6 @@ import { AddCommentFormSchema } from "features/AddCommentForm";
 import { LoginSchema } from "features/AuthByUsername";
 import { ArticleDetailsCommentSchema } from "pages/ArticleDetailsPage";
 import { ArticlesPageSchema } from "pages/ArticlesPage";
-import { To, NavigateOptions } from "react-router-dom";
 
 // типизация всего стейта
 export interface StateSchema {
@@ -32,6 +31,8 @@ export interface StateSchema {
 
 // создаем тип всех ключей стейта
 export type StateSchemaKey = keyof StateSchema;
+// создаем отдельный тип для смонтированных редьюсеров
+export type MountedReducers = OptionalRecord<StateSchemaKey, boolean>;
 
 // типизация для редьюсер-менеджера
 export interface ReducerManager {
@@ -39,6 +40,8 @@ export interface ReducerManager {
   reduce: (state: StateSchema, action: AnyAction) => CombinedState<StateSchema>;
   add: (key: StateSchemaKey, reducer: Reducer) => void;
   remove: (key: StateSchemaKey) => void;
+  // поле для проверки, смонтирован редьюсер или нет. Используем кастомный тип, т.к. не все редьюсеры у нас обязательны. Указанное поле НЕ ОБЯЗАТЕЛЬНО, т.к. данный функционал можно использовать из поля getReducerMap
+  getMountedReducers: () => MountedReducers;
 }
 
 // типизация для стейта, который получен с помощью редьюсер-менеджера (наследуется от стандартного типа, который появляется при создании стора в файле store.ts (21 строка))
@@ -49,7 +52,7 @@ export interface ReduxStoreWithManager extends EnhancedStore<StateSchema> {
 // создает типизацию для экстра
 export interface ThunkExtraArg {
   api: AxiosInstance;
-  navigate?: (to: To, option?: NavigateOptions) => void;
+  // navigate?: (to: To, option?: NavigateOptions) => void;
 }
 
 // делаем тип для конфигураций thunk-ов (причем тип ошибочной функции будем определять извне)

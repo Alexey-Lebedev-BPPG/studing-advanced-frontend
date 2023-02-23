@@ -37,3 +37,8 @@ type DeepPartial<T> = T extends object
       [P in keyof T]?: DeepPartial<T[P]>;
     }
   : T;
+
+// кастомный тип для обычного рекорда, в котором ключ не обязателен
+type OptionalRecord<K extends keyof any, T> = {
+  [P in K]?: T;
+};

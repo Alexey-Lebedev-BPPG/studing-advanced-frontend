@@ -6,7 +6,6 @@ import {
 } from "@reduxjs/toolkit";
 import { CounterReducer } from "entities/Counter";
 import { userReducer } from "entities/User";
-import { NavigateOptions, To } from "react-router-dom";
 import { $api } from "shared/api/api";
 import { createReducerManager } from "./reducerManager";
 import { StateSchema } from "./stateSchema";
@@ -18,9 +17,9 @@ import { StateSchema } from "./stateSchema";
 export const createReduxStore = (
   initialState?: StateSchema,
   // принимаем асинхронные редьюсеры
-  asyncReducers?: ReducersMapObject<StateSchema>,
+  asyncReducers?: ReducersMapObject<StateSchema>
   // принимаем функцию из StoreProvider
-  navigate?: (to: To, option?: NavigateOptions) => void
+  // navigate?: (to: To, option?: NavigateOptions) => void
 ) => {
   const rootReducers: ReducersMapObject<StateSchema> = {
     // разворачиваем асинхронные редьюсеры в главный стор
@@ -47,7 +46,8 @@ export const createReduxStore = (
       getDefaultMiddleware({
         thunk: {
           // сюда можно передать все что угодно
-          extraArgument: { api: $api, navigate },
+          // extraArgument: { api: $api, navigate },
+          extraArgument: { api: $api },
         },
       }),
   });
