@@ -1,6 +1,7 @@
 import { Reducer } from "@reduxjs/toolkit";
 import {
   ReduxStoreWithManager,
+  StateSchema,
   StateSchemaKey,
 } from "app/providers/StoreProvider/config/stateSchema";
 import React, { FC, useEffect } from "react";
@@ -8,7 +9,8 @@ import { useDispatch, useStore } from "react-redux";
 
 // тип для всех редьюсеров, которые будут поступать в наш компонент (если передадим несколько редьюсеров)
 export type ReducersList = {
-  [keyReducer in StateSchemaKey]?: Reducer;
+  // указываем такой тип, чтоб редьюсеры принимали только то название, которое было сделано ранее
+  [name in StateSchemaKey]?: Reducer<NonNullable<StateSchema[name]>>;
 };
 
 interface IDynamicModuleLoaderProps {

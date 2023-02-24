@@ -13,7 +13,7 @@ import { UserSchema } from "entities/User";
 import { AddCommentFormSchema } from "features/AddCommentForm";
 import { LoginSchema } from "features/AuthByUsername";
 import { ScrollSaveSchema } from "features/ScrollSave";
-import { ArticleDetailsCommentSchema } from "pages/ArticleDetailsPage";
+import { ArticleDetailsPageSchema } from "pages/ArticleDetailsPage";
 import { ArticlesPageSchema } from "pages/ArticlesPage";
 
 // типизация всего стейта
@@ -26,7 +26,10 @@ export interface StateSchema {
   loginForm?: LoginSchema;
   profile?: ProfileSchema;
   articleDetails?: ArticleDetailsSchema;
-  articleDetailsComments?: ArticleDetailsCommentSchema;
+  // объединем несколько редьюсеров в один. Лучше не использовать. Делается в учебных целях
+  articleDetailsPage?: ArticleDetailsPageSchema;
+  // articleDetailsComments?: ArticleDetailsCommentSchema;
+  // articleDetailsRecommendations?: ArticleDetailsRecommendationsSchema;
   addCommentForm?: AddCommentFormSchema;
   articlesPage?: ArticlesPageSchema;
 }

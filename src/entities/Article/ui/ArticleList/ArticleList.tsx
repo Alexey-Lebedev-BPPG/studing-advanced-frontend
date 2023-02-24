@@ -1,4 +1,4 @@
-import { FC, memo } from "react";
+import { FC, HTMLAttributeAnchorTarget, memo } from "react";
 import { classNames } from "shared/lib/classNames/classNames";
 import { Text, TextSize } from "shared/ui/Text/Text";
 import { useTranslation } from "react-i18next";
@@ -13,6 +13,7 @@ export interface IArticleListProps {
   isLoading?: boolean;
   // отображение (плитка или список)
   view?: ArticleView;
+  target?: HTMLAttributeAnchorTarget;
 }
 
 const getSkeletons = (view: ArticleView) =>
@@ -23,10 +24,11 @@ const getSkeletons = (view: ArticleView) =>
     ));
 
 export const ArticleList: FC<IArticleListProps> = memo(
-  ({ className, articles, isLoading, view = ArticleView.SMALL }) => {
+  ({ className, articles, isLoading, view = ArticleView.SMALL, target }) => {
     const { t } = useTranslation();
     const renderArticle = (article: Article) => (
       <ArticleListItem
+        target={target}
         article={article}
         view={view}
         key={article.id}

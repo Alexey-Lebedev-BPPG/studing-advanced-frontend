@@ -4,7 +4,7 @@ import { articleDetailsReducer } from "entities/Article/model/slice/articleDetai
 import { profileReducer } from "entities/Profile";
 import { addCommentFormReducer } from "features/AddCommentForm/model/slice/addCommentForm";
 import { loginReducer } from "features/AuthByUsername/model/slice/loginSlice";
-import { articleDetailsCommentReducer } from "pages/ArticleDetailsPage/model/slice/articleDetailsCommentSlice";
+import { articleDetailsPageReducer } from "pages/ArticleDetailsPage/model/slice";
 import { ReducersList } from "shared/lib/components/DynamicModuleLoader/DynamicModuleLoader";
 
 // создаем стор для тестирования сторибука
@@ -13,16 +13,13 @@ const defaultAsyncReducers: ReducersList = {
   profile: profileReducer,
   articleDetails: articleDetailsReducer,
   addCommentForm: addCommentFormReducer,
-  articleDetailsComments: articleDetailsCommentReducer,
+  articleDetailsPage: articleDetailsPageReducer,
 };
 
 // декоратор, который подключает state. Используем замыкание, чтоб обернуть наш декоратор стейтом по ум. Также исп. DeepPartial, чтоб брать только нужные поля стейта
 // добавляем аргумент приема редьюсеров, чтоб была возможность прокидывать сюда другие редьюсеры
 export const StoreDecorator =
-  (
-    state: DeepPartial<StateSchema>,
-    asyncReducers?: ReducersList
-  ) =>
+  (state: DeepPartial<StateSchema>, asyncReducers?: ReducersList) =>
     (StoryComponent: Story) =>
       (
         <StoreProvider
