@@ -20,6 +20,10 @@ export default (env: BuildEnv) => {
     html: path.resolve(__dirname, "public", "index.html"),
     // указываем путь до папки src, чтоб использовать его в buildResolves
     src: path.resolve(__dirname, "src"),
+    // указываем путь до папки, откуда берем готовые файлы переводов
+    locales: path.resolve(__dirname, "public", "locales"),
+    // указываем путь до папки, куда помещаем готовые файлы переводов
+    buildLocales: path.resolve(__dirname, "build", "locales"),
   };
 
   // берем env из параметра функции

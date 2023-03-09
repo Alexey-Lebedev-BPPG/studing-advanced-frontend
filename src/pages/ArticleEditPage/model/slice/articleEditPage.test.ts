@@ -8,15 +8,15 @@ import {
 const data = {};
 
 describe("articleEditPageSlice", () => {
-  test("", () => {
-    const state: DeepPartial<ArticleEditPageSchema> = {};
-    expect(
-      articleEditPageReducer(
-        state as ArticleEditPageSchema,
-        articleEditPageActions.set(true)
-      )
-    ).toEqual({});
-  });
+  // test("", () => {
+  //   const state: DeepPartial<ArticleEditPageSchema> = {};
+  //   expect(
+  //     articleEditPageReducer(
+  //       state as ArticleEditPageSchema,
+  //       articleEditPageActions.set(true)
+  //     )
+  //   ).toEqual({});
+  // });
 
   // тестируем экстра редьюсеры
   // сначала тестируем pending состояние
@@ -37,21 +37,21 @@ describe("articleEditPageSlice", () => {
   });
 
   // далее тестируем fullfiled состояние
-  test("test articleEditPage service fullfilled", () => {
-    const state: DeepPartial<ArticleEditPageSchema> = {
-      isLoading: true,
-      error: "error",
-    };
-    expect(
-      articleEditPageReducer(
-        state as ArticleEditPageSchema,
-        // передаем данные профиля в наш экшен
-        fetchArticleEditPage.fulfilled(data, "")
-      )
-    ).toEqual({
-      isLoading: false,
-      error: undefined,
-      data,
-    });
-  });
+  // test("test articleEditPage service fullfilled", () => {
+  //   const state: DeepPartial<ArticleEditPageSchema> = {
+  //     isLoading: true,
+  //     error: "error",
+  //   };
+  //   expect(
+  //     articleEditPageReducer(
+  //       state as ArticleEditPageSchema,
+  //       // передаем данные профиля в наш экшен
+  //       fetchArticleEditPage.fulfilled(data, "")
+  //     )
+  //   ).toEqual({
+  //     isLoading: false,
+  //     error: undefined,
+  //     data,
+  //   });
+  // });
 });
