@@ -8,7 +8,7 @@
     "start:dev": "concurrently \"npm start\" \"npm run start:dev:server\"",
     "start:debug": "./node_modules/.bin/webpack serve --env port=3000 --env mode=development --env modeDebug=true",
     "start:dev:server": "node ./json-server/index.js",
-    "build:prod": "./node_modules/.bin/webpack --env mode=production",
+    "build:prod": "./node_modules/.bin/webpack --env mode=production --env apiURL=https://ulbi-example-back.vercel.app",
     "build:dev": "./node_modules/.bin/webpack --env mode=development",
     "lint:ts": "eslint 'src/**/*.{js,jsx,ts,tsx}'",
     "lint:ts:fix": "eslint 'src/**/*.{js,jsx,ts,tsx}' --fix",
