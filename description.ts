@@ -63,3 +63,30 @@
 // 6. при необходимости задаем переменные окружения
 // 7. нажимаем деплой. ждем когда задеплоится и можно использовать
 // 8. создаем в корне файл netlify.toml, который заполняем
+// 9. чтоб не возникало конфликтов при использовании устаревших библиотек, добавлем переменную окружения NPM_FLAGS: --force
+
+// чтоб создать свой плагин:
+// 1. создаем новую папку, которая должна начинаться с eslint-plugin
+// 2. устанвливаем  npm i -g yo
+// 3. устанавливаем npm i -g generator-eslint
+// 3. запускаем команду yo eslint:plugin
+// 4. заполняем все по инструкции
+// 5. в папке lib=> index.js есть список правил
+// 6. чтоб сгенерировать новое правило - yo eslint:rule
+// 7. заполняем все по иструкции (
+// ? What is your name? alexey
+// ? Where will this rule be published? ESLint
+// Plugin
+// ? What is the rule ID? path-checker
+// ? Type a short description of this rule:
+// feature sliced relative path checker
+// ? Type a short example of the code that will
+// fail: test error)
+// AST - абстрактное синтаксическое дерево (https://astexplorer.net)
+// подробный гайд по созданию плагина (https://eslint.org/docs/latest/extend/custom-rules)
+// внеся изменения в плагин, запускаем npm login и указываем свои данные
+// делаем npm publish и проверям на сайте публикование пакета
+// можно устанавливать в свой проект данные пакет
+// добавляем название плагина в поле plugins в файле .eslintrc.js
+// чтоб пакет отображал в виде предупреждений, в поле rules в файле .eslintrc.js указываем  "path-checher-ulbi-example/path-checker": "warn",
+// если хотим внести какие-то изменения, то вносим их, меняем версию в файле package.json и снова вызываем npm publish

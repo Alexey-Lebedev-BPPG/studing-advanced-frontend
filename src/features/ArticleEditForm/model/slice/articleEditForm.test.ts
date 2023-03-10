@@ -1,22 +1,22 @@
 import { fetchArticleEditForm } from "../services/fetchArticleEditForm/fetchArticleEditForm";
 import { ArticleEditFormSchema } from "../types/articleEditForm";
 import {
-  articleEditFormActions,
+  // articleEditFormActions,
   articleEditFormReducer,
 } from "./articleEditForm";
 
-const data = {};
+// const data = {};
 
 describe("articleEditFormSlice", () => {
-  test("", () => {
-    const state: DeepPartial<ArticleEditFormSchema> = {};
-    // expect(
-    //   articleEditFormReducer(
-    //     state as ArticleEditFormSchema,
-    //     articleEditFormActions.set(true)
-    //   )
-    // ).toEqual({});
-  });
+  // test("", () => {
+  //   const state: DeepPartial<ArticleEditFormSchema> = {};
+  //   expect(
+  //     articleEditFormReducer(
+  //       state as ArticleEditFormSchema,
+  //       articleEditFormActions.set(true)
+  //     )
+  //   ).toEqual({});
+  // });
 
   // тестируем экстра редьюсеры
   // сначала тестируем pending состояние
@@ -37,21 +37,21 @@ describe("articleEditFormSlice", () => {
   });
 
   // далее тестируем fullfiled состояние
-  test("test articleEditForm service fullfilled", () => {
-    const state: DeepPartial<ArticleEditFormSchema> = {
-      isLoading: true,
-      error: "error",
-    };
-    // expect(
-    //   articleEditFormReducer(
-    //     state as ArticleEditFormSchema,
-    //     // передаем данные профиля в наш экшен
-    //     fetchArticleEditForm.fulfilled(data, "")
-    //   )
-    // ).toEqual({
-    //   isLoading: false,
-    //   error: undefined,
-    //   data,
-    // });
-  });
+  // test("test articleEditForm service fullfilled", () => {
+  //   const state: DeepPartial<ArticleEditFormSchema> = {
+  //     isLoading: true,
+  //     error: "error",
+  //   };
+  //   expect(
+  //     articleEditFormReducer(
+  //       state as ArticleEditFormSchema,
+  //       // передаем данные профиля в наш экшен
+  //       fetchArticleEditForm.fulfilled(data, "")
+  //     )
+  //   ).toEqual({
+  //     isLoading: false,
+  //     error: undefined,
+  //     data,
+  //   });
+  // });
 });

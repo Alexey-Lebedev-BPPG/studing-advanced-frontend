@@ -26,6 +26,8 @@ module.exports = {
     "i18next",
     // чтоб зависимости useeffect подсвечивались
     "react-hooks",
+    // кастомный плагин для импортов
+    "path-checher-ulbi-example",
   ],
   rules: {
     quotes: [2, "double", { avoidEscape: true }],
@@ -70,6 +72,7 @@ module.exports = {
     curly: "off",
     "react/no-array-index-key": "off",
     "no-plusplus": "off",
+    "path-checher-ulbi-example/path-checker": "warn",
   },
   globals: {
     __IS_DEV__: true,

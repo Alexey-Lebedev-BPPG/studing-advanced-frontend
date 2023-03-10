@@ -11,7 +11,7 @@ export const fetchArticleEditPage = createAsyncThunk<
   IArticleEditPageProps,
   ThunkConfig<string>
 >("***/articleEditPage", async (_, thunkApi) => {
-  const { dispatch, extra, rejectWithValue, getState } = thunkApi;
+  const { extra, rejectWithValue } = thunkApi;
 
   try {
     const response = await extra.api.post<any>("/***", {});

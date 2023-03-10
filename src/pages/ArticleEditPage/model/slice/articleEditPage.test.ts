@@ -1,11 +1,11 @@
 import { fetchArticleEditPage } from "../services/fetchArticleEditPage/fetchArticleEditPage";
 import { ArticleEditPageSchema } from "../types/articleEditPage";
 import {
-  articleEditPageActions,
+  // articleEditPageActions,
   articleEditPageReducer,
 } from "./articleEditPage";
 
-const data = {};
+// const data = {};
 
 describe("articleEditPageSlice", () => {
   // test("", () => {

@@ -81,7 +81,6 @@ export const ArticleList: FC<IArticleListProps> = memo(
       //   {isLoading && getSkeletons(view)}
       // </div>
       <WindowScroller
-        onScroll={() => console.log("scroll")}
         scrollElement={document.getElementById(PAGE_ID) as Element}
       >
         {({

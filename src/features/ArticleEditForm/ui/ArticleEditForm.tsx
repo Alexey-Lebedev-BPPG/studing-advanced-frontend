@@ -9,6 +9,7 @@ export interface IArticleEditFormProps {
 
 const ArticleEditForm: FC<IArticleEditFormProps> = memo(({ className }) => {
   const { t } = useTranslation();
+  console.log(t("tests"));
 
   return (
     <div className={classNames(cls.articleEditForm, {}, [className])}>
