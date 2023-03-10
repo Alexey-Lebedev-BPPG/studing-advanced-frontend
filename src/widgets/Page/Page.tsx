@@ -17,6 +17,8 @@ export interface IPageProps {
   onScrollEnd?: () => void;
 }
 
+export const PAGE_ID = "PAGE_ID";
+
 // компонент для оборачивания страниц, который применяет некоторые стили для всех страниц
 const Page: FC<IPageProps> = memo(({ className, children, onScrollEnd }) => {
   const dispatch = useAppDispatch();
@@ -58,6 +60,7 @@ const Page: FC<IPageProps> = memo(({ className, children, onScrollEnd }) => {
       ref={wrapperRef}
       className={classNames(cls.page, {}, [className])}
       onScroll={onScrollHandler}
+      id={PAGE_ID}
     >
       {children}
       {onScrollEnd ? <div className={cls.trigger} ref={triggerRef} /> : null}

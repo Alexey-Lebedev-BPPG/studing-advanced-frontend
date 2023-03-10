@@ -69,6 +69,7 @@ module.exports = {
     "nonblock-statement-body-position": "off",
     curly: "off",
     "react/no-array-index-key": "off",
+    "no-plusplus": "off",
   },
   globals: {
     __IS_DEV__: true,
