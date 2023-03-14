@@ -2,6 +2,7 @@ import { FC, memo, useMemo, useState } from "react";
 import { useSelector } from "react-redux";
 import { classNames } from "shared/lib/classNames/classNames";
 import { Button, ButtonSize, ButtonTheme } from "shared/ui/Button/Button";
+import { VStack } from "shared/ui/Stack";
 import { LanguageSwitcher } from "widgets/LanguageSwitcher/LanguageSwitcher";
 import { ThemeSwitcher } from "widgets/ThemeSwitcher/ThemeSwitcher";
 import { getSidebarItems } from "../../model/selectors/getSidebarItems";
@@ -45,10 +46,10 @@ export const SideBar: FC<ISideBarProps> = memo(({ className }) => {
       >
         {collapsed ? ">" : "<"}
       </Button>
-      <div className={cls.items}>
+      <VStack gap="8" className={cls.items}>
         {/* рендерим наши ссылки сайтбара */}
         {itemsList}
-      </div>
+      </VStack>
       <div className={cls.switchers}>
         <ThemeSwitcher />
         <LanguageSwitcher short={collapsed} className={cls.lang} />

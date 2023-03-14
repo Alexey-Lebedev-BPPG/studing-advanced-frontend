@@ -4,7 +4,7 @@ import { ThemeDecorator } from "shared/config/storybook/ThemeDecorator/ThemeDeco
 import ArticleEditForm from "./ArticleEditForm";
 
 export default {
-  title: "***/ArticleEditForm",
+  title: "features/ArticleEditForm",
   component: ArticleEditForm,
   argTypes: {
     backgroundColor: { control: "color" },
