@@ -15,9 +15,19 @@ export enum TextAlign {
 }
 
 export enum TextSize {
+  S = "size_s",
   M = "size_m",
   L = "size_l",
 }
+
+type HeaderTagType = "h1" | "h2" | "h3";
+
+// маппер, который определяет тег в зависимости от размера
+const mapSizeToHeaderTag: Record<TextSize, HeaderTagType> = {
+  [TextSize.S]: "h3",
+  [TextSize.M]: "h2",
+  [TextSize.L]: "h1",
+};
 
 interface ITextProps {
   className?: string;
@@ -37,6 +47,8 @@ export const Text: FC<ITextProps> = memo(
     align = TextAlign.LEFT,
     size = TextSize.M,
   }) => {
+    const HeaderTag = mapSizeToHeaderTag[size];
+
     const mods = {
       [cls[theme]]: true,
       [cls[align]]: true,
@@ -45,8 +57,8 @@ export const Text: FC<ITextProps> = memo(
 
     return (
       <div className={classNames(cls.textWrapper, mods, [className])}>
-        {title && <div className={cls.title}>{title}</div>}
-        {text && <div className={cls.text}>{text}</div>}
+        {title && <HeaderTag className={cls.title}>{title}</HeaderTag>}
+        {text && <p className={cls.text}>{text}</p>}
       </div>
     );
   }
