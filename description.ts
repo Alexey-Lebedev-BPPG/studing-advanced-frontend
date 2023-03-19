@@ -52,6 +52,9 @@
 // установка хаски для пайплайнов
 ("prepare: husky install");
 
+// генерация шаблонов папок и файлов
+("generate:slices: node ./scripts/createSlice/index.js");
+
 // деплоим на netlify
 // 1. логинимся
 // 2. выбираем вкладку Site
