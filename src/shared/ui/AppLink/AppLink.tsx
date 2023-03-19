@@ -1,4 +1,4 @@
-import { FC, memo } from "react";
+import { FC, ForwardedRef, forwardRef } from "react";
 import { Link, LinkProps } from "react-router-dom";
 import { classNames } from "shared/lib/classNames/classNames";
 import cls from "./AppLink.module.scss";
@@ -13,18 +13,16 @@ interface AppLinkProps extends LinkProps {
   className?: string;
 }
 
-export const AppLink: FC<AppLinkProps> = memo(
-  ({
-    to,
-    className,
-    theme = AppLinkTheme.PRIMARY,
-    children,
-    ...otherProps
-  }) => (
+export const AppLink: FC<AppLinkProps> = forwardRef(
+  (
+    { to, className, theme = AppLinkTheme.PRIMARY, children, ...otherProps },
+    // добавляем реф, чтоб не было ошибки "Function components cannot be given refs..." в консоли
+    ref: ForwardedRef<HTMLAnchorElement>
+  ) => (
     <Link
       to={to}
+      ref={ref}
       className={classNames(cls.appLink, {}, [className, cls[theme]])}
-      // eslint-disable-next-line react/jsx-props-no-spreading
       {...otherProps}
     >
       {children}

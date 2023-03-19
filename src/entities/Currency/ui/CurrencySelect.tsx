@@ -38,7 +38,7 @@ export const CurrencySelect: FC<ICurrencyProps> = memo(
         readonly={readonly}
         items={options}
         onChange={onChangeHandler}
-        direction="top"
+        direction="top right"
       />
     );
   }
