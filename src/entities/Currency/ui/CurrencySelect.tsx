@@ -1,9 +1,7 @@
 import { FC, memo, useCallback } from "react";
 import { useTranslation } from "react-i18next";
-import { classNames } from "shared/lib/classNames/classNames";
-import { Select } from "shared/ui/Select/Select";
+import { ListBox } from "shared/ui/ListBox/ListBox";
 import { Currency } from "../model/types/currency";
-import cls from "./Currency.module.scss";
 
 interface ICurrencyProps {
   className?: string;
@@ -14,9 +12,9 @@ interface ICurrencyProps {
 
 // ввиду того, что массив всегда статичен, его не нужно оборачивать в memo
 const options = [
-  { valueOpt: Currency.RUB, content: Currency.RUB },
-  { valueOpt: Currency.EUR, content: Currency.EUR },
-  { valueOpt: Currency.USD, content: Currency.USD },
+  { value: Currency.RUB, content: Currency.RUB },
+  { value: Currency.EUR, content: Currency.EUR },
+  { value: Currency.USD, content: Currency.USD },
 ];
 
 export const CurrencySelect: FC<ICurrencyProps> = memo(
@@ -32,13 +30,15 @@ export const CurrencySelect: FC<ICurrencyProps> = memo(
     );
 
     return (
-      <Select
-        className={classNames(cls.currencySelect, {}, [className])}
-        label={t("Укажите валюту")}
-        options={options}
+      <ListBox
         value={value}
-        onChange={onChangeHandler}
+        className={className}
+        defaultValue={t("Укажите валюту")}
+        label={t("Укажите валюту")}
         readonly={readonly}
+        items={options}
+        onChange={onChangeHandler}
+        direction="top"
       />
     );
   }
