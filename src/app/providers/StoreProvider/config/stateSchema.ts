@@ -8,19 +8,22 @@ import {
 import { AxiosInstance } from "axios";
 import { ArticleDetailsSchema } from "entities/Article";
 import { CounterSchema } from "entities/Counter";
-import { ProfileSchema } from "entities/Profile";
 import { UserSchema } from "entities/User";
 import { AddCommentFormSchema } from "features/AddCommentForm";
 import { LoginSchema } from "features/AuthByUsername";
+import { ProfileSchema } from "features/EditableProfileCard";
 import { ScrollSaveSchema } from "features/ScrollSave";
 import { ArticleDetailsPageSchema } from "pages/ArticleDetailsPage";
 import { ArticlesPageSchema } from "pages/ArticlesPage";
+import { rtkApi } from "shared/api/rtkApi";
 
 // типизация всего стейта
 export interface StateSchema {
   counter: CounterSchema;
   user: UserSchema;
   scrollSave: ScrollSaveSchema;
+  // указываем тип для редьюсера rtk запросов
+  [rtkApi.reducerPath]: ReturnType<typeof rtkApi.reducer>;
 
   // Асинхронные(подгружаемые) редьюсеры
   loginForm?: LoginSchema;

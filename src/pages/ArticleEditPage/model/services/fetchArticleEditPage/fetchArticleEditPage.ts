@@ -7,10 +7,10 @@ interface IArticleEditPageProps {}
 // первым аргументом дженерика - что возвращаем, второй - что передаем, а третим можно передать свои типизацию объекта
 // thunkAPI, в котором есть методы для использования в thunke
 export const fetchArticleEditPage = createAsyncThunk<
-  any,
   IArticleEditPageProps,
+  void,
   ThunkConfig<string>
->("***/articleEditPage", async (_, thunkApi) => {
+>("articleEditPage/fetchArticleEditPage", async (_, thunkApi) => {
   const { extra, rejectWithValue } = thunkApi;
 
   try {

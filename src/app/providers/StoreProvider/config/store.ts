@@ -8,6 +8,7 @@ import { CounterReducer } from "entities/Counter";
 import { userReducer } from "entities/User";
 import { scrollSaveReducer } from "features/ScrollSave";
 import { $api } from "shared/api/api";
+import { rtkApi } from "shared/api/rtkApi";
 import { createReducerManager } from "./reducerManager";
 import { StateSchema } from "./stateSchema";
 
@@ -28,6 +29,8 @@ export const createReduxStore = (
     counter: CounterReducer,
     user: userReducer,
     scrollSave: scrollSaveReducer,
+    // указываем редьюсер для rtk запросов
+    [rtkApi.reducerPath]: rtkApi.reducer,
   };
 
   // Ввиду того, что сам компонент мы сделали асинхронным, но импортируемые редьюсеры и т.п. из него загружаются в главный бандл, сделаем асинхронную подгрузку редьюсеров через редьюсер-менеджера
@@ -51,7 +54,8 @@ export const createReduxStore = (
           // extraArgument: { api: $api, navigate },
           extraArgument: { api: $api },
         },
-      }),
+        // добавляем мидлвеар для rtk запросов
+      }).concat(rtkApi.middleware),
   });
 
   // пока помечаем так, позже добавим типизацию

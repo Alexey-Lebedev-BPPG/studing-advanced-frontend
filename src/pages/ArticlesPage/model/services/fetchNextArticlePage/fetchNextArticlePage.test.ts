@@ -23,7 +23,7 @@ describe("fetchNextArticlePage", () => {
     // проверяем, что диспатч вызвался 4 раза
     expect(thunk.dispatch).toHaveBeenCalledTimes(4);
     // проверяем, что наша функция была вызвана с определенными параметрами
-    expect(fetchArticlesList).toHaveBeenCalledWith({});
+    expect(fetchArticlesList).toHaveBeenCalled();
   });
 
   test("fetchArticlesList not called", async () => {

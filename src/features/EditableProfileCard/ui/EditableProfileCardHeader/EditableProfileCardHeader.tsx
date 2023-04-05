@@ -1,9 +1,3 @@
-import {
-  getProfileData,
-  getProfileIsReadonly,
-  profileActions,
-  updateProfileData,
-} from "entities/Profile";
 import { getUserAuthData } from "entities/User";
 import { FC, useCallback } from "react";
 import { useTranslation } from "react-i18next";
@@ -13,12 +7,16 @@ import { useAppDispatch } from "shared/lib/hooks/useAppDispatch/useAppDispatch";
 import { Button, ButtonTheme } from "shared/ui/Button/Button";
 import { HStack } from "shared/ui/Stack";
 import { Text } from "shared/ui/Text/Text";
+import { profileActions } from "../../model/slice/profileSlice";
+import { updateProfileData } from "../../model/services/updateProfileData/updateProfileData";
+import { getProfileIsReadonly } from "../../model/selectors/getProfileIsReadonly/getProfileIsReadonly";
+import { getProfileData } from "../../model/selectors/getProfileData/getProfileData";
 
-interface IProfilePageHeaderProps {
+interface IEditableProfileCardHeaderProps {
   className?: string;
 }
 
-export const ProfilePageHeader: FC<IProfilePageHeaderProps> = ({
+export const EditableProfileCardHeader: FC<IEditableProfileCardHeaderProps> = ({
   className,
 }) => {
   const { t } = useTranslation("profile");

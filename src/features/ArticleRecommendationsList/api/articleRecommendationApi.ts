@@ -1,0 +1,42 @@
+import { rtkApi } from "shared/api/rtkApi";
+
+// вызываем кастомный rtk запрос, в котором динамически можем указывать данные
+const recommendationsList = rtkApi.injectEndpoints({
+  endpoints: (build) => ({
+    // указываем название эндпоинта
+    getArticleRecommendationsList: build.query({
+      // колбэк принимает какие-то аргументы для передачи на сервер
+      query: (limit) => ({
+        // здесь есть все поля как в стандартных запросах
+        // указываем урл
+        url: "/articles",
+        // указываем параметры
+        params: {
+          _limit: limit,
+        },
+      }),
+    }),
+    // пример запроса на создание (через mutation)
+    // createArticleRecommendationsList: build.mutation({
+    //   // колбэк принимает какие-то аргументы для передачи на сервер
+    //   query: (limit) => ({
+    //     // здесь есть все поля как в стандартных запросах
+    //     // указываем урл
+    //     url: "/articles",
+    //     // указываем параметры
+    //     params: {
+    //       _limit: limit,
+    //     },
+    //     method: "POST",
+    //   }),
+    // }),
+  }),
+});
+
+// создаем хук, в который помещаем данные из запроса
+export const useArticleRecommendationsList =
+  recommendationsList.useGetArticleRecommendationsListQuery;
+
+// пример запроса на создание (через mutation)
+// export const useCreateArticleRecommendationsList =
+//   recommendationsList.useCreateArticleRecommendationsListMutation;
