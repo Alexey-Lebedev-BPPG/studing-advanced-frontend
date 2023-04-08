@@ -10,13 +10,9 @@ import { Button } from "shared/ui/Button/Button";
 import { AppLink } from "shared/ui/AppLink/AppLink";
 import { RoutePath } from "shared/config/routeConfig/routeConfig";
 import cls from "./ArticleListItem.module.scss";
-import {
-  Article,
-  ArticleBlockType,
-  ArticleTextBlock,
-  ArticleView,
-} from "../../model/types/article";
+import { Article, ArticleTextBlock } from "../../model/types/article";
 import { ArticleTextBlockComponent } from "../ArticleTextBlockComponent/ArticleTextBlockComponent";
+import { ArticleBlockType, ArticleView } from "../../model/consts/consts";
 
 export interface IArticleListItemProps {
   className?: string;

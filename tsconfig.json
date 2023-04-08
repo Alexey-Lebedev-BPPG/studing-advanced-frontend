@@ -27,6 +27,8 @@
     "esModuleInterop": true,
     // для использования привычных default импортов (вместо import * as ...)
     "allowSyntheticDefaultImports": true,
+    // позволяет выносить типы тайпскрипта в отдельные модули, чтоб упростить сборку бейблом (при этом типы нужно будет экспортить как export type {} from "...)
+    "isolatedModules": true,
     // чтоб сработал автокомплит для модулей
     "plugins": [{ "name": "typescript-plugin-css-modules" }]
   },

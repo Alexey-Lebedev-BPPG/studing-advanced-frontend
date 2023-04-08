@@ -16,14 +16,12 @@ export interface ArticlesPageSchema extends EntityState<Article> {
   limit: number;
   // показывает, загрузили мы все статьи или есть еще
   hasMore: boolean;
-
   // фильтры
   view: ArticleView;
   order: SortOrder;
   sort: ArticleSortFields;
   search: string;
   type: ArticleType;
-
   // указывает, инициализировался у нас стейт или нет (чтоб заново его не инициализировать, когда стейт не удаляем из редакса)
   _inited: boolean;
 }

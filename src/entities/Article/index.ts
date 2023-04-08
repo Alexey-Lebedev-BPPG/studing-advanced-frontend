@@ -1,10 +1,11 @@
 export { ArticleViewSelector } from "./ui/ArticleViewSelector/ArticleViewSelector";
+export type { Article } from "./model/types/article";
 export {
-  Article,
-  ArticleView,
   ArticleSortFields,
+  ArticleBlockType,
   ArticleType,
-} from "./model/types/article";
+  ArticleView,
+} from "./model/consts/consts";
 export type { ArticleDetailsSchema } from "./model/types/articleDetailsSchema";
 export { ArticleDetails } from "./ui/ArticleDetails/ArticleDetails";
 export { ArticleList } from "./ui/ArticleList/ArticleList";
