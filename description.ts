@@ -95,3 +95,7 @@
 // если хотим внести какие-то изменения, то вносим их, меняем версию в файле package.json и снова вызываем npm publish
 
 // устанавливаем npm i -D @testing-library/user-event, чтоб в тестах userEvent импортился из testing-library
+
+// чтоб обновить версию реакта:
+// npm i react@latest @types/react@latest react-dom@latest @types/react-dom@latest
+// обновляем подход в главном index.ts

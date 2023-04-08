@@ -24,7 +24,7 @@ import { EditableProfileCardHeader } from "../EditableProfileCardHeader/Editable
 
 export interface IEditableProfileCardProps {
   className?: string;
-  id: string;
+  id?: string;
 }
 
 const reducers: ReducersList = {

@@ -88,6 +88,7 @@ export const ArticleList: FC<IArticleListProps> = memo(
       //   />
       //   {isLoading && getSkeletons(view)}
       // </div>
+      // @ts-ignore
       <WindowScroller
         scrollElement={document.getElementById(PAGE_ID) as Element}
       >
@@ -100,10 +101,12 @@ export const ArticleList: FC<IArticleListProps> = memo(
           scrollTop,
         }) => (
           <div
+            // @ts-ignore
             ref={registerChild}
             className={classNames("", {}, [className, cls[view]])}
           >
             {virtualized ? (
+              // @ts-ignore
               <List
                 height={height || 700}
                 rowCount={rowCount}

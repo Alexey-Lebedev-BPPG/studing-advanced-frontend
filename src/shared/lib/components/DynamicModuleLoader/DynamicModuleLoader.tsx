@@ -4,7 +4,7 @@ import {
   StateSchema,
   StateSchemaKey,
 } from "app/providers/StoreProvider/config/stateSchema";
-import React, { FC, useEffect } from "react";
+import React, { FC, ReactNode, useEffect } from "react";
 import { useDispatch, useStore } from "react-redux";
 
 // тип для всех редьюсеров, которые будут поступать в наш компонент (если передадим несколько редьюсеров)
@@ -17,6 +17,7 @@ interface IDynamicModuleLoaderProps {
   reducers: ReducersList;
   // флаг, чтоб можно было удалять редьюсер после размонтирования
   removeAfterUnmount?: boolean;
+  children: ReactNode;
 }
 
 // обертка для использования асинхронных редьюсеров в асинхронных компонентах

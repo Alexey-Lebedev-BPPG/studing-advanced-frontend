@@ -24,15 +24,10 @@ const reducers: ReducersList = {
 };
 
 const ArticleDetailsPage: FC<IArticleDetailsPageProps> = ({ className }) => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { t } = useTranslation("article-details");
   const { id } = useParams<{ id: string }>();
 
-  if (!id)
-    return (
-      <Page className={classNames(cls.articleDetailsPage, {}, [className])}>
-        {t("Статья не найдена")}
-      </Page>
-    );
   return (
     <DynamicModuleLoader reducers={reducers}>
       <Page className={classNames(cls.articleDetailsPage, {}, [className])}>

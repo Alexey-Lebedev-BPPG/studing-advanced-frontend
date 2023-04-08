@@ -30,7 +30,7 @@ import { ArticleTextBlockComponent } from "../ArticleTextBlockComponent/ArticleT
 
 interface IArticleDetailsProps {
   className?: string;
-  id: string;
+  id?: string;
 }
 
 // чтоб напрямую не передавать в пропсы объект такого типа reducers={{ loginForm: loginReducer }}, т.к. это каждый раз будет создавать новый объект, мы делаем редьюсер по ум.

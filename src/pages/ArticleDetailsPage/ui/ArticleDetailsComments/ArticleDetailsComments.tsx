@@ -15,7 +15,7 @@ import { getArticleComments } from "../../model/slice/articleDetailsCommentSlice
 
 export interface IArticleDetailsCommentsProps {
   className?: string;
-  id: string;
+  id?: string;
 }
 
 const ArticleDetailsComments: FC<IArticleDetailsCommentsProps> = memo(

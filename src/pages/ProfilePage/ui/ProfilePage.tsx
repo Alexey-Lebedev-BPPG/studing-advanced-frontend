@@ -4,7 +4,6 @@ import Page from "widgets/Page/Page";
 import { VStack } from "shared/ui/Stack";
 import { EditableProfileCard } from "features/EditableProfileCard";
 import { useParams } from "react-router-dom";
-import { Text } from "shared/ui/Text/Text";
 import cls from "./ProfilePage.module.scss";
 
 interface IProfilePageProps {
@@ -13,8 +12,6 @@ interface IProfilePageProps {
 
 const ProfilePage: FC<IProfilePageProps> = ({ className }) => {
   const { id } = useParams<{ id: string }>();
-
-  if (!id) return <Text text="Профиль не найден" />;
 
   return (
     <Page className={classNames(cls.profilePage, {}, [className])}>

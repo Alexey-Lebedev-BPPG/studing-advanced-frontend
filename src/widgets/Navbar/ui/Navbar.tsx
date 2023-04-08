@@ -5,7 +5,6 @@ import {
   userActions,
 } from "entities/User";
 import { LoginModal } from "features/AuthByUsername";
-import { t } from "i18next";
 import { memo, useCallback, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RoutePath } from "shared/config/routeConfig/routeConfig";
@@ -15,6 +14,7 @@ import { Avatar } from "shared/ui/Avatar/Avatar";
 import { Button, ButtonTheme } from "shared/ui/Button/Button";
 import { Dropdown } from "shared/ui/Dropdown/Dropdown";
 import { Text, TextTheme } from "shared/ui/Text/Text";
+import { useTranslation } from "react-i18next";
 import cls from "./Navbar.module.scss";
 
 interface NavbarProps {
@@ -24,6 +24,7 @@ interface NavbarProps {
 // навбар будет принимать доп класс, чтоб извне можно было поправить какие-то стили в нем
 export const Navbar = memo(({ className }: NavbarProps) => {
   const dispatch = useDispatch();
+  const { t } = useTranslation();
   const authData = useSelector(getUserAuthData);
   const isAdmin = useSelector(isUserAdmin);
   const isManager = useSelector(isUserManager);
