@@ -99,3 +99,5 @@
 // чтоб обновить версию реакта:
 // npm i react@latest @types/react@latest react-dom@latest @types/react-dom@latest
 // обновляем подход в главном index.ts
+
+// пакет dependency-cruiser используется для поиска круговых зависимостей и неиспользуемого кода (разобраться дополнительно)
