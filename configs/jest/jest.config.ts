@@ -41,7 +41,7 @@ export default {
       {
         publicPath: "<rootDir>/reports/unit",
         filename: "report.html",
-        openReport: true,
+        // openReport: __IS_DEV_DEBUG__,
         inlineSource: true,
       },
     ],

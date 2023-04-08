@@ -19,7 +19,7 @@ export const ArticleRecommendationsList: FC<IArticleRecommendationsListProps> =
       error,
     } = useArticleRecommendationsList(3);
 
-    if (isLoading || error) return null;
+    if (isLoading || error || !recommendations) return null;
 
     return (
       <VStack gap="8" className={classNames("", {}, [className])}>
@@ -28,6 +28,7 @@ export const ArticleRecommendationsList: FC<IArticleRecommendationsListProps> =
           target="_blank"
           articles={recommendations}
           isLoading={isLoading}
+          virtualized={false}
         />
       </VStack>
     );

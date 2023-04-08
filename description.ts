@@ -93,3 +93,5 @@
 // добавляем название плагина в поле plugins в файле .eslintrc.js
 // чтоб пакет отображал в виде предупреждений, в поле rules в файле .eslintrc.js указываем  "path-checher-ulbi-example/path-checker": "warn",
 // если хотим внести какие-то изменения, то вносим их, меняем версию в файле package.json и снова вызываем npm publish
+
+// устанавливаем npm i -D @testing-library/user-event, чтоб в тестах userEvent импортился из testing-library

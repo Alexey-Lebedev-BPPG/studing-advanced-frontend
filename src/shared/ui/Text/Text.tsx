@@ -36,6 +36,7 @@ interface ITextProps {
   theme?: TextTheme;
   align?: TextAlign;
   size?: TextSize;
+  "data-testid"?: string;
 }
 
 export const Text: FC<ITextProps> = memo(
@@ -46,6 +47,8 @@ export const Text: FC<ITextProps> = memo(
     theme = TextTheme.PRIMARY,
     align = TextAlign.LEFT,
     size = TextSize.M,
+    // ввиду того, что такое свойство не позволительно деструктуризировать, нужно переименовать его
+    "data-testid": dataTestId = "Text",
   }) => {
     const HeaderTag = mapSizeToHeaderTag[size];
 
@@ -57,8 +60,16 @@ export const Text: FC<ITextProps> = memo(
 
     return (
       <div className={classNames(cls.textWrapper, mods, [className])}>
-        {title && <HeaderTag className={cls.title}>{title}</HeaderTag>}
-        {text && <p className={cls.text}>{text}</p>}
+        {title && (
+          <HeaderTag className={cls.title} data-testid={`${dataTestId}.Header`}>
+            {title}
+          </HeaderTag>
+        )}
+        {text && (
+          <p className={cls.text} data-testid={`${dataTestId}.Paragraph`}>
+            {text}
+          </p>
+        )}
       </div>
     );
   }
