@@ -1,4 +1,9 @@
-import { getUserAuthData, userActions } from "entities/User";
+import {
+  getUserAuthData,
+  isUserAdmin,
+  isUserManager,
+  userActions,
+} from "entities/User";
 import { LoginModal } from "features/AuthByUsername";
 import { t } from "i18next";
 import { memo, useCallback, useState } from "react";
@@ -20,7 +25,11 @@ interface NavbarProps {
 export const Navbar = memo(({ className }: NavbarProps) => {
   const dispatch = useDispatch();
   const authData = useSelector(getUserAuthData);
+  const isAdmin = useSelector(isUserAdmin);
+  const isManager = useSelector(isUserManager);
   const [isAuthModal, setIsAuthModal] = useState(false);
+
+  const isAdminPanelAvaible = isAdmin || isManager;
 
   // все функции, которые будут передаваться пропсами, ОБЯЗАТЕЛЬНО помещаем в useCallback, чтоб сохранять ссылку на эту функцию
   const onCloseModal = useCallback(() => {
@@ -51,10 +60,11 @@ export const Navbar = memo(({ className }: NavbarProps) => {
           direction="bottom left"
           className={cls.dropdown}
           items={[
-            {
-              content: t("Профиль"),
-              href: RoutePath.profile + authData.id,
-            },
+            // добавление объектов в массив по условию
+            ...(isAdminPanelAvaible
+              ? [{ content: t("Админка"), href: RoutePath.admin_panel }]
+              : []),
+            { content: t("Профиль"), href: RoutePath.profile + authData.id },
             { content: t("Выйти"), onClick: onLogout },
           ]}
           trigger={<Avatar size={30} src={authData.avatar} />}

@@ -21,7 +21,11 @@ const AppRouter: FC = () => {
         path={route.path}
         // проверяем, если роут авторизован, то добавляем обертку защитника роута. Иначе просто рендерим элемент
         element={
-          route.authOnly ? <RequireAuth>{element}</RequireAuth> : element
+          route.authOnly ? (
+            <RequireAuth roles={route.roles}>{element}</RequireAuth>
+          ) : (
+            element
+          )
         }
       />
     );
