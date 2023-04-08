@@ -12,7 +12,6 @@ import {
   ReducersList,
 } from "shared/lib/components/DynamicModuleLoader/DynamicModuleLoader";
 import { VStack } from "shared/ui/Stack";
-import cls from "./EditableProfileCard.module.scss";
 import { getProfileError } from "../../model/selectors/getProfileError/getProfileError";
 import { getProfileForm } from "../../model/selectors/getProfileForm/getProfileForm";
 import { getProfileIsLoading } from "../../model/selectors/getProfileIsLoading/getProfileIsLoading";
@@ -115,11 +114,7 @@ export const EditableProfileCard: FC<IEditableProfileCardProps> = memo(
 
     return (
       <DynamicModuleLoader reducers={reducers}>
-        <VStack
-          gap="8"
-          max
-          className={classNames(cls.editableProfileCard, {}, [className])}
-        >
+        <VStack gap="8" max className={classNames("", {}, [className])}>
           <EditableProfileCardHeader />
           {errors &&
             errors.length &&
