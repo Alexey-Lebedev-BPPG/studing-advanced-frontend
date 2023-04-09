@@ -1,7 +1,10 @@
 import { FC, memo, ReactNode, useCallback, useEffect } from "react";
 import { classNames } from "@/shared/lib/classNames/classNames";
 import { useTheme } from "@/app/providers/ThemeProvider";
-import { useAnimationLibs } from "@/shared/lib/components/AnimationProvider";
+import {
+  AnimationProvider,
+  useAnimationLibs,
+} from "@/shared/lib/components/AnimationProvider";
 import { Overlay } from "../Overlay/Overlay";
 import cls from "./Drawer.module.scss";
 import { Portal } from "../Portal/Portal";
@@ -16,7 +19,7 @@ interface DrawerProps {
 
 const height = window.innerHeight - 100;
 
-export const DrawerContent: FC<DrawerProps> = memo(
+const DrawerContent: FC<DrawerProps> = memo(
   ({ className, children, onClose, isOpen, lazy }) => {
     // получаем библиотеки, которые подгружали лениво
     const { Spring, Gesture } = useAnimationLibs();
@@ -98,12 +101,18 @@ export const DrawerContent: FC<DrawerProps> = memo(
     );
   }
 );
-
-// компонет, который ведет себя как выезжающая шторка. часто используется на мобильных экранах (у нас выезжает снизу вверх)
-export const Drawer = memo((props: DrawerProps) => {
+// асинхронный компонент
+const DrawerAsync = (props: DrawerProps) => {
   const { isLoaded } = useAnimationLibs();
 
   if (!isLoaded) return null;
 
   return <DrawerContent {...props} />;
-});
+};
+
+// компонент, который ведет себя как выезжающая шторка. часто используется на мобильных экранах (у нас выезжает снизу вверх)
+export const Drawer = (props: DrawerProps) => (
+  <AnimationProvider>
+    <DrawerAsync {...props} />
+  </AnimationProvider>
+);

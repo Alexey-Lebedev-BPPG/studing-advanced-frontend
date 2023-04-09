@@ -38,11 +38,9 @@ export const NotificationButton: FC<INotificationButtonProps> = memo(
           <>
             {trigger}
             {/* оборачиваем компонент для ленивой подгрузки библиотек, которые в нем используются */}
-            <AnimationProvider>
-              <Drawer isOpen={isOpenDrawer} onClose={onCloseDrawer}>
-                <NotificationList />
-              </Drawer>
-            </AnimationProvider>
+            <Drawer isOpen={isOpenDrawer} onClose={onCloseDrawer}>
+              <NotificationList />
+            </Drawer>
           </>
         ) : (
           <Popover
