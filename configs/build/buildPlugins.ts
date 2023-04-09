@@ -20,8 +20,6 @@ export const buildPlugins = ({
     new htmlWebpackPlugin({
       template: paths.html,
     }),
-    // показывает прогресс сборки
-    new webpack.ProgressPlugin(),
     // чтоб файлы css в сборке находились отдельно (не внутри js файла)
     new MiniCssExtractPlugin({
       // название на выходе
@@ -69,8 +67,12 @@ export const buildPlugins = ({
   }
 
   if (isDevDebug) {
-    // включаем плагин анализа размера пакетов
-    plugins.push(new BundleAnalyzerPlugin());
+    plugins.push(
+      // показывает прогресс сборки
+      new webpack.ProgressPlugin(),
+      // включаем плагин анализа размера пакетов
+      new BundleAnalyzerPlugin()
+    );
   }
 
   return plugins;

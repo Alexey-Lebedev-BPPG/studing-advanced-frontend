@@ -8,7 +8,7 @@ import { buildResolvers } from "./buildResolvers";
 export const buildWebpackConfig = (
   options: BuildOptions
 ): webpack.Configuration => {
-  const { paths, mode, isDev } = options;
+  const { paths, mode, isDev, isDevDebug } = options;
 
   return {
     mode,
@@ -20,7 +20,7 @@ export const buildWebpackConfig = (
       path: paths.build,
       clean: true,
       // добавляем для получения чанков из билда
-      publicPath: "/"
+      publicPath: "/",
     },
     // вызываем функцию со списком плагинов
     plugins: buildPlugins(options),
@@ -34,5 +34,13 @@ export const buildWebpackConfig = (
     devtool: isDev ? "inline-source-map" : undefined,
     // чтоб при старте приложения запускать localhost(используем только в дев сборке)
     devServer: isDev ? buildDevServer(options) : undefined,
+    stats: {
+      // показ в консоли загрузку assets
+      assets: isDevDebug,
+      // показ в консоли загрузку модулей
+      modules: isDevDebug,
+      // показ в консоли ентрипоинтов
+      entrypoints: isDevDebug,
+    },
   };
 };
