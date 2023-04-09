@@ -1,12 +1,7 @@
-import React, {
-  FC,
-  ReactNode,
-  useEffect,
-  useCallback,
-  useRef,
-  useState,
-} from "react";
+import { FC, ReactNode } from "react";
 import { classNames } from "shared/lib/classNames/classNames";
+import { useTheme } from "app/providers/ThemeProvider";
+import { useModal } from "shared/lib/hooks/useModal/useModal";
 import { Portal } from "../../ui/Portal/Portal";
 import cls from "./Modal.module.scss";
 import { Overlay } from "../Overlay/Overlay";
@@ -19,8 +14,6 @@ interface IModalProps {
   lazy?: boolean;
 }
 
-const ANIMATION_DELAY = 300;
-
 export const Modal: FC<IModalProps> = ({
   className,
   children,
@@ -28,53 +21,12 @@ export const Modal: FC<IModalProps> = ({
   onClose,
   lazy,
 }) => {
-  // обработаем анимацию закрытия модального окна
-  const [isClosing, setIsClosing] = useState(false);
-  // состояние, отвечающее за то, смонтирована модалка или нет
-  const [isMounting, setIsMounting] = useState(false);
-
-  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-
-  // функция закрытия модалки
-  const closeHandler = useCallback(() => {
-    if (onClose) {
-      setIsClosing(true);
-      timerRef.current = setTimeout(() => {
-        onClose();
-        setIsClosing(false);
-      }, ANIMATION_DELAY);
-    }
-  }, [onClose]);
-
-  // оборачиваем в useCallback, чтоб при каждом рендеринге не создавалась новая функция, а сохранялась ссылка на старую
-  const onKeyDown = useCallback(
-    (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        closeHandler();
-      }
-    },
-    [closeHandler]
-  );
-
-  useEffect(() => {
-    if (isOpen) {
-      // навешиваем слушателя на все приложение, чтоб закрывать модалку по клавише Escape
-      window.addEventListener("keydown", onKeyDown);
-    }
-    return () => {
-      if (timerRef?.current) {
-        clearTimeout(timerRef.current);
-      }
-      // обязательно очищаем слушателя, чтоб он не был доступен вне модалки
-      window.removeEventListener("keydown", onKeyDown);
-    };
-  }, [isOpen, onKeyDown]);
-
-  useEffect(() => {
-    if (isOpen) {
-      setIsMounting(true);
-    }
-  }, [isOpen]);
+  const { theme } = useTheme();
+  const { isClosing, isMounting, close } = useModal({
+    animationDelay: 300,
+    isOpen,
+    onClose,
+  });
 
   const mods = {
     [cls.opened]: isOpen,
@@ -84,8 +36,10 @@ export const Modal: FC<IModalProps> = ({
   if (lazy && !isMounting) return null;
   return (
     <Portal>
-      <div className={classNames(cls.modal, mods, [className])}>
-        <Overlay onClick={closeHandler} />
+      <div
+        className={classNames(cls.modal, mods, [className, theme, "app_modal"])}
+      >
+        <Overlay onClick={close} />
         <div className={cls.content}>{children}</div>
       </div>
     </Portal>
