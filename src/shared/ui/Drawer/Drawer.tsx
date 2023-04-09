@@ -1,12 +1,12 @@
-import { FC, ReactNode, memo } from "react";
 import { classNames } from "shared/lib/classNames/classNames";
+import { FC, memo, ReactNode, useCallback, useEffect } from "react";
 import { useTheme } from "app/providers/ThemeProvider";
-import { useModal } from "shared/lib/hooks/useModal/useModal";
+import { useAnimationLibs } from "shared/lib/components/AnimationProvider";
+import { Overlay } from "../Overlay/Overlay";
 import cls from "./Drawer.module.scss";
 import { Portal } from "../Portal/Portal";
-import { Overlay } from "../Overlay/Overlay";
 
-export interface IDrawerProps {
+interface DrawerProps {
   className?: string;
   children: ReactNode;
   isOpen?: boolean;
@@ -14,35 +14,96 @@ export interface IDrawerProps {
   lazy?: boolean;
 }
 
-// компонет, котрый ведет себя как выезжающая шторка. часто используется на мобильных экранах (у нас выезжает снизу вверх)
-export const Drawer: FC<IDrawerProps> = memo(
-  ({ className, children, isOpen, onClose, lazy }) => {
-    const { theme } = useTheme();
-    const { isClosing, isMounting, close } = useModal({
-      animationDelay: 300,
-      isOpen,
-      onClose,
-    });
+const height = window.innerHeight - 100;
 
-    const mods = {
-      [cls.opened]: isOpen,
-      [cls.isClosing]: isClosing,
+export const DrawerContent: FC<DrawerProps> = memo(
+  ({ className, children, onClose, isOpen, lazy }) => {
+    // получаем библиотеки, которые подгружали лениво
+    const { Spring, Gesture } = useAnimationLibs();
+    const [{ y }, api] = Spring.useSpring(() => ({ y: height }));
+    const { theme } = useTheme();
+
+    const openDrawer = useCallback(() => {
+      api.start({ y: 0, immediate: false });
+    }, [api]);
+
+    useEffect(() => {
+      if (isOpen) {
+        openDrawer();
+      }
+    }, [api, isOpen, openDrawer]);
+
+    const close = (velocity = 0) => {
+      api.start({
+        y: height,
+        immediate: false,
+        config: { ...Spring.config.stiff, velocity },
+        onResolve: onClose,
+      });
     };
-    // если lazy и компонент не вмонтирован, то модалку не отрисовываем
-    if (lazy && !isMounting) return null;
+
+    const bind = Gesture.useDrag(
+      ({
+        last,
+        velocity: [, vy],
+        direction: [, dy],
+        movement: [, my],
+        cancel,
+      }) => {
+        if (my < -70) cancel();
+
+        if (last) {
+          if (my > height * 0.5 || (vy > 0.5 && dy > 0)) {
+            close();
+          } else {
+            openDrawer();
+          }
+        } else {
+          api.start({ y: my, immediate: true });
+        }
+      },
+      {
+        from: () => [0, y.get()],
+        filterTaps: true,
+        bounds: { top: 0 },
+        rubberband: true,
+      }
+    );
+
+    if (!isOpen) {
+      return null;
+    }
+
+    const display = y.to((py) => (py < height ? "block" : "none"));
+
     return (
       <Portal>
         <div
-          className={classNames(cls.drawer, mods, [
+          className={classNames(cls.Drawer, {}, [
             className,
             theme,
             "app_drawer",
           ])}
         >
           <Overlay onClick={close} />
-          <div className={cls.content}>{children}</div>
+          <Spring.a.div
+            className={cls.sheet}
+            style={{ display, bottom: `calc(-100vh + ${height - 100}px)`, y }}
+            {...bind()}
+          >
+            {children}
+          </Spring.a.div>
         </div>
       </Portal>
     );
   }
 );
+
+// компонет, который ведет себя как выезжающая шторка. часто используется на мобильных экранах (у нас выезжает снизу вверх)
+export const Drawer = memo((props: DrawerProps) => {
+  const { isLoaded } = useAnimationLibs();
+
+  if (!isLoaded) return null;
+
+  return <DrawerContent {...props} />;
+});

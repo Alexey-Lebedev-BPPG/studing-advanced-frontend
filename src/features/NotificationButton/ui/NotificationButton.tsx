@@ -7,6 +7,7 @@ import NotificationIcon from "shared/assets/icons/notification-20-20.svg";
 import { Popover } from "shared/ui/Popups";
 import { Drawer } from "shared/ui/Drawer/Drawer";
 import { useDetectDevice } from "shared/lib/hooks/useDetectDevice/useDetectDevice";
+import { AnimationProvider } from "shared/lib/components/AnimationProvider";
 import cls from "./NotificationButton.module.scss";
 
 export interface INotificationButtonProps {
@@ -36,9 +37,12 @@ export const NotificationButton: FC<INotificationButtonProps> = memo(
         {isMobile ? (
           <>
             {trigger}
-            <Drawer isOpen={isOpenDrawer} onClose={onCloseDrawer}>
-              <NotificationList />
-            </Drawer>
+            {/* оборачиваем компонент для ленивой подгрузки библиотек, которые в нем используются */}
+            <AnimationProvider>
+              <Drawer isOpen={isOpenDrawer} onClose={onCloseDrawer}>
+                <NotificationList />
+              </Drawer>
+            </AnimationProvider>
           </>
         ) : (
           <Popover
