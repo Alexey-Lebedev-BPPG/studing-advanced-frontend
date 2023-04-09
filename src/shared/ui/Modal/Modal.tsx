@@ -9,6 +9,7 @@ import React, {
 import { classNames } from "shared/lib/classNames/classNames";
 import { Portal } from "../../ui/Portal/Portal";
 import cls from "./Modal.module.scss";
+import { Overlay } from "../Overlay/Overlay";
 
 interface IModalProps {
   className?: string;
@@ -44,9 +45,6 @@ export const Modal: FC<IModalProps> = ({
       }, ANIMATION_DELAY);
     }
   }, [onClose]);
-
-  // чтоб не срабатывала closeHandler на контенте
-  const onContentClick = (event: React.MouseEvent) => event.stopPropagation();
 
   // оборачиваем в useCallback, чтоб при каждом рендеринге не создавалась новая функция, а сохранялась ссылка на старую
   const onKeyDown = useCallback(
@@ -87,11 +85,8 @@ export const Modal: FC<IModalProps> = ({
   return (
     <Portal>
       <div className={classNames(cls.modal, mods, [className])}>
-        <div className={cls.overlay} onClick={closeHandler}>
-          <div className={cls.content} onClick={onContentClick}>
-            {children}
-          </div>
-        </div>
+        <Overlay onClick={closeHandler} />
+        <div className={cls.content}>{children}</div>
       </div>
     </Portal>
   );

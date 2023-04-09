@@ -1,4 +1,4 @@
-.modal {
+.drawer {
   position: fixed;
   top: 0;
   right: 0;
@@ -10,19 +10,36 @@
   // взаимодействовать с ним нельзя
   pointer-events: none;
   z-index: -1;
-  color: var(--primary-color);
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: flex-end;
 }
 
 .content {
-  padding: 20px;
-  border-radius: 12px;
+  height: 70%;
   background-color: var(--bg-color);
+  bottom: 0;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  position: relative;
+  width: 150%;
+  min-height: 100px;
+  padding: 20px;
   transition: 0.3s transform;
-  transform: scale(0.5);
-  max-width: 60%;
+  transform: translateY(100%);
+  overflow-y: auto;
+  overflow-x: hidden;
+  z-index: 10000;
+}
+
+.content::before {
+  content: "";
+  position: relative;
+  width: 100px;
+  height: 10px;
+  background-color: var(--bg-color);
+  margin: auto;
+  bottom: 40px;
+  border-radius: 12px;
 }
 
 .opened {
@@ -32,12 +49,6 @@
   z-index: var(--modal-z-index);
 
   .content {
-    transform: scale(1);
-  }
-}
-
-.isClosing {
-  .content {
-    transform: scale(0.2);
+    transform: translateY(0%);
   }
 }
