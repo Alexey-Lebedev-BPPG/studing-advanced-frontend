@@ -24,6 +24,7 @@ interface IButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   square?: boolean;
   // размеры кнопок
   size?: ButtonSize;
+  fullWidth?: boolean;
 }
 
 // обернем кнопку тоже в memo, хоть она и принимает чилдрены, но они будут в виде простого примитива без сложной древовидной структуры
@@ -34,6 +35,7 @@ export const Button: FC<IButtonProps> = memo(
     theme = ButtonTheme.OUTLINE,
     square,
     size = ButtonSize.M,
+    fullWidth,
     disabled,
     ...otherProps
   }) => {
@@ -42,6 +44,7 @@ export const Button: FC<IButtonProps> = memo(
       [cls.square]: square,
       [cls[size]]: true,
       [cls.disabled]: disabled,
+      [cls.fullWidth]: fullWidth,
     };
     return (
       <button

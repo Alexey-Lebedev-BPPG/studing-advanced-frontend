@@ -21,7 +21,7 @@ export const Popover: FC<IPopoverProps> = memo(
       <PopoverHeadless
         className={classNames("", {}, [className, popupCls.popup])}
       >
-        <PopoverHeadless.Button className={popupCls.trigger}>
+        <PopoverHeadless.Button as="div" className={popupCls.trigger}>
           {trigger}
         </PopoverHeadless.Button>
         <PopoverHeadless.Panel

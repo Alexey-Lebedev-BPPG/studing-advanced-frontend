@@ -20,7 +20,7 @@ interface DrawerProps {
 const height = window.innerHeight - 100;
 
 const DrawerContent: FC<DrawerProps> = memo(
-  ({ className, children, onClose, isOpen, lazy }) => {
+  ({ className, children, onClose, isOpen, lazy = true }) => {
     // получаем библиотеки, которые подгружали лениво
     const { Spring, Gesture } = useAnimationLibs();
     const [{ y }, api] = Spring.useSpring(() => ({ y: height }));

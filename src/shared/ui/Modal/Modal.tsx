@@ -19,7 +19,7 @@ export const Modal: FC<IModalProps> = ({
   children,
   isOpen,
   onClose,
-  lazy,
+  lazy = true,
 }) => {
   const { theme } = useTheme();
   const { isClosing, isMounting, close } = useModal({

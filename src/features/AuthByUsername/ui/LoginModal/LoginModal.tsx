@@ -20,7 +20,6 @@ export const LoginModal: FC<ILoginModalProps> = ({
     className={classNames(cls.loginModal, {}, [className])}
     isOpen={isOpen}
     onClose={onClose}
-    lazy
   >
     {/* Оборачиваем в Suspense, т.к. подгружаем асинхронно  */}
     <Suspense fallback={<Loader />}>

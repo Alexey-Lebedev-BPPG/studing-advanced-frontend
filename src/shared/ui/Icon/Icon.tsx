@@ -2,7 +2,7 @@ import { FC, memo, SVGProps, VFC } from "react";
 import { classNames } from "@/shared/lib/classNames/classNames";
 import cls from "./Icon.module.scss";
 
-interface IIconProps {
+interface IIconProps extends SVGProps<SVGSVGElement> {
   className?: string;
   // принимаем ссылку на свг
   Svg: VFC<SVGProps<SVGSVGElement>>;
@@ -10,8 +10,13 @@ interface IIconProps {
 }
 
 // обертка для свг, которая будет задавать цвета
-export const Icon: FC<IIconProps> = memo(({ className, Svg, inverted }) => (
-  <Svg
-    className={classNames(inverted ? cls.inverted : cls.icon, {}, [className])}
-  />
-));
+export const Icon: FC<IIconProps> = memo(
+  ({ className, Svg, inverted, ...otherProps }) => (
+    <Svg
+      className={classNames(inverted ? cls.inverted : cls.icon, {}, [
+        className,
+      ])}
+      {...otherProps}
+    />
+  )
+);
