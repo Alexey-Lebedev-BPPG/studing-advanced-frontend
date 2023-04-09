@@ -1,7 +1,7 @@
 import { FC, memo } from "react";
-import { ArticleList } from "entities/Article";
 import { useSelector } from "react-redux";
-import { Text } from "shared/ui/Text/Text";
+import { ArticleList } from "@/entities/Article";
+import { Text } from "@/shared/ui/Text/Text";
 import {
   getArticlesPageError,
   getArticlesPageIsLoading,

@@ -21,6 +21,18 @@ export default ({ config }: { config: webpack.Configuration }) => {
   // добавляем расширения для TS в конфиг
   config.resolve?.extensions?.push(".ts", ".tsx");
 
+  // добавляем алиасы, для поддержки абсолютных путей
+  config.resolve!.alias = {
+    ...config!.resolve!.alias,
+    // "@/app": path.resolve(__dirname, "..", "..", "src", "app"),
+    // "@/entities": path.resolve(__dirname, "..", "..", "src", "entities"),
+    // "@/features": path.resolve(__dirname, "..", "..", "src", "features"),
+    // "@/pages": path.resolve(__dirname, "..", "..", "src", "pages"),
+    // "@/shared": path.resolve(__dirname, "..", "..", "src", "shared"),
+    // "@/widgets": path.resolve(__dirname, "..", "..", "src", "widgets"),
+    "@": path.resolve(__dirname, "..", "..", "src"),
+  };
+
   // пройдем по каждому лоадеру и находим правило, которое обрабатывает svg
   // eslint-disable-next-line no-param-reassign
   config.module!.rules = config.module?.rules?.map(

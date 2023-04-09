@@ -1,9 +1,9 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { ThunkConfig } from "app/providers/StoreProvider";
-import { getArticleDetailsData } from "entities/Article/model/selectors/articleDetails";
-import { Comment } from "entities/Comment";
-import { getUserAuthData } from "entities/User";
 import i18next from "i18next";
+import { ThunkConfig } from "@/app/providers/StoreProvider";
+import { getArticleDetailsData } from "@/entities/Article/model/selectors/articleDetails";
+import { Comment } from "@/entities/Comment";
+import { getUserAuthData } from "@/entities/User";
 import { fetchCommentsByArticleId } from "../fetchCommentsByArticleId/fetchCommentsByArticleId";
 
 // первым аргументом дженерика - что возвращаем, второй - что передаем, а третим можно передать свои типизацию объекта

@@ -20,9 +20,8 @@
     "moduleResolution": "node",
     // для абсолютных импортов (без соплей)
     "baseUrl": ".",
-    "paths": {
-      "*": ["./src/*"]
-    },
+    // добавляем алиасы для абсолютных импортов
+    "paths": { "@/*": ["./src/*"] },
     // для использования привычных импортов (вместо commonjs(require()))
     "esModuleInterop": true,
     // для использования привычных default импортов (вместо import * as ...)
@@ -33,11 +32,7 @@
     "plugins": [{ "name": "typescript-plugin-css-modules" }]
   },
   // чтоб при сборке не ругался на импорты
-  "ts-node": {
-    "compilerOptions": {
-      "module": "CommonJS"
-    }
-  },
+  "ts-node": { "compilerOptions": { "module": "CommonJS" } },
   // добавляем путь к файлу, где импортится @testing-library/jest-dom, чтоб пользоваться функциями, а также добаляем еще места, чтоб подхватывались типы для этих файлов
   "include": ["./configs/jest/setupTests.ts", "./src/**/*.ts", "./src/**/*.tsx"]
 }

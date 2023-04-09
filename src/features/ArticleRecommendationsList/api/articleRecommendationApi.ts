@@ -1,5 +1,5 @@
-import { Article } from "entities/Article";
-import { rtkApi } from "shared/api/rtkApi";
+import { Article } from "@/entities/Article";
+import { rtkApi } from "@/shared/api/rtkApi";
 
 // вызываем кастомный rtk запрос, в котором динамически можем указывать данные
 const recommendationsList = rtkApi.injectEndpoints({

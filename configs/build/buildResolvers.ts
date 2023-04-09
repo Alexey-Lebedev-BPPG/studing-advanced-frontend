@@ -10,8 +10,8 @@ export const buildResolvers = (options: BuildOptions): ResolveOptions => ({
   modules: [options.paths.src, "node_modules"],
   // если оставляем пустым, то ничего добавляться к путям не будет.если указать например "@",
   // то к путям она будет добаляться (например, если указать "@": paths.src, то вместо src/test будет указываться
-  // @/src/test)
-  alias: {},
+  // @/src/test). Лучше использовать, чтоб не было возможных конфликтов с библиотеками. Если здесь указываем, что также добавляем в tsconfig.json в поле paths
+  alias: { "@": options.paths.src },
   // для каждого модуля файл index.ts(index.tsx) будет главным
   mainFiles: ["index"],
 });

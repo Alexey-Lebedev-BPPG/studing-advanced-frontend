@@ -1,6 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { ThunkConfig } from "app/providers/StoreProvider";
 import i18next from "i18next";
+import { ThunkConfig } from "@/app/providers/StoreProvider";
 
 interface IArticleEditPageProps {}
 

@@ -32,6 +32,8 @@ export default {
     "\\.s?css$": "identity-obj-proxy",
     // мок для всех импортов, в которых будет присутствовать svg
     "\\.svg": path.resolve(__dirname, "jestEmptyComponent.tsx"),
+    // добавляем поддержку алиасов
+    "^@/(.*)$": "<rootDir>/src/$1",
   },
   // чтоб появлялся отчет о пройденных unit тестах на отдельной странице
   reporters: [

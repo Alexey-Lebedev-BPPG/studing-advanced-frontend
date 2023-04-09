@@ -1,7 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { ThunkConfig } from "app/providers/StoreProvider";
-import { Profile } from "entities/Profile";
 import i18next from "i18next";
+import { ThunkConfig } from "@/app/providers/StoreProvider";
+import { Profile } from "@/entities/Profile";
 
 // первым аргументом дженерика - что возвращаем, второй - что передаем, а третим можно передать свои типизацию объекта thunkAPI, в котором есть методы для использования в thunke
 export const fetchProfileData = createAsyncThunk<

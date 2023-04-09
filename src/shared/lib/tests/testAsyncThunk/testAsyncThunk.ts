@@ -1,6 +1,6 @@
 import { AsyncThunkAction } from "@reduxjs/toolkit";
-import { StateSchema } from "app/providers/StoreProvider";
 import axios, { AxiosStatic } from "axios";
+import { StateSchema } from "@/app/providers/StoreProvider";
 
 // создаем универсальный тип для функции, которая принимает аргумент и возращает любой экшен
 type ActionCreatorType<Return, Arg, RejectedValue> = (
