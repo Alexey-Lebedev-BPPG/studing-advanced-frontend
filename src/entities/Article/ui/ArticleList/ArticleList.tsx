@@ -103,8 +103,7 @@ export const ArticleList: FC<IArticleListProps> = memo(
       //     scrollTop,
       //   }) => (
       <div
-        // @ts-ignore
-        ref={registerChild}
+        // ref={registerChild}
         className={classNames("", {}, [className, cls[view]])}
       >
         {/* {virtualized ? (

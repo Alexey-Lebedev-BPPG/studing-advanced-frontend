@@ -11,12 +11,22 @@ export interface ICardProps extends HTMLAttributes<HTMLDivElement> {
   className?: string;
   children: ReactNode;
   theme?: CardTheme;
+  fullWidth?: boolean;
 }
 
 const Card: FC<ICardProps> = memo(
-  ({ className, children, theme = CardTheme.NORMAL, ...otherProps }) => (
+  ({
+    className,
+    children,
+    theme = CardTheme.NORMAL,
+    fullWidth,
+    ...otherProps
+  }) => (
     <div
-      className={classNames(cls.card, {}, [className, cls[theme]])}
+      className={classNames(cls.card, { [cls.fullWidth]: fullWidth }, [
+        className,
+        cls[theme],
+      ])}
       {...otherProps}
     >
       {children}

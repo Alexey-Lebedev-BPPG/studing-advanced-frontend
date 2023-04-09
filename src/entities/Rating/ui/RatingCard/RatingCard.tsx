@@ -22,15 +22,25 @@ export interface IRatingCardProps {
   // отправить/отменить отзыв
   onAccept?: (starCount: number, feedback?: string) => void;
   onCancel?: (starCount: number) => void;
+  // количество звезд, которое юзер оставил ранее
+  rate?: number;
 }
 
 export const RatingCard: FC<IRatingCardProps> = memo(
-  ({ className, title, feedbackTitle, hasFeedback, onAccept, onCancel }) => {
+  ({
+    className,
+    title,
+    feedbackTitle,
+    hasFeedback,
+    onAccept,
+    onCancel,
+    rate = 0,
+  }) => {
     const { t } = useTranslation();
     const isMobile = useDetectDevice();
 
     const [isOpenModal, setIsOpenModal] = useState(false);
-    const [starsCount, setStarsCount] = useState(0);
+    const [starsCount, setStarsCount] = useState(rate);
     const [feedback, setFeedback] = useState("");
 
     const onSelectStars = useCallback(
@@ -63,10 +73,14 @@ export const RatingCard: FC<IRatingCardProps> = memo(
       </>
     );
     return (
-      <Card className={classNames(cls.rating, {}, [className])}>
-        <VStack gap="8" align="center">
-          <Text title={title} />
-          <StarRating size={40} onSelect={onSelectStars} />
+      <Card fullWidth className={classNames(cls.rating, {}, [className])}>
+        <VStack gap="8" align="center" max>
+          <Text title={starsCount ? t("Спасибо за оценку!") : title} />
+          <StarRating
+            selectedStars={starsCount}
+            size={40}
+            onSelect={onSelectStars}
+          />
           {isMobile ? (
             <Drawer isOpen={isOpenModal} onClose={cancelHandle}>
               <VStack gap="32">

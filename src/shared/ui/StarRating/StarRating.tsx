@@ -19,7 +19,7 @@ const stars = [1, 2, 3, 4, 5];
 export const StarRating: FC<IStartRatingProps> = memo(
   ({ className, onSelect, selectedStars = 0, size = 30 }) => {
     // состояние, указывающее, сколько звезд подсвечивать при наведении
-    const [currentStarsCount, setCurrentStarsCount] = useState(0);
+    const [currentStarsCount, setCurrentStarsCount] = useState(selectedStars);
     // состояние, указывающее, что пользователь уже ранее выбрал оценку
     const [isSelected, setIsSelected] = useState(Boolean(selectedStars));
 

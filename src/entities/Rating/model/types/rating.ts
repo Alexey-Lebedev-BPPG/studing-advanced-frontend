@@ -1,5 +1,4 @@
-export interface RatingSchema {
-  isLoading: boolean;
-  data?: any;
-  error?: string;
+export interface Rating {
+  rate: number;
+  feedback?: string;
 }
