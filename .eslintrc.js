@@ -1,10 +1,6 @@
 // чтоб появился этот файл делаем npm init @eslint/config
 module.exports = {
-  env: {
-    browser: true,
-    es2021: true,
-    jest: true,
-  },
+  env: { browser: true, es2021: true, jest: true },
   // расширяем стандартный плагин для реакта и подключаем модуль стандарта тайпскрипта и airbnb + автоматом добавился сторибук
   extends: [
     "plugin:react/recommended",
@@ -14,9 +10,7 @@ module.exports = {
   ],
   parser: "@typescript-eslint/parser",
   parserOptions: {
-    ecmaFeatures: {
-      jsx: true,
-    },
+    ecmaFeatures: { jsx: true },
     ecmaVersion: "latest",
     sourceType: "module",
   },
@@ -72,7 +66,8 @@ module.exports = {
     curly: "off",
     "react/no-array-index-key": "off",
     "no-plusplus": "off",
-    "path-checher-ulbi-example/path-checker": "warn",
+    // прокидываем наш алиас в плагин линтера импортов (катомный)
+    "path-checher-ulbi-example/path-checker": ["warn", { alias: "@" }],
   },
   globals: {
     __IS_DEV__: true,
@@ -84,9 +79,7 @@ module.exports = {
   overrides: [
     {
       files: ["**/src/**/*.{test,stories}.{ts, tsx}"],
-      rules: {
-        "i18next/no-literal-string": "off",
-      },
+      rules: { "i18next/no-literal-string": "off" },
     },
   ],
 };
