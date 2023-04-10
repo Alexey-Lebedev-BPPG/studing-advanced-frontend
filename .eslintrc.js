@@ -66,9 +66,20 @@ module.exports = {
     curly: "off",
     "react/no-array-index-key": "off",
     "no-plusplus": "off",
-    // прокидываем наш алиас в плагин линтера импортов (катомный)
+    // прокидываем наш алиас в плагин линтера импортов (каcтомный)
     "path-checher-ulbi-example/path-checker": ["warn", { alias: "@" }],
-    "path-checher-ulbi-example/public-api-imports": ["warn", { alias: "@" }],
+    "path-checher-ulbi-example/public-api-imports": [
+      "warn",
+      // указываем testFilesPatterns для паблик апи только для тестов
+      {
+        alias: "@",
+        testFilesPatterns: [
+          "**/*.test.*",
+          "**/*.stories.*",
+          "**/StoreDecorator.tsx",
+        ],
+      },
+    ],
   },
   globals: {
     __IS_DEV__: true,
