@@ -68,6 +68,7 @@ module.exports = {
     "no-plusplus": "off",
     // прокидываем наш алиас в плагин линтера импортов (катомный)
     "path-checher-ulbi-example/path-checker": ["warn", { alias: "@" }],
+    "path-checher-ulbi-example/public-api-imports": ["warn", { alias: "@" }],
   },
   globals: {
     __IS_DEV__: true,

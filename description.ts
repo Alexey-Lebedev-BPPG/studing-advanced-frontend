@@ -70,8 +70,8 @@
 
 // чтоб создать свой плагин:
 // 1. создаем новую папку, которая должна начинаться с eslint-plugin
-// 2. устанвливаем  npm i -g yo
-// 3. устанавливаем npm i -g generator-eslint
+// 2. устанвливаем  npm install --global yo
+// 3. устанавливаем npm install --global generator-eslint
 // 3. запускаем команду yo eslint:plugin
 // 4. заполняем все по инструкции
 // 5. в папке lib=> index.js есть список правил

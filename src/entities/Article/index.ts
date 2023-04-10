@@ -1,3 +1,4 @@
+export { articleDetailsReducer } from "./model/slice/articleDetailsSlice";
 export { ArticleViewSelector } from "./ui/ArticleViewSelector/ArticleViewSelector";
 export type { Article } from "./model/types/article";
 export {

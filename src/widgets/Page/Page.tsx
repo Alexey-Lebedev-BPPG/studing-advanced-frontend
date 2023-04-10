@@ -20,52 +20,52 @@ export interface IPageProps {
 export const PAGE_ID = "PAGE_ID";
 
 // компонент для оборачивания страниц, который применяет некоторые стили для всех страниц
-const Page: FC<IPageProps> = memo(({ className, children, onScrollEnd }) => {
-  const dispatch = useAppDispatch();
-  const { pathname } = useLocation();
+export const Page: FC<IPageProps> = memo(
+  ({ className, children, onScrollEnd }) => {
+    const dispatch = useAppDispatch();
+    const { pathname } = useLocation();
 
-  const wrapperRef = useRef() as MutableRefObject<HTMLElement>;
-  const triggerRef = useRef() as MutableRefObject<HTMLDivElement>;
+    const wrapperRef = useRef() as MutableRefObject<HTMLElement>;
+    const triggerRef = useRef() as MutableRefObject<HTMLDivElement>;
 
-  // получаем позицию скролла из редакса по нашей странице
-  const scrollPosition = useSelector(
-    (state: StateSchema) => getScrollSavePath(state, pathname)
-    // eslint-disable-next-line function-paren-newline
-  );
-
-  useInfiniteScroll({
-    triggerRef,
-    wrapperRef,
-    callback: onScrollEnd,
-  });
-
-  // возвращаем страницу на позицию
-  useInitialEffect(() => {
-    wrapperRef.current.scrollTop = scrollPosition;
-  });
-
-  // функция сохранения скролла
-  const onScrollHandler = useThrottle((event: UIEvent<HTMLDivElement>) => {
-    // получаем значение в пикселях от крайней точки сверху и записываем в редакс
-    dispatch(
-      scrollSaveActions.setScrollPosition({
-        path: pathname,
-        position: event.currentTarget.scrollTop,
-      })
+    // получаем позицию скролла из редакса по нашей странице
+    const scrollPosition = useSelector(
+      (state: StateSchema) => getScrollSavePath(state, pathname)
+      // eslint-disable-next-line function-paren-newline
     );
-  });
 
-  return (
-    <main
-      ref={wrapperRef}
-      className={classNames(cls.page, {}, [className])}
-      onScroll={onScrollHandler}
-      id={PAGE_ID}
-    >
-      {children}
-      {onScrollEnd ? <div className={cls.trigger} ref={triggerRef} /> : null}
-    </main>
-  );
-});
+    useInfiniteScroll({
+      triggerRef,
+      wrapperRef,
+      callback: onScrollEnd,
+    });
 
-export default Page;
+    // возвращаем страницу на позицию
+    useInitialEffect(() => {
+      wrapperRef.current.scrollTop = scrollPosition;
+    });
+
+    // функция сохранения скролла
+    const onScrollHandler = useThrottle((event: UIEvent<HTMLDivElement>) => {
+      // получаем значение в пикселях от крайней точки сверху и записываем в редакс
+      dispatch(
+        scrollSaveActions.setScrollPosition({
+          path: pathname,
+          position: event.currentTarget.scrollTop,
+        })
+      );
+    });
+
+    return (
+      <main
+        ref={wrapperRef}
+        className={classNames(cls.page, {}, [className])}
+        onScroll={onScrollHandler}
+        id={PAGE_ID}
+      >
+        {children}
+        {onScrollEnd ? <div className={cls.trigger} ref={triggerRef} /> : null}
+      </main>
+    );
+  }
+);

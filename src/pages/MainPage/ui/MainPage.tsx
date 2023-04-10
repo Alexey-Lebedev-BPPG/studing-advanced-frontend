@@ -1,7 +1,7 @@
 import React, { FC, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Input } from "@/shared/ui/Input/Input";
-import Page from "@/widgets/Page/Page";
+import { Page } from "@/widgets/Page";
 import { BugButton } from "@/widgets/PageError";
 
 const MainPage: FC = () => {
