@@ -2,7 +2,7 @@ import { FC, HTMLAttributeAnchorTarget, memo } from "react";
 import { useTranslation } from "react-i18next";
 // import { List, ListRowProps, WindowScroller } from "react-virtualized";
 import { classNames } from "@/shared/lib/classNames/classNames";
-import { Text, TextSize } from "@/shared/ui/Text/Text";
+import { Text, TextSize } from "@/shared/ui/Text";
 import { ArticleView } from "../../model/consts/consts";
 import cls from "./ArticleList.module.scss";
 import { Article } from "../../model/types/article";

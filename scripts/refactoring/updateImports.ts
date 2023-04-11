@@ -32,9 +32,10 @@ files.forEach((sourceFile) => {
     if (isAbsolute(value)) {
       // то тогда меняем этот путь, добавляя алиас наш
       importDeclaration.setModuleSpecifier(`@/${value}`);
+      console.log(`${value} ---> Alias success created! Result: @/${value}.`);
     }
   });
 });
 
 // сохраняем результат проекта
-project.save();
+project.save().then(() => console.log("Done!"));

@@ -2,7 +2,7 @@ import { FC, memo } from "react";
 import { t } from "i18next";
 import { classNames } from "@/shared/lib/classNames/classNames";
 import { ArticleList } from "@/entities/Article";
-import { Text, TextSize } from "@/shared/ui/Text/Text";
+import { Text, TextSize } from "@/shared/ui/Text";
 import { VStack } from "@/shared/ui/Stack";
 import { useArticleRecommendationsList } from "../api/articleRecommendationApi";
 

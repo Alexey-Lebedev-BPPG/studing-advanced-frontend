@@ -1,6 +1,6 @@
 import React, { FC, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { Input } from "@/shared/ui/Input/Input";
+import { Input } from "@/shared/ui/Input";
 import { Page } from "@/widgets/Page";
 import { BugButton } from "@/widgets/PageError";
 

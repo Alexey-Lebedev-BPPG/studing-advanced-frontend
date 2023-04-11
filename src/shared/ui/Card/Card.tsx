@@ -14,7 +14,7 @@ export interface ICardProps extends HTMLAttributes<HTMLDivElement> {
   fullWidth?: boolean;
 }
 
-const Card: FC<ICardProps> = memo(
+export const Card: FC<ICardProps> = memo(
   ({
     className,
     children,
@@ -33,5 +33,3 @@ const Card: FC<ICardProps> = memo(
     </div>
   )
 );
-
-export default Card;

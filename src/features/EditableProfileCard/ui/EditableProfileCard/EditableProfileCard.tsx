@@ -2,7 +2,7 @@ import { FC, memo, useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { classNames } from "@/shared/lib/classNames/classNames";
-import { Text, TextTheme } from "@/shared/ui/Text/Text";
+import { Text, TextTheme } from "@/shared/ui/Text";
 import { Country } from "@/entities/Country";
 import { Currency } from "@/entities/Currency";
 import { useInitialEffect } from "@/shared/lib/hooks/useInitialEffect/useInitialEffect";
