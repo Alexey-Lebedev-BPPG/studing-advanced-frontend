@@ -1,13 +1,13 @@
 import { FC, HTMLAttributeAnchorTarget, memo } from "react";
 import { useTranslation } from "react-i18next";
 // import { List, ListRowProps, WindowScroller } from "react-virtualized";
-import { classNames } from "@/shared/lib/classNames/classNames";
-import { Text, TextSize } from "@/shared/ui/Text";
 import { ArticleView } from "../../model/consts/consts";
-import cls from "./ArticleList.module.scss";
 import { Article } from "../../model/types/article";
 import { ArticleListItem } from "../ArticleListItem/ArticleListItem";
 import { ArticleListItemSkeleton } from "../ArticleListItem/ArticleListItemSkeleton";
+import cls from "./ArticleList.module.scss";
+import { classNames } from "@/shared/lib/classNames/classNames";
+import { Text, TextSize } from "@/shared/ui/Text";
 
 export interface IArticleListProps {
   className?: string;

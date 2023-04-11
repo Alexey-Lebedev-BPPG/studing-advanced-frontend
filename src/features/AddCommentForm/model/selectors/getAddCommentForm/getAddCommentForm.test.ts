@@ -1,5 +1,5 @@
-import { StateSchema } from "@/app/providers/StoreProvider";
 import { getAddCommentFormIsLoading } from "./getAddCommentForm";
+import { StateSchema } from "@/app/providers/StoreProvider";
 
 describe("getAddCommentForm", () => {
   test("getAddCommentFormIsLoading", () => {

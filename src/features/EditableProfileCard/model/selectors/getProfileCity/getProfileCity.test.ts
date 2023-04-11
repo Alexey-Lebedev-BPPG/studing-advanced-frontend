@@ -1,7 +1,7 @@
+import { getProfileCity } from "./getProfileCity";
 import { StateSchema } from "@/app/providers/StoreProvider";
 import { Country } from "@/entities/Country";
 import { Currency } from "@/entities/Currency";
-import { getProfileCity } from "./getProfileCity";
 
 describe("getProfileCity", () => {
   test("should return data", () => {

@@ -3,6 +3,8 @@ import {
   createSlice,
   PayloadAction,
 } from "@reduxjs/toolkit";
+import { fetchArticlesList } from "../services/fetchArticlesList/fetchArticlesList";
+import { ArticlesPageSchema } from "../types/articlesPageSchema";
 import { StateSchema } from "@/app/providers/StoreProvider";
 import {
   Article,
@@ -12,8 +14,6 @@ import {
 } from "@/entities/Article";
 import { ARTICLE_VIEW_LOCALSTORAGE_KEY } from "@/shared/const/localStorage";
 import { SortOrder } from "@/shared/types";
-import { fetchArticlesList } from "../services/fetchArticlesList/fetchArticlesList";
-import { ArticlesPageSchema } from "../types/articlesPageSchema";
 
 // делаем через подход нормализации данных в redux toolkit (https://redux-toolkit.js.org/api/createEntityAdapter#crud-functions)
 

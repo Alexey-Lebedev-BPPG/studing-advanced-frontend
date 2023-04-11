@@ -1,10 +1,10 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { ThunkConfig } from "@/app/providers/StoreProvider";
-import { ArticleSortFields, ArticleType } from "@/entities/Article";
-import { SortOrder } from "@/shared/types";
 import { getArticlesPageInited } from "../../selectors/articlesPageSelectors";
 import { articlesPageActions } from "../../slice/articlesPageSlice";
 import { fetchArticlesList } from "../fetchArticlesList/fetchArticlesList";
+import { ThunkConfig } from "@/app/providers/StoreProvider";
+import { ArticleSortFields, ArticleType } from "@/entities/Article";
+import { SortOrder } from "@/shared/types";
 
 // для подгрузки не первой порции данных, а уже последующих
 

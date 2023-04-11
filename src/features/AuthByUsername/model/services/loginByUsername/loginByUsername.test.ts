@@ -1,6 +1,6 @@
+import { loginByUsername } from "./loginByUsername";
 import { userActions } from "@/entities/User";
 import { TestAsyncThunk } from "@/shared/lib/tests/testAsyncThunk/testAsyncThunk";
-import { loginByUsername } from "./loginByUsername";
 
 describe("loginByUsername", () => {
   // I СПОСОБ (БЕЗ ПЕРЕИСПОЛЬЗОВАНИЯ) (только с замоканным аксиосом)

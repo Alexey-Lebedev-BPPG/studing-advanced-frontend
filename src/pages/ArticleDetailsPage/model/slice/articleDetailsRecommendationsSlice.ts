@@ -1,8 +1,8 @@
 import { createEntityAdapter, createSlice } from "@reduxjs/toolkit";
-import { StateSchema } from "@/app/providers/StoreProvider";
-import { Article } from "@/entities/Article";
 import { fetchArticleRecommendations } from "../services/fetchArticleRecommendations/fetchArticleRecommendations";
 import { ArticleDetailsRecommendationsSchema } from "../types/articleDetailsRecommendationsSchema";
+import { StateSchema } from "@/app/providers/StoreProvider";
+import { Article } from "@/entities/Article";
 
 // делаем через подход нормализации данных в redux toolkit (https://redux-toolkit.js.org/api/createEntityAdapter#crud-functions)
 

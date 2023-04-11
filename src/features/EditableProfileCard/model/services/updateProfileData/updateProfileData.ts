@@ -1,9 +1,9 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
+import { ValidateProfileError } from "../../consts/consts";
+import { getProfileForm } from "../../selectors/getProfileForm/getProfileForm";
+import { validateProfileData } from "../validateProfileData/validateProfileData";
 import { ThunkConfig } from "@/app/providers/StoreProvider";
 import { Profile } from "@/entities/Profile";
-import { getProfileForm } from "../../selectors/getProfileForm/getProfileForm";
-import { ValidateProfileError } from "../../consts/consts";
-import { validateProfileData } from "../validateProfileData/validateProfileData";
 
 // первым аргументом дженерика - что возвращаем, второй - что передаем, а третим можно передать свои типизацию объекта thunkAPI, в котором есть методы для использования в thunke
 export const updateProfileData = createAsyncThunk<

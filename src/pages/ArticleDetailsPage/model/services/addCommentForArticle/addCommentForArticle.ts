@@ -1,10 +1,10 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import i18next from "i18next";
+import { fetchCommentsByArticleId } from "../fetchCommentsByArticleId/fetchCommentsByArticleId";
 import { ThunkConfig } from "@/app/providers/StoreProvider";
 import { getArticleDetailsData } from "@/entities/Article";
 import { Comment } from "@/entities/Comment";
 import { getUserAuthData } from "@/entities/User";
-import { fetchCommentsByArticleId } from "../fetchCommentsByArticleId/fetchCommentsByArticleId";
 
 // первым аргументом дженерика - что возвращаем, второй - что передаем, а третим можно передать свои типизацию объекта
 // thunkAPI, в котором есть методы для использования в thunke

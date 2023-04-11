@@ -1,10 +1,10 @@
-import { FC, ReactNode, memo } from "react";
 import { Popover as PopoverHeadless } from "@headlessui/react";
-import { classNames } from "@/shared/lib/classNames/classNames";
-import cls from "./Popover.module.scss";
-import { mapDirectionClass } from "../../styles/consts";
+import { FC, ReactNode, memo } from "react";
 import { DropDownDirection } from "../../../../types/ui";
+import { mapDirectionClass } from "../../styles/consts";
 import popupCls from "../../styles/popups.module.scss";
+import cls from "./Popover.module.scss";
+import { classNames } from "@/shared/lib/classNames/classNames";
 
 export interface IPopoverProps {
   className?: string;

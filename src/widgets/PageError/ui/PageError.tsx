@@ -1,6 +1,6 @@
 import React, { FC } from "react";
-import { Button } from "@/shared/ui/Button";
 import cls from "./PageError.module.scss";
+import { Button } from "@/shared/ui/Button";
 
 interface IPageErrorProps {}
 

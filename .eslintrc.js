@@ -7,6 +7,7 @@ module.exports = {
     "airbnb",
     "plugin:i18next/recommended",
     "plugin:storybook/recommended",
+    "plugin:import/warnings",
   ],
   parser: "@typescript-eslint/parser",
   parserOptions: {
@@ -22,6 +23,10 @@ module.exports = {
     "react-hooks",
     // кастомный плагин для импортов
     "path-checher-ulbi-example",
+    // неиспользуемые импорты
+    "unused-imports",
+    // например настроить импорты по алфавиту
+    "import",
   ],
   rules: {
     quotes: [2, "double", { avoidEscape: true }],
@@ -29,6 +34,7 @@ module.exports = {
       2,
       { extensions: [".js", ".jsx", ".tsx"] },
     ],
+    "unused-imports/no-unused-imports": "warn",
     "no-unused-vars": "off",
     "@typescript-eslint/no-unused-vars": "off",
     "import/no-unresolved": "off",
@@ -84,6 +90,14 @@ module.exports = {
       "warn",
       // указываем файлы, которые будем игнорировать
       { alias: "@", ignoreImportPatterns: ["**/StoreProvider", "**/testing"] },
+    ],
+    // настройка, что импорты были по алфавиту
+    "import/order": [
+      "warn",
+      {
+        pathGroups: [{ pattern: "@/**", group: "internal", position: "after" }],
+        alphabetize: { order: "asc", caseInsensitive: false },
+      },
     ],
   },
   globals: {

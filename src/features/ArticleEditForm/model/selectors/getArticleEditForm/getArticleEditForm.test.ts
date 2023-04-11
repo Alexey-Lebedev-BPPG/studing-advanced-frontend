@@ -1,5 +1,5 @@
-import { StateSchema } from "@/app/providers/StoreProvider";
 import { getArticleEditFormIsLoading } from "./getArticleEditForm";
+import { StateSchema } from "@/app/providers/StoreProvider";
 
 describe("getArticleEditForm", () => {
   test("", () => {

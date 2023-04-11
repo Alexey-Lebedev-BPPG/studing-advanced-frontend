@@ -1,7 +1,7 @@
+import { getProfileFirstname } from "./getProfileFirstname";
 import { StateSchema } from "@/app/providers/StoreProvider";
 import { Country } from "@/entities/Country";
 import { Currency } from "@/entities/Currency";
-import { getProfileFirstname } from "./getProfileFirstname";
 
 describe("getProfileFirstname", () => {
   test("should return data", () => {

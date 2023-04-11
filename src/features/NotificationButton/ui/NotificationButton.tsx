@@ -1,14 +1,13 @@
 import { FC, memo, useCallback, useState } from "react";
-import { classNames } from "@/shared/lib/classNames/classNames";
-import { NotificationList } from "@/entities/Notification";
-import { Button, ButtonTheme } from "@/shared/ui/Button";
-import { Icon } from "@/shared/ui/Icon";
-import NotificationIcon from "@/shared/assets/icons/notification-20-20.svg";
-import { Popover } from "@/shared/ui/Popups";
-import { Drawer } from "@/shared/ui/Drawer";
-import { useDetectDevice } from "@/shared/lib/hooks/useDetectDevice/useDetectDevice";
-import { AnimationProvider } from "@/shared/lib/components/AnimationProvider";
 import cls from "./NotificationButton.module.scss";
+import { NotificationList } from "@/entities/Notification";
+import NotificationIcon from "@/shared/assets/icons/notification-20-20.svg";
+import { classNames } from "@/shared/lib/classNames/classNames";
+import { useDetectDevice } from "@/shared/lib/hooks/useDetectDevice/useDetectDevice";
+import { Button, ButtonTheme } from "@/shared/ui/Button";
+import { Drawer } from "@/shared/ui/Drawer";
+import { Icon } from "@/shared/ui/Icon";
+import { Popover } from "@/shared/ui/Popups";
 
 export interface INotificationButtonProps {
   className?: string;

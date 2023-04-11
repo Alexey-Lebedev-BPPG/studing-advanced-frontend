@@ -1,18 +1,18 @@
 import { FC, HTMLAttributeAnchorTarget, memo } from "react";
-import { classNames } from "@/shared/lib/classNames/classNames";
-import { Text } from "@/shared/ui/Text";
-import EyeIcon from "@/shared/assets/icons/eye-20-20.svg";
-import { Icon } from "@/shared/ui/Icon";
-import { Card } from "@/shared/ui/Card";
-// import { useHover } from "shared/lib/hooks/useHover/useHover";
-import { Avatar } from "@/shared/ui/Avatar";
-import { Button } from "@/shared/ui/Button";
-import { AppLink } from "@/shared/ui/AppLink";
-import { RoutePath } from "@/shared/const/router";
-import cls from "./ArticleListItem.module.scss";
+import { ArticleBlockType, ArticleView } from "../../model/consts/consts";
 import { Article, ArticleTextBlock } from "../../model/types/article";
 import { ArticleTextBlockComponent } from "../ArticleTextBlockComponent/ArticleTextBlockComponent";
-import { ArticleBlockType, ArticleView } from "../../model/consts/consts";
+import cls from "./ArticleListItem.module.scss";
+import EyeIcon from "@/shared/assets/icons/eye-20-20.svg";
+import { RoutePath } from "@/shared/const/router";
+import { classNames } from "@/shared/lib/classNames/classNames";
+import { AppLink } from "@/shared/ui/AppLink";
+import { Avatar } from "@/shared/ui/Avatar";
+import { Button } from "@/shared/ui/Button";
+import { Card } from "@/shared/ui/Card";
+import { Icon } from "@/shared/ui/Icon";
+import { Text } from "@/shared/ui/Text";
+// import { useHover } from "shared/lib/hooks/useHover/useHover";
 
 export interface IArticleListItemProps {
   className?: string;

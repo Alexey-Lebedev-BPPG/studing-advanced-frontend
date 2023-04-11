@@ -1,13 +1,13 @@
 import { FC, memo } from "react";
 import { useSelector } from "react-redux";
-import { ArticleList } from "@/entities/Article";
-import { Text } from "@/shared/ui/Text";
 import {
   getArticlesPageError,
   getArticlesPageIsLoading,
   getArticlesPageView,
 } from "../../model/selectors/articlesPageSelectors";
 import { getArticles } from "../../model/slice/articlesPageSlice";
+import { ArticleList } from "@/entities/Article";
+import { Text } from "@/shared/ui/Text";
 
 export interface IArticleInfiniteListProps {
   className?: string;

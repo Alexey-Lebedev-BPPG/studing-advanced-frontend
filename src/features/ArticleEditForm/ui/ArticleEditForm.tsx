@@ -1,7 +1,7 @@
 import { FC, memo } from "react";
 import { useTranslation } from "react-i18next";
-import { classNames } from "@/shared/lib/classNames/classNames";
 import cls from "./ArticleEditForm.module.scss";
+import { classNames } from "@/shared/lib/classNames/classNames";
 
 export interface IArticleEditFormProps {
   className?: string;

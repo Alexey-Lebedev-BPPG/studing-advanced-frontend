@@ -1,5 +1,5 @@
-import { rtkApi } from "@/shared/api/rtkApi";
 import { Notification } from "../model/types/notification";
+import { rtkApi } from "@/shared/api/rtkApi";
 
 // вызываем кастомный rtk запрос, в котором динамически можем указывать данные
 const notificationApi = rtkApi.injectEndpoints({

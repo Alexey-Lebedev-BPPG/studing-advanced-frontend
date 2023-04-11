@@ -1,6 +1,6 @@
 import { CSSProperties, FC, useMemo } from "react";
-import { classNames } from "@/shared/lib/classNames/classNames";
 import cls from "./Avatar.module.scss";
+import { classNames } from "@/shared/lib/classNames/classNames";
 
 interface IAvatarProps {
   className?: string;
