@@ -1,1 +1,1 @@
-export { PAGE_ID, Page } from "./Page";
+export { Page } from "./Page";

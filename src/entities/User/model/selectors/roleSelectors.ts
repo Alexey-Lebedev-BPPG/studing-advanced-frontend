@@ -1,5 +1,6 @@
 import { createSelector } from "@reduxjs/toolkit";
 import { StateSchema } from "@/app/providers/StoreProvider";
+// eslint-disable-next-line path-checher-ulbi-example/layer-imports
 import { UserRole } from "@/app/consts/consts";
 
 export const getUserRoles = (state: StateSchema) => state.user.authData?.roles;

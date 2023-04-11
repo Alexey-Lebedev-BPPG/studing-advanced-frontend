@@ -80,6 +80,11 @@ module.exports = {
         ],
       },
     ],
+    "path-checher-ulbi-example/layer-imports": [
+      "warn",
+      // указываем файлы, которые будем игнорировать
+      { alias: "@", ignoreImportPatterns: ["**/StoreProvider", "**/testing"] },
+    ],
   },
   globals: {
     __IS_DEV__: true,
