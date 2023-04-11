@@ -8,7 +8,7 @@ import Card from "@/shared/ui/Card/Card";
 import { Avatar } from "@/shared/ui/Avatar/Avatar";
 import { Button } from "@/shared/ui/Button/Button";
 import { AppLink } from "@/shared/ui/AppLink/AppLink";
-import { RoutePath } from "@/shared/config/routeConfig/routeConfig";
+import { RoutePath } from "@/shared/const/router";
 import cls from "./ArticleListItem.module.scss";
 import { Article, ArticleTextBlock } from "../../model/types/article";
 import { ArticleTextBlockComponent } from "../ArticleTextBlockComponent/ArticleTextBlockComponent";
