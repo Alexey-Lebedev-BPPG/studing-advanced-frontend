@@ -2,14 +2,14 @@ import { ChangeEvent, memo, useMemo } from "react";
 import cls from "./Select.module.scss";
 import { classNames } from "@/shared/lib/classNames/classNames";
 
-export interface SelectOption<T> {
+export interface SelectOption<T extends string> {
   // значение опции
   valueOpt: T;
   // отображение опции
   content: string;
 }
 
-interface ISelectProps<T> {
+interface ISelectProps<T extends string> {
   className?: string;
   label?: string;
   options?: SelectOption<T>[];
