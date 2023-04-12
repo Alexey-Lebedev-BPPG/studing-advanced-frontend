@@ -3,3 +3,4 @@ describe("NotificationItem", () => {
     expect({}).toEqual({});
   });
 });
+export {};

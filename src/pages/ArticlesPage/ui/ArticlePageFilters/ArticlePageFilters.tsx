@@ -13,12 +13,12 @@ import { articlesPageActions } from "../../model/slice/articlesPageSlice";
 import cls from "./ArticlePageFilters.module.scss";
 import {
   ArticleView,
-  ArticleViewSelector,
-  ArticleSortSelector,
   ArticleSortFields,
-  ArticleTypeTabs,
   ArticleType,
 } from "@/entities/Article";
+import { ArticleSortSelector } from "@/features/ArticleSortSelector";
+import { ArticleTypeTabs } from "@/features/ArticleTypeTabs";
+import { ArticleViewSelector } from "@/features/ArticleViewSelector";
 import { classNames } from "@/shared/lib/classNames/classNames";
 import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch/useAppDispatch";
 import { useDebounce } from "@/shared/lib/hooks/useDebounce/useDebounce";

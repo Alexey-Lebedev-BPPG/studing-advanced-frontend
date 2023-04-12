@@ -3,3 +3,4 @@ describe("NotificationList", () => {
     expect({}).toEqual({});
   });
 });
+export {};

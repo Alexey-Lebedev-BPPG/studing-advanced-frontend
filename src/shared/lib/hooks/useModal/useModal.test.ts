@@ -3,3 +3,4 @@ describe("useModal", () => {
     expect({}).toEqual({});
   });
 });
+export {};

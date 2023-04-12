@@ -1,6 +1,5 @@
-describe("useDetectDevice", () => {
+describe("ArticleTypeTabs", () => {
   test("", () => {
     expect({}).toEqual({});
   });
 });
-export {};

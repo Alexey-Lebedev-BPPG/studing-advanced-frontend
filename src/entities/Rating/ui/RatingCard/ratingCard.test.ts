@@ -3,3 +3,4 @@ describe("RatingCard", () => {
     expect({}).toEqual({});
   });
 });
+export {};

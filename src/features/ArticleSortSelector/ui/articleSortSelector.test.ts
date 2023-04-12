@@ -1,6 +1,5 @@
-describe("useDetectDevice", () => {
+describe("ArticleSortSelector", () => {
   test("", () => {
     expect({}).toEqual({});
   });
 });
-export {};
