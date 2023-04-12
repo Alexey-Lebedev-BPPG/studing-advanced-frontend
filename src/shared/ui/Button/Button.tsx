@@ -1,4 +1,4 @@
-import { ButtonHTMLAttributes, FC, memo } from "react";
+import { ButtonHTMLAttributes, FC, ReactNode, memo } from "react";
 import cls from "./Button.module.scss";
 import { classNames } from "@/shared/lib/classNames/classNames";
 
@@ -19,11 +19,29 @@ export enum ButtonSize {
 
 interface IButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   className?: string;
+  /**
+   * Тема кнопки. Отвечает за визуал (в рамке, без стилей, противоположный теме приложения цвет и тд)
+   */
   theme?: ButtonTheme;
-  // пропс, чтоб кнопка была квадратной
+  /**
+   * Флаг, делающий кнопку квадратной
+   */
   square?: boolean;
-  // размеры кнопок
+  /**
+   * Размер кнопки в соответствии с дизайн системой
+   */
   size?: ButtonSize;
+  /**
+   * Флаг, отвечающий за работу кнопки
+   */
+  disabled?: boolean;
+  /**
+   * Содержимое кнопки
+   */
+  children?: ReactNode;
+  /**
+   * Увеличивает кнопку на всю свободную ширину
+   */
   fullWidth?: boolean;
 }
 
