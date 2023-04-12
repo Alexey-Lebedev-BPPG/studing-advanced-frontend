@@ -1,5 +1,5 @@
 import { addDecorator } from "@storybook/react";
-import { Theme } from "../../src/app/providers/ThemeProvider";
+import { Theme } from "../../src/shared/const/theme";
 import { StyleDecorator } from "../../src/shared/config/storybook/StyleDecorator/StyleDecorator.ts";
 import { ThemeDecorator } from "../../src/shared/config/storybook/ThemeDecorator/ThemeDecorator.tsx";
 import { RouterDecorator } from "../../src/shared/config/storybook/RouterDecorator/RouterDecorator.tsx";
@@ -15,7 +15,18 @@ export const parameters = {
     },
   },
   // добавляем, чтоб компоненты сторибука открывались на весь экран без паддингов
-  layout: "fullscreen"
+  layout: "fullscreen",
+  // настройки аддона storybook-addon-themes под темы
+  themes: {
+    // указываем дефолтную тему
+    default: "dark",
+    // перечисляем все доступные темы (название, навешиваемый класс css, цвет рядом с названием в селекте выбора)
+    list: [
+      { name: "light", class: Theme.LIGHT, color: "#ffffff" },
+      { name: "dark", class: Theme.DARK, color: "#000000" },
+      { name: "orange", class: Theme.ORANGE, color: "#ffb005" },
+    ],
+  },
 };
 
 // здесь вызываются обертки для каждого сторибук компонента:

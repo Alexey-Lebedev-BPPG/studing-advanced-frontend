@@ -2,11 +2,19 @@ module.exports = {
   stories: ["../../src/**/*.stories.@(js|jsx|ts|tsx)"],
   addons: [
     "@storybook/addon-links",
-    "@storybook/addon-essentials",
+    // этот аддон добавляет сразу несколько аддонов, можно какие-то внутренние отключать
+    {
+      name: "@storybook/addon-essentials",
+      options: {
+        // отключаем дефолтный бэкграунд для тем
+        backgrounds: false,
+      },
+    },
     "@storybook/addon-interactions",
     // аддон, чтоб мокать запросы в сторибуке
     "storybook-addon-mock/register",
     // чтоб не заморачиваться с созданием разных кнопок для разных тем, можно поставить аддон: https://storybook.js.org/addons/@dhruvkb/storybook-addon-themes
+    "storybook-addon-themes",
   ],
   framework: "@storybook/react",
   core: {
