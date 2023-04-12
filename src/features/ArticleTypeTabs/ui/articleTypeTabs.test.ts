@@ -3,3 +3,4 @@ describe("ArticleTypeTabs", () => {
     expect({}).toEqual({});
   });
 });
+export {};

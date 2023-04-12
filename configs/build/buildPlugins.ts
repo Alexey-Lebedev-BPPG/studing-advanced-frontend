@@ -15,17 +15,12 @@ export const buildPlugins = ({
   apiURL,
   project,
 }: BuildOptions): webpack.WebpackPluginInstance[] => {
+  const isProd = !isDev;
+
   const plugins = [
     // генерим главный html (index.tsx) из пути src, чтоб в него встраивались скрипты
     new htmlWebpackPlugin({
       template: paths.html,
-    }),
-    // чтоб файлы css в сборке находились отдельно (не внутри js файла)
-    new MiniCssExtractPlugin({
-      // название на выходе
-      filename: "css/[name].[contenthash:8].css",
-      // название для чанков
-      chunkFilename: "css/[name].[contenthash:8].css",
     }),
     // с ним можно прокидывать глобальные переменные в само приложение
     new DefinePlugin({
@@ -34,10 +29,6 @@ export const buildPlugins = ({
       __IS_DEV_DEBUG__: JSON.stringify(isDevDebug), // теперь эта переменная доступна в коде (например, файл i18n.ts)
       __API__: JSON.stringify(apiURL),
       __PROJECT__: JSON.stringify(project),
-    }),
-    // используем плагин, чтоб переместить файлы переводов в сборке
-    new CopyPlugin({
-      patterns: [{ from: paths.locales, to: paths.buildLocales }],
     }),
     // проверяет круговые зависимости в проекте
     new CircularDependencyPlugin({
@@ -72,6 +63,24 @@ export const buildPlugins = ({
       new webpack.ProgressPlugin(),
       // включаем плагин анализа размера пакетов
       new BundleAnalyzerPlugin()
+    );
+  }
+
+  if (isProd) {
+    // чтоб файлы css в сборке находились отдельно (не внутри js файла)
+    plugins.push(
+      new MiniCssExtractPlugin({
+        // название на выходе
+        filename: "css/[name].[contenthash:8].css",
+        // название для чанков
+        chunkFilename: "css/[name].[contenthash:8].css",
+      })
+    );
+    // используем плагин, чтоб переместить файлы переводов в сборке
+    plugins.push(
+      new CopyPlugin({
+        patterns: [{ from: paths.locales, to: paths.buildLocales }],
+      })
     );
   }
 

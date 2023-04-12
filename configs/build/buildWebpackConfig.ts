@@ -31,7 +31,7 @@ export const buildWebpackConfig = (
     // вызываем функцию со списком resolves
     resolve: buildResolvers(options),
     // чтоб видеть в каком именно файле произошла ошибка(используем только в дев сборке)
-    devtool: isDev ? "inline-source-map" : undefined,
+    devtool: isDev ? "eval-cheap-module-source-map" : undefined,
     // чтоб при старте приложения запускать localhost(используем только в дев сборке)
     devServer: isDev ? buildDevServer(options) : undefined,
     stats: {

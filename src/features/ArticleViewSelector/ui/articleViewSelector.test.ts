@@ -3,3 +3,4 @@ describe("ArticleViewSelector", () => {
     expect({}).toEqual({});
   });
 });
+export {};
