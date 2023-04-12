@@ -72,6 +72,7 @@ module.exports = {
     curly: "off",
     "react/no-array-index-key": "off",
     "no-plusplus": "off",
+    "no-unused-expressions": "off",
     // прокидываем наш алиас в плагин линтера импортов (каcтомный)
     "path-checher-ulbi-example/path-checker": ["warn", { alias: "@" }],
     "path-checher-ulbi-example/public-api-imports": [

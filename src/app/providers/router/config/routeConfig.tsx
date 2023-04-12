@@ -8,58 +8,69 @@ import { ForbiddenPage } from "@/pages/ForbiddenPage";
 import { MainPage } from "@/pages/MainPage";
 import { NotFoundPage } from "@/pages/NotFoundPage";
 import { ProfilePage } from "@/pages/ProfilePage";
-import { AppRoutes, RoutePath } from "@/shared/const/router";
+import {
+  AppRoutes,
+  getRouteAbout,
+  getRouteAdminPanel,
+  getRouteArticleCreate,
+  getRouteArticleDetails,
+  getRouteArticleEdit,
+  getRouteArticles,
+  getRouteForbidden,
+  getRouteMain,
+  getRouteProfile,
+} from "@/shared/const/router";
 import { AppRoutesProps } from "@/shared/types/router";
 
 export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
   [AppRoutes.MAIN]: {
-    path: RoutePath[AppRoutes.MAIN],
+    path: getRouteMain(),
     element: <MainPage />,
   },
   [AppRoutes.ABOUT]: {
-    path: RoutePath[AppRoutes.ABOUT],
+    path: getRouteAbout(),
     element: <AboutPage />,
   },
   [AppRoutes.PROFILE]: {
     // добаляем динамически id
-    path: `${RoutePath[AppRoutes.PROFILE]}:id`,
+    path: getRouteProfile(":id"),
     element: <ProfilePage />,
     authOnly: true,
   },
   [AppRoutes.ARTICLES]: {
-    path: RoutePath[AppRoutes.ARTICLES],
+    path: getRouteArticles(),
     element: <ArticlesPage />,
     authOnly: true,
   },
   [AppRoutes.ARTICLE_DETAILS]: {
     // добаляем динамически id
-    path: `${RoutePath[AppRoutes.ARTICLE_DETAILS]}:id`,
+    path: getRouteArticleDetails(":id"),
     element: <ArticleDetailsPage />,
     authOnly: true,
   },
   [AppRoutes.ARTICLE_CREATE]: {
-    path: `${RoutePath[AppRoutes.ARTICLE_CREATE]}`,
+    path: getRouteArticleCreate(),
     element: <ArticleEditPage />,
     authOnly: true,
   },
   [AppRoutes.ARTICLE_EDIT]: {
-    path: `${RoutePath[AppRoutes.ARTICLE_EDIT]}`,
+    path: getRouteArticleEdit(":id"),
     element: <ArticleEditPage />,
     authOnly: true,
   },
   [AppRoutes.ADMIN_PANEL]: {
-    path: `${RoutePath[AppRoutes.ADMIN_PANEL]}`,
+    path: getRouteAdminPanel(),
     element: <AdminPanelPage />,
     authOnly: true,
     // добавляем массив ролей, чтоб потом сделать проверку на них
     roles: [UserRole.MANAGER, UserRole.ADMIN],
   },
   [AppRoutes.FORBIDDEN]: {
-    path: `${RoutePath[AppRoutes.FORBIDDEN]}`,
+    path: getRouteForbidden(),
     element: <ForbiddenPage />,
   },
   [AppRoutes.NOT_FOUND]: {
-    path: RoutePath[AppRoutes.NOT_FOUND],
+    path: "*",
     element: <NotFoundPage />,
   },
 };
