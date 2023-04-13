@@ -11,7 +11,7 @@ const MainPage: FC = () => {
   const onChange = (val: string) => setValue(val);
 
   return (
-    <Page>
+    <Page data-testid="MainPage">
       {/* компонент для тестирования создания ошибки */}
       <BugButton />
       <Input value={value} onChange={onChange} placeholder="Введите текст" />

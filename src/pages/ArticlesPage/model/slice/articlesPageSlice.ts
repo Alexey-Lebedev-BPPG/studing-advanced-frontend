@@ -13,7 +13,7 @@ import {
   ArticleView,
 } from "@/entities/Article";
 import { ARTICLE_VIEW_LOCALSTORAGE_KEY } from "@/shared/const/localStorage";
-import { SortOrder } from "@/shared/types";
+import { SortOrder } from "@/shared/types/sort";
 
 // делаем через подход нормализации данных в redux toolkit (https://redux-toolkit.js.org/api/createEntityAdapter#crud-functions)
 

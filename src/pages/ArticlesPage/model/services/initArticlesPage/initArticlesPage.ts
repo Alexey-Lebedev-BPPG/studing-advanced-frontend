@@ -4,7 +4,7 @@ import { articlesPageActions } from "../../slice/articlesPageSlice";
 import { fetchArticlesList } from "../fetchArticlesList/fetchArticlesList";
 import { ThunkConfig } from "@/app/providers/StoreProvider";
 import { ArticleSortFields, ArticleType } from "@/entities/Article";
-import { SortOrder } from "@/shared/types";
+import { SortOrder } from "@/shared/types/sort";
 
 // для подгрузки не первой порции данных, а уже последующих
 

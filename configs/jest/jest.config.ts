@@ -18,11 +18,11 @@ export default {
   moduleDirectories: ["node_modules", "src"],
   // альтернативным вариантом, чтоб абсолютные пути заработали будет добавление такого свойства
   // modulePaths: ["<rootDir>src"],
+  modulePaths: ["<rootDir>src"],
   // расширения файлов, в которых проводить тестирования
   moduleFileExtensions: ["js", "jsx", "ts", "tsx", "json", "node"],
   // т.к. файл конфигурации лежит не в корне, то нужно выйти в корень проекта
   rootDir: "../../",
-  modulePaths: ["<rootDir>src"],
   // регулярка для поиска файлов тестирования (rootDir заменяется на вышестоящий путь)
   testMatch: ["<rootDir>src/**/*(*.)@(spec|test).[tj]s?(x)"],
   // добавляем файл импорта @testing-library/jest-dom, предварительно создав для него файл импорта

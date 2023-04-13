@@ -10,8 +10,9 @@ import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch/useAppDispatch
 import { useInfiniteScroll } from "@/shared/lib/hooks/useInfiniteScroll/useInfiniteScroll";
 import { useInitialEffect } from "@/shared/lib/hooks/useInitialEffect/useInitialEffect";
 import { useThrottle } from "@/shared/lib/hooks/useThrottle/useThrottle";
+import { TestProps } from "@/shared/types/tests";
 
-export interface IPageProps {
+export interface IPageProps extends TestProps {
   className?: string;
   children: ReactNode;
   // функция для отработки при достижении конца страницы
@@ -20,7 +21,7 @@ export interface IPageProps {
 
 // компонент для оборачивания страниц, который применяет некоторые стили для всех страниц
 export const Page: FC<IPageProps> = memo(
-  ({ className, children, onScrollEnd }) => {
+  ({ className, children, onScrollEnd, ...otherProps }) => {
     const dispatch = useAppDispatch();
     const { pathname } = useLocation();
 
@@ -61,6 +62,7 @@ export const Page: FC<IPageProps> = memo(
         className={classNames(cls.page, {}, [className])}
         onScroll={onScrollHandler}
         id={PAGE_ID}
+        data-testid={otherProps["data-testid"] || "Page"}
       >
         {children}
         {onScrollEnd ? <div className={cls.trigger} ref={triggerRef} /> : null}

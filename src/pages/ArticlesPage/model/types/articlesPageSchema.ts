@@ -5,7 +5,7 @@ import {
   ArticleSortFields,
   ArticleType,
 } from "@/entities/Article";
-import { SortOrder } from "@/shared/types";
+import { SortOrder } from "@/shared/types/sort";
 
 // наследуемся от внутреннего типа redux, которое добавлет ids: string[] и entitis с нашими типами комментов
 export interface ArticlesPageSchema extends EntityState<Article> {
