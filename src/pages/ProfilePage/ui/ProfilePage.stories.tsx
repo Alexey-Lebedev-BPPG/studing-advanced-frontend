@@ -1,5 +1,4 @@
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import React from "react";
 import ProfilePage from "./ProfilePage";
 import { Country } from "@/entities/Country";
 import { Currency } from "@/entities/Currency";

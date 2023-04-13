@@ -3,3 +3,4 @@ describe("AppImage", () => {
     expect({}).toEqual({});
   });
 });
+export {};
