@@ -1,8 +1,8 @@
-import { CounterSchema } from "../types/counterSchema";
-import { CounterReducer, CounterActions } from "./counterSlice";
+import { CounterSchema } from '../types/counterSchema';
+import { CounterReducer, CounterActions } from './counterSlice';
 
-describe("counterSlice", () => {
-  test("decrement", () => {
+describe('counterSlice', () => {
+  test('decrement', () => {
     // используем не глобальный стейт, а определенное его значение
     const state: CounterSchema = { value: 10 };
 
@@ -11,7 +11,7 @@ describe("counterSlice", () => {
     });
   });
 
-  test("increment", () => {
+  test('increment', () => {
     // используем не глобальный стейт, а определенное его значение
     const state: CounterSchema = { value: 10 };
 
@@ -20,7 +20,7 @@ describe("counterSlice", () => {
     });
   });
 
-  test("should work with empty state", () => {
+  test('should work with empty state', () => {
     // проверяем с путым стейтом
     expect(CounterReducer(undefined, CounterActions.increment())).toEqual({
       value: 1,

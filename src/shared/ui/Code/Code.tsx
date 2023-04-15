@@ -1,8 +1,8 @@
-import { FC, memo, useCallback } from "react";
-import { Button, ButtonTheme } from "../Button/Button";
-import cls from "./Code.module.scss";
-import CopyIcon from "@/shared/assets/icons/copy-20-20.svg";
-import { classNames } from "@/shared/lib/classNames/classNames";
+import { FC, memo, useCallback } from 'react';
+import { Button, ButtonTheme } from '../Button/Button';
+import cls from './Code.module.scss';
+import CopyIcon from '@/shared/assets/icons/copy-20-20.svg';
+import { classNames } from '@/shared/lib/classNames/classNames';
 
 interface ICodeProps {
   className?: string;

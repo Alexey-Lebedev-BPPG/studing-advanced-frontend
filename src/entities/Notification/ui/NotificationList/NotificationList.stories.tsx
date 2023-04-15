@@ -1,18 +1,18 @@
-import { ComponentStory, ComponentMeta } from "@storybook/react";
-import { NotificationList } from "./NotificationList";
-import { StoreDecorator } from "@/shared/config/storybook/StoreDecorator/StoreDecorator";
-import { ThemeDecorator } from "@/shared/config/storybook/ThemeDecorator/ThemeDecorator";
-import { Theme } from "@/shared/const/theme";
+import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { NotificationList } from './NotificationList';
+import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
+import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
+import { Theme } from '@/shared/const/theme';
 
 export default {
-  title: "entities/Notification/NotificationList",
+  title: 'entities/Notification/NotificationList',
   component: NotificationList,
   argTypes: {
-    backgroundColor: { control: "color" },
+    backgroundColor: { control: 'color' },
   },
 } as ComponentMeta<typeof NotificationList>;
 
-const Template: ComponentStory<typeof NotificationList> = (arg) => (
+const Template: ComponentStory<typeof NotificationList> = arg => (
   <NotificationList {...arg} />
 );
 

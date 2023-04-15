@@ -1,48 +1,48 @@
-import path from "path";
+import path from 'path';
 
 export default {
   // чтоб объявлять глобальные переменные
   globals: {
     __IS_DEV__: true,
     __IS_DEV_DEBUG__: true,
-    __API__: "",
-    __PROJECT__: "jest",
+    __API__: '',
+    __PROJECT__: 'jest',
   },
   // удалять моки после тестов
   clearMocks: true,
   // тестовые переменные, которые используются при тестировании
-  testEnvironment: "jsdom",
+  testEnvironment: 'jsdom',
   // игнорируемые папки для тестирования
-  coveragePathIgnorePatterns: ["/node_modules/"],
+  coveragePathIgnorePatterns: ['/node_modules/'],
   // добавляем "src", чтоб заработали абсолютные пути
-  moduleDirectories: ["node_modules", "src"],
+  moduleDirectories: ['node_modules', 'src'],
   // альтернативным вариантом, чтоб абсолютные пути заработали будет добавление такого свойства
   // modulePaths: ["<rootDir>src"],
-  modulePaths: ["<rootDir>src"],
+  modulePaths: ['<rootDir>src'],
   // расширения файлов, в которых проводить тестирования
-  moduleFileExtensions: ["js", "jsx", "ts", "tsx", "json", "node"],
+  moduleFileExtensions: ['js', 'jsx', 'ts', 'tsx', 'json', 'node'],
   // т.к. файл конфигурации лежит не в корне, то нужно выйти в корень проекта
-  rootDir: "../../",
+  rootDir: '../../',
   // регулярка для поиска файлов тестирования (rootDir заменяется на вышестоящий путь)
-  testMatch: ["<rootDir>src/**/*(*.)@(spec|test).[tj]s?(x)"],
+  testMatch: ['<rootDir>src/**/*(*.)@(spec|test).[tj]s?(x)'],
   // добавляем файл импорта @testing-library/jest-dom, предварительно создав для него файл импорта
-  setupFilesAfterEnv: ["<rootDir>configs/jest/setupTests.ts"],
+  setupFilesAfterEnv: ['<rootDir>configs/jest/setupTests.ts'],
   // добавляем css, scss файлы для распознавания джестом
   moduleNameMapper: {
-    "\\.s?css$": "identity-obj-proxy",
+    '\\.s?css$': 'identity-obj-proxy',
     // мок для всех импортов, в которых будет присутствовать svg
-    "\\.svg": path.resolve(__dirname, "jestEmptyComponent.tsx"),
+    '\\.svg': path.resolve(__dirname, 'jestEmptyComponent.tsx'),
     // добавляем поддержку алиасов
-    "^@/(.*)$": "<rootDir>/src/$1",
+    '^@/(.*)$': '<rootDir>/src/$1',
   },
   // чтоб появлялся отчет о пройденных unit тестах на отдельной странице
   reporters: [
-    "default",
+    'default',
     [
-      "jest-html-reporters",
+      'jest-html-reporters',
       {
-        publicPath: "<rootDir>/reports/unit",
-        filename: "report.html",
+        publicPath: '<rootDir>/reports/unit',
+        filename: 'report.html',
         // openReport: __IS_DEV_DEBUG__,
         inlineSource: true,
       },

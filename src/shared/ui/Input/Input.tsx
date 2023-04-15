@@ -7,13 +7,13 @@ import {
   useEffect,
   useRef,
   useState,
-} from "react";
-import cls from "./Input.module.scss";
-import { classNames } from "@/shared/lib/classNames/classNames";
+} from 'react';
+import cls from './Input.module.scss';
+import { classNames } from '@/shared/lib/classNames/classNames';
 
 type HTMLInputProps = Omit<
   InputHTMLAttributes<HTMLInputElement>,
-  "value" | "onChange" | "readOnly"
+  'value' | 'onChange' | 'readOnly'
 >;
 
 interface IInputProps extends HTMLInputProps {
@@ -24,12 +24,12 @@ interface IInputProps extends HTMLInputProps {
   readonly?: boolean;
 }
 // memo позволяет избежать лишних перерисовок
-export const Input: FC<IInputProps> = memo((props) => {
+export const Input: FC<IInputProps> = memo(props => {
   const {
     className,
     value,
     onChange,
-    type = "text",
+    type = 'text',
     placeholder,
     autofocus,
     readonly,

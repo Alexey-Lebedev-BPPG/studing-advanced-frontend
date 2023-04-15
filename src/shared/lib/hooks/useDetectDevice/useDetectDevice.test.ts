@@ -1,5 +1,5 @@
-describe("useDetectDevice", () => {
-  test("", () => {
+describe('useDetectDevice', () => {
+  test('', () => {
     expect({}).toEqual({});
   });
 });

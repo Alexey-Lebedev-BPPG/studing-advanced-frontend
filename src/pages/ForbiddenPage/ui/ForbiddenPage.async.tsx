@@ -1,6 +1,6 @@
-import { lazy } from "react";
+import { lazy } from 'react';
 
-export const ForbiddenPageAsync = lazy(() => import("./ForbiddenPage"));
+export const ForbiddenPageAsync = lazy(() => import('./ForbiddenPage'));
 
 // import { IForbiddenPageProps } from './ForbiddenPage';
 // !Важно: для подгрузки импортируемый компонет должен экспортироваться ТОЛЬКО по дефолту

@@ -1,8 +1,8 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { fetchProfileData } from "../services/fetchProfileData/fetchProfileData";
-import { updateProfileData } from "../services/updateProfileData/updateProfileData";
-import { ProfileSchema } from "../types/editableProfileCard";
-import { Profile } from "@/entities/Profile";
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { fetchProfileData } from '../services/fetchProfileData/fetchProfileData';
+import { updateProfileData } from '../services/updateProfileData/updateProfileData';
+import { ProfileSchema } from '../types/editableProfileCard';
+import { Profile } from '@/entities/Profile';
 
 const initialState: ProfileSchema = {
   isLoading: false,
@@ -10,13 +10,13 @@ const initialState: ProfileSchema = {
 };
 
 export const profileSlice = createSlice({
-  name: "profile",
+  name: 'profile',
   initialState,
   reducers: {
     setReadonly: (state, { payload }: PayloadAction<boolean>) => {
       state.readonly = payload;
     },
-    cancelEdit: (state) => {
+    cancelEdit: state => {
       state.readonly = true;
       state.validateError = undefined;
       state.form = state.data;
@@ -26,12 +26,12 @@ export const profileSlice = createSlice({
     },
   },
   // исgользуется для асинхронного изменения стейта
-  extraReducers: (builder) => {
+  extraReducers: builder => {
     // у каждого thunka есть 3 состояния: 1. pending, 2. fulfilled, 3. rejected
     // все 3 состояния можно здесь обработать
     builder
       // используем наш thunk
-      .addCase(fetchProfileData.pending, (state) => {
+      .addCase(fetchProfileData.pending, state => {
         // это состояние, когда наш thunk начинается
         // обнуляем ошибку, если она была и делаем isLoading true
         state.error = undefined;
@@ -44,14 +44,14 @@ export const profileSlice = createSlice({
           state.isLoading = false;
           state.data = action.payload;
           state.form = action.payload;
-        }
+        },
       )
       .addCase(fetchProfileData.rejected, (state, action) => {
         // action - поле, которое мы возвращаем из thunka при ошибке(3 аргумент в дженерике)
         state.isLoading = false;
         state.error = action.payload;
       })
-      .addCase(updateProfileData.pending, (state) => {
+      .addCase(updateProfileData.pending, state => {
         // это состояние, когда наш thunk начинается
         // обнуляем ошибку, если она была и делаем isLoading true
         state.validateError = undefined;
@@ -66,7 +66,7 @@ export const profileSlice = createSlice({
           state.form = action.payload;
           state.readonly = true;
           state.validateError = undefined;
-        }
+        },
       )
       .addCase(updateProfileData.rejected, (state, action) => {
         // action - поле, которое мы возвращаем из thunka при ошибке(3 аргумент в дженерике)

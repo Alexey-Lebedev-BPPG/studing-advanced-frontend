@@ -3,14 +3,14 @@ import {
   configureStore,
   Reducer,
   ReducersMapObject,
-} from "@reduxjs/toolkit";
-import { createReducerManager } from "./reducerManager";
-import { StateSchema } from "./stateSchema";
-import { CounterReducer } from "@/entities/Counter";
-import { userReducer } from "@/entities/User";
-import { scrollSaveReducer } from "@/features/ScrollSave";
-import { $api } from "@/shared/api/api";
-import { rtkApi } from "@/shared/api/rtkApi";
+} from '@reduxjs/toolkit';
+import { createReducerManager } from './reducerManager';
+import { StateSchema } from './stateSchema';
+import { CounterReducer } from '@/entities/Counter';
+import { userReducer } from '@/entities/User';
+import { scrollSaveReducer } from '@/features/ScrollSave';
+import { $api } from '@/shared/api/api';
+import { rtkApi } from '@/shared/api/rtkApi';
 
 // стандартное решение для редакса
 // export default configureStore({ reducer: {} });
@@ -19,7 +19,7 @@ import { rtkApi } from "@/shared/api/rtkApi";
 export const createReduxStore = (
   initialState?: StateSchema,
   // принимаем асинхронные редьюсеры
-  asyncReducers?: ReducersMapObject<StateSchema>
+  asyncReducers?: ReducersMapObject<StateSchema>,
   // принимаем функцию из StoreProvider
   // navigate?: (to: To, option?: NavigateOptions) => void
 ) => {
@@ -47,7 +47,7 @@ export const createReduxStore = (
     preloadedState: initialState,
     // создаем мидлвеар, что передать туда наш инстанс аксиоса
     // eslint-disable-next-line @typescript-eslint/no-shadow
-    middleware: (getDefaultMiddleware) =>
+    middleware: getDefaultMiddleware =>
       getDefaultMiddleware({
         thunk: {
           // сюда можно передать все что угодно
@@ -67,4 +67,4 @@ export const createReduxStore = (
 };
 
 // создаем тип для диспатча, чтоб подхватывались используемые типы
-export type AppDispatch = ReturnType<typeof createReduxStore>["dispatch"];
+export type AppDispatch = ReturnType<typeof createReduxStore>['dispatch'];

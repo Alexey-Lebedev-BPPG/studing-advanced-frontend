@@ -1,9 +1,9 @@
-import { FC, memo, Suspense, useCallback } from "react";
-import { Routes, Route } from "react-router-dom";
-import { routeConfig } from "../config/routeConfig";
-import { RequireAuth } from "./RequireAuth";
-import { AppRoutesProps } from "@/shared/types/router";
-import { PageLoader } from "@/widgets/PageLoader";
+import { FC, memo, Suspense, useCallback } from 'react';
+import { Routes, Route } from 'react-router-dom';
+import { routeConfig } from '../config/routeConfig';
+import { RequireAuth } from './RequireAuth';
+import { AppRoutesProps } from '@/shared/types/router';
+import { PageLoader } from '@/widgets/PageLoader';
 
 const AppRouter: FC = () => {
   // создаем функцию для перебора массива роутов

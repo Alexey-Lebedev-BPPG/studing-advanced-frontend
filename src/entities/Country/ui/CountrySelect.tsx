@@ -1,7 +1,7 @@
-import { FC, memo, useCallback } from "react";
-import { useTranslation } from "react-i18next";
-import { Country } from "../model/consts/consts";
-import { ListBox } from "@/shared/ui/Popups";
+import { FC, memo, useCallback } from 'react';
+import { useTranslation } from 'react-i18next';
+import { Country } from '../model/consts/consts';
+import { ListBox } from '@/shared/ui/Popups';
 
 interface ICountryProps {
   className?: string;
@@ -28,20 +28,20 @@ export const CountrySelect: FC<ICountryProps> = memo(
       (valueOpt: string) => {
         onChange?.(valueOpt as Country);
       },
-      [onChange]
+      [onChange],
     );
 
     return (
       <ListBox
         value={value}
         className={className}
-        defaultValue={t("Укажите страну")}
-        label={t("Укажите страну")}
+        defaultValue={t('Укажите страну')}
+        label={t('Укажите страну')}
         readonly={readonly}
         items={options}
         onChange={onChangeHandler}
-        direction="top right"
+        direction='top right'
       />
     );
-  }
+  },
 );

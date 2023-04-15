@@ -1,12 +1,12 @@
-import { Listbox as HListbox } from "@headlessui/react";
-import { FC, Fragment, ReactNode } from "react";
-import { classNames } from "../../../../lib/classNames/classNames";
-import { DropDownDirection } from "../../../../types/ui";
-import { Button } from "../../../Button/Button";
-import { HStack } from "../../../Stack";
-import { mapDirectionClass } from "../../styles/consts";
-import popupCls from "../../styles/popups.module.scss";
-import cls from "./ListBox.module.scss";
+import { Listbox as HListbox } from '@headlessui/react';
+import { FC, Fragment, ReactNode } from 'react';
+import { classNames } from '../../../../lib/classNames/classNames';
+import { DropDownDirection } from '../../../../types/ui';
+import { Button } from '../../../Button/Button';
+import { HStack } from '../../../Stack';
+import { mapDirectionClass } from '../../styles/consts';
+import popupCls from '../../styles/popups.module.scss';
+import cls from './ListBox.module.scss';
 
 export interface ListBoxItem {
   value: string;
@@ -32,18 +32,18 @@ export const ListBox: FC<IListBoxProps> = ({
   defaultValue,
   onChange,
   readonly,
-  direction = "bottom left",
+  direction = 'bottom left',
   label,
 }) => {
   const optionsClasses = [mapDirectionClass[direction]];
 
   return (
-    <HStack gap="4">
+    <HStack gap='4'>
       {label && <span>{`${label}>`}</span>}
       <HListbox
-        as="div"
+        as='div'
         disabled={readonly}
-        className={classNames("", {}, [className, popupCls.popup])}
+        className={classNames('', {}, [className, popupCls.popup])}
         value={value}
         onChange={onChange}
       >
@@ -53,7 +53,7 @@ export const ListBox: FC<IListBoxProps> = ({
         <HListbox.Options
           className={classNames(cls.options, {}, optionsClasses)}
         >
-          {items?.map((item) => (
+          {items?.map(item => (
             <HListbox.Option
               key={item.value}
               value={item.value}
@@ -69,7 +69,7 @@ export const ListBox: FC<IListBoxProps> = ({
                     [popupCls.disabled]: item.disabled,
                   })}
                 >
-                  {selected && "!!!"}
+                  {selected && '!!!'}
                   {item.content}
                 </li>
               )}

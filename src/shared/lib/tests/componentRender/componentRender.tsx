@@ -1,15 +1,15 @@
-import { ReducersMapObject } from "@reduxjs/toolkit";
-import { render } from "@testing-library/react";
-import { ReactNode } from "react";
-import { I18nextProvider } from "react-i18next";
-import { MemoryRouter } from "react-router-dom";
-import { StateSchema, StoreProvider } from "@/app/providers/StoreProvider";
+import { ReducersMapObject } from '@reduxjs/toolkit';
+import { render } from '@testing-library/react';
+import { ReactNode } from 'react';
+import { I18nextProvider } from 'react-i18next';
+import { MemoryRouter } from 'react-router-dom';
+import { StateSchema, StoreProvider } from '@/app/providers/StoreProvider';
 // eslint-disable-next-line path-checher-ulbi-example/layer-imports
-import { ThemeProvider } from "@/app/providers/ThemeProvider";
-import i18nForTests from "@/shared/config/i18n/i18nForTests";
-import { Theme } from "@/shared/const/theme";
+import { ThemeProvider } from '@/app/providers/ThemeProvider';
+import i18nForTests from '@/shared/config/i18n/i18nForTests';
+import { Theme } from '@/shared/const/theme';
 // eslint-disable-next-line path-checher-ulbi-example/layer-imports
-import "@/app/styles/index.scss";
+import '@/app/styles/index.scss';
 
 export interface IComponentRenderOptions {
   route?: string;
@@ -28,7 +28,7 @@ interface TestProviderProps {
 export function TestProvider(props: TestProviderProps) {
   const { children, options = {} } = props;
   const {
-    route = "/",
+    route = '/',
     initialState,
     asyncReducer,
     theme = Theme.LIGHT,
@@ -50,7 +50,7 @@ export function TestProvider(props: TestProviderProps) {
 // обертка для тестируемого компонента с добавлением конфигурации для роутов и i18n
 export const componentRender = (
   component: ReactNode,
-  options: IComponentRenderOptions = {}
+  options: IComponentRenderOptions = {},
 ) => render(<TestProvider options={options}>{component}</TestProvider>);
 
 // !!! переделать на 18 реакт (Warning: ReactDOM.render is no longer supported in React 18. Use createRoot instead. Until you switch to the new API, your app will behave as if it's running React 17. Learn more: https://reactjs.org/link/switch-to-createroot)

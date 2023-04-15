@@ -6,11 +6,11 @@ import {
   useMemo,
   useRef,
   useState,
-} from "react";
+} from 'react';
 
 // вытягиваем типы из библиотеки
-type SpringType = typeof import("@react-spring/web");
-type GestureType = typeof import("@use-gesture/react");
+type SpringType = typeof import('@react-spring/web');
+type GestureType = typeof import('@use-gesture/react');
 
 interface AnimationContextPayload {
   Gesture?: GestureType;
@@ -25,7 +25,7 @@ const AnimationContext = createContext<AnimationContextPayload>({});
 // создаем функцию для асинхронной (ленивой) подгрузки библиотек
 const getAsyncAnimationModules = () =>
   // такой способ позволяет подгружать библиотеки где угодно (мы подгружаем их параллельно)
-  Promise.all([import("@react-spring/web"), import("@use-gesture/react")]);
+  Promise.all([import('@react-spring/web'), import('@use-gesture/react')]);
 
 // если мы хотим сделать независимые подгрузки (то есть подгружается сначала одна, за ней другая), то вышеуказанная функция будет выглядеть вот так:
 // const getAsyncAnimationModules = async () => {
@@ -63,7 +63,7 @@ export const AnimationProvider = ({ children }: { children: ReactNode }) => {
       Spring: SpringRef.current,
       isLoaded,
     }),
-    [isLoaded]
+    [isLoaded],
   );
   return (
     <AnimationContext.Provider value={value}>

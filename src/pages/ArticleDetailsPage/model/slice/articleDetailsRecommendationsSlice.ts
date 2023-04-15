@@ -1,26 +1,26 @@
-import { createEntityAdapter, createSlice } from "@reduxjs/toolkit";
-import { fetchArticleRecommendations } from "../services/fetchArticleRecommendations/fetchArticleRecommendations";
-import { ArticleDetailsRecommendationsSchema } from "../types/articleDetailsRecommendationsSchema";
-import { StateSchema } from "@/app/providers/StoreProvider";
-import { Article } from "@/entities/Article";
+import { createEntityAdapter, createSlice } from '@reduxjs/toolkit';
+import { fetchArticleRecommendations } from '../services/fetchArticleRecommendations/fetchArticleRecommendations';
+import { ArticleDetailsRecommendationsSchema } from '../types/articleDetailsRecommendationsSchema';
+import { StateSchema } from '@/app/providers/StoreProvider';
+import { Article } from '@/entities/Article';
 
 // делаем через подход нормализации данных в redux toolkit (https://redux-toolkit.js.org/api/createEntityAdapter#crud-functions)
 
 const recommendationsAdapter = createEntityAdapter<Article>({
   // функция получения айдишника
-  selectId: (article) => article.id,
+  selectId: article => article.id,
 });
 
 // создаем селектор, чтоб доставать наши комментарии из стейта или возвращает дефолтное состояние
 export const getArticleRecommendations =
   recommendationsAdapter.getSelectors<StateSchema>(
-    (state) =>
+    state =>
       state.articleDetailsPage?.recommendations ||
-      recommendationsAdapter.getInitialState()
+      recommendationsAdapter.getInitialState(),
   );
 
 const articleDetailsRecommendationsSlice = createSlice({
-  name: "articleDetailsRecommendationsSlice",
+  name: 'articleDetailsRecommendationsSlice',
   // расширем инитиал стейт нашими полями
   initialState:
     recommendationsAdapter.getInitialState<ArticleDetailsRecommendationsSchema>(
@@ -29,16 +29,16 @@ const articleDetailsRecommendationsSlice = createSlice({
         error: undefined,
         ids: [],
         entities: {},
-      }
+      },
     ),
   reducers: {},
   // используется для асинхронного изменения стейта
-  extraReducers: (builder) => {
+  extraReducers: builder => {
     // у каждого thunka есть 3 состояния: 1. pending, 2. fulfilled, 3. rejected
     // все 3 состояния можно здесь обработать
     builder
       // используем наш thunk
-      .addCase(fetchArticleRecommendations.pending, (state) => {
+      .addCase(fetchArticleRecommendations.pending, state => {
         // это состояние, когда наш thunk начинается
         // обнуляем ошибку, если она была и делаем isLoading true
         state.error = undefined;

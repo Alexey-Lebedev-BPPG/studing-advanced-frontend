@@ -1,9 +1,9 @@
-import { ValidateProfileError } from "../../consts/consts";
-import { getProfileValidateErrors } from "./getProfileValidateErrors";
-import { StateSchema } from "@/app/providers/StoreProvider";
+import { ValidateProfileError } from '../../consts/consts';
+import { getProfileValidateErrors } from './getProfileValidateErrors';
+import { StateSchema } from '@/app/providers/StoreProvider';
 
-describe("getProfileValidateErrors", () => {
-  test("should return data", () => {
+describe('getProfileValidateErrors', () => {
+  test('should return data', () => {
     const state: DeepPartial<StateSchema> = {
       profile: {
         validateError: [ValidateProfileError.INCORRECT_AGE],
@@ -14,7 +14,7 @@ describe("getProfileValidateErrors", () => {
     ]);
   });
 
-  test("should work with empty state", () => {
+  test('should work with empty state', () => {
     const state: DeepPartial<StateSchema> = {};
     expect(getProfileValidateErrors(state as StateSchema)).toEqual(undefined);
   });

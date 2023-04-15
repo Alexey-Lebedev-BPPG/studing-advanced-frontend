@@ -1,11 +1,11 @@
-import React from "react";
-import { useTranslation } from "react-i18next";
-import { Page } from "@/widgets/Page";
+import React from 'react';
+import { useTranslation } from 'react-i18next';
+import { Page } from '@/widgets/Page';
 
 function AboutPage() {
   // в хук можем передать только тот файл перевода, который нам необходим
-  const { t } = useTranslation("about");
-  return <Page data-testid="AboutPage">{t("О сайте")}</Page>;
+  const { t } = useTranslation('about');
+  return <Page data-testid='AboutPage'>{t('О сайте')}</Page>;
 }
 
 export default AboutPage;

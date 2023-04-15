@@ -1,17 +1,17 @@
-import { memo, useCallback, useState } from "react";
-import { useTranslation } from "react-i18next";
-import { useSelector } from "react-redux";
-import cls from "./Navbar.module.scss";
-import { getUserAuthData } from "@/entities/User";
-import { LoginModal } from "@/features/AuthByUsername";
-import { AvatarDropdown } from "@/features/AvatarDropdown";
-import { NotificationButton } from "@/features/NotificationButton";
-import { getRouteArticleCreate } from "@/shared/const/router";
-import { classNames } from "@/shared/lib/classNames/classNames";
-import { AppLink, AppLinkTheme } from "@/shared/ui/AppLink";
-import { Button, ButtonTheme } from "@/shared/ui/Button";
-import { HStack } from "@/shared/ui/Stack";
-import { Text, TextTheme } from "@/shared/ui/Text";
+import { memo, useCallback, useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { useSelector } from 'react-redux';
+import cls from './Navbar.module.scss';
+import { getUserAuthData } from '@/entities/User';
+import { LoginModal } from '@/features/AuthByUsername';
+import { AvatarDropdown } from '@/features/AvatarDropdown';
+import { NotificationButton } from '@/features/NotificationButton';
+import { getRouteArticleCreate } from '@/shared/const/router';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { AppLink, AppLinkTheme } from '@/shared/ui/AppLink';
+import { Button, ButtonTheme } from '@/shared/ui/Button';
+import { HStack } from '@/shared/ui/Stack';
+import { Text, TextTheme } from '@/shared/ui/Text';
 
 interface NavbarProps {
   className?: string;
@@ -39,12 +39,12 @@ export const Navbar = memo(({ className }: NavbarProps) => {
         <Text
           theme={TextTheme.INVERTED}
           className={cls.appName}
-          title={t("Ulbi Example")}
+          title={t('Ulbi Example')}
         />
         <AppLink to={getRouteArticleCreate()} theme={AppLinkTheme.SECONDARY}>
-          {t("Создать статью")}
+          {t('Создать статью')}
         </AppLink>
-        <HStack gap="16" className={cls.actions}>
+        <HStack gap='16' className={cls.actions}>
           <NotificationButton />
           <AvatarDropdown />
         </HStack>
@@ -59,7 +59,7 @@ export const Navbar = memo(({ className }: NavbarProps) => {
         className={cls.links}
         onClick={onShowModal}
       >
-        {t("Войти")}
+        {t('Войти')}
       </Button>
       {/* если у нас модалка открывается, то только тогда мы модалку монтируем.если нет, то убираем ее из DOM-дерева */}
       {isAuthModal && (

@@ -14,5 +14,5 @@ export const getQueryParams = (params: OptionalRecord<string, string>) => {
 
 export const addQueryParams = (params: OptionalRecord<string, string>) => {
   // добавляем параметры в строку запроса
-  window.history.pushState(null, "", getQueryParams(params));
+  window.history.pushState(null, '', getQueryParams(params));
 };

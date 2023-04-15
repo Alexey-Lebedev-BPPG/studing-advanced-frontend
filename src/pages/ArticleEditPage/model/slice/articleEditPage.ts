@@ -1,13 +1,13 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { fetchArticleEditPage } from "../services/fetchArticleEditPage/fetchArticleEditPage";
-import { ArticleEditPageSchema } from "../types/articleEditPage";
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { fetchArticleEditPage } from '../services/fetchArticleEditPage/fetchArticleEditPage';
+import { ArticleEditPageSchema } from '../types/articleEditPage';
 
 const initialState: ArticleEditPageSchema = {
   isLoading: false,
 };
 
 export const articleEditPageSlice = createSlice({
-  name: "articleEditPage",
+  name: 'articleEditPage',
   initialState,
   reducers: {
     setIsLoading: (state, { payload }: PayloadAction<boolean>) => {
@@ -15,12 +15,12 @@ export const articleEditPageSlice = createSlice({
     },
   },
   // исgользуется для асинхронного изменения стейта
-  extraReducers: (builder) => {
+  extraReducers: builder => {
     // у каждого thunka есть 3 состояния: 1. pending, 2. fulfilled, 3. rejected
     // все 3 состояния можно здесь обработать
     builder
       // используем наш thunk
-      .addCase(fetchArticleEditPage.pending, (state) => {
+      .addCase(fetchArticleEditPage.pending, state => {
         // это состояние, когда наш thunk начинается
         // обнуляем ошибку, если она была и делаем isLoading true
         state.error = undefined;
@@ -32,7 +32,7 @@ export const articleEditPageSlice = createSlice({
           // здесь обрабатываем ответ сервера
           state.isLoading = false;
           state.data = action.payload;
-        }
+        },
       )
       .addCase(fetchArticleEditPage.rejected, (state, action) => {
         // action - поле, которое мы возвращаем из thunka при ошибке(3 аргумент в дженерике)

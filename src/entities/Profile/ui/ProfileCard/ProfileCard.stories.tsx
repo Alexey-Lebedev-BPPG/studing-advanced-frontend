@@ -1,30 +1,30 @@
-import { ComponentStory, ComponentMeta } from "@storybook/react";
-import { ProfileCard } from "./ProfileCard";
-import { Country } from "@/entities/Country";
-import { Currency } from "@/entities/Currency";
-import AvatarImg from "@/shared/assets/tests/AvatarImg.jpg";
+import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { ProfileCard } from './ProfileCard';
+import { Country } from '@/entities/Country';
+import { Currency } from '@/entities/Currency';
+import AvatarImg from '@/shared/assets/tests/AvatarImg.jpg';
 
 export default {
-  title: "entities/CountrySelect",
+  title: 'entities/CountrySelect',
   component: ProfileCard,
   argTypes: {
-    backgroundColor: { control: "color" },
+    backgroundColor: { control: 'color' },
   },
 } as ComponentMeta<typeof ProfileCard>;
 
-const Template: ComponentStory<typeof ProfileCard> = (args) => (
+const Template: ComponentStory<typeof ProfileCard> = args => (
   <ProfileCard {...args} />
 );
 
 export const Primary = Template.bind({});
 Primary.args = {
   data: {
-    username: "admin",
+    username: 'admin',
     age: 22,
     country: Country.Ukraine,
-    lastname: "test",
-    first: "asd",
-    city: "asd",
+    lastname: 'test',
+    first: 'asd',
+    city: 'asd',
     currency: Currency.USD,
     avatar: AvatarImg,
   },
@@ -32,7 +32,7 @@ Primary.args = {
 
 export const WithError = Template.bind({});
 WithError.args = {
-  error: "true",
+  error: 'true',
 };
 
 export const Loading = Template.bind({});

@@ -1,10 +1,10 @@
-import { FC, memo } from "react";
-import { useTranslation } from "react-i18next";
-import { Notification } from "../../model/types/notification";
-import cls from "./NotificationItem.module.scss";
-import { classNames } from "@/shared/lib/classNames/classNames";
-import { Card, CardTheme } from "@/shared/ui/Card";
-import { Text } from "@/shared/ui/Text";
+import { FC, memo } from 'react';
+import { useTranslation } from 'react-i18next';
+import { Notification } from '../../model/types/notification';
+import cls from './NotificationItem.module.scss';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { Card, CardTheme } from '@/shared/ui/Card';
+import { Text } from '@/shared/ui/Text';
 
 export interface INotificationItemProps {
   className?: string;
@@ -28,14 +28,14 @@ export const NotificationItem: FC<INotificationItemProps> = memo(
       return (
         <a
           className={cls.link}
-          target="_blank"
+          target='_blank'
           href={item.href}
-          rel="noreferrer"
+          rel='noreferrer'
         >
           {content}
         </a>
       );
 
     return content;
-  }
+  },
 );

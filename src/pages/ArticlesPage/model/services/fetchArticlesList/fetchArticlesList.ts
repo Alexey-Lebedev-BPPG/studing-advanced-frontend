@@ -1,5 +1,5 @@
-import { createAsyncThunk } from "@reduxjs/toolkit";
-import i18next from "i18next";
+import { createAsyncThunk } from '@reduxjs/toolkit';
+import i18next from 'i18next';
 import {
   getArticlesPageLimit,
   getArticlesPageNum,
@@ -7,10 +7,10 @@ import {
   getArticlesPageSearch,
   getArticlesPageSort,
   getArticlesPageType,
-} from "../../selectors/articlesPageSelectors";
-import { ThunkConfig } from "@/app/providers/StoreProvider";
-import { Article, ArticleType } from "@/entities/Article";
-import { addQueryParams } from "@/shared/lib/url/addQueryParams/addQueryParams";
+} from '../../selectors/articlesPageSelectors';
+import { ThunkConfig } from '@/app/providers/StoreProvider';
+import { Article, ArticleType } from '@/entities/Article';
+import { addQueryParams } from '@/shared/lib/url/addQueryParams/addQueryParams';
 
 interface FetchArticlesListProps {
   // поле для удаления значений из массива
@@ -22,7 +22,7 @@ export const fetchArticlesList = createAsyncThunk<
   Article[],
   FetchArticlesListProps,
   ThunkConfig<string>
->("articlesPage/fetchArticlesList", async (props, thunkApi) => {
+>('articlesPage/fetchArticlesList', async (props, thunkApi) => {
   const { extra, rejectWithValue, getState } = thunkApi;
 
   const limit = getArticlesPageLimit(getState());
@@ -35,11 +35,11 @@ export const fetchArticlesList = createAsyncThunk<
   try {
     // добавляем параметры в строку урл
     addQueryParams({ sort, order, search, type });
-    const response = await extra.api.get<Article[]>("/articles", {
+    const response = await extra.api.get<Article[]>('/articles', {
       // передаем параметры согласно документации jsonplaceholder
       params: {
         // чтоб получить полную сущность пользователя
-        _expand: "user",
+        _expand: 'user',
         _limit: limit,
         _page: page,
         _sort: sort,
@@ -54,6 +54,6 @@ export const fetchArticlesList = createAsyncThunk<
     return response.data;
   } catch (error) {
     // для обработки ошибок
-    return rejectWithValue(i18next.t("ARTICLE_ERROR"));
+    return rejectWithValue(i18next.t('ARTICLE_ERROR'));
   }
 });

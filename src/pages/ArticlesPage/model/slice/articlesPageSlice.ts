@@ -2,33 +2,33 @@ import {
   createEntityAdapter,
   createSlice,
   PayloadAction,
-} from "@reduxjs/toolkit";
-import { fetchArticlesList } from "../services/fetchArticlesList/fetchArticlesList";
-import { ArticlesPageSchema } from "../types/articlesPageSchema";
-import { StateSchema } from "@/app/providers/StoreProvider";
+} from '@reduxjs/toolkit';
+import { fetchArticlesList } from '../services/fetchArticlesList/fetchArticlesList';
+import { ArticlesPageSchema } from '../types/articlesPageSchema';
+import { StateSchema } from '@/app/providers/StoreProvider';
 import {
   Article,
   ArticleSortFields,
   ArticleType,
   ArticleView,
-} from "@/entities/Article";
-import { ARTICLE_VIEW_LOCALSTORAGE_KEY } from "@/shared/const/localStorage";
-import { SortOrder } from "@/shared/types/sort";
+} from '@/entities/Article';
+import { ARTICLE_VIEW_LOCALSTORAGE_KEY } from '@/shared/const/localStorage';
+import { SortOrder } from '@/shared/types/sort';
 
 // делаем через подход нормализации данных в redux toolkit (https://redux-toolkit.js.org/api/createEntityAdapter#crud-functions)
 
 const articlesAdapter = createEntityAdapter<Article>({
   // функция получения айдишника
-  selectId: (article) => article.id,
+  selectId: article => article.id,
 });
 
 // создаем селектор, чтоб доставать наши комментарии из стейта или возвращает дефолтное состояние
 export const getArticles = articlesAdapter.getSelectors<StateSchema>(
-  (state) => state.articlesPage || articlesAdapter.getInitialState()
+  state => state.articlesPage || articlesAdapter.getInitialState(),
 );
 
 const articlesPageSlice = createSlice({
-  name: "articlesPageSlice",
+  name: 'articlesPageSlice',
   // расширем инитиал стейт нашими полями
   initialState: articlesAdapter.getInitialState<ArticlesPageSchema>({
     isLoading: false,
@@ -41,8 +41,8 @@ const articlesPageSlice = createSlice({
     _inited: false,
     limit: 9,
     sort: ArticleSortFields.CREATED,
-    order: "asc",
-    search: "",
+    order: 'asc',
+    search: '',
     type: ArticleType.ALL,
   }),
   reducers: {
@@ -65,9 +65,9 @@ const articlesPageSlice = createSlice({
     setType: (state, { payload }: PayloadAction<ArticleType>) => {
       state.type = payload;
     },
-    initState: (state) => {
+    initState: state => {
       const view = localStorage.getItem(
-        ARTICLE_VIEW_LOCALSTORAGE_KEY
+        ARTICLE_VIEW_LOCALSTORAGE_KEY,
       ) as ArticleView;
       state.view = view;
       state.limit = view === ArticleView.BIG ? 4 : 9;
@@ -75,7 +75,7 @@ const articlesPageSlice = createSlice({
     },
   },
   // исgользуется для асинхронного изменения стейта
-  extraReducers: (builder) => {
+  extraReducers: builder => {
     // у каждого thunka есть 3 состояния: 1. pending, 2. fulfilled, 3. rejected
     // все 3 состояния можно здесь обработать
     builder

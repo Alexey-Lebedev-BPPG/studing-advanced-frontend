@@ -1,8 +1,8 @@
-import { FC, memo, useState } from "react";
-import { Icon } from "../Icon/Icon";
-import cls from "./StarRating.module.scss";
-import StarIcon from "@/shared/assets/icons/star.svg";
-import { classNames } from "@/shared/lib/classNames/classNames";
+import { FC, memo, useState } from 'react';
+import { Icon } from '../Icon/Icon';
+import cls from './StarRating.module.scss';
+import StarIcon from '@/shared/assets/icons/star.svg';
+import { classNames } from '@/shared/lib/classNames/classNames';
 
 export interface IStartRatingProps {
   className?: string;
@@ -39,12 +39,12 @@ export const StarRating: FC<IStartRatingProps> = memo(
 
     return (
       <div className={classNames(cls.starRating, {}, [className])}>
-        {stars.map((starNumber) => (
+        {stars.map(starNumber => (
           <Icon
             className={classNames(
               cls.starItem,
               { [cls.selected]: isSelected },
-              [currentStarsCount >= starNumber ? cls.hovered : cls.normal]
+              [currentStarsCount >= starNumber ? cls.hovered : cls.normal],
             )}
             Svg={StarIcon}
             key={starNumber}
@@ -60,5 +60,5 @@ export const StarRating: FC<IStartRatingProps> = memo(
         ))}
       </div>
     );
-  }
+  },
 );

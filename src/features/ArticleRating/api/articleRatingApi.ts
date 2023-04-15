@@ -1,5 +1,5 @@
-import { Rating } from "@/entities/Rating";
-import { rtkApi } from "@/shared/api/rtkApi";
+import { Rating } from '@/entities/Rating';
+import { rtkApi } from '@/shared/api/rtkApi';
 
 interface GetArticleRatingArg {
   userId: string;
@@ -13,24 +13,24 @@ interface CreateArticleRatingArg extends GetArticleRatingArg {
 
 // вызываем кастомный rtk запрос, в котором динамически можем указывать данные
 const articleRatingApi = rtkApi.injectEndpoints({
-  endpoints: (build) => ({
+  endpoints: build => ({
     // указываем название эндпоинта + указываем в дженерике первым аргументом, что запрос будет возвращать,
     // и во стором, что  за аргументы
     getArticleRating: build.query<Rating[], GetArticleRatingArg>({
       // колбэк принимает какие-то аргументы для передачи на сервер
-      query: (params) => ({
+      query: params => ({
         // здесь есть все поля как в стандартных запросах
         // указываем урл
-        url: "/article-ratings",
+        url: '/article-ratings',
         // указываем параметры
         params: { ...params },
       }),
     }),
     createArticleRating: build.mutation<void, CreateArticleRatingArg>({
-      query: (params) => ({
-        url: "/article-ratings",
+      query: params => ({
+        url: '/article-ratings',
         body: params,
-        method: "POST",
+        method: 'POST',
       }),
     }),
   }),

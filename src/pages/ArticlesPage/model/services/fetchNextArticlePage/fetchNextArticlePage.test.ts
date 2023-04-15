@@ -1,11 +1,11 @@
-import { fetchArticlesList } from "../fetchArticlesList/fetchArticlesList";
-import { fetchNextArticlePage } from "./fetchNextArticlePage";
-import { TestAsyncThunk } from "@/shared/lib/tests/testAsyncThunk/testAsyncThunk";
+import { fetchArticlesList } from '../fetchArticlesList/fetchArticlesList';
+import { fetchNextArticlePage } from './fetchNextArticlePage';
+import { TestAsyncThunk } from '@/shared/lib/tests/testAsyncThunk/testAsyncThunk';
 
-jest.mock("../fetchArticlesList/fetchArticlesList");
+jest.mock('../fetchArticlesList/fetchArticlesList');
 
-describe("fetchNextArticlePage", () => {
-  test("success", async () => {
+describe('fetchNextArticlePage', () => {
+  test('success', async () => {
     // передаем наш thunk в наш класс и вторым аргументом передаем инитиал стейт
     const thunk = new TestAsyncThunk(fetchNextArticlePage, {
       articlesPage: {
@@ -26,7 +26,7 @@ describe("fetchNextArticlePage", () => {
     expect(fetchArticlesList).toHaveBeenCalled();
   });
 
-  test("fetchArticlesList not called", async () => {
+  test('fetchArticlesList not called', async () => {
     // передаем наш thunk в наш класс и вторым аргументом передаем инитиал стейт
     const thunk = new TestAsyncThunk(fetchNextArticlePage, {
       articlesPage: {
@@ -47,7 +47,7 @@ describe("fetchNextArticlePage", () => {
     expect(fetchArticlesList).not.toHaveBeenCalled();
   });
 
-  test("fetchArticlesList not called", async () => {
+  test('fetchArticlesList not called', async () => {
     // передаем наш thunk в наш класс и вторым аргументом передаем инитиал стейт
     const thunk = new TestAsyncThunk(fetchNextArticlePage, {
       articlesPage: {

@@ -3,19 +3,19 @@ import {
   combineReducers,
   Reducer,
   ReducersMapObject,
-} from "@reduxjs/toolkit";
+} from '@reduxjs/toolkit';
 import {
   MountedReducers,
   ReducerManager,
   StateSchema,
   StateSchemaKey,
-} from "./stateSchema";
+} from './stateSchema';
 
 // https://redux.js.org/usage/code-splitting
 // предназанчен для того, чтоб в реальном времени подгружать/удалять редьюсеры в стейте
 // на вход подается начальные редьюсеры
 export function createReducerManager(
-  initialReducers: ReducersMapObject<StateSchema>
+  initialReducers: ReducersMapObject<StateSchema>,
 ): ReducerManager {
   const reducers = { ...initialReducers };
   // создаем корневой редьюсер из списка редьюсеров
@@ -32,7 +32,7 @@ export function createReducerManager(
     reduce: (state: StateSchema, action: AnyAction) => {
       if (keysToRemove.length > 0) {
         state = { ...state };
-        keysToRemove.forEach((key) => delete state[key]);
+        keysToRemove.forEach(key => delete state[key]);
         // после цикла очищаем массив
         keysToRemove = [];
       }

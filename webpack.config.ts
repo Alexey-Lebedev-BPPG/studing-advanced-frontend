@@ -1,7 +1,7 @@
-import path from "path";
-import webpack from "webpack";
-import { buildWebpackConfig } from "./configs/build/buildWebpackConfig";
-import { BuildEnv, BuildPaths } from "./configs/build/types/config";
+import path from 'path';
+import webpack from 'webpack';
+import { buildWebpackConfig } from './configs/build/buildWebpackConfig';
+import { BuildEnv, BuildPaths } from './configs/build/types/config';
 
 // заводим такую функцию, а не просто возращаем конфиг, чтоб можно было прокидывать сюда переменные окружения
 export default (env: BuildEnv) => {
@@ -13,25 +13,25 @@ export default (env: BuildEnv) => {
     //   // то будет файл с названием RANDOM
     //   RANDOM: path.resolve(__dirname, "src", "index.tsx")
     // }
-    entry: path.resolve(__dirname, "src", "index.tsx"),
+    entry: path.resolve(__dirname, 'src', 'index.tsx'),
     // куда помещаем готовую сборку
-    build: path.resolve(__dirname, "build"),
+    build: path.resolve(__dirname, 'build'),
     // сообщаем где главный файл html лежит и куда будем встраивать скрипты
-    html: path.resolve(__dirname, "public", "index.html"),
+    html: path.resolve(__dirname, 'public', 'index.html'),
     // указываем путь до папки src, чтоб использовать его в buildResolves
-    src: path.resolve(__dirname, "src"),
+    src: path.resolve(__dirname, 'src'),
     // указываем путь до папки, откуда берем готовые файлы переводов
-    locales: path.resolve(__dirname, "public", "locales"),
+    locales: path.resolve(__dirname, 'public', 'locales'),
     // указываем путь до папки, куда помещаем готовые файлы переводов
-    buildLocales: path.resolve(__dirname, "build", "locales"),
+    buildLocales: path.resolve(__dirname, 'build', 'locales'),
   };
 
   // берем env из параметра функции
-  const mode = env?.mode || "development";
+  const mode = env?.mode || 'development';
   const PORT = env?.port || 3000;
-  const apiURL = env?.apiURL || "http://localhost:8000";
+  const apiURL = env?.apiURL || 'http://localhost:8000';
 
-  const isDev = mode === "development";
+  const isDev = mode === 'development';
   const isDevDebug = Boolean(JSON.stringify(env?.modeDebug)) || false;
 
   // генерируем общий конфиг webpack
@@ -42,7 +42,7 @@ export default (env: BuildEnv) => {
     isDevDebug,
     port: PORT,
     apiURL,
-    project: "frontend",
+    project: 'frontend',
   });
 
   return config;

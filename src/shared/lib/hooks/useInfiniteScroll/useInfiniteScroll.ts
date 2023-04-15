@@ -1,4 +1,4 @@
-import { MutableRefObject, useEffect } from "react";
+import { MutableRefObject, useEffect } from 'react';
 
 export interface UseInfiniteScrollProps {
   // колбек, который вызывается при достижении элемента при скролле
@@ -24,7 +24,7 @@ export const useInfiniteScroll = ({
       const options = {
         // контейнер, в котором скролл
         root: wrapperElement,
-        rootMargin: "0px",
+        rootMargin: '0px',
         threshold: 1.0,
       };
 

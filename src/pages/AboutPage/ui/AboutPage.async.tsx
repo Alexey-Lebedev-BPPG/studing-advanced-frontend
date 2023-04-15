@@ -1,4 +1,4 @@
-import { lazy } from "react";
+import { lazy } from 'react';
 // !Важно: для подгрузки импортируемый компонет должен экспортироваться ТОЛЬКО по дефолту
 // так используем в реальных проектах
 // *** export const AboutePageAsync = lazy(() => import("./AboutPage"));
@@ -20,4 +20,4 @@ import { lazy } from "react";
 // попадают в пределы вьюпорта, либо для отложенных компонентов, например содержимого модалки, которую
 // пользователь может никогда не открыть, потому что это сильно ухудшает UX
 
-export const AboutPageAsync = lazy(() => import("./AboutPage"));
+export const AboutPageAsync = lazy(() => import('./AboutPage'));

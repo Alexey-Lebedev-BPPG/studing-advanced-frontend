@@ -1,4 +1,4 @@
-import { PluginItem } from "@babel/core";
+import { PluginItem } from '@babel/core';
 
 // создаем свой babel плагин, чтоб удалять аргументы вида data-testid из элементов при сборке проекта
 // eslint-disable-next-line func-names

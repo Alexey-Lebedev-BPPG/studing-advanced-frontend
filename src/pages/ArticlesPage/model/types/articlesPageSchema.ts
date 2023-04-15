@@ -1,11 +1,11 @@
-import { EntityState } from "@reduxjs/toolkit";
+import { EntityState } from '@reduxjs/toolkit';
 import {
   Article,
   ArticleView,
   ArticleSortFields,
   ArticleType,
-} from "@/entities/Article";
-import { SortOrder } from "@/shared/types/sort";
+} from '@/entities/Article';
+import { SortOrder } from '@/shared/types/sort';
 
 // наследуемся от внутреннего типа redux, которое добавлет ids: string[] и entitis с нашими типами комментов
 export interface ArticlesPageSchema extends EntityState<Article> {

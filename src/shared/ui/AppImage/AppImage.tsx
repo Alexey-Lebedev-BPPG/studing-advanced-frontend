@@ -5,7 +5,7 @@ import {
   memo,
   useLayoutEffect,
   useState,
-} from "react";
+} from 'react';
 
 export interface IAppImageProps extends ImgHTMLAttributes<HTMLImageElement> {
   className?: string;
@@ -16,7 +16,7 @@ export interface IAppImageProps extends ImgHTMLAttributes<HTMLImageElement> {
 }
 
 export const AppImage: FC<IAppImageProps> = memo(
-  ({ className, src, alt = "", fallback, errorFallback, ...otherProps }) => {
+  ({ className, src, alt = '', fallback, errorFallback, ...otherProps }) => {
     const [isLoading, setIsLoading] = useState(true);
     // если при загрузке произошла ошибка
     const [hasError, setHasError] = useState(false);
@@ -25,7 +25,7 @@ export const AppImage: FC<IAppImageProps> = memo(
     useLayoutEffect(() => {
       // создаем изображение. В этот момент будет происходить фоновая подгрузка изображения
       const img = new Image();
-      img.src = src || "";
+      img.src = src || '';
       // когда изображение подгрузилось, меняем флаг на false
       img.onload = () => setIsLoading(false);
       img.onerror = () => {
@@ -39,5 +39,5 @@ export const AppImage: FC<IAppImageProps> = memo(
     if (hasError && errorFallback) return errorFallback;
 
     return <img src={src} alt={alt} className={className} {...otherProps} />;
-  }
+  },
 );

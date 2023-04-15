@@ -1,5 +1,5 @@
-describe("NotificationList", () => {
-  test("", () => {
+describe('NotificationList', () => {
+  test('', () => {
     expect({}).toEqual({});
   });
 });

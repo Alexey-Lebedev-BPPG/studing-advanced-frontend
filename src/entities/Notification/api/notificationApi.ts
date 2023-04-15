@@ -1,9 +1,9 @@
-import { Notification } from "../model/types/notification";
-import { rtkApi } from "@/shared/api/rtkApi";
+import { Notification } from '../model/types/notification';
+import { rtkApi } from '@/shared/api/rtkApi';
 
 // вызываем кастомный rtk запрос, в котором динамически можем указывать данные
 const notificationApi = rtkApi.injectEndpoints({
-  endpoints: (build) => ({
+  endpoints: build => ({
     // указываем название эндпоинта + указываем в дженерике первым аргументом, что запрос будет возвращать,
     // и во стором, что  за аргументы
     getNotification: build.query<Notification[], null>({
@@ -11,7 +11,7 @@ const notificationApi = rtkApi.injectEndpoints({
       query: () => ({
         // здесь есть все поля как в стандартных запросах
         // указываем урл
-        url: "/notifications",
+        url: '/notifications',
       }),
     }),
     // пример запроса на создание (через mutation)

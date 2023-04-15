@@ -4,15 +4,15 @@ import {
   SliceCaseReducers,
   bindActionCreators,
   createSlice,
-} from "@reduxjs/toolkit";
-import { useMemo } from "react";
-import { useDispatch } from "react-redux";
+} from '@reduxjs/toolkit';
+import { useMemo } from 'react';
+import { useDispatch } from 'react-redux';
 
 // создаем функцию, которая позволяет использовать buildSlice вместо createSlice в слайсах компонентов, а также использовать useActions вместо dispatch(actions) в самих компонентах, при этом типы берем из библиотеки (пример в файле counterSlice)
 export function buildSlice<
   State,
   CaseReducers extends SliceCaseReducers<State>,
-  Name extends string = string
+  Name extends string = string,
 >(options: CreateSliceOptions<State, CaseReducers, Name>) {
   const slice = createSlice(options);
 
@@ -26,7 +26,7 @@ export function buildSlice<
           CaseReducerActions<CaseReducers>,
           CaseReducerActions<CaseReducers>
         >(slice.actions, dispatch),
-      [dispatch]
+      [dispatch],
     );
   };
 

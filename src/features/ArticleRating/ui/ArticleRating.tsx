@@ -1,13 +1,13 @@
-import { FC, memo, useCallback } from "react";
-import { useTranslation } from "react-i18next";
-import { useSelector } from "react-redux";
+import { FC, memo, useCallback } from 'react';
+import { useTranslation } from 'react-i18next';
+import { useSelector } from 'react-redux';
 import {
   useArticleRating,
   useCreateArticleRating,
-} from "../api/articleRatingApi";
-import { RatingCard } from "@/entities/Rating";
-import { getUserAuthData } from "@/entities/User";
-import { Skeleton } from "@/shared/ui/Skeleton";
+} from '../api/articleRatingApi';
+import { RatingCard } from '@/entities/Rating';
+import { getUserAuthData } from '@/entities/User';
+import { Skeleton } from '@/shared/ui/Skeleton';
 
 export interface IArticleRatingProps {
   className?: string;
@@ -20,7 +20,7 @@ const ArticleRating: FC<IArticleRatingProps> = memo(
     const userData = useSelector(getUserAuthData);
     const { data, isLoading } = useArticleRating({
       articleId,
-      userId: userData?.id || "",
+      userId: userData?.id || '',
     });
     // использование запроса на создание
     const [rateArticleMutation, { isLoading: isLoadingCreate }] =
@@ -35,28 +35,28 @@ const ArticleRating: FC<IArticleRatingProps> = memo(
           rateArticleMutation({
             articleId,
             rate: starCount,
-            userId: userData?.id || "",
+            userId: userData?.id || '',
             feedback,
           });
         } catch (error) {
-          console.log("error", error);
+          console.log('error', error);
         }
       },
-      [articleId, rateArticleMutation, userData?.id]
+      [articleId, rateArticleMutation, userData?.id],
     );
 
     const onAccept = useCallback(
       (starCount: number, feedback?: string) =>
         handleRateArticleMutation(starCount, feedback),
-      [handleRateArticleMutation]
+      [handleRateArticleMutation],
     );
 
     const onCancel = useCallback(
       (starCount: number) => handleRateArticleMutation(starCount),
-      [handleRateArticleMutation]
+      [handleRateArticleMutation],
     );
 
-    if (isLoading) return <Skeleton width="100%" height={120} />;
+    if (isLoading) return <Skeleton width='100%' height={120} />;
 
     return (
       <RatingCard
@@ -64,14 +64,14 @@ const ArticleRating: FC<IArticleRatingProps> = memo(
         onCancel={onCancel}
         rate={rating?.rate}
         className={className}
-        title={t("Оцените статью")}
+        title={t('Оцените статью')}
         feedbackTitle={t(
-          "Оставьте свой отзыв о статье, это поможет улучшить качество"
+          'Оставьте свой отзыв о статье, это поможет улучшить качество',
         )}
         hasFeedback
       />
     );
-  }
+  },
 );
 
 export default ArticleRating;

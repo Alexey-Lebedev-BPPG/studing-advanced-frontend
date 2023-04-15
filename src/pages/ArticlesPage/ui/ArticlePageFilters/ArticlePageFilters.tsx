@@ -1,30 +1,30 @@
-import { FC, memo, useCallback } from "react";
-import { useTranslation } from "react-i18next";
-import { useSelector } from "react-redux";
+import { FC, memo, useCallback } from 'react';
+import { useTranslation } from 'react-i18next';
+import { useSelector } from 'react-redux';
 import {
   getArticlesPageOrder,
   getArticlesPageSearch,
   getArticlesPageSort,
   getArticlesPageType,
   getArticlesPageView,
-} from "../../model/selectors/articlesPageSelectors";
-import { fetchArticlesList } from "../../model/services/fetchArticlesList/fetchArticlesList";
-import { articlesPageActions } from "../../model/slice/articlesPageSlice";
-import cls from "./ArticlePageFilters.module.scss";
+} from '../../model/selectors/articlesPageSelectors';
+import { fetchArticlesList } from '../../model/services/fetchArticlesList/fetchArticlesList';
+import { articlesPageActions } from '../../model/slice/articlesPageSlice';
+import cls from './ArticlePageFilters.module.scss';
 import {
   ArticleView,
   ArticleSortFields,
   ArticleType,
-} from "@/entities/Article";
-import { ArticleSortSelector } from "@/features/ArticleSortSelector";
-import { ArticleTypeTabs } from "@/features/ArticleTypeTabs";
-import { ArticleViewSelector } from "@/features/ArticleViewSelector";
-import { classNames } from "@/shared/lib/classNames/classNames";
-import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch/useAppDispatch";
-import { useDebounce } from "@/shared/lib/hooks/useDebounce/useDebounce";
-import { SortOrder } from "@/shared/types/sort";
-import { Card } from "@/shared/ui/Card";
-import { Input } from "@/shared/ui/Input";
+} from '@/entities/Article';
+import { ArticleSortSelector } from '@/features/ArticleSortSelector';
+import { ArticleTypeTabs } from '@/features/ArticleTypeTabs';
+import { ArticleViewSelector } from '@/features/ArticleViewSelector';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { useDebounce } from '@/shared/lib/hooks/useDebounce/useDebounce';
+import { SortOrder } from '@/shared/types/sort';
+import { Card } from '@/shared/ui/Card';
+import { Input } from '@/shared/ui/Input';
 
 export interface IArticlePageFiltersProps {
   className?: string;
@@ -53,7 +53,7 @@ export const ArticlePageFilters: FC<IArticlePageFiltersProps> = memo(
         dispatch(articlesPageActions.setPage(1));
         fetchData();
       },
-      [dispatch, fetchData]
+      [dispatch, fetchData],
     );
     const onChangeSort = useCallback(
       (newSort: ArticleSortFields) => {
@@ -61,7 +61,7 @@ export const ArticlePageFilters: FC<IArticlePageFiltersProps> = memo(
         dispatch(articlesPageActions.setPage(1));
         fetchData();
       },
-      [dispatch, fetchData]
+      [dispatch, fetchData],
     );
     const onChangeOrder = useCallback(
       (newOrder: SortOrder) => {
@@ -69,7 +69,7 @@ export const ArticlePageFilters: FC<IArticlePageFiltersProps> = memo(
         dispatch(articlesPageActions.setPage(1));
         fetchData();
       },
-      [dispatch, fetchData]
+      [dispatch, fetchData],
     );
     const onChangeSearch = useCallback(
       (newSearch: string) => {
@@ -77,7 +77,7 @@ export const ArticlePageFilters: FC<IArticlePageFiltersProps> = memo(
         dispatch(articlesPageActions.setPage(1));
         debounceFetchData();
       },
-      [dispatch, debounceFetchData]
+      [dispatch, debounceFetchData],
     );
     const onChangeType = useCallback(
       (value: ArticleType) => {
@@ -85,7 +85,7 @@ export const ArticlePageFilters: FC<IArticlePageFiltersProps> = memo(
         dispatch(articlesPageActions.setPage(1));
         fetchData();
       },
-      [dispatch, fetchData]
+      [dispatch, fetchData],
     );
 
     return (
@@ -103,7 +103,7 @@ export const ArticlePageFilters: FC<IArticlePageFiltersProps> = memo(
           <Input
             value={search}
             onChange={onChangeSearch}
-            placeholder={t("Поиск")}
+            placeholder={t('Поиск')}
           />
         </Card>
         <ArticleTypeTabs
@@ -113,5 +113,5 @@ export const ArticlePageFilters: FC<IArticlePageFiltersProps> = memo(
         />
       </div>
     );
-  }
+  },
 );

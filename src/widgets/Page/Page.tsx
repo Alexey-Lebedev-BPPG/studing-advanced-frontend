@@ -1,16 +1,16 @@
-import { FC, memo, MutableRefObject, ReactNode, UIEvent, useRef } from "react";
-import { useSelector } from "react-redux";
-import { useLocation } from "react-router-dom";
-import cls from "./Page.module.scss";
-import { StateSchema } from "@/app/providers/StoreProvider";
-import { getScrollSavePath, scrollSaveActions } from "@/features/ScrollSave";
-import { PAGE_ID } from "@/shared/const/pageId";
-import { classNames } from "@/shared/lib/classNames/classNames";
-import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch/useAppDispatch";
-import { useInfiniteScroll } from "@/shared/lib/hooks/useInfiniteScroll/useInfiniteScroll";
-import { useInitialEffect } from "@/shared/lib/hooks/useInitialEffect/useInitialEffect";
-import { useThrottle } from "@/shared/lib/hooks/useThrottle/useThrottle";
-import { TestProps } from "@/shared/types/tests";
+import { FC, memo, MutableRefObject, ReactNode, UIEvent, useRef } from 'react';
+import { useSelector } from 'react-redux';
+import { useLocation } from 'react-router-dom';
+import cls from './Page.module.scss';
+import { StateSchema } from '@/app/providers/StoreProvider';
+import { getScrollSavePath, scrollSaveActions } from '@/features/ScrollSave';
+import { PAGE_ID } from '@/shared/const/pageId';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { useInfiniteScroll } from '@/shared/lib/hooks/useInfiniteScroll/useInfiniteScroll';
+import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect/useInitialEffect';
+import { useThrottle } from '@/shared/lib/hooks/useThrottle/useThrottle';
+import { TestProps } from '@/shared/types/tests';
 
 export interface IPageProps extends TestProps {
   className?: string;
@@ -30,7 +30,7 @@ export const Page: FC<IPageProps> = memo(
 
     // получаем позицию скролла из редакса по нашей странице
     const scrollPosition = useSelector(
-      (state: StateSchema) => getScrollSavePath(state, pathname)
+      (state: StateSchema) => getScrollSavePath(state, pathname),
       // eslint-disable-next-line function-paren-newline
     );
 
@@ -52,7 +52,7 @@ export const Page: FC<IPageProps> = memo(
         scrollSaveActions.setScrollPosition({
           path: pathname,
           position: event.currentTarget.scrollTop,
-        })
+        }),
       );
     });
 
@@ -62,11 +62,11 @@ export const Page: FC<IPageProps> = memo(
         className={classNames(cls.page, {}, [className])}
         onScroll={onScrollHandler}
         id={PAGE_ID}
-        data-testid={otherProps["data-testid"] || "Page"}
+        data-testid={otherProps['data-testid'] || 'Page'}
       >
         {children}
         {onScrollEnd ? <div className={cls.trigger} ref={triggerRef} /> : null}
       </main>
     );
-  }
+  },
 );

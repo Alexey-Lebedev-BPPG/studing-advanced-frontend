@@ -1,11 +1,11 @@
 // создаем отдельную переменную для айди профиля
-let profileId = "";
+let profileId = '';
 
-describe("Пользователь заходит на страницу", () => {
+describe('Пользователь заходит на страницу', () => {
   // делаем пустой переход и авторизовываемся перед каждым тестом
   beforeEach(() => {
-    cy.visit("");
-    cy.login().then((data) => {
+    cy.visit('');
+    cy.login().then(data => {
       profileId = data.id;
       cy.visit(`profile/${data.id}`);
     });
@@ -15,22 +15,22 @@ describe("Пользователь заходит на страницу", () => 
     cy.resetProfile(profileId);
   });
 
-  it("Профиль успешно загрузился", () => {
+  it('Профиль успешно загрузился', () => {
     // получаем элемент и проверяем, что внутри инпута (это первый метод)
     // cy.get(selectByTestId("ProfileCard.firstname")).should(
     //   "have.value",
     //   "user"
     // );
     // второй метод уде через собственную команду
-    cy.getByTestId("ProfileCard.firstname").should("have.value", "test");
+    cy.getByTestId('ProfileCard.firstname').should('have.value', 'test');
   });
-  it("редактирование профиля", () => {
-    const newFirstname = "test";
-    const newLastname = "lastname";
+  it('редактирование профиля', () => {
+    const newFirstname = 'test';
+    const newLastname = 'lastname';
     cy.updateProfile(newFirstname, newLastname);
     // проверяем, что значение инпутников поменялось
-    cy.getByTestId("ProfileCard.firstname").should("have.value", newFirstname);
-    cy.getByTestId("ProfileCard.lastname").should("have.value", newLastname);
+    cy.getByTestId('ProfileCard.firstname').should('have.value', newFirstname);
+    cy.getByTestId('ProfileCard.lastname').should('have.value', newLastname);
   });
-  it("passes", () => {});
+  it('passes', () => {});
 });

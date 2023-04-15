@@ -1,13 +1,13 @@
-import { FC, HTMLAttributeAnchorTarget, memo } from "react";
-import { useTranslation } from "react-i18next";
+import { FC, HTMLAttributeAnchorTarget, memo } from 'react';
+import { useTranslation } from 'react-i18next';
 // import { List, ListRowProps, WindowScroller } from "react-virtualized";
-import { ArticleView } from "../../model/consts/consts";
-import { Article } from "../../model/types/article";
-import { ArticleListItem } from "../ArticleListItem/ArticleListItem";
-import { ArticleListItemSkeleton } from "../ArticleListItem/ArticleListItemSkeleton";
-import cls from "./ArticleList.module.scss";
-import { classNames } from "@/shared/lib/classNames/classNames";
-import { Text, TextSize } from "@/shared/ui/Text";
+import { ArticleView } from '../../model/consts/consts';
+import { Article } from '../../model/types/article';
+import { ArticleListItem } from '../ArticleListItem/ArticleListItem';
+import { ArticleListItemSkeleton } from '../ArticleListItem/ArticleListItemSkeleton';
+import cls from './ArticleList.module.scss';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { Text, TextSize } from '@/shared/ui/Text';
 
 export interface IArticleListProps {
   className?: string;
@@ -75,8 +75,8 @@ export const ArticleList: FC<IArticleListProps> = memo(
 
     if (!isLoading && !articles.length)
       return (
-        <div className={classNames("", {}, [className, cls[view]])}>
-          <Text size={TextSize.L} title={t("Статьи не найдены")} />
+        <div className={classNames('', {}, [className, cls[view]])}>
+          <Text size={TextSize.L} title={t('Статьи не найдены')} />
         </div>
       );
 
@@ -103,8 +103,8 @@ export const ArticleList: FC<IArticleListProps> = memo(
       //   }) => (
       <div
         // ref={registerChild}
-        className={classNames("", {}, [className, cls[view]])}
-        data-testid="ArticleList"
+        className={classNames('', {}, [className, cls[view]])}
+        data-testid='ArticleList'
       >
         {/* {virtualized ? (
           // @ts-ignore
@@ -130,7 +130,7 @@ export const ArticleList: FC<IArticleListProps> = memo(
             />
           ))
         )} */}
-        {articles.map((item) => (
+        {articles.map(item => (
           <ArticleListItem
             target={target}
             article={item}
@@ -144,5 +144,5 @@ export const ArticleList: FC<IArticleListProps> = memo(
       //   )}
       // </WindowScroller>
     );
-  }
+  },
 );

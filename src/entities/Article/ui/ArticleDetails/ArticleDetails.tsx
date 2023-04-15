@@ -1,33 +1,33 @@
-import { FC, memo, useCallback } from "react";
-import { useTranslation } from "react-i18next";
-import { useSelector } from "react-redux";
-import { ArticleBlockType } from "../../model/consts/consts";
+import { FC, memo, useCallback } from 'react';
+import { useTranslation } from 'react-i18next';
+import { useSelector } from 'react-redux';
+import { ArticleBlockType } from '../../model/consts/consts';
 import {
   getArticleDetailsData,
   getArticleDetailsError,
   getArticleDetailsIsLoading,
-} from "../../model/selectors/articleDetails";
-import { fetchArticleById } from "../../model/services/fetchArticleById/fetchArticleById";
-import { articleDetailsReducer } from "../../model/slice/articleDetailsSlice";
-import { ArticleBlock } from "../../model/types/article";
-import { ArticleCodeBlockComponent } from "../ArticleCodeBlockComponent/ArticleCodeBlockComponent";
-import { ArticleImageBlockComponent } from "../ArticleImageBlockComponent/ArticleImageBlockComponent";
-import { ArticleTextBlockComponent } from "../ArticleTextBlockComponent/ArticleTextBlockComponent";
-import cls from "./ArticleDetails.module.scss";
-import CalendarIcon from "@/shared/assets/icons/calendar-20-20.svg";
-import EyeIcon from "@/shared/assets/icons/eye-20-20.svg";
-import { classNames } from "@/shared/lib/classNames/classNames";
+} from '../../model/selectors/articleDetails';
+import { fetchArticleById } from '../../model/services/fetchArticleById/fetchArticleById';
+import { articleDetailsReducer } from '../../model/slice/articleDetailsSlice';
+import { ArticleBlock } from '../../model/types/article';
+import { ArticleCodeBlockComponent } from '../ArticleCodeBlockComponent/ArticleCodeBlockComponent';
+import { ArticleImageBlockComponent } from '../ArticleImageBlockComponent/ArticleImageBlockComponent';
+import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleTextBlockComponent';
+import cls from './ArticleDetails.module.scss';
+import CalendarIcon from '@/shared/assets/icons/calendar-20-20.svg';
+import EyeIcon from '@/shared/assets/icons/eye-20-20.svg';
+import { classNames } from '@/shared/lib/classNames/classNames';
 import {
   DynamicModuleLoader,
   ReducersList,
-} from "@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader";
-import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch/useAppDispatch";
-import { useInitialEffect } from "@/shared/lib/hooks/useInitialEffect/useInitialEffect";
-import { Avatar } from "@/shared/ui/Avatar";
-import { Icon } from "@/shared/ui/Icon";
-import { Skeleton } from "@/shared/ui/Skeleton";
-import { HStack, VStack } from "@/shared/ui/Stack";
-import { Text, TextAlign, TextSize } from "@/shared/ui/Text";
+} from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect/useInitialEffect';
+import { Avatar } from '@/shared/ui/Avatar';
+import { Icon } from '@/shared/ui/Icon';
+import { Skeleton } from '@/shared/ui/Skeleton';
+import { HStack, VStack } from '@/shared/ui/Stack';
+import { Text, TextAlign, TextSize } from '@/shared/ui/Text';
 
 interface IArticleDetailsProps {
   className?: string;
@@ -89,39 +89,39 @@ export const ArticleDetails: FC<IArticleDetailsProps> = memo(
             className={cls.avatar}
             width={200}
             height={200}
-            border="50%"
+            border='50%'
           />
           <Skeleton className={cls.title} width={300} height={32} />
           <Skeleton className={cls.skeleton} width={600} height={24} />
-          <Skeleton className={cls.skeleton} width="100%" height={200} />
-          <Skeleton className={cls.skeleton} width="100%" height={200} />
+          <Skeleton className={cls.skeleton} width='100%' height={200} />
+          <Skeleton className={cls.skeleton} width='100%' height={200} />
         </>
       );
     } else if (error) {
       content = (
         <Text
-          title={t("Произошла ошибка при загрузке статьи.")}
+          title={t('Произошла ошибка при загрузке статьи.')}
           align={TextAlign.CENTER}
         />
       );
     } else {
       content = (
         <>
-          <HStack justify="center" max className={cls.avatarWrapper}>
+          <HStack justify='center' max className={cls.avatarWrapper}>
             <Avatar size={200} src={article?.img} className={cls.avatar} />
           </HStack>
-          <VStack gap="4" data-testid="ArticleDetails.Info">
+          <VStack gap='4' data-testid='ArticleDetails.Info'>
             <Text
               title={article?.title}
               text={article?.subtitle}
               className={cls.title}
               size={TextSize.L}
             />
-            <HStack gap="8" className={cls.articleInfo}>
+            <HStack gap='8' className={cls.articleInfo}>
               <Icon Svg={EyeIcon} className={cls.icon} />
               <Text title={String(article?.views)} />
             </HStack>
-            <HStack gap="8" className={cls.articleInfo}>
+            <HStack gap='8' className={cls.articleInfo}>
               <Icon Svg={CalendarIcon} className={cls.icon} />
               <Text title={article?.createdAt} />
             </HStack>
@@ -135,7 +135,7 @@ export const ArticleDetails: FC<IArticleDetailsProps> = memo(
       // обертка для использования асинхронных редьюсеров в асинхронных компонентах
       <DynamicModuleLoader reducers={reducers}>
         <VStack
-          gap="16"
+          gap='16'
           max
           className={classNames(cls.articleDetails, {}, [className])}
         >
@@ -143,5 +143,5 @@ export const ArticleDetails: FC<IArticleDetailsProps> = memo(
         </VStack>
       </DynamicModuleLoader>
     );
-  }
+  },
 );

@@ -1,6 +1,6 @@
-import { ChangeEvent, memo, useMemo } from "react";
-import cls from "./Select.module.scss";
-import { classNames } from "@/shared/lib/classNames/classNames";
+import { ChangeEvent, memo, useMemo } from 'react';
+import cls from './Select.module.scss';
+import { classNames } from '@/shared/lib/classNames/classNames';
 
 export interface SelectOption<T extends string> {
   // значение опции
@@ -39,7 +39,7 @@ export const Select = typedMemo(
             {content}
           </option>
         )),
-      [options]
+      [options],
     );
 
     const onChangeHandler = (event: ChangeEvent<HTMLSelectElement>) => {
@@ -59,5 +59,5 @@ export const Select = typedMemo(
         </select>
       </div>
     );
-  }
+  },
 );

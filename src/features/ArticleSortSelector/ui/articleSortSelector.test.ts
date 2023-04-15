@@ -1,5 +1,5 @@
-describe("ArticleSortSelector", () => {
-  test("", () => {
+describe('ArticleSortSelector', () => {
+  test('', () => {
     expect({}).toEqual({});
   });
 });

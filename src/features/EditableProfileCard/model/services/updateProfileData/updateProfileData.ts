@@ -1,16 +1,16 @@
-import { createAsyncThunk } from "@reduxjs/toolkit";
-import { ValidateProfileError } from "../../consts/consts";
-import { getProfileForm } from "../../selectors/getProfileForm/getProfileForm";
-import { validateProfileData } from "../validateProfileData/validateProfileData";
-import { ThunkConfig } from "@/app/providers/StoreProvider";
-import { Profile } from "@/entities/Profile";
+import { createAsyncThunk } from '@reduxjs/toolkit';
+import { ValidateProfileError } from '../../consts/consts';
+import { getProfileForm } from '../../selectors/getProfileForm/getProfileForm';
+import { validateProfileData } from '../validateProfileData/validateProfileData';
+import { ThunkConfig } from '@/app/providers/StoreProvider';
+import { Profile } from '@/entities/Profile';
 
 // первым аргументом дженерика - что возвращаем, второй - что передаем, а третим можно передать свои типизацию объекта thunkAPI, в котором есть методы для использования в thunke
 export const updateProfileData = createAsyncThunk<
   Profile,
   void,
   ThunkConfig<ValidateProfileError[]>
->("profile/updateProfileData", async (_, thunkApi) => {
+>('profile/updateProfileData', async (_, thunkApi) => {
   // получаем стейт, что потом вызывать селекторы, в которые прокидываются стейт
   const { extra, rejectWithValue, getState } = thunkApi;
 
@@ -22,7 +22,7 @@ export const updateProfileData = createAsyncThunk<
   try {
     const response = await extra.api.put<Profile>(
       `/profile/${formData?.id}`,
-      formData
+      formData,
     );
 
     if (!response.data) throw new Error();

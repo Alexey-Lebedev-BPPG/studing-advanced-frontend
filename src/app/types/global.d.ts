@@ -1,25 +1,25 @@
 // добавляем, чтоб typescript начал понимать модули
-declare module "*.module.scss" {
+declare module '*.module.scss' {
   const value: Record<string, string>;
   export default value;
 }
 
-declare module "*.module.sass" {
+declare module '*.module.sass' {
   const value: Record<string, string>;
   export default value;
 }
 
-declare module "*.module.css" {
+declare module '*.module.css' {
   const value: Record<string, string>;
   export default value;
 }
 
-declare module "*.png";
-declare module "*.jpeg";
-declare module "*.jpg";
+declare module '*.png';
+declare module '*.jpeg';
+declare module '*.jpg';
 
-declare module "*.svg" {
-  import { SVGProps, VFC } from "react";
+declare module '*.svg' {
+  import { SVGProps, VFC } from 'react';
 
   const SVG: VFC<SVGProps<SVGSVGElement>>;
   export default SVG;
@@ -29,7 +29,7 @@ declare module "*.svg" {
 declare const __IS_DEV__: boolean;
 declare const __IS_DEV_DEBUG__: boolean;
 declare const __API__: string;
-declare const __PROJECT__: "storybook" | "frontend" | "jest";
+declare const __PROJECT__: 'storybook' | 'frontend' | 'jest';
 
 // используем глобальный тип для DeepPartial по всему проекту
 type DeepPartial<T> = T extends object

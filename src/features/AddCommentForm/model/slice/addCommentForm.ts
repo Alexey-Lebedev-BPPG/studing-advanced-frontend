@@ -1,13 +1,13 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { AddCommentFormSchema } from "../types/addCommentForm";
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { AddCommentFormSchema } from '../types/addCommentForm';
 
 const initialState: AddCommentFormSchema = {
   isLoading: false,
-  text: "",
+  text: '',
 };
 
 export const addCommentFormSlice = createSlice({
-  name: "addCommentForm",
+  name: 'addCommentForm',
   initialState,
   reducers: {
     setText: (state, { payload }: PayloadAction<string>) => {

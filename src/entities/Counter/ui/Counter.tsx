@@ -1,8 +1,8 @@
-import { FC } from "react";
+import { FC } from 'react';
 // import { useDispatch } from "react-redux";
-import { useCounterValue } from "../model/selectors/getCounterValue/getCounterValue";
-import { useCounterActions } from "../model/slice/counterSlice";
-import { Button } from "@/shared/ui/Button";
+import { useCounterValue } from '../model/selectors/getCounterValue/getCounterValue';
+import { useCounterActions } from '../model/slice/counterSlice';
+import { Button } from '@/shared/ui/Button';
 
 export const Counter: FC = () => {
   // const dispatch = useDispatch();
@@ -19,11 +19,11 @@ export const Counter: FC = () => {
 
   return (
     <div>
-      <h1 data-testid="value-title">{counterValue}</h1>
-      <Button onClick={handleIncrement} data-testid="increment-btn">
+      <h1 data-testid='value-title'>{counterValue}</h1>
+      <Button onClick={handleIncrement} data-testid='increment-btn'>
         increment
       </Button>
-      <Button onClick={handleDecrement} data-testid="decrement-btn">
+      <Button onClick={handleDecrement} data-testid='decrement-btn'>
         decrement
       </Button>
     </div>

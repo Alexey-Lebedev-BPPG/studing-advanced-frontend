@@ -1,5 +1,5 @@
-import { createSelector } from "@reduxjs/toolkit";
-import { StateSchema } from "@/app/providers/StoreProvider";
+import { createSelector } from '@reduxjs/toolkit';
+import { StateSchema } from '@/app/providers/StoreProvider';
 
 export const getScrollSaveScroll = (state: StateSchema) =>
   state.scrollSave.scroll;
@@ -11,5 +11,5 @@ export const getScrollSavePath = createSelector(
   // передаем путь
   (state: StateSchema, path: string) => path,
   // получаем значение скролла
-  (scroll, path) => scroll[path] || 0
+  (scroll, path) => scroll[path] || 0,
 );

@@ -1,13 +1,13 @@
-import { User } from "@/entities/User";
-import { USER_LOCALSTORAGE_KEY } from "@/shared/const/localStorage";
-import { selectByTestId } from "../../helpers/selectBiTestId";
+import { User } from '@/entities/User';
+import { USER_LOCALSTORAGE_KEY } from '@/shared/const/localStorage';
+import { selectByTestId } from '../../helpers/selectBiTestId';
 
 // делаем запрос на авторизацию и возвращаем полученные данные
-export const login = (username = "testuser", password = "123") => {
+export const login = (username = 'testuser', password = '123') => {
   return cy
     .request({
-      method: "POST",
-      url: "http://localhost:8000/login",
+      method: 'POST',
+      url: 'http://localhost:8000/login',
       body: { username, password },
     })
     .then(({ body }) => {

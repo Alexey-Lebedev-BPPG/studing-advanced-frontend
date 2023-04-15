@@ -1,30 +1,30 @@
 // библиотека позволяет редактировать .ts файлы
-import { Project } from "ts-morph";
+import { Project } from 'ts-morph';
 
 const project = new Project({});
 
 // добавляем файлы, с которыми будем работать
-project.addSourceFilesAtPaths("src/**/*.ts");
-project.addSourceFilesAtPaths("src/**/*.tsx");
+project.addSourceFilesAtPaths('src/**/*.ts');
+project.addSourceFilesAtPaths('src/**/*.tsx');
 
 // получаем все файлы проекта
 const files = project.getSourceFiles();
 
 // функция, которая проверяет только те пути, которые начинаются со значений, которые мы указали
 function isAbsolute(value: string) {
-  const layers = ["app", "entities", "features", "pages", "shared", "widgets"];
+  const layers = ['app', 'entities', 'features', 'pages', 'shared', 'widgets'];
 
   // проверяем, что если путь начинается с нашего массива слоев и возвращаем знаение
-  return layers.some((layer) => value.startsWith(layer));
+  return layers.some(layer => value.startsWith(layer));
 }
 
 // итерируем по файлам
-files.forEach((sourceFile) => {
+files.forEach(sourceFile => {
   // получаем все переменные импортов
   const importDeclarations = sourceFile.getImportDeclarations();
 
   // итерируемся по всем импортам
-  importDeclarations.forEach((importDeclaration) => {
+  importDeclarations.forEach(importDeclaration => {
     // получаем сами названия импортов
     const value = importDeclaration.getModuleSpecifierValue();
 
@@ -38,4 +38,4 @@ files.forEach((sourceFile) => {
 });
 
 // сохраняем результат проекта
-project.save().then(() => console.log("Done!"));
+project.save().then(() => console.log('Done!'));

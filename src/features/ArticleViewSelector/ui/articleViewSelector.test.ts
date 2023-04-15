@@ -1,5 +1,5 @@
-describe("ArticleViewSelector", () => {
-  test("", () => {
+describe('ArticleViewSelector', () => {
+  test('', () => {
     expect({}).toEqual({});
   });
 });

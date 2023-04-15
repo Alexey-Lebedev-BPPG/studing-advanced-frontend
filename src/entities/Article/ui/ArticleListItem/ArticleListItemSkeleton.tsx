@@ -1,9 +1,9 @@
-import { FC, memo } from "react";
-import { ArticleView } from "../../model/consts/consts";
-import cls from "./ArticleListItem.module.scss";
-import { classNames } from "@/shared/lib/classNames/classNames";
-import { Card } from "@/shared/ui/Card";
-import { Skeleton } from "@/shared/ui/Skeleton";
+import { FC, memo } from 'react';
+import { ArticleView } from '../../model/consts/consts';
+import cls from './ArticleListItem.module.scss';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { Card } from '@/shared/ui/Card';
+import { Skeleton } from '@/shared/ui/Skeleton';
 
 export interface IArticleListItemSkeletonProps {
   className?: string;
@@ -14,10 +14,10 @@ export const ArticleListItemSkeleton: FC<IArticleListItemSkeletonProps> = memo(
   ({ className, view }) => {
     if (view === ArticleView.BIG)
       return (
-        <div className={classNames("", {}, [className, cls[view]])}>
+        <div className={classNames('', {}, [className, cls[view]])}>
           <Card>
             <div className={cls.header}>
-              <Skeleton border="50%" width={30} height={30} />
+              <Skeleton border='50%' width={30} height={30} />
               <Skeleton width={150} height={16} className={cls.username} />
               <Skeleton width={150} height={16} className={cls.date} />
             </div>
@@ -31,7 +31,7 @@ export const ArticleListItemSkeleton: FC<IArticleListItemSkeletonProps> = memo(
       );
 
     return (
-      <div className={classNames("", {}, [className, cls[view]])}>
+      <div className={classNames('', {}, [className, cls[view]])}>
         <Card>
           <div className={cls.imageWrapper}>
             <Skeleton width={200} height={200} className={cls.img} />
@@ -43,5 +43,5 @@ export const ArticleListItemSkeleton: FC<IArticleListItemSkeletonProps> = memo(
         </Card>
       </div>
     );
-  }
+  },
 );

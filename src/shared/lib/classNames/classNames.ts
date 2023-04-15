@@ -6,7 +6,7 @@ type Mods = Record<string, string | boolean | undefined>;
 export const classNames = (
   rootCls: string,
   mods: Mods = {},
-  additional: Array<string | undefined> = []
+  additional: Array<string | undefined> = [],
 ): string =>
   [
     // возвращаем главный класс
@@ -20,7 +20,7 @@ export const classNames = (
     // добавляем доп. классы и фильтруем их от ложных значений
     ...additional.filter(Boolean),
     // склевиаем строку из массива по пробелу
-  ].join(" ");
+  ].join(' ');
 
 // пример вызова и результат
 // classNames("remove-btn", { hovered: true, selectable: true, red: false }, [

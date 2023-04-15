@@ -1,22 +1,22 @@
 // скрипт для создания паблик апи.
 // вместо export * from "./Button" формируется именованный экспорт с учетом вложенных файлов.
 // Добавлен globPattern для поиска всех вложенных файлов tsx за исключением test.* или stories.*
-import path from "path";
+import path from 'path';
 // библиотека позволяет редактировать .ts файлы
-import { Project } from "ts-morph";
+import { Project } from 'ts-morph';
 
 const project = new Project({});
 
 // добавляем файлы, с которыми будем работать
-project.addSourceFilesAtPaths("src/**/*.md");
-project.addSourceFilesAtPaths("src/**/*.ts");
-project.addSourceFilesAtPaths("src/**/*.tsx");
+project.addSourceFilesAtPaths('src/**/*.md');
+project.addSourceFilesAtPaths('src/**/*.ts');
+project.addSourceFilesAtPaths('src/**/*.tsx');
 
 const sliceMap: Record<string, string> = {
-  pages: "Page",
-  entities: "Entity",
-  features: "Feature",
-  widgets: "Widget",
+  pages: 'Page',
+  entities: 'Entity',
+  features: 'Feature',
+  widgets: 'Widget',
 };
 
 const createReadmeForSlice = (slice: string) => {
@@ -24,14 +24,14 @@ const createReadmeForSlice = (slice: string) => {
     return;
   }
 
-  const slicePaths = path.resolve(__dirname, "..", "..", "src", `${slice}`);
+  const slicePaths = path.resolve(__dirname, '..', '..', 'src', `${slice}`);
   const sliceDirectory = project.getDirectory(slicePaths);
   const componentsDirectories = sliceDirectory?.getDirectories();
 
-  componentsDirectories?.forEach((directory) => {
+  componentsDirectories?.forEach(directory => {
     const readmeFilePath = `${directory.getPath()}/README.md`;
     const readmeFile = directory.getSourceFile(
-      (f) => f.getBaseName() === "README.md"
+      f => f.getBaseName() === 'README.md',
     );
     if (!readmeFile) {
       const sourceCode = `## ${
@@ -45,9 +45,9 @@ const createReadmeForSlice = (slice: string) => {
   });
 };
 
-createReadmeForSlice("features");
-createReadmeForSlice("entities");
-createReadmeForSlice("widgets");
-createReadmeForSlice("pages");
+createReadmeForSlice('features');
+createReadmeForSlice('entities');
+createReadmeForSlice('widgets');
+createReadmeForSlice('pages');
 
 project.save();

@@ -1,7 +1,7 @@
-import i18n from "i18next";
-import LanguageDetector from "i18next-browser-languagedetector";
-import Backend from "i18next-http-backend";
-import { initReactI18next } from "react-i18next";
+import i18n from 'i18next';
+import LanguageDetector from 'i18next-browser-languagedetector';
+import Backend from 'i18next-http-backend';
+import { initReactI18next } from 'react-i18next';
 
 i18n
   // подключаем плагины
@@ -11,7 +11,7 @@ i18n
   .use(initReactI18next)
   .init({
     // язык по ум.
-    fallbackLng: "ru",
+    fallbackLng: 'ru',
     // чтоб в консоли показывало данные библиотеки
     // eslint-disable-next-line no-undef
     debug: __IS_DEV_DEBUG__,
@@ -21,7 +21,7 @@ i18n
     },
     // уазываем откуда тянуть переводы
     backend: {
-      loadPath: "/locales/{{lng}}/{{ns}}.json",
+      loadPath: '/locales/{{lng}}/{{ns}}.json',
     },
   });
 

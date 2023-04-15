@@ -1,12 +1,12 @@
-import { createAsyncThunk } from "@reduxjs/toolkit";
+import { createAsyncThunk } from '@reduxjs/toolkit';
 import {
   getArticlesPageHasMore,
   getArticlesPageIsLoading,
   getArticlesPageNum,
-} from "../../selectors/articlesPageSelectors";
-import { articlesPageActions } from "../../slice/articlesPageSlice";
-import { fetchArticlesList } from "../fetchArticlesList/fetchArticlesList";
-import { ThunkConfig } from "@/app/providers/StoreProvider";
+} from '../../selectors/articlesPageSelectors';
+import { articlesPageActions } from '../../slice/articlesPageSlice';
+import { fetchArticlesList } from '../fetchArticlesList/fetchArticlesList';
+import { ThunkConfig } from '@/app/providers/StoreProvider';
 
 // для подгрузки не первой порции данных, а уже последующих
 
@@ -15,7 +15,7 @@ export const fetchNextArticlePage = createAsyncThunk<
   void,
   void,
   ThunkConfig<string>
->("articlesPage/fetchNextArticlePage", async (_, thunkApi) => {
+>('articlesPage/fetchNextArticlePage', async (_, thunkApi) => {
   const { getState, dispatch } = thunkApi;
 
   const hasMore = getArticlesPageHasMore(getState());

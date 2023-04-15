@@ -1,19 +1,19 @@
-import { FC, HTMLAttributeAnchorTarget, memo } from "react";
-import { ArticleBlockType, ArticleView } from "../../model/consts/consts";
-import { Article, ArticleTextBlock } from "../../model/types/article";
-import { ArticleTextBlockComponent } from "../ArticleTextBlockComponent/ArticleTextBlockComponent";
-import cls from "./ArticleListItem.module.scss";
-import EyeIcon from "@/shared/assets/icons/eye-20-20.svg";
-import { getRouteArticleDetails } from "@/shared/const/router";
-import { classNames } from "@/shared/lib/classNames/classNames";
-import { AppImage } from "@/shared/ui/AppImage";
-import { AppLink } from "@/shared/ui/AppLink";
-import { Avatar } from "@/shared/ui/Avatar";
-import { Button } from "@/shared/ui/Button";
-import { Card } from "@/shared/ui/Card";
-import { Icon } from "@/shared/ui/Icon";
-import { Skeleton } from "@/shared/ui/Skeleton";
-import { Text } from "@/shared/ui/Text";
+import { FC, HTMLAttributeAnchorTarget, memo } from 'react';
+import { ArticleBlockType, ArticleView } from '../../model/consts/consts';
+import { Article, ArticleTextBlock } from '../../model/types/article';
+import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleTextBlockComponent';
+import cls from './ArticleListItem.module.scss';
+import EyeIcon from '@/shared/assets/icons/eye-20-20.svg';
+import { getRouteArticleDetails } from '@/shared/const/router';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { AppImage } from '@/shared/ui/AppImage';
+import { AppLink } from '@/shared/ui/AppLink';
+import { Avatar } from '@/shared/ui/Avatar';
+import { Button } from '@/shared/ui/Button';
+import { Card } from '@/shared/ui/Card';
+import { Icon } from '@/shared/ui/Icon';
+import { Skeleton } from '@/shared/ui/Skeleton';
+import { Text } from '@/shared/ui/Text';
 // import { useHover } from "shared/lib/hooks/useHover/useHover";
 
 export interface IArticleListItemProps {
@@ -27,7 +27,7 @@ export const ArticleListItem: FC<IArticleListItemProps> = memo(
   ({ className, article, view, target }) => {
     // const [isHover, bindHover] = useHover();
 
-    const types = <Text text={article.type.join(", ")} className={cls.type} />;
+    const types = <Text text={article.type.join(', ')} className={cls.type} />;
     const views = (
       <>
         <Text text={String(article.views)} className={cls.views} />
@@ -37,13 +37,13 @@ export const ArticleListItem: FC<IArticleListItemProps> = memo(
 
     if (view === ArticleView.BIG) {
       const textBlock = article.blocks.find(
-        (block) => block.type === ArticleBlockType.TEXT
+        block => block.type === ArticleBlockType.TEXT,
       ) as ArticleTextBlock;
 
       return (
         <div
-          className={classNames("", {}, [className, cls[view]])}
-          data-testid="ArticleListItem"
+          className={classNames('', {}, [className, cls[view]])}
+          data-testid='ArticleListItem'
         >
           <Card>
             <div className={cls.header}>
@@ -54,7 +54,7 @@ export const ArticleListItem: FC<IArticleListItemProps> = memo(
             <Text text={article.title} className={cls.title} />
             {types}
             <AppImage
-              fallback={<Skeleton width="100%" height={250} />}
+              fallback={<Skeleton width='100%' height={250} />}
               src={article.img}
               className={cls.img}
               alt={article.title}
@@ -80,8 +80,8 @@ export const ArticleListItem: FC<IArticleListItemProps> = memo(
       <AppLink
         target={target}
         to={getRouteArticleDetails(article.id)}
-        className={classNames("", {}, [className, cls[view]])}
-        data-testid="ArticleListItem"
+        className={classNames('', {}, [className, cls[view]])}
+        data-testid='ArticleListItem'
         // {...bindHover}
       >
         <Card>
@@ -102,5 +102,5 @@ export const ArticleListItem: FC<IArticleListItemProps> = memo(
         </Card>
       </AppLink>
     );
-  }
+  },
 );

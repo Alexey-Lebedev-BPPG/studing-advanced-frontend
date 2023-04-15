@@ -1,15 +1,15 @@
-import { ComponentStory, ComponentMeta } from "@storybook/react";
-import { CurrencySelect } from "./CurrencySelect";
+import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { CurrencySelect } from './CurrencySelect';
 
 export default {
-  title: "entities/CurrencySelect",
+  title: 'entities/CurrencySelect',
   component: CurrencySelect,
   argTypes: {
-    backgroundColor: { control: "color" },
+    backgroundColor: { control: 'color' },
   },
 } as ComponentMeta<typeof CurrencySelect>;
 
-const Template: ComponentStory<typeof CurrencySelect> = (args) => (
+const Template: ComponentStory<typeof CurrencySelect> = args => (
   <CurrencySelect {...args} />
 );
 

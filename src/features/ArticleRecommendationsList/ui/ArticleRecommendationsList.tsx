@@ -1,10 +1,10 @@
-import { t } from "i18next";
-import { FC, memo } from "react";
-import { useArticleRecommendationsList } from "../api/articleRecommendationApi";
-import { ArticleList } from "@/entities/Article";
-import { classNames } from "@/shared/lib/classNames/classNames";
-import { VStack } from "@/shared/ui/Stack";
-import { Text, TextSize } from "@/shared/ui/Text";
+import { t } from 'i18next';
+import { FC, memo } from 'react';
+import { useArticleRecommendationsList } from '../api/articleRecommendationApi';
+import { ArticleList } from '@/entities/Article';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { VStack } from '@/shared/ui/Stack';
+import { Text, TextSize } from '@/shared/ui/Text';
 
 export interface IArticleRecommendationsListProps {
   className?: string;
@@ -23,13 +23,13 @@ export const ArticleRecommendationsList: FC<IArticleRecommendationsListProps> =
 
     return (
       <VStack
-        data-testid="ArticleRecommendationsList"
-        gap="8"
-        className={classNames("", {}, [className])}
+        data-testid='ArticleRecommendationsList'
+        gap='8'
+        className={classNames('', {}, [className])}
       >
-        <Text size={TextSize.L} title={t("Рекомендуем")} />
+        <Text size={TextSize.L} title={t('Рекомендуем')} />
         <ArticleList
-          target="_blank"
+          target='_blank'
           articles={recommendations}
           isLoading={isLoading}
           virtualized={false}

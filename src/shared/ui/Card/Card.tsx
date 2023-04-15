@@ -1,10 +1,10 @@
-import { FC, HTMLAttributes, memo, ReactNode } from "react";
-import cls from "./Card.module.scss";
-import { classNames } from "@/shared/lib/classNames/classNames";
+import { FC, HTMLAttributes, memo, ReactNode } from 'react';
+import cls from './Card.module.scss';
+import { classNames } from '@/shared/lib/classNames/classNames';
 
 export enum CardTheme {
-  NORMAL = "normal",
-  OUTLINE = "outline",
+  NORMAL = 'normal',
+  OUTLINE = 'outline',
 }
 
 export interface ICardProps extends HTMLAttributes<HTMLDivElement> {
@@ -31,5 +31,5 @@ export const Card: FC<ICardProps> = memo(
     >
       {children}
     </div>
-  )
+  ),
 );

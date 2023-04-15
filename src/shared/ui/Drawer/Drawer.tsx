@@ -1,13 +1,13 @@
-import { FC, memo, ReactNode, useCallback, useEffect } from "react";
-import { Overlay } from "../Overlay/Overlay";
-import { Portal } from "../Portal/Portal";
-import cls from "./Drawer.module.scss";
-import { classNames } from "@/shared/lib/classNames/classNames";
+import { FC, memo, ReactNode, useCallback, useEffect } from 'react';
+import { Overlay } from '../Overlay/Overlay';
+import { Portal } from '../Portal/Portal';
+import cls from './Drawer.module.scss';
+import { classNames } from '@/shared/lib/classNames/classNames';
 import {
   AnimationProvider,
   useAnimationLibs,
-} from "@/shared/lib/components/AnimationProvider";
-import { useTheme } from "@/shared/lib/hooks/useTheme/useTheme";
+} from '@/shared/lib/components/AnimationProvider';
+import { useTheme } from '@/shared/lib/hooks/useTheme/useTheme';
 
 interface DrawerProps {
   className?: string;
@@ -70,14 +70,14 @@ const DrawerContent: FC<DrawerProps> = memo(
         filterTaps: true,
         bounds: { top: 0 },
         rubberband: true,
-      }
+      },
     );
 
     if (!isOpen) {
       return null;
     }
 
-    const display = y.to((py) => (py < height ? "block" : "none"));
+    const display = y.to(py => (py < height ? 'block' : 'none'));
 
     return (
       <Portal>
@@ -85,7 +85,7 @@ const DrawerContent: FC<DrawerProps> = memo(
           className={classNames(cls.Drawer, {}, [
             className,
             theme,
-            "app_drawer",
+            'app_drawer',
           ])}
         >
           <Overlay onClick={close} />
@@ -99,7 +99,7 @@ const DrawerContent: FC<DrawerProps> = memo(
         </div>
       </Portal>
     );
-  }
+  },
 );
 // асинхронный компонент
 const DrawerAsync = (props: DrawerProps) => {

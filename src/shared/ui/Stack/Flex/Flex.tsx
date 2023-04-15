@@ -1,11 +1,11 @@
-import { DetailedHTMLProps, FC, HTMLAttributes, ReactNode } from "react";
-import cls from "./Flex.module.scss";
-import { classNames } from "@/shared/lib/classNames/classNames";
+import { DetailedHTMLProps, FC, HTMLAttributes, ReactNode } from 'react';
+import cls from './Flex.module.scss';
+import { classNames } from '@/shared/lib/classNames/classNames';
 
-export type FlexJustify = "start" | "center" | "end" | "between";
-export type FlexAlign = "start" | "center" | "end";
-export type FlexDirection = "row" | "column";
-export type FlexGap = "4" | "8" | "16" | "32";
+export type FlexJustify = 'start' | 'center' | 'end' | 'between';
+export type FlexAlign = 'start' | 'center' | 'end';
+export type FlexDirection = 'row' | 'column';
+export type FlexGap = '4' | '8' | '16' | '32';
 
 // делаем сопоставлени пропса с классом, который хотим потом повесить
 const justifyClasses: Record<FlexJustify, string> = {
@@ -52,9 +52,9 @@ export interface IFlexProps extends DivProps {
 export const Flex: FC<IFlexProps> = ({
   className,
   children,
-  justify = "start",
-  align = "center",
-  direction = "row",
+  justify = 'start',
+  align = 'center',
+  direction = 'row',
   gap,
   max,
   ...otherProps

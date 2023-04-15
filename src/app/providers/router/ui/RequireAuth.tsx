@@ -1,9 +1,9 @@
-import { useMemo } from "react";
-import { useSelector } from "react-redux";
-import { Navigate, useLocation } from "react-router-dom";
-import { UserRole } from "../../../consts/consts";
-import { getUserAuthData, getUserRoles } from "@/entities/User";
-import { getRouteForbidden, getRouteMain } from "@/shared/const/router";
+import { useMemo } from 'react';
+import { useSelector } from 'react-redux';
+import { Navigate, useLocation } from 'react-router-dom';
+import { UserRole } from '../../../consts/consts';
+import { getUserAuthData, getUserRoles } from '@/entities/User';
+import { getRouteForbidden, getRouteMain } from '@/shared/const/router';
 
 interface RequireAuthProps {
   children: JSX.Element;
@@ -19,7 +19,7 @@ export const RequireAuth = ({ children, roles }: RequireAuthProps) => {
     if (!roles) return true;
 
     // проверяем, что в массиве есть хоть одно совпадение
-    return roles.some((requireRole) => {
+    return roles.some(requireRole => {
       // создаем переменную, которая указывает, что требуемая роль есть у пользователя
       const hasRole = userRoles?.includes(requireRole);
       return hasRole;

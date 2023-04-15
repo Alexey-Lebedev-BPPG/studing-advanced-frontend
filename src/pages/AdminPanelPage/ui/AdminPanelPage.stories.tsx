@@ -1,18 +1,18 @@
-import { ComponentStory, ComponentMeta } from "@storybook/react";
-import AdminPanelPage from "./AdminPanelPage";
-import { StoreDecorator } from "@/shared/config/storybook/StoreDecorator/StoreDecorator";
-import { ThemeDecorator } from "@/shared/config/storybook/ThemeDecorator/ThemeDecorator";
-import { Theme } from "@/shared/const/theme";
+import { ComponentStory, ComponentMeta } from '@storybook/react';
+import AdminPanelPage from './AdminPanelPage';
+import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
+import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
+import { Theme } from '@/shared/const/theme';
 
 export default {
-  title: "pages/AdminPanelPage",
+  title: 'pages/AdminPanelPage',
   component: AdminPanelPage,
   argTypes: {
-    backgroundColor: { control: "color" },
+    backgroundColor: { control: 'color' },
   },
 } as ComponentMeta<typeof AdminPanelPage>;
 
-const Template: ComponentStory<typeof AdminPanelPage> = (arg) => (
+const Template: ComponentStory<typeof AdminPanelPage> = arg => (
   <AdminPanelPage {...arg} />
 );
 

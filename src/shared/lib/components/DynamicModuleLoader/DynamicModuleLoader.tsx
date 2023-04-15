@@ -1,11 +1,11 @@
-import { Reducer } from "@reduxjs/toolkit";
-import { FC, ReactNode, useEffect } from "react";
-import { useDispatch, useStore } from "react-redux";
+import { Reducer } from '@reduxjs/toolkit';
+import { FC, ReactNode, useEffect } from 'react';
+import { useDispatch, useStore } from 'react-redux';
 import {
   ReduxStoreWithManager,
   StateSchema,
   StateSchemaKey,
-} from "@/app/providers/StoreProvider";
+} from '@/app/providers/StoreProvider';
 
 // тип для всех редьюсеров, которые будут поступать в наш компонент (если передадим несколько редьюсеров)
 export type ReducersList = {

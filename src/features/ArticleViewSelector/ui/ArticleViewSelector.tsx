@@ -1,11 +1,11 @@
-import { FC, memo } from "react";
-import cls from "./ArticleViewSelector.module.scss";
-import { ArticleView } from "@/entities/Article";
-import ListIcon from "@/shared/assets/icons/list-24-24.svg";
-import TiledIcon from "@/shared/assets/icons/tiled-24-24.svg";
-import { classNames } from "@/shared/lib/classNames/classNames";
-import { Button, ButtonTheme } from "@/shared/ui/Button";
-import { Icon } from "@/shared/ui/Icon";
+import { FC, memo } from 'react';
+import cls from './ArticleViewSelector.module.scss';
+import { ArticleView } from '@/entities/Article';
+import ListIcon from '@/shared/assets/icons/list-24-24.svg';
+import TiledIcon from '@/shared/assets/icons/tiled-24-24.svg';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { Button, ButtonTheme } from '@/shared/ui/Button';
+import { Icon } from '@/shared/ui/Icon';
 
 export interface IArticleViewSelectorProps {
   className?: string;
@@ -27,7 +27,7 @@ export const ArticleViewSelector: FC<IArticleViewSelectorProps> = memo(
 
     return (
       <div className={classNames(cls.articleViewSelector, {}, [className])}>
-        {viewTypes.map((viewType) => (
+        {viewTypes.map(viewType => (
           <Button
             key={viewType.view}
             theme={ButtonTheme.CLEAR}
@@ -36,14 +36,14 @@ export const ArticleViewSelector: FC<IArticleViewSelectorProps> = memo(
             <Icon
               Svg={viewType.icon}
               className={classNames(
-                "",
+                '',
                 { [cls.notSelected]: viewType.view !== view },
-                []
+                [],
               )}
             />
           </Button>
         ))}
       </div>
     );
-  }
+  },
 );

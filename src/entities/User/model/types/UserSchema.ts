@@ -1,5 +1,5 @@
 // eslint-disable-next-line path-checher-ulbi-example/layer-imports
-import { UserRole } from "@/app/consts/consts";
+import { UserRole } from '@/app/consts/consts';
 
 export interface User {
   id: string;

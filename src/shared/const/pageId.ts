@@ -1,1 +1,1 @@
-export const PAGE_ID = "PAGE_ID";
+export const PAGE_ID = 'PAGE_ID';

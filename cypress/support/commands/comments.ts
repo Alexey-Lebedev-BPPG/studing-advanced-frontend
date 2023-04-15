@@ -1,9 +1,9 @@
 // делаем команду на добавление комментария
-export const addComment = (text = "test") => {
+export const addComment = (text = 'test') => {
   // вводим текст в инпутник
-  cy.getByTestId("AddCommentForm.Input").type(text);
+  cy.getByTestId('AddCommentForm.Input').type(text);
   // нажимаем на кнопку добавления комментария
-  cy.getByTestId("AddCommentForm.Button").click();
+  cy.getByTestId('AddCommentForm.Button').click();
 };
 
 declare global {

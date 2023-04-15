@@ -1,6 +1,6 @@
-import { Story } from "@storybook/react";
-import { Suspense } from "react";
-import { Loader } from "@/shared/ui/Loader";
+import { Story } from '@storybook/react';
+import { Suspense } from 'react';
+import { Loader } from '@/shared/ui/Loader';
 
 // декоратор, который позволяет не оборачивать в Suspense компоненты, которые лежат в глубине дерева
 export const SuspenseDecorator = (StoryComponent: Story) => (

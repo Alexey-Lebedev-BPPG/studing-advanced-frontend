@@ -1,5 +1,5 @@
-describe("ArticleTypeTabs", () => {
-  test("", () => {
+describe('ArticleTypeTabs', () => {
+  test('', () => {
     expect({}).toEqual({});
   });
 });

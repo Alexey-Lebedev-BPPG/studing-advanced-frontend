@@ -1,13 +1,13 @@
-import { fetchArticleEditForm } from "../services/fetchArticleEditForm/fetchArticleEditForm";
-import { ArticleEditFormSchema } from "../types/articleEditForm";
+import { fetchArticleEditForm } from '../services/fetchArticleEditForm/fetchArticleEditForm';
+import { ArticleEditFormSchema } from '../types/articleEditForm';
 import {
   // articleEditFormActions,
   articleEditFormReducer,
-} from "./articleEditForm";
+} from './articleEditForm';
 
 // const data = {};
 
-describe("articleEditFormSlice", () => {
+describe('articleEditFormSlice', () => {
   // test("", () => {
   //   const state: DeepPartial<ArticleEditFormSchema> = {};
   //   expect(
@@ -20,16 +20,16 @@ describe("articleEditFormSlice", () => {
 
   // тестируем экстра редьюсеры
   // сначала тестируем pending состояние
-  test("test articleEditForm service pending", () => {
+  test('test articleEditForm service pending', () => {
     const state: DeepPartial<ArticleEditFormSchema> = {
       isLoading: false,
-      error: "error",
+      error: 'error',
     };
     expect(
       articleEditFormReducer(
         state as ArticleEditFormSchema,
-        fetchArticleEditForm.pending
-      )
+        fetchArticleEditForm.pending,
+      ),
     ).toEqual({
       isLoading: true,
       error: undefined,

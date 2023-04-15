@@ -1,17 +1,17 @@
-import { ComponentStory, ComponentMeta } from "@storybook/react";
-import { ArticleSortSelector } from "./ArticleSortSelector";
-import { ThemeDecorator } from "@/shared/config/storybook/ThemeDecorator/ThemeDecorator";
-import { Theme } from "@/shared/const/theme";
+import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { ArticleSortSelector } from './ArticleSortSelector';
+import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
+import { Theme } from '@/shared/const/theme';
 
 export default {
-  title: "entities/Article/ArticleSortSelector",
+  title: 'entities/Article/ArticleSortSelector',
   component: ArticleSortSelector,
   argTypes: {
-    backgroundColor: { control: "color" },
+    backgroundColor: { control: 'color' },
   },
 } as ComponentMeta<typeof ArticleSortSelector>;
 
-const Template: ComponentStory<typeof ArticleSortSelector> = (arg) => (
+const Template: ComponentStory<typeof ArticleSortSelector> = arg => (
   <ArticleSortSelector {...arg} />
 );
 

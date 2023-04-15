@@ -1,31 +1,31 @@
 // делаем команду на редактирование профиля
-export const updateProfile = (firstname = "new", lastname = "lastname") => {
+export const updateProfile = (firstname = 'new', lastname = 'lastname') => {
   // получаем кнопку редактирования
-  cy.getByTestId("EditableProfileCardHeader.EditButton").click();
+  cy.getByTestId('EditableProfileCardHeader.EditButton').click();
   // получаем необходимые инпутники, очищаем их и вводим новые значения
-  cy.getByTestId("ProfileCard.firstname").clear().type(firstname);
-  cy.getByTestId("ProfileCard.lastname").clear().type(lastname);
+  cy.getByTestId('ProfileCard.firstname').clear().type(firstname);
+  cy.getByTestId('ProfileCard.lastname').clear().type(lastname);
   // получаем кнопку сохранения и нажимаем на нее
-  cy.getByTestId("EditableProfileCardHeader.SaveButton").click();
+  cy.getByTestId('EditableProfileCardHeader.SaveButton').click();
 };
 
 // делаем запрос на сброс данных
 export const resetProfile = (profileId: string) =>
   cy.request({
-    method: "PUT",
+    method: 'PUT',
     url: `http://localhost:8000/profile/${profileId}`,
-    headers: { Authorization: "test" },
+    headers: { Authorization: 'test' },
     body: {
-      id: "4",
-      first: "test",
-      lastname: "user",
+      id: '4',
+      first: 'test',
+      lastname: 'user',
       age: 465,
-      currency: "EUR",
-      country: "Ukraine",
-      city: "Moscow",
-      username: "testuser",
+      currency: 'EUR',
+      country: 'Ukraine',
+      city: 'Moscow',
+      username: 'testuser',
       avatar:
-        "https://xakep.ru/wp-content/uploads/2018/05/171485/KuroiSH-hacker.jpg",
+        'https://xakep.ru/wp-content/uploads/2018/05/171485/KuroiSH-hacker.jpg',
     },
   });
 

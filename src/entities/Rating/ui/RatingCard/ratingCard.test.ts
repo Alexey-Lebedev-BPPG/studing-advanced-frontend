@@ -1,5 +1,5 @@
-describe("RatingCard", () => {
-  test("", () => {
+describe('RatingCard', () => {
+  test('', () => {
     expect({}).toEqual({});
   });
 });

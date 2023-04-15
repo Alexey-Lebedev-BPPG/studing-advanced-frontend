@@ -1,6 +1,6 @@
-import { FC, lazy } from "react";
-import { IArticleEditPageProps } from "./ArticleEditPage";
+import { FC, lazy } from 'react';
+import { IArticleEditPageProps } from './ArticleEditPage';
 
 export const ArticleEditPageAsync = lazy<FC<IArticleEditPageProps>>(
-  () => import("./ArticleEditPage")
+  () => import('./ArticleEditPage'),
 );

@@ -1,7 +1,7 @@
-import { memo, ReactNode, useCallback } from "react";
-import { Card, CardTheme } from "../Card/Card";
-import cls from "./Tabs.module.scss";
-import { classNames } from "@/shared/lib/classNames/classNames";
+import { memo, ReactNode, useCallback } from 'react';
+import { Card, CardTheme } from '../Card/Card';
+import cls from './Tabs.module.scss';
+import { classNames } from '@/shared/lib/classNames/classNames';
 
 export interface ITabItem<T> {
   value: T;
@@ -30,12 +30,12 @@ export const Tabs = typedMemo(
       (tab: ITabItem<T>) => () => {
         onTabClick(tab);
       },
-      [onTabClick]
+      [onTabClick],
     );
 
     return (
       <div className={classNames(cls.tabs, {}, [className])}>
-        {tabs.map((tab) => (
+        {tabs.map(tab => (
           <Card
             theme={
               tab.value === selectedValue ? CardTheme.NORMAL : CardTheme.OUTLINE
@@ -49,5 +49,5 @@ export const Tabs = typedMemo(
         ))}
       </div>
     );
-  }
+  },
 );

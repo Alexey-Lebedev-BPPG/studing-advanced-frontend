@@ -1,18 +1,18 @@
-import { ComponentStory, ComponentMeta } from "@storybook/react";
-import { Theme } from "../../const/theme";
-import { StarRating } from "./StarRating";
-import { StoreDecorator } from "@/shared/config/storybook/StoreDecorator/StoreDecorator";
-import { ThemeDecorator } from "@/shared/config/storybook/ThemeDecorator/ThemeDecorator";
+import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { Theme } from '../../const/theme';
+import { StarRating } from './StarRating';
+import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
+import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
 
 export default {
-  title: "shared/StarRating",
+  title: 'shared/StarRating',
   component: StarRating,
   argTypes: {
-    backgroundColor: { control: "color" },
+    backgroundColor: { control: 'color' },
   },
 } as ComponentMeta<typeof StarRating>;
 
-const Template: ComponentStory<typeof StarRating> = (arg) => (
+const Template: ComponentStory<typeof StarRating> = arg => (
   <StarRating {...arg} />
 );
 

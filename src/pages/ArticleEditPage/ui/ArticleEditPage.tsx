@@ -1,9 +1,9 @@
-import { FC, memo } from "react";
-import { useTranslation } from "react-i18next";
-import { useParams } from "react-router-dom";
-import cls from "./ArticleEditPage.module.scss";
-import { classNames } from "@/shared/lib/classNames/classNames";
-import { Page } from "@/widgets/Page";
+import { FC, memo } from 'react';
+import { useTranslation } from 'react-i18next';
+import { useParams } from 'react-router-dom';
+import cls from './ArticleEditPage.module.scss';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { Page } from '@/widgets/Page';
 
 export interface IArticleEditPageProps {
   className?: string;
@@ -18,8 +18,8 @@ const ArticleEditPage: FC<IArticleEditPageProps> = memo(({ className }) => {
   return (
     <Page className={classNames(cls.articleEditPage, {}, [className])}>
       {isEdit
-        ? t("Редатирование статьи с ID = ") + id
-        : t("Создание новой статьи")}
+        ? t('Редатирование статьи с ID = ') + id
+        : t('Создание новой статьи')}
     </Page>
   );
 });

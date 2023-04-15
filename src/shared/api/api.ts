@@ -1,5 +1,5 @@
-import axios from "axios";
-import { USER_LOCALSTORAGE_KEY } from "@/shared/const/localStorage";
+import axios from 'axios';
+import { USER_LOCALSTORAGE_KEY } from '@/shared/const/localStorage';
 
 // создаем экземпляр аксиоса
 export const $api = axios.create({
@@ -12,10 +12,10 @@ export const $api = axios.create({
   // },
 });
 
-$api.interceptors.request.use((config) => {
+$api.interceptors.request.use(config => {
   if (config.headers) {
     config.headers.Authorization =
-      localStorage.getItem(USER_LOCALSTORAGE_KEY) || "";
+      localStorage.getItem(USER_LOCALSTORAGE_KEY) || '';
   }
 
   return config;

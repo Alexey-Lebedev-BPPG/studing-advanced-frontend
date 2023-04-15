@@ -1,13 +1,13 @@
-import { FC, memo, useMemo, useState } from "react";
-import { useSelector } from "react-redux";
-import { getSidebarItems } from "../../model/selectors/getSidebarItems";
-import { SidebarItem } from "../SidebarItem";
-import cls from "./SideBar.module.scss";
-import { LanguageSwitcher } from "@/features/LanguageSwitcher";
-import { ThemeSwitcher } from "@/features/ThemeSwitcher";
-import { classNames } from "@/shared/lib/classNames/classNames";
-import { Button, ButtonSize, ButtonTheme } from "@/shared/ui/Button";
-import { VStack } from "@/shared/ui/Stack";
+import { FC, memo, useMemo, useState } from 'react';
+import { useSelector } from 'react-redux';
+import { getSidebarItems } from '../../model/selectors/getSidebarItems';
+import { SidebarItem } from '../SidebarItem';
+import cls from './SideBar.module.scss';
+import { LanguageSwitcher } from '@/features/LanguageSwitcher';
+import { ThemeSwitcher } from '@/features/ThemeSwitcher';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button';
+import { VStack } from '@/shared/ui/Stack';
 
 interface ISideBarProps {
   className?: string;
@@ -18,35 +18,35 @@ export const SideBar: FC<ISideBarProps> = memo(({ className }) => {
   const sidebarItemsList = useSelector(getSidebarItems);
 
   const onToggle = () => {
-    setCollapsed((prev) => !prev);
+    setCollapsed(prev => !prev);
   };
 
   const itemsList = useMemo(
     () =>
-      sidebarItemsList.map((item) => (
+      sidebarItemsList.map(item => (
         <SidebarItem item={item} collapsed={collapsed} key={item.path} />
       )),
-    [collapsed, sidebarItemsList]
+    [collapsed, sidebarItemsList],
   );
   return (
     <section
-      data-testid="sidebar"
+      data-testid='sidebar'
       className={classNames(cls.sideBar, { [cls.collapsed]: collapsed }, [
         className,
       ])}
     >
       <Button
         onClick={onToggle}
-        type="button"
-        data-testid="sidebar-toggle"
+        type='button'
+        data-testid='sidebar-toggle'
         className={cls.collapsedBtn}
         theme={ButtonTheme.BACKGROUND_INVERTED}
         size={ButtonSize.L}
         square
       >
-        {collapsed ? ">" : "<"}
+        {collapsed ? '>' : '<'}
       </Button>
-      <VStack role="navigation" gap="8" className={cls.items}>
+      <VStack role='navigation' gap='8' className={cls.items}>
         {/* рендерим наши ссылки сайтбара */}
         {itemsList}
       </VStack>

@@ -1,8 +1,8 @@
-import { StateSchema } from "@/app/providers/StoreProvider";
+import { StateSchema } from '@/app/providers/StoreProvider';
 
 export const getAddCommentFormText = (state: StateSchema) =>
   // используем оператор ??, чтоб пустая строка испоользовалась только тогда, когда левый оператор null или undefined
-  state.addCommentForm?.text ?? "";
+  state.addCommentForm?.text ?? '';
 
 export const getAddCommentFormIsLoading = (state: StateSchema) =>
   state.addCommentForm?.isLoading;

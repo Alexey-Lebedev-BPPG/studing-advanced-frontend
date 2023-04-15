@@ -1,33 +1,33 @@
-import { ComponentStory, ComponentMeta } from "@storybook/react";
-import { ArticleRecommendationsList } from "./ArticleRecommendationsList";
-import { Article } from "@/entities/Article";
-import { StoreDecorator } from "@/shared/config/storybook/StoreDecorator/StoreDecorator";
-import { ThemeDecorator } from "@/shared/config/storybook/ThemeDecorator/ThemeDecorator";
-import { Theme } from "@/shared/const/theme";
+import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { ArticleRecommendationsList } from './ArticleRecommendationsList';
+import { Article } from '@/entities/Article';
+import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
+import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
+import { Theme } from '@/shared/const/theme';
 
 export default {
-  title: "features/ArticleRecommendationsList",
+  title: 'features/ArticleRecommendationsList',
   component: ArticleRecommendationsList,
   argTypes: {
-    backgroundColor: { control: "color" },
+    backgroundColor: { control: 'color' },
   },
 } as ComponentMeta<typeof ArticleRecommendationsList>;
 
-const Template: ComponentStory<typeof ArticleRecommendationsList> = (arg) => (
+const Template: ComponentStory<typeof ArticleRecommendationsList> = arg => (
   <ArticleRecommendationsList {...arg} />
 );
 
 // создаем моковую статью
 const mockArticle: Article = {
-  id: "1",
-  img: "",
-  createdAt: "",
+  id: '1',
+  img: '',
+  createdAt: '',
   views: 234,
-  user: { id: "", username: "" },
+  user: { id: '', username: '' },
   blocks: [],
   type: [],
-  title: "123",
-  subtitle: "123123",
+  title: '123',
+  subtitle: '123123',
 };
 
 export const Normal = Template.bind({});
@@ -38,12 +38,12 @@ Normal.parameters = {
   mockData: [
     {
       url: `${__API__}/articles?_limit=3`,
-      method: "GET",
+      method: 'GET',
       status: 200,
       response: [
-        { ...mockArticle, id: "1" },
-        { ...mockArticle, id: "2" },
-        { ...mockArticle, id: "3" },
+        { ...mockArticle, id: '1' },
+        { ...mockArticle, id: '2' },
+        { ...mockArticle, id: '3' },
       ],
     },
   ],

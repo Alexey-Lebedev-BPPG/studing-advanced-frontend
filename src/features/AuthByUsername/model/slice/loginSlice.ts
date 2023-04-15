@@ -1,15 +1,15 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { loginByUsername } from "../services/loginByUsername/loginByUsername";
-import { LoginSchema } from "../types/loginSchema";
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { loginByUsername } from '../services/loginByUsername/loginByUsername';
+import { LoginSchema } from '../types/loginSchema';
 
 const initialState: LoginSchema = {
   isLoading: false,
-  username: "",
-  password: "",
+  username: '',
+  password: '',
 };
 
 export const loginSlice = createSlice({
-  name: "login",
+  name: 'login',
   initialState,
   // исп. для обычного изменения стейта
   reducers: {
@@ -23,18 +23,18 @@ export const loginSlice = createSlice({
     },
   },
   // используется для асинхронного изменения стейта
-  extraReducers: (builder) => {
+  extraReducers: builder => {
     // у каждого thunka есть 3 состояния: 1. pending, 2. fulfilled, 3. rejected
     // все 3 состояния можно здесь обработать
     builder
       // используем наш thunk
-      .addCase(loginByUsername.pending, (state) => {
+      .addCase(loginByUsername.pending, state => {
         // это состояние, когда наш thunk начинается
         // обнуляем ошибку, если она была и делаем isLoading true
         state.error = undefined;
         state.isLoading = true;
       })
-      .addCase(loginByUsername.fulfilled, (state) => {
+      .addCase(loginByUsername.fulfilled, state => {
         state.isLoading = false;
       })
       .addCase(loginByUsername.rejected, (state, action) => {

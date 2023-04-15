@@ -1,13 +1,13 @@
-import { FC, memo } from "react";
-import { useSelector } from "react-redux";
+import { FC, memo } from 'react';
+import { useSelector } from 'react-redux';
 import {
   getArticlesPageError,
   getArticlesPageIsLoading,
   getArticlesPageView,
-} from "../../model/selectors/articlesPageSelectors";
-import { getArticles } from "../../model/slice/articlesPageSlice";
-import { ArticleList } from "@/entities/Article";
-import { Text } from "@/shared/ui/Text";
+} from '../../model/selectors/articlesPageSelectors';
+import { getArticles } from '../../model/slice/articlesPageSlice';
+import { ArticleList } from '@/entities/Article';
+import { Text } from '@/shared/ui/Text';
 
 export interface IArticleInfiniteListProps {
   className?: string;
@@ -20,7 +20,7 @@ export const ArticleInfiniteList: FC<IArticleInfiniteListProps> = memo(
     const view = useSelector(getArticlesPageView);
     const error = useSelector(getArticlesPageError);
 
-    if (error) return <Text text="Ошибка при загрузке статей" />;
+    if (error) return <Text text='Ошибка при загрузке статей' />;
 
     return (
       <ArticleList
@@ -30,5 +30,5 @@ export const ArticleInfiniteList: FC<IArticleInfiniteListProps> = memo(
         className={className}
       />
     );
-  }
+  },
 );

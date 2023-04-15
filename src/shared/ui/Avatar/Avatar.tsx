@@ -1,10 +1,10 @@
-import { CSSProperties, FC, useMemo } from "react";
-import UserIcon from "../../assets/icons/user-filled.svg";
-import { AppImage } from "../AppImage";
-import { Icon } from "../Icon";
-import { Skeleton } from "../Skeleton";
-import cls from "./Avatar.module.scss";
-import { classNames } from "@/shared/lib/classNames/classNames";
+import { CSSProperties, FC, useMemo } from 'react';
+import UserIcon from '../../assets/icons/user-filled.svg';
+import { AppImage } from '../AppImage';
+import { Icon } from '../Icon';
+import { Skeleton } from '../Skeleton';
+import cls from './Avatar.module.scss';
+import { classNames } from '@/shared/lib/classNames/classNames';
 
 interface IAvatarProps {
   className?: string;
@@ -19,7 +19,7 @@ export const Avatar: FC<IAvatarProps> = ({
   className,
   src,
   size = 100,
-  alt = "",
+  alt = '',
   fallbackInverted,
 }) => {
   const styles = useMemo<CSSProperties>(
@@ -27,9 +27,9 @@ export const Avatar: FC<IAvatarProps> = ({
       width: size,
       height: size,
     }),
-    [size]
+    [size],
   );
-  const fallback = <Skeleton width={size} height={size} border="50%" />;
+  const fallback = <Skeleton width={size} height={size} border='50%' />;
   const errorFallback = (
     <Icon
       inverted={fallbackInverted}

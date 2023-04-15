@@ -1,8 +1,8 @@
-import { useCallback, useRef } from "react";
+import { useCallback, useRef } from 'react';
 
 export const useThrottle = (
   callback: (...args: any[]) => void,
-  delay: number = 500
+  delay: number = 500,
 ) => {
   // реф, который хранит все булевые значения, которые показывают можно сейчас вызывать колбек или нет
   const throttleRef = useRef(false);
@@ -20,7 +20,7 @@ export const useThrottle = (
         }, delay);
       }
     },
-    [callback, delay]
+    [callback, delay],
   );
 };
 

@@ -1,8 +1,8 @@
-import { loginByUsername } from "./loginByUsername";
-import { userActions } from "@/entities/User";
-import { TestAsyncThunk } from "@/shared/lib/tests/testAsyncThunk/testAsyncThunk";
+import { loginByUsername } from './loginByUsername';
+import { userActions } from '@/entities/User';
+import { TestAsyncThunk } from '@/shared/lib/tests/testAsyncThunk/testAsyncThunk';
 
-describe("loginByUsername", () => {
+describe('loginByUsername', () => {
   // I СПОСОБ (БЕЗ ПЕРЕИСПОЛЬЗОВАНИЯ) (только с замоканным аксиосом)
 
   // // типизируем диспатч и получение стейта
@@ -53,36 +53,36 @@ describe("loginByUsername", () => {
 
   // II СПОСОБ (ПЕРЕИСПОЛЬЗУЕМ КЛАСС)
 
-  test("success login", async () => {
+  test('success login', async () => {
     // данные, которые мы получать будем в рамках теста
-    const userValue = { username: "123", id: "1" };
+    const userValue = { username: '123', id: '1' };
     // передаем наш thunk в наш класс
     const thunk = new TestAsyncThunk(loginByUsername);
     // имитируем отправку post запроса, который возвращает валидные данные
     thunk.api.post.mockReturnValue(Promise.resolve({ data: userValue }));
     // вызывваем функцию внутри класса для создания экшена
-    const result = await thunk.callThunk({ username: "123", password: "123" });
+    const result = await thunk.callThunk({ username: '123', password: '123' });
 
     expect(thunk.dispatch).toHaveBeenCalledWith(
-      userActions.setAuthData(userValue)
+      userActions.setAuthData(userValue),
     );
     expect(thunk.api.post).toHaveBeenCalled();
     expect(thunk.dispatch).toHaveBeenCalledTimes(3);
-    expect(result.meta.requestStatus).toBe("fulfilled");
+    expect(result.meta.requestStatus).toBe('fulfilled');
     expect(result.payload).toEqual(userValue);
   });
 
-  test("error login", async () => {
+  test('error login', async () => {
     // передаем наш thunk в наш класс
     const thunk = new TestAsyncThunk(loginByUsername);
     // имитируем отправку post запроса, который возвращает нам ошибку
     thunk.api.post.mockReturnValue(Promise.resolve({ status: 403 }));
     // вызываем функцию внутри класса для создания экшена
-    const result = await thunk.callThunk({ username: "123", password: "123" });
+    const result = await thunk.callThunk({ username: '123', password: '123' });
 
     expect(thunk.api.post).toHaveBeenCalled();
     expect(thunk.dispatch).toHaveBeenCalledTimes(2);
-    expect(result.meta.requestStatus).toBe("rejected");
+    expect(result.meta.requestStatus).toBe('rejected');
     expect(result.payload).toEqual(undefined);
   });
 });

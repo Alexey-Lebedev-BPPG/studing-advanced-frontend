@@ -1,6 +1,6 @@
-import { createAsyncThunk } from "@reduxjs/toolkit";
-import i18next from "i18next";
-import { ThunkConfig } from "@/app/providers/StoreProvider";
+import { createAsyncThunk } from '@reduxjs/toolkit';
+import i18next from 'i18next';
+import { ThunkConfig } from '@/app/providers/StoreProvider';
 
 interface IArticleEditFormProps {}
 
@@ -10,11 +10,11 @@ export const fetchArticleEditForm = createAsyncThunk<
   any,
   IArticleEditFormProps,
   ThunkConfig<string>
->("***/articleEditForm", async (_, thunkApi) => {
+>('***/articleEditForm', async (_, thunkApi) => {
   const { extra, rejectWithValue } = thunkApi;
 
   try {
-    const response = await extra.api.post<any>("/***", {});
+    const response = await extra.api.post<any>('/***', {});
     // делаем доп. проверку получения данных
     if (!response.data) throw new Error();
 
@@ -22,6 +22,6 @@ export const fetchArticleEditForm = createAsyncThunk<
   } catch (error) {
     console.log(error);
     // для обработки ошибок
-    return rejectWithValue(i18next.t("ERROR"));
+    return rejectWithValue(i18next.t('ERROR'));
   }
 });

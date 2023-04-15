@@ -1,5 +1,5 @@
-describe("useModal", () => {
-  test("", () => {
+describe('useModal', () => {
+  test('', () => {
     expect({}).toEqual({});
   });
 });

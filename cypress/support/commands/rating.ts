@@ -1,11 +1,11 @@
 // делаем команду на оставление оценки
-export const setRate = (starsCount = 3, feedback = "feedback") => {
+export const setRate = (starsCount = 3, feedback = 'feedback') => {
   // нажимаем на количество звезд
   cy.getByTestId(`StarRating.${starsCount}`).click();
   // открывается модалка, получаем инпутник и вводим туда наш фидбек
-  cy.getByTestId("RatingCard.Input").type(feedback);
+  cy.getByTestId('RatingCard.Input').type(feedback);
   // нажимаем на кнопку отправить
-  cy.getByTestId("RatingCard.Send").click();
+  cy.getByTestId('RatingCard.Send').click();
 };
 
 declare global {

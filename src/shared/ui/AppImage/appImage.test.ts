@@ -1,5 +1,5 @@
-describe("AppImage", () => {
-  test("", () => {
+describe('AppImage', () => {
+  test('', () => {
     expect({}).toEqual({});
   });
 });

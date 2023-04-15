@@ -1,6 +1,6 @@
-import { CSSProperties, FC, memo } from "react";
-import cls from "./Skeleton.module.scss";
-import { classNames } from "@/shared/lib/classNames/classNames";
+import { CSSProperties, FC, memo } from 'react';
+import cls from './Skeleton.module.scss';
+import { classNames } from '@/shared/lib/classNames/classNames';
 
 interface ISkeletonProps {
   className?: string;
@@ -22,5 +22,5 @@ export const Skeleton: FC<ISkeletonProps> = memo(
         <div />
       </div>
     );
-  }
+  },
 );
