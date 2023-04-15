@@ -11,4 +11,25 @@ describe("Пользователь заходит на страницу спис
     // проверяем, что у нас хотя бы 3 статьи подгрузились
     cy.getByTestId("ArticleListItem").should("have.length.greaterThan", 3);
   });
+
+  // пример теста как и выше, только с помощью фикстур
+  it("На стабах (фикстурах)", () => {
+    // мокаем запрос с помощью интерцептора и указываем, что в качестве ответа будет наша фикстура (моковые данные)
+    cy.intercept("GET", "**/articles?*", { fixture: "articles.json" });
+    // пример, когда фикстуры у нас генерируются автоматически
+    // cy.intercept("GET", "**/articles?*", (req) => {});
+    // проверяем, что отрисовался
+    cy.getByTestId("ArticleList").should("exist");
+    // проверяем, что у нас хотя бы 3 статьи подгрузились
+    cy.getByTestId("ArticleListItem").should("have.length.greaterThan", 3);
+  });
+
+  // пример скипованного теста, когда тест пропускается
+  it.skip("Скип", () => {
+    // проверяем, что отрисовался
+    cy.getByTestId("ArticleList").should("exist");
+    // проверяем, что у нас хотя бы 3 статьи подгрузились
+    cy.getByTestId("ArticleListItem").should("have.length.greaterThan", 3);
+    cy.get("tests").should("exist");
+  });
 });
