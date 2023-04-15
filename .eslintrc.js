@@ -34,6 +34,7 @@ module.exports = {
       2,
       { extensions: [".js", ".jsx", ".tsx"] },
     ],
+    // "max-length": ["warn", { code: 80, comments: 40 }],
     "unused-imports/no-unused-imports": "warn",
     "no-unused-vars": "off",
     "@typescript-eslint/no-unused-vars": "off",

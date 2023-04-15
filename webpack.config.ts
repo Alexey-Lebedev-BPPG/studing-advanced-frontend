@@ -27,12 +27,12 @@ export default (env: BuildEnv) => {
   };
 
   // берем env из параметра функции
-  const mode = env.mode || "development";
-  const PORT = env.port || 3000;
-  const apiURL = env.apiURL || "http://localhost:8000";
+  const mode = env?.mode || "development";
+  const PORT = env?.port || 3000;
+  const apiURL = env?.apiURL || "http://localhost:8000";
 
   const isDev = mode === "development";
-  const isDevDebug = Boolean(JSON.stringify(env.modeDebug)) || false;
+  const isDevDebug = Boolean(JSON.stringify(env?.modeDebug)) || false;
 
   // генерируем общий конфиг webpack
   const config: webpack.Configuration = buildWebpackConfig({
