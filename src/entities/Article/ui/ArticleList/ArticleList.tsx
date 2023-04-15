@@ -104,6 +104,7 @@ export const ArticleList: FC<IArticleListProps> = memo(
       <div
         // ref={registerChild}
         className={classNames("", {}, [className, cls[view]])}
+        data-testid="ArticleList"
       >
         {/* {virtualized ? (
           // @ts-ignore

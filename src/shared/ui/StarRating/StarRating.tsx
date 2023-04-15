@@ -53,6 +53,9 @@ export const StarRating: FC<IStartRatingProps> = memo(
             onMouseEnter={onHover(starNumber)}
             onMouseLeave={onLeave}
             onClick={onClick(starNumber)}
+            data-testid={`StarRating.${starNumber}`}
+            // для проверки количества выбранных звезд
+            data-selected={currentStarsCount >= starNumber}
           />
         ))}
       </div>

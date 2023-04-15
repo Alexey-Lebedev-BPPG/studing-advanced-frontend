@@ -1,28 +1,13 @@
-import { login } from "./commands/login";
+import * as commonCommands from "./commands/common";
+import * as profileCommands from "./commands/profile";
+import * as articleCommands from "./commands/article";
+import * as commentsCommands from "./commands/comments";
+import * as ratingCommands from "./commands/rating";
 
 // команды, которые можно зашить внутрь сайпреса и потом использовать
 // добавляем команду запроса на авторизацию
-Cypress.Commands.add("login", login);
-// Cypress.Commands.add('drag', { prevSubject: 'element'}, (subject, options) => { ... })
-// Cypress.Commands.add('dismiss', { prevSubject: 'optional'}, (subject, options) => { ... })
-// Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
-//
-declare global {
-  namespace Cypress {
-    interface Chainable {
-      // здесь определяем все команды, чтоб срабатывал автокомплит
-      login(username: string, password: string): Chainable<void>;
-      // drag(subject: string, options?: Partial<TypeOptions>): Chainable<Element>;
-      // dismiss(
-      //   subject: string,
-      //   options?: Partial<TypeOptions>
-      // ): Chainable<Element>;
-      // visit(
-      //   originalFn: CommandOriginalFn,
-      //   url: string,
-      //   options: Partial<VisitOptions>
-      // ): Chainable<Element>;
-    }
-  }
-}
-export {};
+Cypress.Commands.addAll(commonCommands);
+Cypress.Commands.addAll(profileCommands);
+Cypress.Commands.addAll(articleCommands);
+Cypress.Commands.addAll(commentsCommands);
+Cypress.Commands.addAll(ratingCommands);

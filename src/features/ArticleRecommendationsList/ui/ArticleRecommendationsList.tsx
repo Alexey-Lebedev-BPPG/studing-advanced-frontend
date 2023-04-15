@@ -22,7 +22,11 @@ export const ArticleRecommendationsList: FC<IArticleRecommendationsListProps> =
     if (isLoading || error || !recommendations) return null;
 
     return (
-      <VStack gap="8" className={classNames("", {}, [className])}>
+      <VStack
+        data-testid="ArticleRecommendationsList"
+        gap="8"
+        className={classNames("", {}, [className])}
+      >
         <Text size={TextSize.L} title={t("Рекомендуем")} />
         <ArticleList
           target="_blank"

@@ -1,4 +1,4 @@
-import { selectByTestId } from "../helpers/selectBiTestId";
+import { selectByTestId } from "../../helpers/selectBiTestId";
 
 describe("Роутинг", () => {
   describe("Пользователь не авторизован", () => {
