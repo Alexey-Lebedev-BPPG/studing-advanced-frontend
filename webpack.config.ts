@@ -1,7 +1,14 @@
 import path from 'path';
 import webpack from 'webpack';
 import { buildWebpackConfig } from './configs/build/buildWebpackConfig';
-import { BuildEnv, BuildPaths } from './configs/build/types/config';
+import { BuildEnv, BuildMode, BuildPaths } from './configs/build/types/config';
+
+// функция на получение дефолтного апи адреса
+const getApiUrl = (mode: BuildMode, apiUrl?: string) => {
+  if (apiUrl) return apiUrl;
+  if (mode === 'production') return '/api';
+  return 'http://localhost:8000';
+};
 
 // заводим такую функцию, а не просто возращаем конфиг, чтоб можно было прокидывать сюда переменные окружения
 export default (env: BuildEnv) => {
@@ -29,7 +36,7 @@ export default (env: BuildEnv) => {
   // берем env из параметра функции
   const mode = env?.mode || 'development';
   const PORT = env?.port || 3000;
-  const apiURL = env?.apiURL || 'http://localhost:8000';
+  const apiURL = getApiUrl(mode, env?.apiURL);
 
   const isDev = mode === 'development';
   const isDevDebug = Boolean(JSON.stringify(env?.modeDebug)) || false;
