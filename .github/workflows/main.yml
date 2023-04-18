@@ -86,8 +86,6 @@ jobs:
       - name: chromatic testing
         if: always()
         run: npm run chromatic
-        with:
-          token: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
       # - name: Generate HTML report
       #   run: npm run test:ui:report
       #   if: always()
