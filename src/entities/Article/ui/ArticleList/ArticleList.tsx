@@ -76,7 +76,7 @@ export const ArticleList: FC<IArticleListProps> = memo(
     if (!isLoading && !articles.length)
       return (
         <div className={classNames('', {}, [className, cls[view]])}>
-          <Text size={TextSize.L} title={t('Статьи не найдены')} />
+          <Text size={TextSize.L} title={`${t('Статьи не найдены')}`} />
         </div>
       );
 

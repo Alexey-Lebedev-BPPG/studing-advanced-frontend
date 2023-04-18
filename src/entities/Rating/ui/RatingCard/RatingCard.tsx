@@ -69,7 +69,7 @@ export const RatingCard: FC<IRatingCardProps> = memo(
           data-testId='RatingCard.Input'
           value={feedback}
           onChange={setFeedback}
-          placeholder={t('Ваш отзыв')}
+          placeholder={`${t('Ваш отзыв')}`}
         />
       </>
     );
@@ -80,7 +80,7 @@ export const RatingCard: FC<IRatingCardProps> = memo(
         data-testid='RatingCard'
       >
         <VStack gap='8' align='center' max>
-          <Text title={starsCount ? t('Спасибо за оценку!') : title} />
+          <Text title={starsCount ? `${t('Спасибо за оценку!')}` : title} />
           <StarRating
             selectedStars={starsCount}
             size={40}

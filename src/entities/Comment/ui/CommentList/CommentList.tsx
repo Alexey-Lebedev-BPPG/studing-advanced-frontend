@@ -36,7 +36,7 @@ export const CommentList: FC<ICommentListProps> = memo(
             />
           ))
         ) : (
-          <Text text={t('Комментарии отсутствуют')} />
+          <Text text={`${t('Комментарии отсутствуют')}`} />
         )}
       </VStack>
     );

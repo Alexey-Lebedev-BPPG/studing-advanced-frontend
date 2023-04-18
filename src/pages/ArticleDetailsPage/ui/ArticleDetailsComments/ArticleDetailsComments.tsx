@@ -37,7 +37,7 @@ const ArticleDetailsComments: FC<IArticleDetailsCommentsProps> = memo(
 
     return (
       <VStack gap='16' max className={classNames('', {}, [className])}>
-        <Text size={TextSize.L} title={t('Комментарии')} />
+        <Text size={TextSize.L} title={`${t('Комментарии')}`} />
         <AddCommentForm onSendComment={onSendComment} />
         <CommentList isLoading={commentsIsLoading} comments={comments} />
       </VStack>

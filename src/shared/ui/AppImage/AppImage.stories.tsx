@@ -1,4 +1,4 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react';
 import { AppImage } from './AppImage';
 import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
 import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
@@ -10,9 +10,9 @@ export default {
   argTypes: {
     backgroundColor: { control: 'color' },
   },
-} as ComponentMeta<typeof AppImage>;
+} as Meta<typeof AppImage>;
 
-const Template: ComponentStory<typeof AppImage> = arg => <AppImage {...arg} />;
+const Template: StoryFn<typeof AppImage> = arg => <AppImage {...arg} />;
 
 export const Normal = Template.bind({});
 Normal.args = {};

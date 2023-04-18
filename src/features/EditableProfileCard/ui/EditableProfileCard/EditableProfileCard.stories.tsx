@@ -1,4 +1,4 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react';
 import { EditableProfileCard } from './EditableProfileCard';
 import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
 import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
@@ -10,9 +10,9 @@ export default {
   argTypes: {
     backgroundColor: { control: 'color' },
   },
-} as ComponentMeta<typeof EditableProfileCard>;
+} as Meta<typeof EditableProfileCard>;
 
-const Template: ComponentStory<typeof EditableProfileCard> = arg => (
+const Template: StoryFn<typeof EditableProfileCard> = arg => (
   <EditableProfileCard {...arg} />
 );
 

@@ -4,8 +4,13 @@ import { buildCssLoaders } from '../build/loaders/buildCssLoaders';
 import { BuildPaths } from '../build/types/config';
 import { buildSvgLoader } from '../build/loaders/buildSvgLoader';
 
-export default {
-  stories: ['../../src/**/*.stories.@(js|jsx|ts|tsx)'],
+const config = {
+  stories: [
+    {
+      directory: '../../src',
+      files: '**/*.stories.@(js|jsx|ts|tsx)',
+    },
+  ],
   addons: [
     '@storybook/addon-links',
     // этот аддон добавляет сразу несколько аддонов, можно какие-то внутренние отключать
@@ -21,10 +26,16 @@ export default {
     'storybook-addon-mock',
     // чтоб не заморачиваться с созданием разных кнопок для разных тем, можно поставить аддон: https://storybook.js.org/addons/@dhruvkb/storybook-addon-themes
     'storybook-addon-themes',
+    '@storybook/addon-mdx-gfm',
   ],
-  framework: '@storybook/react',
-  core: {
-    builder: 'webpack5',
+  framework: {
+    name: '@storybook/react-webpack5',
+    options: {
+      fastRefresh: true,
+      builder: {
+        lazyCompilation: true,
+      },
+    },
   },
   // чтоб переводы работали корректно
   staticDirs: ['../../public'],
@@ -61,9 +72,11 @@ export default {
           //   /svg/.test(rule.test as unknown as string)
         ) {
           // берем все свойства правила и добавляем правило для исключения обработки свг (по дефолту в сторибуковской сборке стоит другой лоадер для SVG, мы используем svgr, поэтому необходимо его подменить)
-          return { ...rule, exclude: /\.svg$/i };
+          return {
+            ...rule,
+            exclude: /\.svg$/i,
+          };
         }
-
         return rule;
       },
     );
@@ -82,7 +95,10 @@ export default {
         __PROJECT__: JSON.stringify('storybook'),
       }),
     );
-
     return config;
   },
+  docs: {
+    autodocs: true,
+  },
 };
+export default config;

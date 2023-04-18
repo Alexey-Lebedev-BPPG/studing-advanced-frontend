@@ -1,4 +1,4 @@
-import React, { FC, Suspense } from 'react';
+import { FC, Suspense } from 'react';
 import { LoginFormAsync } from '../LoginForm/LoginForm.async';
 import cls from './LoginModal.module.scss';
 import { classNames } from '@/shared/lib/classNames/classNames';

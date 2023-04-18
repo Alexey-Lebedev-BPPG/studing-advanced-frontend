@@ -1,4 +1,4 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react';
 import { Button } from '../../../Button/Button';
 import { Dropdown } from './Dropdown';
 import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
@@ -10,9 +10,9 @@ export default {
   argTypes: {
     backgroundColor: { control: 'color' },
   },
-} as ComponentMeta<typeof Dropdown>;
+} as Meta<typeof Dropdown>;
 
-const Template: ComponentStory<typeof Dropdown> = arg => <Dropdown {...arg} />;
+const Template: StoryFn<typeof Dropdown> = arg => <Dropdown {...arg} />;
 
 export const Normal = Template.bind({});
 Normal.args = {
@@ -21,5 +21,8 @@ Normal.args = {
 };
 
 export const Dark = Template.bind({});
-Dark.args = {};
+Dark.args = {
+  trigger: <Button>Open</Button>,
+  items: [{ content: 'first' }, { content: 'second' }, { content: 'third' }],
+};
 Dark.decorators = [ThemeDecorator(Theme.DARK)];

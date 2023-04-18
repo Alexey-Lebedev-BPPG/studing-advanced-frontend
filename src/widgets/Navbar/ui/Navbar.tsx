@@ -16,6 +16,7 @@ import { Text, TextTheme } from '@/shared/ui/Text';
 interface NavbarProps {
   className?: string;
 }
+
 // все, что в виджете будет экспортиться не по дефолту
 // навбар будет принимать доп класс, чтоб извне можно было поправить какие-то стили в нем
 export const Navbar = memo(({ className }: NavbarProps) => {
@@ -39,7 +40,7 @@ export const Navbar = memo(({ className }: NavbarProps) => {
         <Text
           theme={TextTheme.INVERTED}
           className={cls.appName}
-          title={t('Ulbi Example')}
+          title={`${t('Ulbi Example')}`}
         />
         <AppLink to={getRouteArticleCreate()} theme={AppLinkTheme.SECONDARY}>
           {t('Создать статью')}

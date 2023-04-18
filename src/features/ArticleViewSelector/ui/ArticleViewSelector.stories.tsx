@@ -1,4 +1,4 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react';
 import { ArticleViewSelector } from './ArticleViewSelector';
 import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { Theme } from '@/shared/const/theme';
@@ -9,9 +9,9 @@ export default {
   argTypes: {
     backgroundColor: { control: 'color' },
   },
-} as ComponentMeta<typeof ArticleViewSelector>;
+} as Meta<typeof ArticleViewSelector>;
 
-const Template: ComponentStory<typeof ArticleViewSelector> = arg => (
+const Template: StoryFn<typeof ArticleViewSelector> = arg => (
   <ArticleViewSelector {...arg} />
 );
 

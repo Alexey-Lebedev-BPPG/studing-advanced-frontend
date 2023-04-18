@@ -39,13 +39,13 @@ export const ArticleSortSelector: FC<IArticleSortSelectorProps> = memo(
       <div className={classNames(cls.articleSortSelector, {}, [className])}>
         <Select
           options={sortFieldOption}
-          label={t('Сортировать ПО')}
+          label={`${t('Сортировать ПО')}`}
           value={sort}
           onChange={onChangeSort}
         />
         <Select
           options={orderOption}
-          label={t('по')}
+          label={`${t('по')}`}
           value={order}
           onChange={onChangeOrder}
           className={cls.order}

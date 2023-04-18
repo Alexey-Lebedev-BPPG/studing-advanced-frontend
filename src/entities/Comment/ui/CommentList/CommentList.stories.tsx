@@ -1,4 +1,4 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react';
 import { CommentList } from './CommentList';
 
 export default {
@@ -7,11 +7,9 @@ export default {
   argTypes: {
     backgroundColor: { control: 'color' },
   },
-} as ComponentMeta<typeof CommentList>;
+} as Meta<typeof CommentList>;
 
-const Template: ComponentStory<typeof CommentList> = arg => (
-  <CommentList {...arg} />
-);
+const Template: StoryFn<typeof CommentList> = arg => <CommentList {...arg} />;
 
 export const Normal = Template.bind({});
 Normal.args = {

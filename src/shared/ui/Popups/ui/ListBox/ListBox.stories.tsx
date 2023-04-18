@@ -1,4 +1,4 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { StoryFn, Meta } from '@storybook/react';
 import { ListBox } from './ListBox';
 import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { Theme } from '@/shared/const/theme';
@@ -17,9 +17,9 @@ export default {
       </div>
     ),
   ],
-} as ComponentMeta<typeof ListBox>;
+} as Meta<typeof ListBox>;
 
-const Template: ComponentStory<typeof ListBox> = arg => <ListBox {...arg} />;
+const Template: StoryFn<typeof ListBox> = arg => <ListBox {...arg} />;
 
 export const TopLeftLight = Template.bind({});
 TopLeftLight.args = {

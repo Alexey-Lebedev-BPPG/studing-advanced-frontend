@@ -27,7 +27,7 @@ export const ArticleRecommendationsList: FC<IArticleRecommendationsListProps> =
         gap='8'
         className={classNames('', {}, [className])}
       >
-        <Text size={TextSize.L} title={t('Рекомендуем')} />
+        <Text size={TextSize.L} title={`${t('Рекомендуем')}`} />
         <ArticleList
           target='_blank'
           articles={recommendations}

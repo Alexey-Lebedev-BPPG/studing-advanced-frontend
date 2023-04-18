@@ -67,20 +67,20 @@ const LoginForm: FC<ILoginFormProps> = memo(({ className, onSuccess }) => {
   return (
     <DynamicModuleLoader reducers={initialReducers}>
       <div className={classNames(cls.loginForm, {}, [className])}>
-        <Text title={t('Форма авторизации')} />
+        <Text title={`${t('Форма авторизации')}`} />
         {error && <Text text={error} theme={TextTheme.ERROR} />}
         <Input
           autofocus
           type='text'
           className={cls.input}
-          placeholder={t('Введите username')}
+          placeholder={`${t('Введите username')}`}
           onChange={onChangeUsername}
           value={username}
         />
         <Input
           type='text'
           className={cls.input}
-          placeholder={t('Введите пароль')}
+          placeholder={`${t('Введите пароль')}`}
           onChange={onChangePassword}
           value={password}
         />

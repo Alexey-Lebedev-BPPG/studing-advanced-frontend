@@ -1,4 +1,4 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react';
 import { NotificationList } from './NotificationList';
 import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
 import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
@@ -10,9 +10,9 @@ export default {
   argTypes: {
     backgroundColor: { control: 'color' },
   },
-} as ComponentMeta<typeof NotificationList>;
+} as Meta<typeof NotificationList>;
 
-const Template: ComponentStory<typeof NotificationList> = arg => (
+const Template: StoryFn<typeof NotificationList> = arg => (
   <NotificationList {...arg} />
 );
 

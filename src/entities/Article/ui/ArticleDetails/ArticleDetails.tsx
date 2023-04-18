@@ -100,7 +100,7 @@ export const ArticleDetails: FC<IArticleDetailsProps> = memo(
     } else if (error) {
       content = (
         <Text
-          title={t('Произошла ошибка при загрузке статьи.')}
+          title={`${t('Произошла ошибка при загрузке статьи.')}`}
           align={TextAlign.CENTER}
         />
       );

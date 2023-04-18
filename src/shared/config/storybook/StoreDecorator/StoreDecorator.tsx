@@ -1,4 +1,4 @@
-import { Story } from '@storybook/react';
+import { StoryFn } from '@storybook/react';
 import { StateSchema, StoreProvider } from '@/app/providers/StoreProvider';
 import { articleDetailsReducer } from '@/entities/Article/testing';
 import { addCommentFormReducer } from '@/features/AddCommentForm/testing';
@@ -20,7 +20,7 @@ const defaultAsyncReducers: ReducersList = {
 // добавляем аргумент приема редьюсеров, чтоб была возможность прокидывать сюда другие редьюсеры
 export const StoreDecorator =
   (state: DeepPartial<StateSchema>, asyncReducers?: ReducersList) =>
-  (StoryComponent: Story) =>
+  (StoryComponent: StoryFn) =>
     (
       <StoreProvider
         initialState={state}

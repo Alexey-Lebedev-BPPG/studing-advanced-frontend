@@ -1,5 +1,4 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
-import React from 'react';
+import { Meta, StoryFn } from '@storybook/react';
 import { Theme } from '../../const/theme';
 import { Loader } from './Loader';
 import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
@@ -10,9 +9,9 @@ export default {
   argTypes: {
     backgroundColor: { control: 'color' },
   },
-} as ComponentMeta<typeof Loader>;
+} as Meta<typeof Loader>;
 
-const Template: ComponentStory<typeof Loader> = args => <Loader {...args} />;
+const Template: StoryFn<typeof Loader> = args => <Loader {...args} />;
 
 export const Normal = Template.bind({});
 Normal.args = {};

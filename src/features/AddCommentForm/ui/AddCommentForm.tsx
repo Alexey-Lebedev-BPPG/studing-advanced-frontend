@@ -53,7 +53,7 @@ const AddCommentForm: FC<IAddCommentFormProps> = memo(
           data-testid='AddCommentForm'
         >
           <Input
-            placeholder={t('Введите текст комментария')}
+            placeholder={`${t('Введите текст комментария')}`}
             value={text}
             onChange={onCommentTextChange}
             className={cls.input}

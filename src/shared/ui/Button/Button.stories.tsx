@@ -1,5 +1,4 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
-import React from 'react';
+import { Meta, StoryFn } from '@storybook/react';
 import { Theme } from '../../const/theme';
 import { Button, ButtonSize, ButtonTheme } from './Button';
 import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
@@ -11,9 +10,9 @@ export default {
   argTypes: {
     backgroundColor: { control: 'color' },
   },
-} as ComponentMeta<typeof Button>;
+} as Meta<typeof Button>;
 
-const Template: ComponentStory<typeof Button> = args => <Button {...args} />;
+const Template: StoryFn<typeof Button> = args => <Button {...args} />;
 
 // создаем виды нашей кнопки в зависимости от пропсов
 export const Primary = Template.bind({});

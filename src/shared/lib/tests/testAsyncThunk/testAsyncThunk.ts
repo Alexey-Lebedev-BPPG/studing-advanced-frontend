@@ -11,7 +11,7 @@ type ActionCreatorType<Return, Arg, RejectedValue> = (
 jest.mock('axios');
 
 // чтоб использовать не только модуль, но и все внутренности, мокаем глубоким способом (добавляем флаг true вторым аргументом в функцию mocked)
-const mockedAxios = jest.mocked(axios, true);
+const mockedAxios = jest.mocked(axios);
 
 // создаем класс, внутри которого мы изорируем логику по тестированию асинхронных thuk-ов
 // в дженерике: первый тип - то, что возвращает thunk; второй - аргумент; третий - то, что возвращает thunk при ошибке

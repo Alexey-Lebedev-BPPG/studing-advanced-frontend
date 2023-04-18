@@ -1,5 +1,4 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
-import React from 'react';
+import { Meta, StoryFn } from '@storybook/react';
 import { NotFoundPage } from './NotFoundPage';
 import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { Theme } from '@/shared/const/theme';
@@ -10,9 +9,9 @@ export default {
   argTypes: {
     backgroundColor: { control: 'color' },
   },
-} as ComponentMeta<typeof NotFoundPage>;
+} as Meta<typeof NotFoundPage>;
 
-const Template: ComponentStory<typeof NotFoundPage> = args => (
+const Template: StoryFn<typeof NotFoundPage> = args => (
   <NotFoundPage {...args} />
 );
 

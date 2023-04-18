@@ -35,8 +35,8 @@ export const CountrySelect: FC<ICountryProps> = memo(
       <ListBox
         value={value}
         className={className}
-        defaultValue={t('Укажите страну')}
-        label={t('Укажите страну')}
+        defaultValue={`${t('Укажите страну')}`}
+        label={`${t('Укажите страну')}`}
         readonly={readonly}
         items={options}
         onChange={onChangeHandler}

@@ -1,4 +1,4 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react';
 import { RatingCard } from './RatingCard';
 import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
 import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
@@ -10,11 +10,9 @@ export default {
   argTypes: {
     backgroundColor: { control: 'color' },
   },
-} as ComponentMeta<typeof RatingCard>;
+} as Meta<typeof RatingCard>;
 
-const Template: ComponentStory<typeof RatingCard> = arg => (
-  <RatingCard {...arg} />
-);
+const Template: StoryFn<typeof RatingCard> = arg => <RatingCard {...arg} />;
 
 export const Normal = Template.bind({});
 Normal.args = {};

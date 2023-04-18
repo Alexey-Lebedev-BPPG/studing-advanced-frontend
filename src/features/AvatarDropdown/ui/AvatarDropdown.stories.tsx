@@ -1,4 +1,4 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react';
 import { AvatarDropdown } from './AvatarDropdown';
 import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
 import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
@@ -10,9 +10,9 @@ export default {
   argTypes: {
     backgroundColor: { control: 'color' },
   },
-} as ComponentMeta<typeof AvatarDropdown>;
+} as Meta<typeof AvatarDropdown>;
 
-const Template: ComponentStory<typeof AvatarDropdown> = arg => (
+const Template: StoryFn<typeof AvatarDropdown> = arg => (
   <AvatarDropdown {...arg} />
 );
 

@@ -1,4 +1,4 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react';
 import { Theme } from '../../const/theme';
 import { Text, TextSize, TextTheme } from './Text';
 import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
@@ -9,9 +9,9 @@ export default {
   argTypes: {
     backgroundColor: { control: 'color' },
   },
-} as ComponentMeta<typeof Text>;
+} as Meta<typeof Text>;
 
-const Template: ComponentStory<typeof Text> = args => <Text {...args} />;
+const Template: StoryFn<typeof Text> = args => <Text {...args} />;
 
 export const Primary = Template.bind({});
 Primary.args = {
@@ -34,6 +34,7 @@ PrimaryDark.args = {
   title: 'Title',
   text: 'text lorem',
 };
+
 PrimaryDark.decorators = [ThemeDecorator(Theme.DARK)];
 
 export const OnlyTitleDark = Template.bind({});

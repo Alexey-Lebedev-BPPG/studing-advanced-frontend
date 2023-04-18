@@ -1,4 +1,4 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react';
 import { ArticleSortSelector } from './ArticleSortSelector';
 import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { Theme } from '@/shared/const/theme';
@@ -9,9 +9,9 @@ export default {
   argTypes: {
     backgroundColor: { control: 'color' },
   },
-} as ComponentMeta<typeof ArticleSortSelector>;
+} as Meta<typeof ArticleSortSelector>;
 
-const Template: ComponentStory<typeof ArticleSortSelector> = arg => (
+const Template: StoryFn<typeof ArticleSortSelector> = arg => (
   <ArticleSortSelector {...arg} />
 );
 

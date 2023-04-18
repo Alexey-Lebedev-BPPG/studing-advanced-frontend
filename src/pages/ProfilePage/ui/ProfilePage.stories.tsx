@@ -1,4 +1,4 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react';
 import ProfilePage from './ProfilePage';
 import { Country } from '@/entities/Country';
 import { Currency } from '@/entities/Currency';
@@ -12,11 +12,9 @@ export default {
   argTypes: {
     backgroundColor: { control: 'color' },
   },
-} as ComponentMeta<typeof ProfilePage>;
+} as Meta<typeof ProfilePage>;
 
-const Template: ComponentStory<typeof ProfilePage> = args => (
-  <ProfilePage {...args} />
-);
+const Template: StoryFn<typeof ProfilePage> = args => <ProfilePage {...args} />;
 
 export const Light = Template.bind({});
 Light.args = {};

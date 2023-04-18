@@ -1,4 +1,4 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react';
 import ArticleEditForm from './ArticleEditForm';
 import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
 import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
@@ -10,9 +10,9 @@ export default {
   argTypes: {
     backgroundColor: { control: 'color' },
   },
-} as ComponentMeta<typeof ArticleEditForm>;
+} as Meta<typeof ArticleEditForm>;
 
-const Template: ComponentStory<typeof ArticleEditForm> = arg => (
+const Template: StoryFn<typeof ArticleEditForm> = arg => (
   <ArticleEditForm {...arg} />
 );
 

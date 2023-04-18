@@ -1,4 +1,4 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react';
 import ArticleDetailsPage from './ArticleDetailsPage';
 import { Article, ArticleBlockType, ArticleType } from '@/entities/Article';
 import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
@@ -9,9 +9,9 @@ export default {
   argTypes: {
     backgroundColor: { control: 'color' },
   },
-} as ComponentMeta<typeof ArticleDetailsPage>;
+} as Meta<typeof ArticleDetailsPage>;
 
-const Template: ComponentStory<typeof ArticleDetailsPage> = arg => (
+const Template: StoryFn<typeof ArticleDetailsPage> = arg => (
   <ArticleDetailsPage {...arg} />
 );
 

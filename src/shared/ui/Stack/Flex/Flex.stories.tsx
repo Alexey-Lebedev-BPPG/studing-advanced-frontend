@@ -1,4 +1,4 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react';
 import { Flex } from './Flex';
 
 export default {
@@ -7,9 +7,9 @@ export default {
   argTypes: {
     backgroundColor: { control: 'color' },
   },
-} as ComponentMeta<typeof Flex>;
+} as Meta<typeof Flex>;
 
-const Template: ComponentStory<typeof Flex> = arg => <Flex {...arg} />;
+const Template: StoryFn<typeof Flex> = arg => <Flex {...arg} />;
 
 export const Row = Template.bind({});
 Row.args = {

@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
 import cls from './PageError.module.scss';
 import { Button } from '@/shared/ui/Button';
 

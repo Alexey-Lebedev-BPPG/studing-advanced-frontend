@@ -103,7 +103,7 @@ export const ArticlePageFilters: FC<IArticlePageFiltersProps> = memo(
           <Input
             value={search}
             onChange={onChangeSearch}
-            placeholder={t('Поиск')}
+            placeholder={`${t('Поиск')}`}
           />
         </Card>
         <ArticleTypeTabs

@@ -33,8 +33,8 @@ export const CurrencySelect: FC<ICurrencyProps> = memo(
       <ListBox
         value={value}
         className={className}
-        defaultValue={t('Укажите валюту')}
-        label={t('Укажите валюту')}
+        defaultValue={`${t('Укажите валюту')}`}
+        label={`${t('Укажите валюту')}`}
         readonly={readonly}
         items={options}
         onChange={onChangeHandler}

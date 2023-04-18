@@ -1,5 +1,5 @@
 import { action } from '@storybook/addon-actions';
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react';
 import AddCommentForm from './AddCommentForm';
 import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
 import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
@@ -11,9 +11,9 @@ export default {
   argTypes: {
     backgroundColor: { control: 'color' },
   },
-} as ComponentMeta<typeof AddCommentForm>;
+} as Meta<typeof AddCommentForm>;
 
-const Template: ComponentStory<typeof AddCommentForm> = arg => (
+const Template: StoryFn<typeof AddCommentForm> = arg => (
   <AddCommentForm {...arg} />
 );
 
@@ -24,5 +24,5 @@ Normal.args = {
 Normal.decorators = [StoreDecorator({})];
 
 export const Dark = Template.bind({});
-Dark.args = {};
-Dark.decorators = [ThemeDecorator(Theme.DARK)];
+Dark.args = { onSendComment: action('onSendComment') };
+Dark.decorators = [ThemeDecorator(Theme.DARK), StoreDecorator({})];

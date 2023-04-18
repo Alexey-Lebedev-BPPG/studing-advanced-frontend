@@ -1,4 +1,4 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react';
 import { NotificationItem } from './NotificationItem';
 import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
 import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
@@ -10,16 +10,28 @@ export default {
   argTypes: {
     backgroundColor: { control: 'color' },
   },
-} as ComponentMeta<typeof NotificationItem>;
+} as Meta<typeof NotificationItem>;
 
-const Template: ComponentStory<typeof NotificationItem> = arg => (
+const Template: StoryFn<typeof NotificationItem> = arg => (
   <NotificationItem {...arg} />
 );
 
 export const Normal = Template.bind({});
-Normal.args = {};
+Normal.args = {
+  item: {
+    id: '1',
+    title: 'test123',
+    description: 'testing123',
+  },
+};
 Normal.decorators = [StoreDecorator({})];
 
 export const Dark = Template.bind({});
-Dark.args = {};
+Dark.args = {
+  item: {
+    id: '1',
+    title: 'test123',
+    description: 'testing123',
+  },
+};
 Dark.decorators = [StoreDecorator({}), ThemeDecorator(Theme.DARK)];

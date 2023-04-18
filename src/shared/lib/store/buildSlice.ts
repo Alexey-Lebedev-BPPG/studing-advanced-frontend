@@ -24,6 +24,7 @@ export function buildSlice<
         bindActionCreators<
           // @ts-ignore
           CaseReducerActions<CaseReducers>,
+          // @ts-ignore
           CaseReducerActions<CaseReducers>
         >(slice.actions, dispatch),
       [dispatch],
