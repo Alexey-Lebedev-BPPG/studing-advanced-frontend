@@ -31,7 +31,7 @@
     "test:ui:html": "npx reg-cli --from .loki/report.json --report .loki/report.html",
     "storybook": "storybook dev -p 6006 -c ./configs/storybook",
     "build-storybook": "storybook build -c ./configs/storybook",
-    "chromatic": "npx chromatic --project-token=430a91684282",
+    "chromatic": "chromatic --exit-zero-on-changes",
     "prepare": "husky install",
     "generate:slices": "node ./scripts/createSlice/index.js",
     "postinstall": "node ./scripts/remove-cache.js"

@@ -50,7 +50,7 @@ permissions:
   pages: write
   id-token: write
 concurrency:
-  group: "pages"
+  group: 'pages'
   cancel-in-progress: true
 jobs:
   # джоба для проверок, которые требуют сборку проекта
@@ -77,18 +77,23 @@ jobs:
       - name: build storybook
         run: npm run storybook:build
         if: always()
-      - name: screenshot testing
-        run: npm run test:ui:ci
-        if: always()
+      # - name: screenshot testing
+      #   run: npm run test:ui:ci
+      #   if: always()
       - name: unit testing
         if: always()
         run: npm run test:unit
-      - name: Generate HTML report
-        run: npm run test:ui:report
+      - name: chromatic testing
         if: always()
-      - name: move loki
-        run: mv .loki reports/
-        if: always()
+        run: npm run chromatic
+        with:
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+      # - name: Generate HTML report
+      #   run: npm run test:ui:report
+      #   if: always()
+      # - name: move loki
+      #   run: mv .loki reports/
+      #   if: always()
       - name: Setup Pages
         uses: actions/configure-pages@v2
         if: always()
@@ -96,7 +101,7 @@ jobs:
         uses: actions/upload-pages-artifact@v1
         if: always()
         with:
-          path: "reports"
+          path: 'reports'
       - name: Deploy to GitHub Pages
         id: deployment
         if: always()
@@ -121,4 +126,3 @@ jobs:
         if: always()
       - name: linting css
         run: npm run lint:scss
-
