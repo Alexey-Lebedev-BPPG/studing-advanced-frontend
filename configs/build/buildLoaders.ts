@@ -2,7 +2,7 @@ import webpack from "webpack";
 import { BuildOptions } from "./types/config";
 import { buildCssLoaders } from "./loaders/buildCssLoaders";
 import { buildBabelLoader } from "./loaders/buildBabelLoader";
-// import { buildTypesciptLoader } from "./loaders/buildTypesciptLoader";
+import { buildTypesciptLoader } from "./loaders/buildTypesciptLoader";
 import { buildFileLoader } from "./loaders/buildFileLoader";
 import { buildSvgLoader } from "./loaders/buildSvgLoader";
 

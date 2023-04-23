@@ -20,7 +20,7 @@ const parameters: Preview = {
     // настройки аддона storybook-addon-themes под темы
     themes: {
       // указываем дефолтную тему
-      default: 'dark',
+      // default: 'dark',
       // перечисляем все доступные темы (название, навешиваемый класс css, цвет рядом с названием в селекте выбора)
       list: [
         { name: 'light', class: Theme.LIGHT, color: '#ffffff' },

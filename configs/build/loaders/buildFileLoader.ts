@@ -4,7 +4,7 @@ export const buildFileLoader = () => ({
   exclude: /node_modules/,
   use: [
     {
-      loader: "file-loader",
+      loader: 'file-loader',
     },
   ],
 });

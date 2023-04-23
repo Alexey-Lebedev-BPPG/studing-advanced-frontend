@@ -1,4 +1,4 @@
-export type BuildMode = "production" | "development";
+export type BuildMode = 'production' | 'development';
 
 export interface BuildPaths {
   entry: string;
@@ -26,5 +26,5 @@ export interface BuildOptions {
   port: number;
   apiURL: string;
   // создаем переменную для разделения сред выполнения
-  project: "storybook" | "frontend" | "jest";
+  project: 'storybook' | 'frontend' | 'jest';
 }
