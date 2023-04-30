@@ -34,16 +34,16 @@ export const fetchArticlesList = createAsyncThunk<
 
   try {
     // добавляем параметры в строку урл
-    addQueryParams({ sort, order, search, type });
+    addQueryParams({ order, search, sort, type });
     const response = await extra.api.get<Article[]>('/articles', {
       // передаем параметры согласно документации jsonplaceholder
       params: {
         // чтоб получить полную сущность пользователя
         _expand: 'user',
         _limit: limit,
+        _order: order,
         _page: page,
         _sort: sort,
-        _order: order,
         q: search,
         type: type === ArticleType.ALL ? undefined : type,
       },

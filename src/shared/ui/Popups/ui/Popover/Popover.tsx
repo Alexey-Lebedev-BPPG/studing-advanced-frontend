@@ -1,9 +1,9 @@
 import { Popover as PopoverHeadless } from '@headlessui/react';
-import { FC, ReactNode, memo } from 'react';
+import { FC, ReactNode } from 'react';
+import cls from './Popover.module.scss';
 import { DropDownDirection } from '../../../../types/ui';
 import { mapDirectionClass } from '../../styles/consts';
 import popupCls from '../../styles/popups.module.scss';
-import cls from './Popover.module.scss';
 import { classNames } from '@/shared/lib/classNames/classNames';
 
 export interface IPopoverProps {
@@ -13,23 +13,24 @@ export interface IPopoverProps {
   direction?: DropDownDirection;
 }
 
-export const Popover: FC<IPopoverProps> = memo(
-  ({ className, children, trigger, direction = 'bottom left' }) => {
-    const menuClasses = [mapDirectionClass[direction]];
+export const Popover: FC<IPopoverProps> = ({
+  className,
+  children,
+  trigger,
+  direction = 'bottom left',
+}) => {
+  const menuClasses = [mapDirectionClass[direction]];
 
-    return (
-      <PopoverHeadless
-        className={classNames('', {}, [className, popupCls.popup])}
-      >
-        <PopoverHeadless.Button as='div' className={popupCls.trigger}>
-          {trigger}
-        </PopoverHeadless.Button>
-        <PopoverHeadless.Panel
-          className={classNames(cls.panel, {}, menuClasses)}
-        >
-          {children}
-        </PopoverHeadless.Panel>
-      </PopoverHeadless>
-    );
-  },
-);
+  return (
+    <PopoverHeadless
+      className={classNames('', {}, [className, popupCls.popup])}
+    >
+      <PopoverHeadless.Button as='div' className={popupCls.trigger}>
+        {trigger}
+      </PopoverHeadless.Button>
+      <PopoverHeadless.Panel className={classNames(cls.panel, {}, menuClasses)}>
+        {children}
+      </PopoverHeadless.Panel>
+    </PopoverHeadless>
+  );
+};

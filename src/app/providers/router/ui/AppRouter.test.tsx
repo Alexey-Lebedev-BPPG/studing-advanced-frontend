@@ -46,8 +46,8 @@ describe('app/router/AppRouter', () => {
   test('success profilePage for authorization users ', async () => {
     // проверяем, что наш компонент отрендерится, при этом задаем инишиал роут
     componentRender(<AppRouter />, {
-      route: getRouteProfile('1'),
       initialState: { user: { _inited: true, authData: { id: '1' } } },
+      route: getRouteProfile('1'),
     });
 
     // находим наш компонент, при чем используем async, т.к. наш компонент подгружается лениво
@@ -60,8 +60,8 @@ describe('app/router/AppRouter', () => {
   test('unsuccess profilePage for authorization users with other role', async () => {
     // проверяем, что наш компонент отрендерится, при этом задаем инишиал роут
     componentRender(<AppRouter />, {
-      route: getRouteAdminPanel(),
       initialState: { user: { _inited: true, authData: { id: '1' } } },
+      route: getRouteAdminPanel(),
     });
 
     // находим наш компонент, при чем используем async, т.к. наш компонент подгружается лениво
@@ -74,10 +74,10 @@ describe('app/router/AppRouter', () => {
   test('success profilePage for authorization users with admin role', async () => {
     // проверяем, что наш компонент отрендерится, при этом задаем инишиал роут
     componentRender(<AppRouter />, {
-      route: getRouteAdminPanel(),
       initialState: {
         user: { _inited: true, authData: { id: '1', roles: [UserRole.ADMIN] } },
       },
+      route: getRouteAdminPanel(),
     });
 
     // находим наш компонент, при чем используем async, т.к. наш компонент подгружается лениво

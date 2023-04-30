@@ -8,9 +8,6 @@ const initialState: ArticleDetailsSchema = {
 };
 
 export const articleDetailsSlice = createSlice({
-  name: 'articleDetails',
-  initialState,
-  reducers: {},
   // исgользуется для асинхронного изменения стейта
   extraReducers: builder => {
     // у каждого thunka есть 3 состояния: 1. pending, 2. fulfilled, 3. rejected
@@ -37,6 +34,12 @@ export const articleDetailsSlice = createSlice({
         state.error = action.payload;
       });
   },
+
+  initialState,
+
+  name: 'articleDetails',
+
+  reducers: {},
 });
 
 export const { actions: articleDetailsActions } = articleDetailsSlice;

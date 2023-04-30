@@ -34,7 +34,7 @@ export const Navbar = memo(({ className }: NavbarProps) => {
   }, []);
 
   // для авторизованного юзера
-  if (authData) {
+  if (authData)
     return (
       <header className={classNames(cls.navbar, {}, [className])}>
         <Text
@@ -51,7 +51,7 @@ export const Navbar = memo(({ className }: NavbarProps) => {
         </HStack>
       </header>
     );
-  }
+
   // для не авторизованного юзера
   return (
     <header className={classNames(cls.navbar, {}, [className])}>
@@ -63,7 +63,7 @@ export const Navbar = memo(({ className }: NavbarProps) => {
         {t('Войти')}
       </Button>
       {/* если у нас модалка открывается, то только тогда мы модалку монтируем.если нет, то убираем ее из DOM-дерева */}
-      {isAuthModal && (
+      {!!isAuthModal && (
         <LoginModal isOpen={isAuthModal} onClose={onCloseModal} />
       )}
     </header>

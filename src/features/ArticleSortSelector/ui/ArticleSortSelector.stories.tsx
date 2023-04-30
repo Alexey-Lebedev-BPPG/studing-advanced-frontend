@@ -4,11 +4,11 @@ import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDe
 import { Theme } from '@/shared/const/theme';
 
 export default {
-  title: 'entities/Article/ArticleSortSelector',
-  component: ArticleSortSelector,
   argTypes: {
     backgroundColor: { control: 'color' },
   },
+  component: ArticleSortSelector,
+  title: 'entities/Article/ArticleSortSelector',
 } as Meta<typeof ArticleSortSelector>;
 
 const Template: StoryFn<typeof ArticleSortSelector> = arg => (

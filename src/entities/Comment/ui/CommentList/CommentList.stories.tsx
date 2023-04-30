@@ -2,11 +2,11 @@ import { Meta, StoryFn } from '@storybook/react';
 import { CommentList } from './CommentList';
 
 export default {
-  title: 'entities/Comment/CommentList',
-  component: CommentList,
   argTypes: {
     backgroundColor: { control: 'color' },
   },
+  component: CommentList,
+  title: 'entities/Comment/CommentList',
 } as Meta<typeof CommentList>;
 
 const Template: StoryFn<typeof CommentList> = arg => <CommentList {...arg} />;

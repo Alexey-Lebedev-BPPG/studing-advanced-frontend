@@ -1,8 +1,8 @@
 import { FC, memo, useMemo, useState } from 'react';
 import { useSelector } from 'react-redux';
+import cls from './SideBar.module.scss';
 import { getSidebarItems } from '../../model/selectors/getSidebarItems';
 import { SidebarItem } from '../SidebarItem';
-import cls from './SideBar.module.scss';
 import { LanguageSwitcher } from '@/features/LanguageSwitcher';
 import { ThemeSwitcher } from '@/features/ThemeSwitcher';
 import { classNames } from '@/shared/lib/classNames/classNames';
@@ -24,7 +24,7 @@ export const SideBar: FC<ISideBarProps> = memo(({ className }) => {
   const itemsList = useMemo(
     () =>
       sidebarItemsList.map(item => (
-        <SidebarItem item={item} collapsed={collapsed} key={item.path} />
+        <SidebarItem key={item.path} item={item} collapsed={collapsed} />
       )),
     [collapsed, sidebarItemsList],
   );
@@ -36,13 +36,13 @@ export const SideBar: FC<ISideBarProps> = memo(({ className }) => {
       ])}
     >
       <Button
-        onClick={onToggle}
+        square
         type='button'
         data-testid='sidebar-toggle'
         className={cls.collapsedBtn}
         theme={ButtonTheme.BACKGROUND_INVERTED}
         size={ButtonSize.L}
-        square
+        onClick={onToggle}
       >
         {collapsed ? '>' : '<'}
       </Button>

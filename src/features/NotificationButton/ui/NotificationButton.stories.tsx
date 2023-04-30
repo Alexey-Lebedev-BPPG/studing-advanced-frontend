@@ -5,11 +5,11 @@ import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDe
 import { Theme } from '@/shared/const/theme';
 
 export default {
-  title: 'features/NotificationButton',
-  component: NotificationButton,
   argTypes: {
     backgroundColor: { control: 'color' },
   },
+  component: NotificationButton,
+  title: 'features/NotificationButton',
 } as Meta<typeof NotificationButton>;
 
 const Template: StoryFn<typeof NotificationButton> = arg => (

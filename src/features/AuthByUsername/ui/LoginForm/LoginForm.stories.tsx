@@ -3,11 +3,11 @@ import LoginForm from './LoginForm';
 import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
 
 export default {
-  title: 'features/LoginForm',
-  component: LoginForm,
   argTypes: {
     backgroundColor: { control: 'color' },
   },
+  component: LoginForm,
+  title: 'features/LoginForm',
 } as Meta<typeof LoginForm>;
 
 const Template: StoryFn<typeof LoginForm> = args => <LoginForm {...args} />;
@@ -16,7 +16,7 @@ export const Primary = Template.bind({});
 Primary.args = {};
 Primary.decorators = [
   StoreDecorator({
-    loginForm: { username: '123', password: 'asd' },
+    loginForm: { password: 'asd', username: '123' },
   }),
 ];
 
@@ -24,7 +24,7 @@ export const WithError = Template.bind({});
 WithError.args = {};
 WithError.decorators = [
   StoreDecorator({
-    loginForm: { username: '123', password: 'asd', error: 'Error' },
+    loginForm: { error: 'Error', password: 'asd', username: '123' },
   }),
 ];
 

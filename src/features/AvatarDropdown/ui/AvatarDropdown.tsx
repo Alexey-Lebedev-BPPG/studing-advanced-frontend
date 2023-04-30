@@ -37,6 +37,7 @@ export const AvatarDropdown: FC<IAvatarDropdownProps> = memo(
       <Dropdown
         direction='bottom left'
         className={classNames('', {}, [className])}
+        trigger={<Avatar fallbackInverted size={30} src={authData.avatar} />}
         items={[
           // добавление объектов в массив по условию
           ...(isAdminPanelAvailable
@@ -45,7 +46,6 @@ export const AvatarDropdown: FC<IAvatarDropdownProps> = memo(
           { content: t('Профиль'), href: getRouteProfile(authData.id) },
           { content: t('Выйти'), onClick: onLogout },
         ]}
-        trigger={<Avatar fallbackInverted size={30} src={authData.avatar} />}
       />
     );
   },

@@ -16,9 +16,10 @@ export const fetchCommentsByArticleId = createAsyncThunk<
 
     const response = await extra.api.get<Comment[]>('/comments', {
       params: {
-        articleId,
         // чтоб получить полную сущность пользователя
         _expand: 'user',
+
+        articleId,
       },
     });
 

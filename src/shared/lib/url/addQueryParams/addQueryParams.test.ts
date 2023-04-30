@@ -7,12 +7,12 @@ describe('shared/url/addQueryParams', () => {
   });
 
   test('test with multiple param', () => {
-    const params = getQueryParams({ test: 'value', second: '2' });
-    expect(params).toBe('?test=value&second=2');
+    const params = getQueryParams({ second: '2', test: 'value' });
+    expect(params).toBe('?second=2&test=value');
   });
 
   test('test with undefined', () => {
-    const params = getQueryParams({ test: 'value', second: undefined });
+    const params = getQueryParams({ second: undefined, test: 'value' });
     expect(params).toBe('?test=value');
   });
 });

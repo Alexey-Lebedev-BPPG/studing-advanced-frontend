@@ -1,6 +1,6 @@
 import { FC, memo } from 'react';
-import { Comment } from '../../model/types/comment';
 import cls from './CommentCard.module.scss';
+import { Comment } from '../../model/types/comment';
 import { getRouteProfile } from '@/shared/const/router';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { AppLink } from '@/shared/ui/AppLink';
@@ -20,8 +20,8 @@ export const CommentCard: FC<ICommentCardProps> = memo(
     if (isLoading)
       return (
         <VStack
-          gap='8'
           max
+          gap='8'
           className={classNames(cls.commentCard, {}, [className, cls.loading])}
           data-testid='CommentCard.Loading'
         >
@@ -37,13 +37,13 @@ export const CommentCard: FC<ICommentCardProps> = memo(
 
     return (
       <VStack
-        gap='8'
         max
+        gap='8'
         className={classNames(cls.commentCard, {}, [className])}
         data-testid='CommentCard.Content'
       >
         <AppLink to={getRouteProfile(comment?.user.id)} className={cls.header}>
-          {comment?.user.avatar && (
+          {!!comment?.user.avatar && (
             <Avatar size={30} src={comment.user.avatar} />
           )}
           <Text className={cls.username} title={comment?.user.username} />

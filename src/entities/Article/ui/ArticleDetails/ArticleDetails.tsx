@@ -1,6 +1,7 @@
 import { FC, memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
+import cls from './ArticleDetails.module.scss';
 import { ArticleBlockType } from '../../model/consts/consts';
 import {
   getArticleDetailsData,
@@ -13,7 +14,6 @@ import { ArticleBlock } from '../../model/types/article';
 import { ArticleCodeBlockComponent } from '../ArticleCodeBlockComponent/ArticleCodeBlockComponent';
 import { ArticleImageBlockComponent } from '../ArticleImageBlockComponent/ArticleImageBlockComponent';
 import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleTextBlockComponent';
-import cls from './ArticleDetails.module.scss';
 import CalendarIcon from '@/shared/assets/icons/calendar-20-20.svg';
 import EyeIcon from '@/shared/assets/icons/eye-20-20.svg';
 import { classNames } from '@/shared/lib/classNames/classNames';
@@ -52,24 +52,24 @@ export const ArticleDetails: FC<IArticleDetailsProps> = memo(
       if (block.type === ArticleBlockType.CODE)
         return (
           <ArticleCodeBlockComponent
-            className={cls.block}
             key={block.id}
+            className={cls.block}
             block={block}
           />
         );
       if (block.type === ArticleBlockType.IMAGE)
         return (
           <ArticleImageBlockComponent
-            className={cls.block}
             key={block.id}
+            className={cls.block}
             block={block}
           />
         );
       if (block.type === ArticleBlockType.TEXT)
         return (
           <ArticleTextBlockComponent
-            className={cls.block}
             key={block.id}
+            className={cls.block}
             block={block}
           />
         );
@@ -82,7 +82,7 @@ export const ArticleDetails: FC<IArticleDetailsProps> = memo(
 
     let content;
 
-    if (isLoading) {
+    if (isLoading)
       content = (
         <>
           <Skeleton
@@ -97,17 +97,17 @@ export const ArticleDetails: FC<IArticleDetailsProps> = memo(
           <Skeleton className={cls.skeleton} width='100%' height={200} />
         </>
       );
-    } else if (error) {
+    else if (error)
       content = (
         <Text
           title={`${t('Произошла ошибка при загрузке статьи.')}`}
           align={TextAlign.CENTER}
         />
       );
-    } else {
+    else
       content = (
         <>
-          <HStack justify='center' max className={cls.avatarWrapper}>
+          <HStack max justify='center' className={cls.avatarWrapper}>
             <Avatar size={200} src={article?.img} className={cls.avatar} />
           </HStack>
           <VStack gap='4' data-testid='ArticleDetails.Info'>
@@ -129,14 +129,13 @@ export const ArticleDetails: FC<IArticleDetailsProps> = memo(
           {article?.blocks.map(renderBlock)}
         </>
       );
-    }
 
     return (
       // обертка для использования асинхронных редьюсеров в асинхронных компонентах
       <DynamicModuleLoader reducers={reducers}>
         <VStack
-          gap='16'
           max
+          gap='16'
           className={classNames(cls.articleDetails, {}, [className])}
         >
           {content}

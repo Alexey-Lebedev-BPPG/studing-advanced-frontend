@@ -1,12 +1,12 @@
 import { Listbox as HListbox } from '@headlessui/react';
 import { FC, Fragment, ReactNode } from 'react';
+import cls from './ListBox.module.scss';
 import { classNames } from '../../../../lib/classNames/classNames';
 import { DropDownDirection } from '../../../../types/ui';
 import { Button } from '../../../Button/Button';
 import { HStack } from '../../../Stack';
 import { mapDirectionClass } from '../../styles/consts';
 import popupCls from '../../styles/popups.module.scss';
-import cls from './ListBox.module.scss';
 
 export interface ListBoxItem {
   value: string;
@@ -39,7 +39,7 @@ export const ListBox: FC<IListBoxProps> = ({
 
   return (
     <HStack gap='4'>
-      {label && <span>{`${label}>`}</span>}
+      {!!label && <span>{`${label}>`}</span>}
       <HListbox
         as='div'
         disabled={readonly}
@@ -69,7 +69,7 @@ export const ListBox: FC<IListBoxProps> = ({
                     [popupCls.disabled]: item.disabled,
                   })}
                 >
-                  {selected && '!!!'}
+                  {selected ? '!!!' : null}
                   {item.content}
                 </li>
               )}

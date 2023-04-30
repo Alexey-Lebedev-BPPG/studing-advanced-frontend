@@ -1,14 +1,14 @@
 import { Meta, StoryFn } from '@storybook/react';
-import { Theme } from '../../const/theme';
 import { Loader } from './Loader';
+import { Theme } from '../../const/theme';
 import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
 
 export default {
-  title: 'shared/Loader',
-  component: Loader,
   argTypes: {
     backgroundColor: { control: 'color' },
   },
+  component: Loader,
+  title: 'shared/Loader',
 } as Meta<typeof Loader>;
 
 const Template: StoryFn<typeof Loader> = args => <Loader {...args} />;

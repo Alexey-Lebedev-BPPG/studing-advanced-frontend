@@ -16,9 +16,7 @@ export const useDebounce = (
   return useCallback(
     (...args: any[]) => {
       // если в таймер уже сохранен какой-то таймаут, то мы его очищаем
-      if (timer.current) {
-        clearTimeout(timer.current);
-      }
+      if (timer.current) clearTimeout(timer.current);
 
       // иначе мы записываем в таймер таймаут вызова колбека
       timer.current = setTimeout(() => {

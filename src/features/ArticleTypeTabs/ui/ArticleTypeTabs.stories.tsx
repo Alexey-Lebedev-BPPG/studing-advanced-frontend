@@ -4,11 +4,11 @@ import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDe
 import { Theme } from '@/shared/const/theme';
 
 export default {
-  title: 'entities/Article/ArticleTypeTabs',
-  component: ArticleTypeTabs,
   argTypes: {
     backgroundColor: { control: 'color' },
   },
+  component: ArticleTypeTabs,
+  title: 'entities/Article/ArticleTypeTabs',
 } as Meta<typeof ArticleTypeTabs>;
 
 const Template: StoryFn<typeof ArticleTypeTabs> = arg => (

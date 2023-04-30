@@ -106,10 +106,10 @@ export const EditableProfileCard: FC<IEditableProfileCardProps> = memo(
 
     return (
       <DynamicModuleLoader reducers={reducers}>
-        <VStack gap='8' max className={classNames('', {}, [className])}>
+        <VStack max gap='8' className={classNames('', {}, [className])}>
           <EditableProfileCardHeader />
-          {errors &&
-            errors.length &&
+          {!!errors &&
+            !!errors.length &&
             errors.map(err => (
               <Text
                 key={err}

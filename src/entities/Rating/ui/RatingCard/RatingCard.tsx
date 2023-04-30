@@ -68,8 +68,8 @@ export const RatingCard: FC<IRatingCardProps> = memo(
         <Input
           data-testId='RatingCard.Input'
           value={feedback}
-          onChange={setFeedback}
           placeholder={`${t('Ваш отзыв')}`}
+          onChange={setFeedback}
         />
       </>
     );
@@ -79,7 +79,7 @@ export const RatingCard: FC<IRatingCardProps> = memo(
         className={classNames(cls.rating, {}, [className])}
         data-testid='RatingCard'
       >
-        <VStack gap='8' align='center' max>
+        <VStack max gap='8' align='center'>
           <Text title={starsCount ? `${t('Спасибо за оценку!')}` : title} />
           <StarRating
             selectedStars={starsCount}
@@ -90,24 +90,24 @@ export const RatingCard: FC<IRatingCardProps> = memo(
             <Drawer isOpen={isOpenModal} onClose={cancelHandle}>
               <VStack gap='32'>
                 {modalContent}
-                <Button fullWidth onClick={acceptHandle} size={ButtonSize.L}>
+                <Button fullWidth size={ButtonSize.L} onClick={acceptHandle}>
                   {t('Отправить')}
                 </Button>
               </VStack>
             </Drawer>
           ) : (
             <Modal isOpen={isOpenModal}>
-              <VStack gap='32' max>
+              <VStack max gap='32'>
                 {modalContent}
-                <HStack gap='16' max justify='end'>
+                <HStack max gap='16' justify='end'>
                   <Button
                     theme={ButtonTheme.OUTLINE_RED}
-                    onClick={cancelHandle}
                     data-testid='RatingCard.Close'
+                    onClick={cancelHandle}
                   >
                     {t('Закрыть')}
                   </Button>
-                  <Button onClick={acceptHandle} data-testid='RatingCard.Send'>
+                  <Button data-testid='RatingCard.Send' onClick={acceptHandle}>
                     {t('Отправить')}
                   </Button>
                 </HStack>

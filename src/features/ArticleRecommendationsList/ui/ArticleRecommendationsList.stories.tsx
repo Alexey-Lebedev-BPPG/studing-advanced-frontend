@@ -6,11 +6,11 @@ import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDe
 import { Theme } from '@/shared/const/theme';
 
 export default {
-  title: 'features/ArticleRecommendationsList',
-  component: ArticleRecommendationsList,
   argTypes: {
     backgroundColor: { control: 'color' },
   },
+  component: ArticleRecommendationsList,
+  title: 'features/ArticleRecommendationsList',
 } as Meta<typeof ArticleRecommendationsList>;
 
 const Template: StoryFn<typeof ArticleRecommendationsList> = arg => (
@@ -19,15 +19,15 @@ const Template: StoryFn<typeof ArticleRecommendationsList> = arg => (
 
 // создаем моковую статью
 const mockArticle: Article = {
+  blocks: [],
+  createdAt: '',
   id: '1',
   img: '',
-  createdAt: '',
-  views: 234,
-  user: { id: '', username: '' },
-  blocks: [],
-  type: [],
-  title: '123',
   subtitle: '123123',
+  title: '123',
+  type: [],
+  user: { id: '', username: '' },
+  views: 234,
 };
 
 export const Normal = Template.bind({});
@@ -37,14 +37,14 @@ Normal.decorators = [StoreDecorator({})];
 Normal.parameters = {
   mockData: [
     {
-      url: `${__API__}/articles?_limit=3`,
       method: 'GET',
-      status: 200,
       response: [
         { ...mockArticle, id: '1' },
         { ...mockArticle, id: '2' },
         { ...mockArticle, id: '3' },
       ],
+      status: 200,
+      url: `${__API__}/articles?_limit=3`,
     },
   ],
 };

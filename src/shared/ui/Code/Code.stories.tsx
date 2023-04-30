@@ -1,14 +1,14 @@
 import { Meta, StoryFn } from '@storybook/react';
-import { Theme } from '../../const/theme';
 import { Code } from './Code';
+import { Theme } from '../../const/theme';
 import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
 
 export default {
-  title: 'shared/Code',
-  component: Code,
   argTypes: {
     backgroundColor: { control: 'color' },
   },
+  component: Code,
+  title: 'shared/Code',
 } as Meta<typeof Code>;
 
 const Template: StoryFn<typeof Code> = arg => <Code {...arg} />;

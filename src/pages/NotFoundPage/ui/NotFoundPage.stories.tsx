@@ -4,11 +4,11 @@ import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDe
 import { Theme } from '@/shared/const/theme';
 
 export default {
-  title: 'pages/NotFoundPage',
-  component: NotFoundPage,
   argTypes: {
     backgroundColor: { control: 'color' },
   },
+  component: NotFoundPage,
+  title: 'pages/NotFoundPage',
 } as Meta<typeof NotFoundPage>;
 
 const Template: StoryFn<typeof NotFoundPage> = args => (

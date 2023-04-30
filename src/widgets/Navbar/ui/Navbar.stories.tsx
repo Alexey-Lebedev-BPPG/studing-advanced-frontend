@@ -5,11 +5,11 @@ import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDe
 import { Theme } from '@/shared/const/theme';
 
 export default {
-  title: 'widgets/Navbar',
-  component: Navbar,
   argTypes: {
     backgroundColor: { control: 'color' },
   },
+  component: Navbar,
+  title: 'widgets/Navbar',
 } as Meta<typeof Navbar>;
 
 const Template: StoryFn<typeof Navbar> = args => <Navbar {...args} />;

@@ -35,7 +35,7 @@ export const Select = typedMemo(
     const optionList = useMemo(
       () =>
         options?.map(({ valueOpt, content }) => (
-          <option className={cls.option} value={valueOpt} key={valueOpt}>
+          <option key={valueOpt} className={cls.option} value={valueOpt}>
             {content}
           </option>
         )),
@@ -48,12 +48,12 @@ export const Select = typedMemo(
 
     return (
       <div className={classNames(cls.selectWrapper, mods, [className])}>
-        {label && <span className={cls.label}>{`${label}>`}</span>}
+        {label ? <span className={cls.label}>{`${label}>`}</span> : null}
         <select
           className={cls.select}
           value={value}
-          onChange={onChangeHandler}
           disabled={readonly}
+          onChange={onChangeHandler}
         >
           {optionList}
         </select>

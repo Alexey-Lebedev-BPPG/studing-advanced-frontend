@@ -15,7 +15,7 @@ const MainPage: FC = () => {
     <Page data-testid='MainPage'>
       {/* компонент для тестирования создания ошибки */}
       <BugButton />
-      <Input value={value} onChange={onChange} placeholder='Введите текст' />
+      <Input value={value} placeholder='Введите текст' onChange={onChange} />
       {t('Главная страница')}
       <Counter />
     </Page>

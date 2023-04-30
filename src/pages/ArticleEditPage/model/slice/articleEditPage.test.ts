@@ -1,9 +1,9 @@
-import { fetchArticleEditPage } from '../services/fetchArticleEditPage/fetchArticleEditPage';
-import { ArticleEditPageSchema } from '../types/articleEditPage';
 import {
   // articleEditPageActions,
   articleEditPageReducer,
 } from './articleEditPage';
+import { fetchArticleEditPage } from '../services/fetchArticleEditPage/fetchArticleEditPage';
+import { ArticleEditPageSchema } from '../types/articleEditPage';
 
 // const data = {};
 
@@ -22,8 +22,8 @@ describe('articleEditPageSlice', () => {
   // сначала тестируем pending состояние
   test('test articleEditPage service pending', () => {
     const state: DeepPartial<ArticleEditPageSchema> = {
-      isLoading: false,
       error: 'error',
+      isLoading: false,
     };
     expect(
       articleEditPageReducer(
@@ -31,8 +31,8 @@ describe('articleEditPageSlice', () => {
         fetchArticleEditPage.pending,
       ),
     ).toEqual({
-      isLoading: true,
       error: undefined,
+      isLoading: true,
     });
   });
 

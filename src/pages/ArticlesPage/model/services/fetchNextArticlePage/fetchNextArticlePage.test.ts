@@ -1,5 +1,5 @@
-import { fetchArticlesList } from '../fetchArticlesList/fetchArticlesList';
 import { fetchNextArticlePage } from './fetchNextArticlePage';
+import { fetchArticlesList } from '../fetchArticlesList/fetchArticlesList';
 import { TestAsyncThunk } from '@/shared/lib/tests/testAsyncThunk/testAsyncThunk';
 
 jest.mock('../fetchArticlesList/fetchArticlesList');
@@ -9,12 +9,12 @@ describe('fetchNextArticlePage', () => {
     // передаем наш thunk в наш класс и вторым аргументом передаем инитиал стейт
     const thunk = new TestAsyncThunk(fetchNextArticlePage, {
       articlesPage: {
-        page: 2,
-        ids: [],
         entities: {},
-        limit: 5,
-        isLoading: false,
         hasMore: true,
+        ids: [],
+        isLoading: false,
+        limit: 5,
+        page: 2,
       },
     });
     // вызываем функцию внутри класса для создания экшена (наш thunk ничего не принимает, то ничего не прокидываем туда)
@@ -30,12 +30,12 @@ describe('fetchNextArticlePage', () => {
     // передаем наш thunk в наш класс и вторым аргументом передаем инитиал стейт
     const thunk = new TestAsyncThunk(fetchNextArticlePage, {
       articlesPage: {
-        page: 2,
-        ids: [],
         entities: {},
-        limit: 5,
-        isLoading: false,
         hasMore: false,
+        ids: [],
+        isLoading: false,
+        limit: 5,
+        page: 2,
       },
     });
     // вызываем функцию внутри класса для создания экшена (наш thunk ничего не принимает, то ничего не прокидываем туда)
@@ -51,12 +51,12 @@ describe('fetchNextArticlePage', () => {
     // передаем наш thunk в наш класс и вторым аргументом передаем инитиал стейт
     const thunk = new TestAsyncThunk(fetchNextArticlePage, {
       articlesPage: {
-        page: 2,
-        ids: [],
         entities: {},
-        limit: 5,
-        isLoading: true,
         hasMore: true,
+        ids: [],
+        isLoading: true,
+        limit: 5,
+        page: 2,
       },
     });
     // вызываем функцию внутри класса для создания экшена (наш thunk ничего не принимает, то ничего не прокидываем туда)

@@ -1,15 +1,15 @@
 import { Meta, StoryFn } from '@storybook/react';
+import { Card } from './Card';
 import { Theme } from '../../const/theme';
 import { Text } from '../Text/Text';
-import { Card } from './Card';
 import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
 
 export default {
-  title: 'shared/Card',
-  component: Card,
   argTypes: {
     backgroundColor: { control: 'color' },
   },
+  component: Card,
+  title: 'shared/Card',
 } as Meta<typeof Card>;
 
 const Template: StoryFn<typeof Card> = arg => <Card {...arg} />;

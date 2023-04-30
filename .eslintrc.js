@@ -1,118 +1,161 @@
 // чтоб появился этот файл делаем npm init @eslint/config
 module.exports = {
-	env: { browser: true, es2021: true, jest: true },
-	// расширяем стандартный плагин для реакта и подключаем модуль стандарта тайпскрипта и airbnb + автоматом добавился сторибук
-	extends: [
-		'plugin:react/recommended',
-		'airbnb',
-		'plugin:i18next/recommended',
-		'plugin:storybook/recommended',
-		'plugin:import/warnings',
-		'prettier',
-	],
-	parser: '@typescript-eslint/parser',
-	parserOptions: {
-		ecmaFeatures: { jsx: true },
-		ecmaVersion: 'latest',
-		sourceType: 'module',
-	},
-	plugins: [
-		'react',
-		'@typescript-eslint',
-		'i18next',
-		// чтоб зависимости useEffect подсвечивались
-		'react-hooks',
-		// кастомный плагин для импортов
-		'path-checher-ulbi-example',
-		// неиспользуемые импорты
-		'unused-imports',
-		// например настроить импорты по алфавиту
-		'import',
-	],
-	rules: {
-		quotes: [2, 'single', { avoidEscape: true }],
-		'react/jsx-filename-extension': [
-			2,
-			{ extensions: ['.js', '.jsx', '.tsx'] },
-		],
-		'unused-imports/no-unused-imports': 'warn',
-		'no-unused-vars': 'off',
-		'@typescript-eslint/no-unused-vars': 'off',
-		'import/no-unresolved': 'off',
-		'react/react-in-jsx-scope': 'off',
-		'import/prefer-default-export': 'off',
-		'max-len': 'off',
-		'import/extensions': 'off',
-		'import/no-extraneous-dependencies': 'off',
-		'implicit-arrow-linebreak': 'off',
-		'comma-dangle': 'off',
-		'react/require-default-props': 'off',
-		'react/function-component-definition': 'off',
-		'react/jsx-props-no-spreading': 'off',
-		'no-shadow': 'off',
-		'@typescript-eslint/no-shadow': 'error',
-		'operator-linebreak': 'off',
-		'no-underscore-dangle': 'off',
-		// прописываем, чтоб ругался на необработанные слова + отключаем плагин для атрибутов
-		// "i18next/no-literal-string": ["error", { markupOnly: true, ignoreAttribute: ["data-testid", "to"] }],
-		// отключаем, чтоб не ругался на необработанные слова
-		'i18next/no-literal-string': 0,
-		'new-cap': 'off',
-		'jsx-a11y/click-events-have-key-events': 'off',
-		'jsx-a11y/no-static-element-interactions': 'off',
-		'react-hooks/rules-of-hooks': 'error',
-		'react-hooks/exhaustive-deps': 'warn',
-		'react/no-unused-prop-types': 'warn',
-		'no-param-reassign': 'off',
-		'no-console': 'off',
-		'react/prop-types': 'off',
-		'object-curly-newline': 'off',
-		// отключаем запрет на использование глобальых переменных
-		'no-undef': 'off',
-		'nonblock-statement-body-position': 'off',
-		curly: 'off',
-		'react/no-array-index-key': 'off',
-		'no-plusplus': 'off',
-		'no-unused-expressions': 'off',
-		// прокидываем наш алиас в плагин линтера импортов (каcтомный)
-		'path-checher-ulbi-example/path-checker': ['warn', { alias: '@' }],
-		'path-checher-ulbi-example/public-api-imports': [
-			'warn',
-			// указываем testFilesPatterns для паблик апи только для тестов
-			{
-				alias: '@',
-				testFilesPatterns: [
-					'**/*.test.*',
-					'**/*.stories.*',
-					'**/StoreDecorator.tsx',
-				],
-			},
-		],
-		'path-checher-ulbi-example/layer-imports': [
-			'warn',
-			// указываем файлы, которые будем игнорировать
-			{ alias: '@', ignoreImportPatterns: ['**/StoreProvider', '**/testing'] },
-		],
-		// настройка, что импорты были по алфавиту
-		'import/order': [
-			'warn',
-			{
-				pathGroups: [{ pattern: '@/**', group: 'internal', position: 'after' }],
-				alphabetize: { order: 'asc', caseInsensitive: false },
-			},
-		],
-	},
-	globals: {
-		__IS_DEV__: true,
-		__IS_DEV_DEBUG__: true,
-		__API__: true,
-		__PROJECT__: true,
-	},
-	// отключаем проверку необработанных слов в тестовых файлах
-	overrides: [
-		{
-			files: ['**/src/**/*.{test,stories}.{ts, tsx}'],
-			rules: { 'i18next/no-literal-string': 'off' },
-		},
-	],
+  env: { browser: true, es2021: true, jest: true },
+  // расширяем стандартный плагин для реакта и подключаем модуль стандарта тайпскрипта и airbnb + автоматом добавился сторибук
+  extends: [
+    'plugin:react/recommended',
+    'airbnb',
+    'plugin:i18next/recommended',
+    'plugin:storybook/recommended',
+    'plugin:import/warnings',
+    'prettier',
+  ],
+  globals: {
+    __API__: true,
+    __IS_DEV__: true,
+    __IS_DEV_DEBUG__: true,
+    __PROJECT__: true,
+  },
+  // отключаем проверку необработанных слов в тестовых файлах
+  overrides: [
+    {
+      files: ['**/src/**/*.{test,stories}.{ts, tsx}'],
+      rules: { 'i18next/no-literal-string': 'off' },
+    },
+  ],
+  parser: '@typescript-eslint/parser',
+  parserOptions: {
+    ecmaFeatures: { jsx: true },
+    ecmaVersion: 'latest',
+    sourceType: 'module',
+  },
+  plugins: [
+    'react',
+    '@typescript-eslint',
+    'i18next',
+    // чтоб зависимости useEffect подсвечивались
+    'react-hooks',
+    // кастомный плагин для импортов
+    'path-checher-ulbi-example',
+    // неиспользуемые импорты
+    'unused-imports',
+    // например настроить импорты по алфавиту
+    'import',
+    'sort-keys-fix',
+  ],
+  rules: {
+    // 'prettier/prettier': ['error', { endOfLine: 'auto' }],
+    '@typescript-eslint/no-shadow': 'error',
+    '@typescript-eslint/no-unused-vars': 'off',
+    camelcase: ['warn', { properties: 'always' }],
+    'comma-dangle': ['warn', 'only-multiline'],
+    'consistent-return': 'off',
+    curly: ['warn', 'multi'],
+    // чтоб ругался на необработанные слова + отключаем плагин для атрибутов
+    // "i18next/no-literal-string": ["error", { markupOnly: true, ignoreAttribute: ["data-testid", "to"] }],
+    // отключаем, чтоб не ругался на необработанные слова
+    'i18next/no-literal-string': 0,
+    'import/extensions': 'off',
+    'import/no-extraneous-dependencies': 'off',
+    'import/no-unresolved': 'off',
+    'import/order': [
+      'warn',
+      {
+        alphabetize: { order: 'asc' },
+        groups: [
+          'builtin',
+          'external',
+          'index',
+          'type',
+          'sibling',
+          'parent',
+          'internal',
+          'object',
+        ],
+        pathGroups: [{ group: 'internal', pattern: '@/**', position: 'after' }],
+      },
+    ],
+    'import/prefer-default-export': 'off',
+    indent: 'off',
+    'jsx-a11y/click-events-have-key-events': 'off',
+    'jsx-a11y/no-noninteractive-element-interactions': 'off',
+    'jsx-a11y/no-static-element-interactions': 'off',
+    'no-console': 'off',
+    'no-debugger': 'warn',
+    'no-param-reassign': 'off',
+    'no-plusplus': 'off',
+    'no-shadow': 'off',
+    'no-undef': 'off',
+    'no-underscore-dangle': 'off',
+    'no-unused-expressions': 'off',
+    // 'max-len': 'off',
+    'no-unused-vars': 'off',
+    'nonblock-statement-body-position': 'off',
+    'object-curly-newline': 'off',
+    'operator-linebreak': 'off',
+    'path-checher-ulbi-example/layer-imports': [
+      'warn',
+      { alias: '@', ignoreImportPatterns: ['**/StoreProvider', '**/testing'] },
+    ],
+    'path-checher-ulbi-example/path-checker': ['warn', { alias: '@' }],
+    'path-checher-ulbi-example/public-api-imports': [
+      'warn',
+      {
+        alias: '@',
+        testFilesPatterns: [
+          '**/*.test.*',
+          '**/*.stories.*',
+          '**/StoreDecorator.tsx',
+        ],
+      },
+    ],
+    quotes: [2, 'single', { avoidEscape: true }],
+    radix: 'off',
+    'react/function-component-definition': 'off',
+    'react/jsx-child-element-spacing': 'off',
+    'react/jsx-curly-brace-presence': 'off',
+    'react/jsx-curly-newline': 'off',
+    'react/jsx-filename-extension': [
+      2,
+      { extensions: ['.js', '.jsx', '.tsx'] },
+    ],
+    'react/jsx-newline': [1, { allowMultilines: false, prevent: true }],
+    'react/jsx-no-leaked-render': [
+      1,
+      { validStrategies: ['coerce', 'ternary'] },
+    ],
+    'react/jsx-no-literals': [
+      1,
+      { ignoreProps: true, noAttributeStrings: true, noStrings: false },
+    ],
+    'react/jsx-one-expression-per-line': 'off',
+    'react/jsx-props-no-spreading': 'off',
+    'react/jsx-sort-props': [
+      1,
+      {
+        callbacksLast: true,
+        ignoreCase: true,
+        multiline: 'last',
+        noSortAlphabetically: true,
+        reservedFirst: true,
+        shorthandFirst: true,
+        shorthandLast: true,
+      },
+    ],
+    'react/no-array-index-key': 'off',
+    'react/no-typos': 'warn',
+    'react/no-unused-prop-types': 'warn',
+    'react/prop-types': 'off',
+    'react/react-in-jsx-scope': 'off',
+    'react/require-default-props': 'off',
+    'react-hooks/exhaustive-deps': 'warn',
+    'react-hooks/rules-of-hooks': 'error',
+    // сортировка ключей объекта по алфавиту.
+    'sort-keys-fix/sort-keys-fix': [
+      'warn',
+      'asc',
+      { caseSensitive: true, natural: true },
+    ],
+    'unused-imports/no-unused-imports': 'warn',
+  },
 };

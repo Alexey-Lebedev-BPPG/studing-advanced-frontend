@@ -5,11 +5,11 @@ import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDe
 import { Theme } from '@/shared/const/theme';
 
 export default {
-  title: 'features/ArticleEditForm',
-  component: ArticleEditForm,
   argTypes: {
     backgroundColor: { control: 'color' },
   },
+  component: ArticleEditForm,
+  title: 'features/ArticleEditForm',
 } as Meta<typeof ArticleEditForm>;
 
 const Template: StoryFn<typeof ArticleEditForm> = arg => (

@@ -20,17 +20,17 @@ export const ArticleSortSelector: FC<IArticleSortSelectorProps> = memo(
 
     const orderOption = useMemo<SelectOption<SortOrder>[]>(
       () => [
-        { valueOpt: 'asc', content: t('возрастанию') },
-        { valueOpt: 'desc', content: t('убыванию') },
+        { content: t('возрастанию'), valueOpt: 'asc' },
+        { content: t('убыванию'), valueOpt: 'desc' },
       ],
       [t],
     );
 
     const sortFieldOption = useMemo<SelectOption<ArticleSortFields>[]>(
       () => [
-        { valueOpt: ArticleSortFields.CREATED, content: t('дате создания') },
-        { valueOpt: ArticleSortFields.TITLE, content: t('названию') },
-        { valueOpt: ArticleSortFields.VIEWS, content: t('просмотрам') },
+        { content: t('дате создания'), valueOpt: ArticleSortFields.CREATED },
+        { content: t('названию'), valueOpt: ArticleSortFields.TITLE },
+        { content: t('просмотрам'), valueOpt: ArticleSortFields.VIEWS },
       ],
       [t],
     );
@@ -47,8 +47,8 @@ export const ArticleSortSelector: FC<IArticleSortSelectorProps> = memo(
           options={orderOption}
           label={`${t('по')}`}
           value={order}
-          onChange={onChangeOrder}
           className={cls.order}
+          onChange={onChangeOrder}
         />
       </div>
     );

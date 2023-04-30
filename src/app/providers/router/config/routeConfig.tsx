@@ -24,53 +24,55 @@ import { AppRoutesProps } from '@/shared/types/router';
 
 export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
   [AppRoutes.MAIN]: {
-    path: getRouteMain(),
     element: <MainPage />,
+    path: getRouteMain(),
   },
   [AppRoutes.ABOUT]: {
-    path: getRouteAbout(),
     element: <AboutPage />,
+    path: getRouteAbout(),
   },
   [AppRoutes.PROFILE]: {
+    authOnly: true,
+
+    element: <ProfilePage />,
     // добаляем динамически id
     path: getRouteProfile(':id'),
-    element: <ProfilePage />,
-    authOnly: true,
   },
   [AppRoutes.ARTICLES]: {
-    path: getRouteArticles(),
-    element: <ArticlesPage />,
     authOnly: true,
+    element: <ArticlesPage />,
+    path: getRouteArticles(),
   },
   [AppRoutes.ARTICLE_DETAILS]: {
+    authOnly: true,
+
+    element: <ArticleDetailsPage />,
     // добаляем динамически id
     path: getRouteArticleDetails(':id'),
-    element: <ArticleDetailsPage />,
-    authOnly: true,
   },
   [AppRoutes.ARTICLE_CREATE]: {
-    path: getRouteArticleCreate(),
-    element: <ArticleEditPage />,
     authOnly: true,
+    element: <ArticleEditPage />,
+    path: getRouteArticleCreate(),
   },
   [AppRoutes.ARTICLE_EDIT]: {
-    path: getRouteArticleEdit(':id'),
-    element: <ArticleEditPage />,
     authOnly: true,
+    element: <ArticleEditPage />,
+    path: getRouteArticleEdit(':id'),
   },
   [AppRoutes.ADMIN_PANEL]: {
-    path: getRouteAdminPanel(),
-    element: <AdminPanelPage />,
     authOnly: true,
+    element: <AdminPanelPage />,
+    path: getRouteAdminPanel(),
     // добавляем массив ролей, чтоб потом сделать проверку на них
     roles: [UserRole.MANAGER, UserRole.ADMIN],
   },
   [AppRoutes.FORBIDDEN]: {
-    path: getRouteForbidden(),
     element: <ForbiddenPage />,
+    path: getRouteForbidden(),
   },
   [AppRoutes.NOT_FOUND]: {
-    path: '*',
     element: <NotFoundPage />,
+    path: '*',
   },
 };

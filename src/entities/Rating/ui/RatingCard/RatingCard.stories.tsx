@@ -5,11 +5,11 @@ import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDe
 import { Theme } from '@/shared/const/theme';
 
 export default {
-  title: 'entities/RatingCard',
-  component: RatingCard,
   argTypes: {
     backgroundColor: { control: 'color' },
   },
+  component: RatingCard,
+  title: 'entities/RatingCard',
 } as Meta<typeof RatingCard>;
 
 const Template: StoryFn<typeof RatingCard> = arg => <RatingCard {...arg} />;

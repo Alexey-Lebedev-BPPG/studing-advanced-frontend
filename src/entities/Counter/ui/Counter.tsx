@@ -20,11 +20,11 @@ export const Counter: FC = () => {
   return (
     <div>
       <h1 data-testid='value-title'>{counterValue}</h1>
-      <Button onClick={handleIncrement} data-testid='increment-btn'>
-        increment
+      <Button data-testid='increment-btn' onClick={handleIncrement}>
+        {'increment'}
       </Button>
-      <Button onClick={handleDecrement} data-testid='decrement-btn'>
-        decrement
+      <Button data-testid='decrement-btn' onClick={handleDecrement}>
+        {'decrement'}
       </Button>
     </div>
   );

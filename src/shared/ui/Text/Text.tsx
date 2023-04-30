@@ -60,12 +60,12 @@ export const Text: FC<ITextProps> = memo(
 
     return (
       <div className={classNames(cls.textWrapper, mods, [className])}>
-        {title && (
+        {!!title && (
           <HeaderTag className={cls.title} data-testid={`${dataTestId}.Header`}>
             {title}
           </HeaderTag>
         )}
-        {text && (
+        {!!text && (
           <p className={cls.text} data-testid={`${dataTestId}.Paragraph`}>
             {text}
           </p>

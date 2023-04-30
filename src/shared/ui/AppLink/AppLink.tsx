@@ -20,8 +20,8 @@ export const AppLink: FC<AppLinkProps> = forwardRef(
     ref: ForwardedRef<HTMLAnchorElement>,
   ) => (
     <Link
-      to={to}
       ref={ref}
+      to={to}
       className={classNames(cls.appLink, {}, [className, cls[theme]])}
       {...otherProps}
     >

@@ -5,11 +5,11 @@ import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDe
 import { Theme } from '@/shared/const/theme';
 
 export default {
-  title: 'pages/MainPage',
-  component: MainPage,
   argTypes: {
     backgroundColor: { control: 'color' },
   },
+  component: MainPage,
+  title: 'pages/MainPage',
 } as Meta<typeof MainPage>;
 
 const Template: StoryFn<typeof MainPage> = () => <MainPage />;

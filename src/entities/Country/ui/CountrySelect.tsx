@@ -12,11 +12,11 @@ interface ICountryProps {
 
 // ввиду того, что массив всегда статичен, его не нужно оборачивать в memo
 const options = [
-  { value: Country.Armenia, content: Country.Armenia },
-  { value: Country.Russia, content: Country.Russia },
-  { value: Country.Belarus, content: Country.Belarus },
-  { value: Country.Kazakhstan, content: Country.Kazakhstan },
-  { value: Country.Ukraine, content: Country.Ukraine },
+  { content: Country.Armenia, value: Country.Armenia },
+  { content: Country.Russia, value: Country.Russia },
+  { content: Country.Belarus, value: Country.Belarus },
+  { content: Country.Kazakhstan, value: Country.Kazakhstan },
+  { content: Country.Ukraine, value: Country.Ukraine },
 ];
 
 export const CountrySelect: FC<ICountryProps> = memo(
@@ -39,8 +39,8 @@ export const CountrySelect: FC<ICountryProps> = memo(
         label={`${t('Укажите страну')}`}
         readonly={readonly}
         items={options}
-        onChange={onChangeHandler}
         direction='top right'
+        onChange={onChangeHandler}
       />
     );
   },

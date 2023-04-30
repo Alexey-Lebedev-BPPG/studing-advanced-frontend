@@ -3,14 +3,14 @@ import { initReactI18next } from 'react-i18next';
 
 // конфиг переводов специально для тестов
 i18n.use(initReactI18next).init({
-  lng: 'ru',
-  fallbackLng: 'ru',
   debug: false,
-  returnNull: false,
+  fallbackLng: 'ru',
   interpolation: {
     escapeValue: false,
   },
+  lng: 'ru',
   resources: { ru: { translations: {} } },
+  returnNull: false,
 });
 
 export default i18n;

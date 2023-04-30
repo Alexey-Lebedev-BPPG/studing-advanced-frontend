@@ -10,21 +10,6 @@ const initialState: ProfileSchema = {
 };
 
 export const profileSlice = createSlice({
-  name: 'profile',
-  initialState,
-  reducers: {
-    setReadonly: (state, { payload }: PayloadAction<boolean>) => {
-      state.readonly = payload;
-    },
-    cancelEdit: state => {
-      state.readonly = true;
-      state.validateError = undefined;
-      state.form = state.data;
-    },
-    updateProfile: (state, { payload }: PayloadAction<Profile>) => {
-      state.form = { ...state.form, ...payload };
-    },
-  },
   // исgользуется для асинхронного изменения стейта
   extraReducers: builder => {
     // у каждого thunka есть 3 состояния: 1. pending, 2. fulfilled, 3. rejected
@@ -73,6 +58,24 @@ export const profileSlice = createSlice({
         state.isLoading = false;
         state.validateError = action.payload;
       });
+  },
+
+  initialState,
+
+  name: 'profile',
+
+  reducers: {
+    cancelEdit: state => {
+      state.readonly = true;
+      state.validateError = undefined;
+      state.form = state.data;
+    },
+    setReadonly: (state, { payload }: PayloadAction<boolean>) => {
+      state.readonly = payload;
+    },
+    updateProfile: (state, { payload }: PayloadAction<Profile>) => {
+      state.form = { ...state.form, ...payload };
+    },
   },
 });
 

@@ -23,7 +23,7 @@ function App() {
         <Navbar />
         <div className='content-page'>
           <SideBar />
-          {inited && <AppRouter />}
+          {!!inited && <AppRouter />}
         </div>
       </Suspense>
     </div>

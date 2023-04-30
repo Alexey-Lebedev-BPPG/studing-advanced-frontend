@@ -6,11 +6,11 @@ import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDe
 import { Theme } from '@/shared/const/theme';
 
 export default {
-  title: 'features/AddCommentForm',
-  component: AddCommentForm,
   argTypes: {
     backgroundColor: { control: 'color' },
   },
+  component: AddCommentForm,
+  title: 'features/AddCommentForm',
 } as Meta<typeof AddCommentForm>;
 
 const Template: StoryFn<typeof AddCommentForm> = arg => (

@@ -5,11 +5,11 @@ import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDe
 import { Theme } from '@/shared/const/theme';
 
 export default {
-  title: 'pages/ForbiddenPage',
-  component: ForbiddenPage,
   argTypes: {
     backgroundColor: { control: 'color' },
   },
+  component: ForbiddenPage,
+  title: 'pages/ForbiddenPage',
 } as Meta<typeof ForbiddenPage>;
 
 const Template: StoryFn<typeof ForbiddenPage> = arg => (

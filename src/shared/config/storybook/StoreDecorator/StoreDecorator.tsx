@@ -9,11 +9,11 @@ import { ReducersList } from '@/shared/lib/components/DynamicModuleLoader/Dynami
 
 // создаем стор для тестирования сторибука
 const defaultAsyncReducers: ReducersList = {
+  addCommentForm: addCommentFormReducer,
+  articleDetails: articleDetailsReducer,
+  articleDetailsPage: articleDetailsPageReducer,
   loginForm: loginReducer,
   profile: profileReducer,
-  articleDetails: articleDetailsReducer,
-  addCommentForm: addCommentFormReducer,
-  articleDetailsPage: articleDetailsPageReducer,
 };
 
 // декоратор, который подключает state. Используем замыкание, чтоб обернуть наш декоратор стейтом по ум. Также исп. DeepPartial, чтоб брать только нужные поля стейта

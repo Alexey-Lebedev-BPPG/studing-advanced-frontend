@@ -29,9 +29,9 @@ export const ArticleDetailsPageHeader: FC<IArticleDetailsPageHeaderProps> =
     }, [article, navigate]);
 
     return (
-      <HStack justify='between' max className={classNames('', {}, [className])}>
+      <HStack max justify='between' className={classNames('', {}, [className])}>
         <Button onClick={onBackToList}>{t('Назад к списку')}</Button>
-        {canEdit && (
+        {!!canEdit && (
           <Button onClick={onEditArticle}>{t('Редактировать')}</Button>
         )}
       </HStack>

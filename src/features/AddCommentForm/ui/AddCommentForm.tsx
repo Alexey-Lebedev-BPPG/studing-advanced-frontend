@@ -1,12 +1,12 @@
 import { FC, memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
+import cls from './AddCommentForm.module.scss';
 import { getAddCommentFormText } from '../model/selectors/getAddCommentForm/getAddCommentForm';
 import {
   addCommentFormActions,
   addCommentFormReducer,
 } from '../model/slice/addCommentForm';
-import cls from './AddCommentForm.module.scss';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import {
   DynamicModuleLoader,
@@ -47,19 +47,19 @@ const AddCommentForm: FC<IAddCommentFormProps> = memo(
     return (
       <DynamicModuleLoader reducers={reducers}>
         <HStack
-          justify='between'
           max
+          justify='between'
           className={classNames(cls.addCommentForm, {}, [className])}
           data-testid='AddCommentForm'
         >
           <Input
             placeholder={`${t('Введите текст комментария')}`}
             value={text}
-            onChange={onCommentTextChange}
             className={cls.input}
             data-testid='AddCommentForm.Input'
+            onChange={onCommentTextChange}
           />
-          <Button onClick={onSendHandler} data-testid='AddCommentForm.Button'>
+          <Button data-testid='AddCommentForm.Button' onClick={onSendHandler}>
             {t('Отправить')}
           </Button>
         </HStack>

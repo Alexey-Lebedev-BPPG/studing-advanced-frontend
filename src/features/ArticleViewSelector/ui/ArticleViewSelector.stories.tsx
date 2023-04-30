@@ -4,11 +4,11 @@ import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDe
 import { Theme } from '@/shared/const/theme';
 
 export default {
-  title: 'entities/Article/ArticleViewSelector',
-  component: ArticleViewSelector,
   argTypes: {
     backgroundColor: { control: 'color' },
   },
+  component: ArticleViewSelector,
+  title: 'entities/Article/ArticleViewSelector',
 } as Meta<typeof ArticleViewSelector>;
 
 const Template: StoryFn<typeof ArticleViewSelector> = arg => (

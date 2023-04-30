@@ -7,12 +7,9 @@ const initialState: UserSchema = {
 };
 
 export const userSlice = createSlice({
-  name: 'user',
   initialState,
+  name: 'user',
   reducers: {
-    setAuthData: (state, { payload }: PayloadAction<User>) => {
-      state.authData = payload;
-    },
     // слайс для проверки авторизации пользователя при закрытии и открытии впоследствии вкладки
     initAuthData: state => {
       const user = localStorage.getItem(USER_LOCALSTORAGE_KEY);
@@ -20,9 +17,13 @@ export const userSlice = createSlice({
       // делаем true только после добавления данных
       state._inited = true;
     },
+
     logout: state => {
       state.authData = undefined;
       localStorage.removeItem(USER_LOCALSTORAGE_KEY);
+    },
+    setAuthData: (state, { payload }: PayloadAction<User>) => {
+      state.authData = payload;
     },
   },
 });

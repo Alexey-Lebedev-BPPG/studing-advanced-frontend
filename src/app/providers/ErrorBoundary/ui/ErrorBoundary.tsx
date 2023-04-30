@@ -34,13 +34,12 @@ class ErrorBoundary extends Component<
   render() {
     const { hasError } = this.state;
     const { children } = this.props;
-    if (hasError) {
+    if (hasError)
       return (
         <Suspense fallback=''>
           <PageError />
         </Suspense>
       );
-    }
 
     return children;
   }

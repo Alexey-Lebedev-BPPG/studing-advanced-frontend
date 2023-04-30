@@ -55,13 +55,13 @@ describe('loginByUsername', () => {
 
   test('success login', async () => {
     // данные, которые мы получать будем в рамках теста
-    const userValue = { username: '123', id: '1' };
+    const userValue = { id: '1', username: '123' };
     // передаем наш thunk в наш класс
     const thunk = new TestAsyncThunk(loginByUsername);
     // имитируем отправку post запроса, который возвращает валидные данные
     thunk.api.post.mockReturnValue(Promise.resolve({ data: userValue }));
     // вызывваем функцию внутри класса для создания экшена
-    const result = await thunk.callThunk({ username: '123', password: '123' });
+    const result = await thunk.callThunk({ password: '123', username: '123' });
 
     expect(thunk.dispatch).toHaveBeenCalledWith(
       userActions.setAuthData(userValue),
@@ -78,7 +78,7 @@ describe('loginByUsername', () => {
     // имитируем отправку post запроса, который возвращает нам ошибку
     thunk.api.post.mockReturnValue(Promise.resolve({ status: 403 }));
     // вызываем функцию внутри класса для создания экшена
-    const result = await thunk.callThunk({ username: '123', password: '123' });
+    const result = await thunk.callThunk({ password: '123', username: '123' });
 
     expect(thunk.api.post).toHaveBeenCalled();
     expect(thunk.dispatch).toHaveBeenCalledTimes(2);

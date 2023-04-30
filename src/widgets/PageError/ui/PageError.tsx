@@ -9,8 +9,8 @@ export const PageError: FC<IPageErrorProps> = () => {
 
   return (
     <div className={cls.pageError}>
-      <p>Произошла непредвиденная ошибка</p>
-      <Button onClick={reloadPage}>Обновить страницу</Button>
+      <p>{'Произошла непредвиденная ошибка'}</p>
+      <Button onClick={reloadPage}>{'Обновить страницу'}</Button>
     </div>
   );
 };

@@ -6,14 +6,14 @@ const initialState: CounterSchema = {
 };
 
 export const counterSlice = buildSlice({
-  name: 'counter',
   initialState,
+  name: 'counter',
   reducers: {
-    increment: state => {
-      state.value += 1;
-    },
     decrement: state => {
       state.value -= 1;
+    },
+    increment: state => {
+      state.value += 1;
     },
   },
 });

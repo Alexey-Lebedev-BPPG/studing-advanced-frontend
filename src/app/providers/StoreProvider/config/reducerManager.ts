@@ -26,8 +26,20 @@ export function createReducerManager(
   const mountedReducers: MountedReducers = {};
 
   return {
+    // эта функция, которая по ключу добавляет новый редьюсер в главный редьюсер
+    add: (key: StateSchemaKey, reducer: Reducer) => {
+      if (!key || reducers[key]) return;
+
+      reducers[key] = reducer;
+      mountedReducers[key] = true;
+      combinedReducer = combineReducers(reducers);
+    },
+
+    getMountedReducers: () => mountedReducers,
+
     // функци получения всех редьюсеров
     getReducerMap: () => reducers,
+
     // обычная функция, которая проверяет, что если какие-то редьюсеры есть в keysToRemove, то она их удаляет из стейта
     reduce: (state: StateSchema, action: AnyAction) => {
       if (keysToRemove.length > 0) {
@@ -39,25 +51,14 @@ export function createReducerManager(
       // и возвращаем новый редьюсер, в который передаем новый стейт без ненужных ключей
       return combinedReducer(state, action);
     },
-    // эта функция, которая по ключу добавляет новый редьюсер в главный редьюсер
-    add: (key: StateSchemaKey, reducer: Reducer) => {
-      if (!key || reducers[key]) {
-        return;
-      }
-      reducers[key] = reducer;
-      mountedReducers[key] = true;
-      combinedReducer = combineReducers(reducers);
-    },
     // эту функция добавляет ключ в массив для удаления и удаляет его из главного редьюсера
     remove: (key: StateSchemaKey) => {
-      if (!key || !reducers[key]) {
-        return;
-      }
+      if (!key || !reducers[key]) return;
+
       delete reducers[key];
       keysToRemove.push(key);
       mountedReducers[key] = false;
       combinedReducer = combineReducers(reducers);
     },
-    getMountedReducers: () => mountedReducers,
   };
 }

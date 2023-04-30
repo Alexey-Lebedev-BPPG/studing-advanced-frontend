@@ -1,9 +1,9 @@
-import { fetchArticleEditForm } from '../services/fetchArticleEditForm/fetchArticleEditForm';
-import { ArticleEditFormSchema } from '../types/articleEditForm';
 import {
   // articleEditFormActions,
   articleEditFormReducer,
 } from './articleEditForm';
+import { fetchArticleEditForm } from '../services/fetchArticleEditForm/fetchArticleEditForm';
+import { ArticleEditFormSchema } from '../types/articleEditForm';
 
 // const data = {};
 
@@ -22,8 +22,8 @@ describe('articleEditFormSlice', () => {
   // сначала тестируем pending состояние
   test('test articleEditForm service pending', () => {
     const state: DeepPartial<ArticleEditFormSchema> = {
-      isLoading: false,
       error: 'error',
+      isLoading: false,
     };
     expect(
       articleEditFormReducer(
@@ -31,8 +31,8 @@ describe('articleEditFormSlice', () => {
         fetchArticleEditForm.pending,
       ),
     ).toEqual({
-      isLoading: true,
       error: undefined,
+      isLoading: true,
     });
   });
 

@@ -7,13 +7,6 @@ const initialState: ArticleEditPageSchema = {
 };
 
 export const articleEditPageSlice = createSlice({
-  name: 'articleEditPage',
-  initialState,
-  reducers: {
-    setIsLoading: (state, { payload }: PayloadAction<boolean>) => {
-      state.isLoading = payload;
-    },
-  },
   // исgользуется для асинхронного изменения стейта
   extraReducers: builder => {
     // у каждого thunka есть 3 состояния: 1. pending, 2. fulfilled, 3. rejected
@@ -39,6 +32,16 @@ export const articleEditPageSlice = createSlice({
         state.isLoading = false;
         state.error = action.payload;
       });
+  },
+
+  initialState,
+
+  name: 'articleEditPage',
+
+  reducers: {
+    setIsLoading: (state, { payload }: PayloadAction<boolean>) => {
+      state.isLoading = payload;
+    },
   },
 });
 

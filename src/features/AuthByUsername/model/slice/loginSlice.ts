@@ -4,24 +4,11 @@ import { LoginSchema } from '../types/loginSchema';
 
 const initialState: LoginSchema = {
   isLoading: false,
-  username: '',
   password: '',
+  username: '',
 };
 
 export const loginSlice = createSlice({
-  name: 'login',
-  initialState,
-  // исп. для обычного изменения стейта
-  reducers: {
-    // такиой синтаксис является полным
-    setUserName: (state, action: PayloadAction<string>) => {
-      state.username = action.payload;
-    },
-    // таким синтаксисом мы делаем деструктуризацию экшена
-    setPassword: (state, { payload }: PayloadAction<string>) => {
-      state.password = payload;
-    },
-  },
   // используется для асинхронного изменения стейта
   extraReducers: builder => {
     // у каждого thunka есть 3 состояния: 1. pending, 2. fulfilled, 3. rejected
@@ -42,6 +29,23 @@ export const loginSlice = createSlice({
         state.isLoading = false;
         state.error = action.payload;
       });
+  },
+
+  initialState,
+
+  name: 'login',
+
+  // исп. для обычного изменения стейта
+  reducers: {
+    // таким синтаксисом мы делаем деструктуризацию экшена
+    setPassword: (state, { payload }: PayloadAction<string>) => {
+      state.password = payload;
+    },
+
+    // такиой синтаксис является полным
+    setUserName: (state, action: PayloadAction<string>) => {
+      state.username = action.payload;
+    },
   },
 });
 

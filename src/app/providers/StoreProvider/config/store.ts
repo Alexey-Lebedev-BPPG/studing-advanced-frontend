@@ -27,8 +27,8 @@ export const createReduxStore = (
     // разворачиваем асинхронные редьюсеры в главный стор
     ...asyncReducers,
     counter: CounterReducer,
-    user: userReducer,
     scrollSave: scrollSaveReducer,
+    user: userReducer,
     // указываем редьюсер для rtk запросов
     [rtkApi.reducerPath]: rtkApi.reducer,
   };
@@ -38,13 +38,9 @@ export const createReduxStore = (
 
   // указываем тип стейта в дженерике (убираем при указании мидлвеара)
   const store = configureStore({
-    // чтоб для взаимодействия с асинхронными редьюсерами в компонентах, нам нужно передавать редьюсером не rootReducer, а функцию reduce из reduceManager
-    // reducer: rootReducers, + !!! нужно править типизацию
-    reducer: reducerManager.reduce as Reducer<CombinedState<StateSchema>>,
     // отключаем девтулзы для продакшена
     devTools: __IS_DEV__,
-    // делаем инитиал стейт по ум.
-    preloadedState: initialState,
+
     // создаем мидлвеар, что передать туда наш инстанс аксиоса
     // eslint-disable-next-line @typescript-eslint/no-shadow
     middleware: getDefaultMiddleware =>
@@ -56,9 +52,15 @@ export const createReduxStore = (
         },
         // добавляем мидлвеар для rtk запросов
       }).concat(rtkApi.middleware),
+
+    // делаем инитиал стейт по ум.
+    preloadedState: initialState,
+
+    // чтоб для взаимодействия с асинхронными редьюсерами в компонентах, нам нужно передавать редьюсером не rootReducer, а функцию reduce из reduceManager
+    // reducer: rootReducers, + !!! нужно править типизацию
+    reducer: reducerManager.reduce as Reducer<CombinedState<StateSchema>>,
   });
 
-  // пока помечаем так, позже добавим типизацию
   // добавляем наш менеджер для стейта
   // @ts-ignore
   store.reducerManager = reducerManager;

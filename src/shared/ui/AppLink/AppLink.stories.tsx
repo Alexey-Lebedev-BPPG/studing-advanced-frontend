@@ -1,11 +1,9 @@
 import { Meta, StoryFn } from '@storybook/react';
-import { Theme } from '../../const/theme';
 import { AppLink, AppLinkTheme } from './AppLink';
+import { Theme } from '../../const/theme';
 import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
 
 export default {
-  title: 'shared/AppLink',
-  component: AppLink,
   argTypes: {
     backgroundColor: { control: 'color' },
   },
@@ -13,6 +11,10 @@ export default {
   args: {
     to: '/',
   },
+
+  component: AppLink,
+
+  title: 'shared/AppLink',
 } as Meta<typeof AppLink>;
 
 const Template: StoryFn<typeof AppLink> = args => <AppLink {...args} />;

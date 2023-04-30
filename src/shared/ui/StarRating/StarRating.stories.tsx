@@ -1,15 +1,15 @@
 import { Meta, StoryFn } from '@storybook/react';
-import { Theme } from '../../const/theme';
 import { StarRating } from './StarRating';
+import { Theme } from '../../const/theme';
 import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
 import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
 
 export default {
-  title: 'shared/StarRating',
-  component: StarRating,
   argTypes: {
     backgroundColor: { control: 'color' },
   },
+  component: StarRating,
+  title: 'shared/StarRating',
 } as Meta<typeof StarRating>;
 
 const Template: StoryFn<typeof StarRating> = arg => <StarRating {...arg} />;

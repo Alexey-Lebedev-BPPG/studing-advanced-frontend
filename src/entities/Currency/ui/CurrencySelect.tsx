@@ -12,9 +12,9 @@ interface ICurrencyProps {
 
 // ввиду того, что массив всегда статичен, его не нужно оборачивать в memo
 const options = [
-  { value: Currency.RUB, content: Currency.RUB },
-  { value: Currency.EUR, content: Currency.EUR },
-  { value: Currency.USD, content: Currency.USD },
+  { content: Currency.RUB, value: Currency.RUB },
+  { content: Currency.EUR, value: Currency.EUR },
+  { content: Currency.USD, value: Currency.USD },
 ];
 
 export const CurrencySelect: FC<ICurrencyProps> = memo(
@@ -37,8 +37,8 @@ export const CurrencySelect: FC<ICurrencyProps> = memo(
         label={`${t('Укажите валюту')}`}
         readonly={readonly}
         items={options}
-        onChange={onChangeHandler}
         direction='top right'
+        onChange={onChangeHandler}
       />
     );
   },

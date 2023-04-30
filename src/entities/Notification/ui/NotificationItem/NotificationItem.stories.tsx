@@ -5,11 +5,11 @@ import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDe
 import { Theme } from '@/shared/const/theme';
 
 export default {
-  title: 'entities/Notification/NotificationItem',
-  component: NotificationItem,
   argTypes: {
     backgroundColor: { control: 'color' },
   },
+  component: NotificationItem,
+  title: 'entities/Notification/NotificationItem',
 } as Meta<typeof NotificationItem>;
 
 const Template: StoryFn<typeof NotificationItem> = arg => (
@@ -19,9 +19,9 @@ const Template: StoryFn<typeof NotificationItem> = arg => (
 export const Normal = Template.bind({});
 Normal.args = {
   item: {
+    description: 'testing123',
     id: '1',
     title: 'test123',
-    description: 'testing123',
   },
 };
 Normal.decorators = [StoreDecorator({})];
@@ -29,9 +29,9 @@ Normal.decorators = [StoreDecorator({})];
 export const Dark = Template.bind({});
 Dark.args = {
   item: {
+    description: 'testing123',
     id: '1',
     title: 'test123',
-    description: 'testing123',
   },
 };
 Dark.decorators = [StoreDecorator({}), ThemeDecorator(Theme.DARK)];

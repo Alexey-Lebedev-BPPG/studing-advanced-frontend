@@ -1,6 +1,7 @@
 import { FC, memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
+import cls from './ArticlePageFilters.module.scss';
 import {
   getArticlesPageOrder,
   getArticlesPageSearch,
@@ -10,7 +11,6 @@ import {
 } from '../../model/selectors/articlesPageSelectors';
 import { fetchArticlesList } from '../../model/services/fetchArticlesList/fetchArticlesList';
 import { articlesPageActions } from '../../model/slice/articlesPageSlice';
-import cls from './ArticlePageFilters.module.scss';
 import {
   ArticleView,
   ArticleSortFields,
@@ -92,24 +92,24 @@ export const ArticlePageFilters: FC<IArticlePageFiltersProps> = memo(
       <div className={classNames(cls.articlePageFilters, {}, [className])}>
         <div className={cls.sortWrapper}>
           <ArticleSortSelector
-            onChangeOrder={onChangeOrder}
-            onChangeSort={onChangeSort}
             order={order}
             sort={sort}
+            onChangeOrder={onChangeOrder}
+            onChangeSort={onChangeSort}
           />
           <ArticleViewSelector view={view} onViewClick={onChangeView} />
         </div>
         <Card className={cls.search}>
           <Input
             value={search}
-            onChange={onChangeSearch}
             placeholder={`${t('Поиск')}`}
+            onChange={onChangeSearch}
           />
         </Card>
         <ArticleTypeTabs
           selectedValue={type}
-          onChangeType={onChangeType}
           className={cls.tabsWrapper}
+          onChangeType={onChangeType}
         />
       </div>
     );

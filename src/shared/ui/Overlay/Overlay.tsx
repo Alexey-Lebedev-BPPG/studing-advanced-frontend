@@ -13,7 +13,7 @@ export const Overlay: FC<IOverlayProps> = memo(({ className, onClick }) => {
   const { t } = useTranslation();
 
   return (
-    <div onClick={onClick} className={classNames(cls.overlay, {}, [className])}>
+    <div className={classNames(cls.overlay, {}, [className])} onClick={onClick}>
       <div />
     </div>
   );

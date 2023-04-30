@@ -21,8 +21,8 @@ export const LanguageSwitcher: FC<ILanguageSwitcherProps> = memo(
     return (
       <Button
         theme={ButtonTheme.CLEAR}
-        onClick={toggle}
         className={classNames('', {}, [className])}
+        onClick={toggle}
       >
         {/* i18next-extract-disable-next-line */}
         {t(short ? 'Короткий язык' : 'Язык')}

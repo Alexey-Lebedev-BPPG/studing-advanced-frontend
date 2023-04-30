@@ -22,15 +22,6 @@ export const getArticleComments = commentsAdapter.getSelectors<StateSchema>(
 );
 
 const articleDetailsCommentsSlice = createSlice({
-  name: 'articleDetailsCommentSlice',
-  // расширем инитиал стейт нашими полями
-  initialState: commentsAdapter.getInitialState<ArticleDetailsCommentSchema>({
-    isLoading: false,
-    error: undefined,
-    ids: [],
-    entities: {},
-  }),
-  reducers: {},
   // исgользуется для асинхронного изменения стейта
   extraReducers: builder => {
     // у каждого thunka есть 3 состояния: 1. pending, 2. fulfilled, 3. rejected
@@ -58,6 +49,18 @@ const articleDetailsCommentsSlice = createSlice({
         state.error = action.payload;
       });
   },
+
+  // расширем инитиал стейт нашими полями
+  initialState: commentsAdapter.getInitialState<ArticleDetailsCommentSchema>({
+    entities: {},
+    error: undefined,
+    ids: [],
+    isLoading: false,
+  }),
+
+  name: 'articleDetailsCommentSlice',
+
+  reducers: {},
 });
 
 export const { actions: articleDetailsCommentActions } =

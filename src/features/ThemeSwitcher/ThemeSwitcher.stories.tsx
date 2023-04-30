@@ -4,11 +4,11 @@ import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDe
 import { Theme } from '@/shared/const/theme';
 
 export default {
-  title: 'widgets/ThemeSwitcher',
-  component: ThemeSwitcher,
   argTypes: {
     backgroundColor: { control: 'color' },
   },
+  component: ThemeSwitcher,
+  title: 'widgets/ThemeSwitcher',
 } as Meta<typeof ThemeSwitcher>;
 
 const Template: StoryFn<typeof ThemeSwitcher> = args => (

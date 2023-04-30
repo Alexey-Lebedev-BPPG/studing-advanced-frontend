@@ -1,7 +1,7 @@
 import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { profileReducer } from '../../model/slice/profileSlice';
 import { EditableProfileCard } from './EditableProfileCard';
+import { profileReducer } from '../../model/slice/profileSlice';
 import { Country } from '@/entities/Country';
 import { Currency } from '@/entities/Currency';
 import { Profile } from '@/entities/Profile';
@@ -9,13 +9,13 @@ import { $api } from '@/shared/api/api';
 import { componentRender } from '@/shared/lib/tests/componentRender/componentRender';
 
 const profile: Profile = {
-  id: '1',
-  first: 'admin',
-  lastname: 'admin',
   age: 456,
-  currency: Currency.USD,
-  country: Country.Kazakhstan,
   city: 'Moscow',
+  country: Country.Kazakhstan,
+  currency: Currency.USD,
+  first: 'admin',
+  id: '1',
+  lastname: 'admin',
   username: 'admin213',
 };
 
@@ -23,17 +23,18 @@ describe('features/EditableProfileCard', () => {
   //  используем beforeEach, чтоб componentRender выполнялась перед каждым тестом и не дублировать ее там
   beforeEach(() => {
     componentRender(<EditableProfileCard id='1' />, {
+      // позволяет вмонтировать редьюсер в компонент (см. функцию componentRender)
+      asyncReducer: { profile: profileReducer },
+
       initialState: {
         profile: {
-          readonly: true,
           data: profile,
           form: profile,
+          readonly: true,
         },
         // ввиду того, что в компоненте используются проверки на отображение кнопок (проверяет, что кнопки доступны для тех пользователей, id которых есть в профиле. поэтому также изменяем стейт, чтоб дать разрешение на отображение кнопок)
         user: { authData: { id: '1', username: 'admin' } },
       },
-      // позволяет вмонтировать редьюсер в компонент (см. функцию componentRender)
-      asyncReducer: { profile: profileReducer },
     });
   });
 

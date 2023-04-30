@@ -1,18 +1,18 @@
-import { ValidateProfileError } from '../../consts/consts';
 import { updateProfileData } from './updateProfileData';
+import { ValidateProfileError } from '../../consts/consts';
 import { Country } from '@/entities/Country';
 import { Currency } from '@/entities/Currency';
 import { TestAsyncThunk } from '@/shared/lib/tests/testAsyncThunk/testAsyncThunk';
 
 const data = {
-  id: '1',
-  username: 'admin',
   age: 22,
-  country: Country.Ukraine,
-  lastname: 'test',
-  first: 'asd',
   city: 'asd',
+  country: Country.Ukraine,
   currency: Currency.USD,
+  first: 'asd',
+  id: '1',
+  lastname: 'test',
+  username: 'admin',
 };
 
 describe('updateProfileData', () => {

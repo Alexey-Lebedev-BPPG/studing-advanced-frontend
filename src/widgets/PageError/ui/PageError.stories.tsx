@@ -4,11 +4,11 @@ import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDe
 import { Theme } from '@/shared/const/theme';
 
 export default {
-  title: 'widgets/PageError',
-  component: PageError,
   argTypes: {
     backgroundColor: { control: 'color' },
   },
+  component: PageError,
+  title: 'widgets/PageError',
 } as Meta<typeof PageError>;
 
 const Template: StoryFn<typeof PageError> = args => <PageError {...args} />;

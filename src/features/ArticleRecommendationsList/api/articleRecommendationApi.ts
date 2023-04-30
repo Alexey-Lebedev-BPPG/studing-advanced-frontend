@@ -8,13 +8,14 @@ const recommendationsList = rtkApi.injectEndpoints({
     getArticleRecommendationsList: build.query<Article[], number>({
       // колбэк принимает какие-то аргументы для передачи на сервер
       query: limit => ({
-        // здесь есть все поля как в стандартных запросах
-        // указываем урл
-        url: '/articles',
         // указываем параметры
         params: {
           _limit: limit,
         },
+
+        // здесь есть все поля как в стандартных запросах
+        // указываем урл
+        url: '/articles',
       }),
     }),
     // пример запроса на создание (через mutation)

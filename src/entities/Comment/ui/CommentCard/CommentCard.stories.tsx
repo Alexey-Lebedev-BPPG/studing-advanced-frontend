@@ -2,11 +2,11 @@ import { Meta, StoryFn } from '@storybook/react';
 import { CommentCard } from './CommentCard';
 
 export default {
-  title: 'entities/Comment/CommentCard',
-  component: CommentCard,
   argTypes: {
     backgroundColor: { control: 'color' },
   },
+  component: CommentCard,
+  title: 'entities/Comment/CommentCard',
 } as Meta<typeof CommentCard>;
 
 const Template: StoryFn<typeof CommentCard> = arg => <CommentCard {...arg} />;

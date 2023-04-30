@@ -1,13 +1,13 @@
 import { FC, memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
+import cls from './LoginForm.module.scss';
 import { getLoginError } from '../../model/selectors/getLoginError/getLoginError';
 import { getLoginIsLoading } from '../../model/selectors/getLoginIsLoading/getLoginIsLoading';
 import { getLoginPassword } from '../../model/selectors/getLoginPassword/getLoginPassword';
 import { getLoginUsername } from '../../model/selectors/getLoginUsername/getLoginUsername';
 import { loginByUsername } from '../../model/services/loginByUsername/loginByUsername';
 import { loginActions, loginReducer } from '../../model/slice/loginSlice';
-import cls from './LoginForm.module.scss';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import {
   DynamicModuleLoader,
@@ -57,38 +57,36 @@ const LoginForm: FC<ILoginFormProps> = memo(({ className, onSuccess }) => {
 
   const onLoginClick = useCallback(async () => {
     // вызываем наш thunk для передачи данных на бэк
-    const result = await dispatch(loginByUsername({ username, password }));
+    const result = await dispatch(loginByUsername({ password, username }));
     // вызываем функцию, которая сработает (здесь закрытие модалки), если запрос прошел успешно
-    if (result.meta.requestStatus === 'fulfilled') {
-      onSuccess();
-    }
+    if (result.meta.requestStatus === 'fulfilled') onSuccess();
   }, [dispatch, onSuccess, password, username]);
 
   return (
     <DynamicModuleLoader reducers={initialReducers}>
       <div className={classNames(cls.loginForm, {}, [className])}>
         <Text title={`${t('Форма авторизации')}`} />
-        {error && <Text text={error} theme={TextTheme.ERROR} />}
+        {!!error && <Text text={error} theme={TextTheme.ERROR} />}
         <Input
           autofocus
           type='text'
           className={cls.input}
           placeholder={`${t('Введите username')}`}
-          onChange={onChangeUsername}
           value={username}
+          onChange={onChangeUsername}
         />
         <Input
           type='text'
           className={cls.input}
           placeholder={`${t('Введите пароль')}`}
-          onChange={onChangePassword}
           value={password}
+          onChange={onChangePassword}
         />
         <Button
           theme={ButtonTheme.OUTLINE}
           className={cls.loginBtn}
-          onClick={onLoginClick}
           disabled={isLoading}
+          onClick={onLoginClick}
         >
           {t('Войти')}
         </Button>

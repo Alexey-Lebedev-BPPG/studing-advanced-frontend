@@ -7,11 +7,11 @@ import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDe
 import { Theme } from '@/shared/const/theme';
 
 export default {
-  title: 'pages/ProfilePage',
-  component: ProfilePage,
   argTypes: {
     backgroundColor: { control: 'color' },
   },
+  component: ProfilePage,
+  title: 'pages/ProfilePage',
 } as Meta<typeof ProfilePage>;
 
 const Template: StoryFn<typeof ProfilePage> = args => <ProfilePage {...args} />;
@@ -22,13 +22,13 @@ Light.decorators = [
   StoreDecorator({
     profile: {
       form: {
-        username: 'admin',
         age: 22,
-        country: Country.Ukraine,
-        lastname: 'test',
-        first: 'asd',
         city: 'asd',
+        country: Country.Ukraine,
         currency: Currency.USD,
+        first: 'asd',
+        lastname: 'test',
+        username: 'admin',
       },
     },
   }),
@@ -41,13 +41,13 @@ Dark.decorators = [
   StoreDecorator({
     profile: {
       form: {
-        username: 'admin',
         age: 22,
-        country: Country.Ukraine,
-        lastname: 'test',
-        first: 'asd',
         city: 'asd',
+        country: Country.Ukraine,
         currency: Currency.USD,
+        first: 'asd',
+        lastname: 'test',
+        username: 'admin',
       },
     },
   }),

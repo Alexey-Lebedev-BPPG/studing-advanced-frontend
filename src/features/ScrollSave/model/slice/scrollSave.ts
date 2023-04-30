@@ -6,8 +6,8 @@ const initialState: ScrollSaveSchema = {
 };
 
 export const scrollSaveSlice = createSlice({
-  name: 'scrollSave',
   initialState,
+  name: 'scrollSave',
   reducers: {
     setScrollPosition: (
       state,

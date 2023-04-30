@@ -5,11 +5,11 @@ import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDe
 import { Theme } from '@/shared/const/theme';
 
 export default {
-  title: 'pages/ArticlesPage/ArticleInfiniteList',
-  component: ArticleInfiniteList,
   argTypes: {
     backgroundColor: { control: 'color' },
   },
+  component: ArticleInfiniteList,
+  title: 'pages/ArticlesPage/ArticleInfiniteList',
 } as Meta<typeof ArticleInfiniteList>;
 
 const Template: StoryFn<typeof ArticleInfiniteList> = arg => (

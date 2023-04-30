@@ -1,11 +1,11 @@
 import { FC, HTMLAttributeAnchorTarget, memo } from 'react';
 import { useTranslation } from 'react-i18next';
 // import { List, ListRowProps, WindowScroller } from "react-virtualized";
+import cls from './ArticleList.module.scss';
 import { ArticleView } from '../../model/consts/consts';
 import { Article } from '../../model/types/article';
 import { ArticleListItem } from '../ArticleListItem/ArticleListItem';
 import { ArticleListItemSkeleton } from '../ArticleListItem/ArticleListItemSkeleton';
-import cls from './ArticleList.module.scss';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { Text, TextSize } from '@/shared/ui/Text';
 
@@ -23,7 +23,7 @@ const getSkeletons = (view: ArticleView) =>
   new Array(view === ArticleView.SMALL ? 9 : 3)
     .fill(0)
     .map((item, index) => (
-      <ArticleListItemSkeleton className={cls.card} key={index} view={view} />
+      <ArticleListItemSkeleton key={index} className={cls.card} view={view} />
     ));
 
 // здесь внедряли виртуализацию списков, однако с ней проблема, т.к. не использовали react-virtuoso. В последствии нужно исправить
@@ -107,7 +107,6 @@ export const ArticleList: FC<IArticleListProps> = memo(
         data-testid='ArticleList'
       >
         {/* {virtualized ? (
-          // @ts-ignore
           <List
             height={height || 700}
             rowCount={rowCount}
@@ -132,14 +131,14 @@ export const ArticleList: FC<IArticleListProps> = memo(
         )} */}
         {articles.map(item => (
           <ArticleListItem
+            key={item.id}
             target={target}
             article={item}
             view={view}
             className={cls.card}
-            key={item.id}
           />
         ))}
-        {isLoading && getSkeletons(view)}
+        {!!isLoading && getSkeletons(view)}
       </div>
       //   )}
       // </WindowScroller>

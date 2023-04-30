@@ -1,15 +1,15 @@
 import { Meta, StoryFn } from '@storybook/react';
-import { Theme } from '../../const/theme';
 import { Overlay } from './Overlay';
+import { Theme } from '../../const/theme';
 import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
 import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
 
 export default {
-  title: 'shared/Overlay',
-  component: Overlay,
   argTypes: {
     backgroundColor: { control: 'color' },
   },
+  component: Overlay,
+  title: 'shared/Overlay',
 } as Meta<typeof Overlay>;
 
 const Template: StoryFn<typeof Overlay> = arg => <Overlay {...arg} />;

@@ -1,16 +1,16 @@
 import { Meta, StoryFn } from '@storybook/react';
-import AvatarImg from '../../assets/tests/AvatarImg.jpg';
 import { Avatar } from './Avatar';
+import AvatarImg from '../../assets/tests/AvatarImg.jpg';
 import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
 import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { Theme } from '@/shared/const/theme';
 
 export default {
-  title: 'shared/Avatar',
-  component: Avatar,
   argTypes: {
     backgroundColor: { control: 'color' },
   },
+  component: Avatar,
+  title: 'shared/Avatar',
 } as Meta<typeof Avatar>;
 
 const Template: StoryFn<typeof Avatar> = args => <Avatar {...args} />;

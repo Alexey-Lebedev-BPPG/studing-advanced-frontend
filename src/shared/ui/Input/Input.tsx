@@ -52,9 +52,8 @@ export const Input: FC<IInputProps> = memo(props => {
   const onFocusHandler = () => setIsFocused(true);
   // функция, которая срабатывает в выделенном месте
   const onSelectHandler = (event: SyntheticEvent<HTMLDivElement, Event>) => {
-    if (event.target instanceof HTMLInputElement) {
+    if (event.target instanceof HTMLInputElement)
       setCaretPosition(event.target.selectionStart || 0);
-    }
   };
 
   const mods = {
@@ -71,7 +70,7 @@ export const Input: FC<IInputProps> = memo(props => {
   }, [autofocus]);
   return (
     <div className={classNames(cls.inputWrapper, mods, [className])}>
-      {placeholder && (
+      {!!placeholder && (
         <div className={cls.placeholder}>{`${placeholder}>`}</div>
       )}
       <div className={cls.caretWrapper}>
@@ -79,15 +78,15 @@ export const Input: FC<IInputProps> = memo(props => {
           ref={ref}
           type={type}
           value={value}
-          onChange={onChangeHandler}
           className={cls.input}
+          readOnly={readonly}
+          onChange={onChangeHandler}
           onFocus={onFocusHandler}
           onBlur={onBlurHandler}
           onSelect={onSelectHandler}
-          readOnly={readonly}
           {...otherProps}
         />
-        {isCaretVisible && (
+        {!!isCaretVisible && (
           <span
             className={cls.caret}
             style={{ left: `${caretPosition * 9}px` }}

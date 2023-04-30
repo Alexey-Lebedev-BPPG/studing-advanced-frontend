@@ -5,11 +5,11 @@ import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDe
 import { Theme } from '@/shared/const/theme';
 
 export default {
-  title: 'features/ArticleRating',
-  component: ArticleRating,
   argTypes: {
     backgroundColor: { control: 'color' },
   },
+  component: ArticleRating,
+  title: 'features/ArticleRating',
 } as Meta<typeof ArticleRating>;
 
 const Template: StoryFn<typeof ArticleRating> = arg => (
@@ -23,10 +23,10 @@ Normal.decorators = [StoreDecorator({ user: { authData: { id: '1' } } })];
 Normal.parameters = {
   mockData: [
     {
-      url: `${__API__}/article-ratings?userId=1&articleId=1`,
       method: 'GET',
-      status: 200,
       response: [{ rate: 4 }],
+      status: 200,
+      url: `${__API__}/article-ratings?userId=1&articleId=1`,
     },
   ],
 };
@@ -41,10 +41,10 @@ Dark.decorators = [
 Dark.parameters = {
   mockData: [
     {
-      url: `${__API__}/article-ratings?userId=1&articleId=1`,
       method: 'GET',
-      status: 200,
       response: [{ rate: 3 }],
+      status: 200,
+      url: `${__API__}/article-ratings?userId=1&articleId=1`,
     },
   ],
 };

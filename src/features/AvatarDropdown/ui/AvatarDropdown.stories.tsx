@@ -5,11 +5,11 @@ import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDe
 import { Theme } from '@/shared/const/theme';
 
 export default {
-  title: 'features/AvatarDropdown',
-  component: AvatarDropdown,
   argTypes: {
     backgroundColor: { control: 'color' },
   },
+  component: AvatarDropdown,
+  title: 'features/AvatarDropdown',
 } as Meta<typeof AvatarDropdown>;
 
 const Template: StoryFn<typeof AvatarDropdown> = arg => (

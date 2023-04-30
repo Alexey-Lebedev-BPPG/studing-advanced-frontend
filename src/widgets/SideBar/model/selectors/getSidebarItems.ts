@@ -17,30 +17,30 @@ import {
 export const getSidebarItems = createSelector(getUserAuthData, userData => {
   const sidebarItemsList: SidebarItemType[] = [
     {
+      Icon: MainIcon,
       path: getRouteMain(),
       text: 'Главная страница',
-      Icon: MainIcon,
     },
     {
+      Icon: AboutIcon,
       path: getRouteAbout(),
       text: 'О сайте',
-      Icon: AboutIcon,
     },
   ];
 
   if (userData)
     sidebarItemsList.push(
       {
-        path: getRouteProfile(userData.id),
-        text: 'Профиль',
         Icon: ProfileIcon,
         authOnly: true,
+        path: getRouteProfile(userData.id),
+        text: 'Профиль',
       },
       {
-        path: getRouteArticles(),
-        text: 'Статьи',
         Icon: ArticleIcon,
         authOnly: true,
+        path: getRouteArticles(),
+        text: 'Статьи',
       },
     );
 

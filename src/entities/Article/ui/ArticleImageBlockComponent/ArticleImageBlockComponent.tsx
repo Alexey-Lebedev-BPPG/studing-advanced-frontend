@@ -1,6 +1,6 @@
 import { FC, memo } from 'react';
-import { ArticleImageBlock } from '../../model/types/article';
 import cls from './ArticleImageBlockComponent.module.scss';
+import { ArticleImageBlock } from '../../model/types/article';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { AppImage } from '@/shared/ui/AppImage';
 import { Text, TextAlign } from '@/shared/ui/Text';
@@ -16,6 +16,6 @@ export const ArticleImageBlockComponent: FC<IArticleImageBlockComponentProps> =
       className={classNames(cls.articleImageBlockComponent, {}, [className])}
     >
       <AppImage src={block.src} className={cls.img} alt={block.title} />
-      {block.title && <Text title={block.title} align={TextAlign.CENTER} />}
+      {!!block.title && <Text title={block.title} align={TextAlign.CENTER} />}
     </div>
   ));

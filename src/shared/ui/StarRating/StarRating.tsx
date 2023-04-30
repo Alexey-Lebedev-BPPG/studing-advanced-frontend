@@ -1,6 +1,6 @@
 import { FC, memo, useState } from 'react';
-import { Icon } from '../Icon/Icon';
 import cls from './StarRating.module.scss';
+import { Icon } from '../Icon/Icon';
 import StarIcon from '@/shared/assets/icons/star.svg';
 import { classNames } from '@/shared/lib/classNames/classNames';
 
@@ -41,21 +41,21 @@ export const StarRating: FC<IStartRatingProps> = memo(
       <div className={classNames(cls.starRating, {}, [className])}>
         {stars.map(starNumber => (
           <Icon
+            key={starNumber}
+            Svg={StarIcon}
+            width={size}
+            height={size}
+            data-testid={`StarRating.${starNumber}`}
+            // для проверки количества выбранных звезд
+            data-selected={currentStarsCount >= starNumber}
             className={classNames(
               cls.starItem,
               { [cls.selected]: isSelected },
               [currentStarsCount >= starNumber ? cls.hovered : cls.normal],
             )}
-            Svg={StarIcon}
-            key={starNumber}
-            width={size}
-            height={size}
             onMouseEnter={onHover(starNumber)}
             onMouseLeave={onLeave}
             onClick={onClick(starNumber)}
-            data-testid={`StarRating.${starNumber}`}
-            // для проверки количества выбранных звезд
-            data-selected={currentStarsCount >= starNumber}
           />
         ))}
       </div>

@@ -14,8 +14,8 @@ export interface IArticleViewSelectorProps {
 }
 
 const viewTypes = [
-  { view: ArticleView.SMALL, icon: TiledIcon },
-  { view: ArticleView.BIG, icon: ListIcon },
+  { icon: TiledIcon, view: ArticleView.SMALL },
+  { icon: ListIcon, view: ArticleView.BIG },
 ];
 
 export const ArticleViewSelector: FC<IArticleViewSelectorProps> = memo(

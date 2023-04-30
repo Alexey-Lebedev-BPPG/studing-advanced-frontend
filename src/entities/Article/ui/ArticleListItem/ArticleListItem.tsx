@@ -1,8 +1,8 @@
 import { FC, HTMLAttributeAnchorTarget, memo } from 'react';
+import cls from './ArticleListItem.module.scss';
 import { ArticleBlockType, ArticleView } from '../../model/consts/consts';
 import { Article, ArticleTextBlock } from '../../model/types/article';
 import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleTextBlockComponent';
-import cls from './ArticleListItem.module.scss';
 import EyeIcon from '@/shared/assets/icons/eye-20-20.svg';
 import { getRouteArticleDetails } from '@/shared/const/router';
 import { classNames } from '@/shared/lib/classNames/classNames';
@@ -59,7 +59,7 @@ export const ArticleListItem: FC<IArticleListItemProps> = memo(
               className={cls.img}
               alt={article.title}
             />
-            {textBlock && (
+            {!!textBlock && (
               <ArticleTextBlockComponent
                 block={textBlock}
                 className={cls.textBlock}
@@ -67,7 +67,7 @@ export const ArticleListItem: FC<IArticleListItemProps> = memo(
             )}
             <div className={cls.footer}>
               <AppLink target={target} to={getRouteArticleDetails(article.id)}>
-                <Button>Читать далее...</Button>
+                <Button>{'Читать далее...'}</Button>
               </AppLink>
               {views}
             </div>

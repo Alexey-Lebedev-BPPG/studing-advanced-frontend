@@ -34,9 +34,9 @@ const ArticleRating: FC<IArticleRatingProps> = memo(
         try {
           rateArticleMutation({
             articleId,
+            feedback,
             rate: starCount,
             userId: userData?.id || '',
-            feedback,
           });
         } catch (error) {
           console.log('error', error);
@@ -60,15 +60,15 @@ const ArticleRating: FC<IArticleRatingProps> = memo(
 
     return (
       <RatingCard
-        onAccept={onAccept}
-        onCancel={onCancel}
+        hasFeedback
         rate={rating?.rate}
         className={className}
         title={t('Оцените статью')}
         feedbackTitle={t(
           'Оставьте свой отзыв о статье, это поможет улучшить качество',
         )}
-        hasFeedback
+        onAccept={onAccept}
+        onCancel={onCancel}
       />
     );
   },

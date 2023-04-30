@@ -5,11 +5,11 @@ import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDe
 import { Theme } from '@/shared/const/theme';
 
 export default {
-  title: 'pages/AdminPanelPage',
-  component: AdminPanelPage,
   argTypes: {
     backgroundColor: { control: 'color' },
   },
+  component: AdminPanelPage,
+  title: 'pages/AdminPanelPage',
 } as Meta<typeof AdminPanelPage>;
 
 const Template: StoryFn<typeof AdminPanelPage> = arg => (

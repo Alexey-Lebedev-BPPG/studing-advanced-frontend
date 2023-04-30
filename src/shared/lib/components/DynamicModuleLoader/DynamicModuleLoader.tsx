@@ -49,13 +49,12 @@ export const DynamicModuleLoader: FC<IDynamicModuleLoaderProps> = ({
 
     // при демонтировании компонента, редьюсер также удаляется из стора
     return () => {
-      if (removeAfterUnmount) {
+      if (removeAfterUnmount)
         Object.entries(reducers).forEach(([keyReducer]) => {
           store.reducerManager.remove(keyReducer as StateSchemaKey);
           // чтоб просматривать сработало ли или нет (если убрать, то действие сработает, однако в девтулзах не обновится. Обновление происходит после следущего действия)
           dispatch({ type: `@DESTROY ${keyReducer} reducer` });
         });
-      }
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

@@ -20,18 +20,6 @@ export const getArticleRecommendations =
   );
 
 const articleDetailsRecommendationsSlice = createSlice({
-  name: 'articleDetailsRecommendationsSlice',
-  // расширем инитиал стейт нашими полями
-  initialState:
-    recommendationsAdapter.getInitialState<ArticleDetailsRecommendationsSchema>(
-      {
-        isLoading: false,
-        error: undefined,
-        ids: [],
-        entities: {},
-      },
-    ),
-  reducers: {},
   // используется для асинхронного изменения стейта
   extraReducers: builder => {
     // у каждого thunka есть 3 состояния: 1. pending, 2. fulfilled, 3. rejected
@@ -56,6 +44,21 @@ const articleDetailsRecommendationsSlice = createSlice({
         state.error = action.payload;
       });
   },
+
+  // расширем инитиал стейт нашими полями
+  initialState:
+    recommendationsAdapter.getInitialState<ArticleDetailsRecommendationsSchema>(
+      {
+        entities: {},
+        error: undefined,
+        ids: [],
+        isLoading: false,
+      },
+    ),
+
+  name: 'articleDetailsRecommendationsSlice',
+
+  reducers: {},
 });
 
 export const { actions: articleDetailsRecommendationsActions } =

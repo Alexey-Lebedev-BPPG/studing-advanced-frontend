@@ -5,11 +5,11 @@ import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDe
 import { Theme } from '@/shared/const/theme';
 
 export default {
-  title: 'features/EditableProfileCard',
-  component: EditableProfileCard,
   argTypes: {
     backgroundColor: { control: 'color' },
   },
+  component: EditableProfileCard,
+  title: 'features/EditableProfileCard',
 } as Meta<typeof EditableProfileCard>;
 
 const Template: StoryFn<typeof EditableProfileCard> = arg => (

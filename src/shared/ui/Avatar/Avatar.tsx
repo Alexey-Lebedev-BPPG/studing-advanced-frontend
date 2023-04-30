@@ -1,9 +1,9 @@
 import { CSSProperties, FC, useMemo } from 'react';
+import cls from './Avatar.module.scss';
 import UserIcon from '../../assets/icons/user-filled.svg';
 import { AppImage } from '../AppImage';
 import { Icon } from '../Icon';
 import { Skeleton } from '../Skeleton';
-import cls from './Avatar.module.scss';
 import { classNames } from '@/shared/lib/classNames/classNames';
 
 interface IAvatarProps {
@@ -24,8 +24,8 @@ export const Avatar: FC<IAvatarProps> = ({
 }) => {
   const styles = useMemo<CSSProperties>(
     () => ({
-      width: size,
       height: size,
+      width: size,
     }),
     [size],
   );

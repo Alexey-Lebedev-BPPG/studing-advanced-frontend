@@ -39,32 +39,27 @@ export const useModal = ({
   // оборачиваем в useCallback, чтоб при каждом рендеринге не создавалась новая функция, а сохранялась ссылка на старую
   const onKeyDown = useCallback(
     (event: KeyboardEvent) => {
-      if (event.key === 'Escape') {
-        closeHandler();
-      }
+      if (event.key === 'Escape') closeHandler();
     },
     [closeHandler],
   );
 
   useEffect(() => {
-    if (isOpen) {
+    if (isOpen)
       // навешиваем слушателя на все приложение, чтоб закрывать модалку по клавише Escape
       window.addEventListener('keydown', onKeyDown);
-    }
+
     return () => {
-      if (timerRef?.current) {
-        clearTimeout(timerRef.current);
-      }
+      if (timerRef?.current) clearTimeout(timerRef.current);
+
       // обязательно очищаем слушателя, чтоб он не был доступен вне модалки
       window.removeEventListener('keydown', onKeyDown);
     };
   }, [isOpen, onKeyDown]);
 
   useEffect(() => {
-    if (isOpen) {
-      setIsMounting(true);
-    }
+    if (isOpen) setIsMounting(true);
   }, [isOpen]);
 
-  return { isClosing, isMounting, close: closeHandler };
+  return { close: closeHandler, isClosing, isMounting };
 };
