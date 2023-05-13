@@ -42,6 +42,7 @@ const reducers: ReducersList = {
 export const ArticleDetails: FC<IArticleDetailsProps> = memo(
   ({ className, id }) => {
     const { t } = useTranslation();
+
     const dispatch = useAppDispatch();
 
     const isLoading = useSelector(getArticleDetailsIsLoading);

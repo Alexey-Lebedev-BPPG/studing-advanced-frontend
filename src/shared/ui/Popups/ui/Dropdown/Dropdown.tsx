@@ -8,24 +8,24 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import { DropDownDirection } from '@/shared/types/ui';
 
 export interface DropdownItem {
-  disabled?: boolean;
   content?: ReactNode;
-  onClick?: () => void;
+  disabled?: boolean;
   href?: string;
+  onClick?: () => void;
 }
 
 interface IDropdownProps {
   className?: string;
+  direction?: DropDownDirection;
   items: DropdownItem[];
   trigger: ReactNode;
-  direction?: DropDownDirection;
 }
 
 export const Dropdown: FC<IDropdownProps> = ({
   className,
+  direction = 'bottom left',
   items,
   trigger,
-  direction = 'bottom left',
 }) => {
   const menuClasses = [mapDirectionClass[direction]];
 
@@ -33,7 +33,7 @@ export const Dropdown: FC<IDropdownProps> = ({
     <Menu as='div' className={classNames('', {}, [className, popupCls.popup])}>
       <Menu.Button className={popupCls.trigger}>{trigger}</Menu.Button>
       <Menu.Items className={classNames(cls.menu, {}, menuClasses)}>
-        {items.map(({ disabled, onClick, content, href }, index) => {
+        {items.map(({ content, disabled, href, onClick }, index) => {
           const contentMenuItem = ({ active }: { active: boolean }) => (
             <button
               type='button'

@@ -5,12 +5,12 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import { Code } from '@/shared/ui/Code';
 
 interface IArticleCodeBlockComponentProps {
-  className?: string;
   block: ArticleCodeBlock;
+  className?: string;
 }
 
 export const ArticleCodeBlockComponent: FC<IArticleCodeBlockComponentProps> =
-  memo(({ className, block }) => (
+  memo(({ block, className }) => (
     <div className={classNames(cls.articleCodeBlockComponent, {}, [className])}>
       <Code text={block.code} />
     </div>

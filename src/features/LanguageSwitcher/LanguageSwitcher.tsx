@@ -11,7 +11,7 @@ interface ILanguageSwitcherProps {
 
 export const LanguageSwitcher: FC<ILanguageSwitcherProps> = memo(
   ({ className, short }) => {
-    const { t, i18n } = useTranslation();
+    const { i18n, t } = useTranslation();
 
     const toggle = () => {
       // вызываем функцию перевода и в ней меняем язык на противоположный

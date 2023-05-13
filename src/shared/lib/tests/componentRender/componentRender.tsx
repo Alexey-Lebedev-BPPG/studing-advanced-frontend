@@ -12,10 +12,10 @@ import { Theme } from '@/shared/const/theme';
 import '@/app/styles/index.scss';
 
 export interface IComponentRenderOptions {
-  route?: string;
-  initialState?: DeepPartial<StateSchema>;
   // добавляем этот пропс, чтоб при тестировании в компонентах, которые обернуты в DynamicModuleLoader, они могли иметь доступ к стейту
   asyncReducer?: DeepPartial<ReducersMapObject<StateSchema>>;
+  initialState?: DeepPartial<StateSchema>;
+  route?: string;
   theme?: Theme;
 }
 
@@ -28,9 +28,9 @@ interface TestProviderProps {
 export function TestProvider(props: TestProviderProps) {
   const { children, options = {} } = props;
   const {
-    route = '/',
-    initialState,
     asyncReducer,
+    initialState,
+    route = '/',
     theme = Theme.LIGHT,
   } = options;
   return (

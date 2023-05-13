@@ -10,12 +10,12 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import { Text, TextSize } from '@/shared/ui/Text';
 
 export interface IArticleListProps {
-  className?: string;
   articles: Article[];
+  className?: string;
   isLoading?: boolean;
+  target?: HTMLAttributeAnchorTarget;
   // отображение (плитка или список)
   view?: ArticleView;
-  target?: HTMLAttributeAnchorTarget;
   virtualized?: boolean;
 }
 
@@ -29,11 +29,11 @@ const getSkeletons = (view: ArticleView) =>
 // здесь внедряли виртуализацию списков, однако с ней проблема, т.к. не использовали react-virtuoso. В последствии нужно исправить
 export const ArticleList: FC<IArticleListProps> = memo(
   ({
-    className,
     articles,
+    className,
     isLoading,
-    view = ArticleView.SMALL,
     target,
+    view = ArticleView.SMALL,
     virtualized = true,
   }) => {
     const { t } = useTranslation();

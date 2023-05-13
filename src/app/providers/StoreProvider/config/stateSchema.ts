@@ -19,22 +19,22 @@ import { rtkApi } from '@/shared/api/rtkApi';
 
 // типизация всего стейта
 export interface StateSchema {
-  counter: CounterSchema;
-  user: UserSchema;
+  // articleDetailsComments?: ArticleDetailsCommentSchema;
+  // articleDetailsRecommendations?: ArticleDetailsRecommendationsSchema;
+  addCommentForm?: AddCommentFormSchema;
+  articleDetails?: ArticleDetailsSchema;
   scrollSave: ScrollSaveSchema;
   // указываем тип для редьюсера rtk запросов
   [rtkApi.reducerPath]: ReturnType<typeof rtkApi.reducer>;
 
+  // объединим несколько редьюсеров в один. Лучше не использовать. Делается в учебных целях
+  articleDetailsPage?: ArticleDetailsPageSchema;
+  articlesPage?: ArticlesPageSchema;
+  counter: CounterSchema;
   // Асинхронные(подгружаемые) редьюсеры
   loginForm?: LoginSchema;
   profile?: ProfileSchema;
-  articleDetails?: ArticleDetailsSchema;
-  // объединем несколько редьюсеров в один. Лучше не использовать. Делается в учебных целях
-  articleDetailsPage?: ArticleDetailsPageSchema;
-  // articleDetailsComments?: ArticleDetailsCommentSchema;
-  // articleDetailsRecommendations?: ArticleDetailsRecommendationsSchema;
-  addCommentForm?: AddCommentFormSchema;
-  articlesPage?: ArticlesPageSchema;
+  user: UserSchema;
 }
 
 // создаем тип всех ключей стейта
@@ -44,12 +44,12 @@ export type MountedReducers = OptionalRecord<StateSchemaKey, boolean>;
 
 // типизация для редьюсер-менеджера
 export interface ReducerManager {
-  getReducerMap: () => ReducersMapObject<StateSchema>;
-  reduce: (state: StateSchema, action: AnyAction) => CombinedState<StateSchema>;
   add: (key: StateSchemaKey, reducer: Reducer) => void;
-  remove: (key: StateSchemaKey) => void;
   // поле для проверки, смонтирован редьюсер или нет. Используем кастомный тип, т.к. не все редьюсеры у нас обязательны. Указанное поле НЕ ОБЯЗАТЕЛЬНО, т.к. данный функционал можно использовать из поля getReducerMap
   getMountedReducers: () => MountedReducers;
+  getReducerMap: () => ReducersMapObject<StateSchema>;
+  reduce: (state: StateSchema, action: AnyAction) => CombinedState<StateSchema>;
+  remove: (key: StateSchemaKey) => void;
 }
 
 // типизация для стейта, который получен с помощью редьюсер-менеджера (наследуется от стандартного типа, который появляется при создании стора в файле store.ts (21 строка))
@@ -65,8 +65,8 @@ export interface ThunkExtraArg {
 
 // делаем тип для конфигураций thunk-ов (причем тип ошибочной функции будем определять извне)
 export interface ThunkConfig<T> {
-  rejectValue: T;
   extra: ThunkExtraArg;
+  rejectValue: T;
   // добавляем типи для стейта общего
   state: StateSchema;
 }

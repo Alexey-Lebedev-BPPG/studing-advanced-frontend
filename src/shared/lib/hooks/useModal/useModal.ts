@@ -1,9 +1,9 @@
 import { useState, useRef, useCallback, useEffect } from 'react';
 
 interface UseModalProps {
+  animationDelay: number;
   isOpen?: boolean;
   onClose?: () => void;
-  animationDelay: number;
 }
 
 /**
@@ -14,9 +14,9 @@ interface UseModalProps {
  */
 
 export const useModal = ({
+  animationDelay,
   isOpen,
   onClose,
-  animationDelay,
 }: UseModalProps) => {
   // обработаем анимацию закрытия модального окна
   const [isClosing, setIsClosing] = useState(false);

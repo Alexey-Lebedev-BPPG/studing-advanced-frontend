@@ -40,22 +40,22 @@ type DivProps = DetailedHTMLProps<
 >;
 
 export interface IFlexProps extends DivProps {
-  className?: string;
-  children: ReactNode;
-  justify?: FlexJustify;
   align?: FlexAlign;
+  children: ReactNode;
+  className?: string;
   direction: FlexDirection;
   gap?: FlexGap;
+  justify?: FlexJustify;
   max?: boolean;
 }
 
 export const Flex: FC<IFlexProps> = ({
-  className,
-  children,
-  justify = 'start',
   align = 'center',
+  children,
+  className,
   direction = 'row',
   gap,
+  justify = 'start',
   max,
   ...otherProps
 }) => {

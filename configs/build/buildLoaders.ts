@@ -2,9 +2,10 @@ import webpack from "webpack";
 import { BuildOptions } from "./types/config";
 import { buildCssLoaders } from "./loaders/buildCssLoaders";
 import { buildBabelLoader } from "./loaders/buildBabelLoader";
-import { buildTypesciptLoader } from "./loaders/buildTypesciptLoader";
+// import { buildTypesciptLoader } from "./loaders/buildTypesciptLoader";
 import { buildFileLoader } from "./loaders/buildFileLoader";
 import { buildSvgLoader } from "./loaders/buildSvgLoader";
+import { buildMjsLoader } from './loaders/buildMjsLoader';
 
 export const buildLoaders = (options: BuildOptions): webpack.RuleSetRule[] => {
   // порядок лоадеров имеет значение, поэтому выносим в отдельные переменные
@@ -24,6 +25,8 @@ export const buildLoaders = (options: BuildOptions): webpack.RuleSetRule[] => {
   // babelLoader для файлов .tsx, .jsx
   const tsxCodeBabelLoader = buildBabelLoader({ ...options, isTsx: true });
 
+  const mjsLoader = buildMjsLoader();
+
   // scss лоадер
   const scssLoaders = buildCssLoaders(options.isDev);
 
@@ -33,6 +36,7 @@ export const buildLoaders = (options: BuildOptions): webpack.RuleSetRule[] => {
     svgLoader,
     codeBabelLoader,
     tsxCodeBabelLoader,
+    mjsLoader,
     // typescriptLoader,
     scssLoaders,
   ];

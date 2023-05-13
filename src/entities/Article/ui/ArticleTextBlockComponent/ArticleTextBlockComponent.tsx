@@ -5,12 +5,12 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import { Text } from '@/shared/ui/Text';
 
 interface IArticleTextBlockComponentProps {
-  className?: string;
   block: ArticleTextBlock;
+  className?: string;
 }
 
 export const ArticleTextBlockComponent: FC<IArticleTextBlockComponentProps> =
-  memo(({ className, block }) => (
+  memo(({ block, className }) => (
     <div className={classNames(cls.articleTextBlockComponent, {}, [className])}>
       {!!block.title && <Text title={block.title} className={cls.title} />}
       {block.paragraphs.map((paragraph, index) => (

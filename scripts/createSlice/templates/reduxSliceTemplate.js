@@ -1,7 +1,7 @@
-const firstCharUpperCase = require("../firstCharUpperCase");
+const firstCharUpperCase = require('../firstCharUpperCase');
 
 // шаблон создания файла слайса редакса
-module.exports = (sliceName) => {
+module.exports = sliceName => {
   const typeName = `${firstCharUpperCase(sliceName)}Schema`;
 
   return `import { createSlice, PayloadAction } from '@reduxjs/toolkit';

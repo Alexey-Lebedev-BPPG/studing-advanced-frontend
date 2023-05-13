@@ -7,17 +7,17 @@ import popupCls from '../../styles/popups.module.scss';
 import { classNames } from '@/shared/lib/classNames/classNames';
 
 export interface IPopoverProps {
-  className?: string;
   children: ReactNode;
-  trigger: ReactNode;
+  className?: string;
   direction?: DropDownDirection;
+  trigger: ReactNode;
 }
 
 export const Popover: FC<IPopoverProps> = ({
-  className,
   children,
-  trigger,
+  className,
   direction = 'bottom left',
+  trigger,
 }) => {
   const menuClasses = [mapDirectionClass[direction]];
 

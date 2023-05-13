@@ -1,5 +1,6 @@
 import path from 'path';
 import webpack from 'webpack';
+// import clear from 'clear';
 import { buildWebpackConfig } from './configs/build/buildWebpackConfig';
 import { BuildEnv, BuildMode, BuildPaths } from './configs/build/types/config';
 
@@ -10,11 +11,11 @@ const getApiUrl = (mode: BuildMode, apiUrl?: string) => {
   return 'http://localhost:8000';
 };
 
-// заводим такую функцию, а не просто возращаем конфиг, чтоб можно было прокидывать сюда переменные окружения
+// заводим такую функцию, а не просто возвращаем конфиг, чтоб можно было прокидывать сюда переменные окружения
 export default (env: BuildEnv) => {
   const paths: BuildPaths = {
     // откуда стартует приложение
-    // если хотим указать динамички name для файлов, то исп. так
+    // если хотим указать динамически name для файлов, то исп. так
     // entry:{
     //   // указываем название файла (RANDOM) и, если у нас стоит filename: "[name].js",
     //   // то будет файл с названием RANDOM
@@ -31,6 +32,8 @@ export default (env: BuildEnv) => {
     locales: path.resolve(__dirname, 'public', 'locales'),
     // указываем путь до папки, куда помещаем готовые файлы переводов
     buildLocales: path.resolve(__dirname, 'build', 'locales'),
+    // если нужно указать путь к иконкам в паблике
+    // icon: path.resolve(__dirname, 'public', 'logo.svg'),
   };
 
   // берем env из параметра функции
@@ -51,6 +54,25 @@ export default (env: BuildEnv) => {
     apiURL,
     project: 'frontend',
   });
+
+  // для очистки консоли после изменения файлов
+  if (process.env.NODE_ENV !== 'production') {
+    // альтернативный вариант без установки библы clear, однако криво очищает консоль
+    const clearConsole = () => {
+      process.stdout.write(
+        process.platform === 'win32'
+          ? '\x1B[2J\x1B[0f'
+          : '\x1B[2J\x1B[3J\x1B[H',
+      );
+    };
+
+    webpack(config).watch({}, (err, stats) => {
+      if (!err && stats && !stats.hasErrors() && !stats.hasWarnings())
+        clearConsole();
+      // с помощью библы clear
+      // if (!err && stats && !stats.hasErrors() && !stats.hasWarnings()) clear();
+    });
+  }
 
   return config;
 };

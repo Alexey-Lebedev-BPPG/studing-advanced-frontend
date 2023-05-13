@@ -1,20 +1,20 @@
 module.exports = {
   chromeSelector: '#storybook-root > *',
-  diffingEngine: 'pixelmatch',
   configurations: {
-    'chrome.laptop': {
+    'chrome.a4': {
+      preset: 'A4 Paper',
       target: 'chrome.app',
-      width: 1366,
-      height: 768,
     },
     'chrome.iphone7': {
-      target: 'chrome.app',
       preset: 'iPhone 7',
-    },
-    'chrome.a4': {
       target: 'chrome.app',
-      preset: 'A4 Paper',
+    },
+    'chrome.laptop': {
+      height: 768,
+      target: 'chrome.app',
+      width: 1366,
     },
   },
+  diffingEngine: 'pixelmatch',
   fetchFailIgnore: 'localhost:1234/get',
 };

@@ -1,6 +1,6 @@
 export const buildSvgLoader = () => ({
-  test: /\.svg$/,
   // исключаем node_modules
   exclude: /node_modules/,
+  test: /\.svg$/,
   use: ['@svgr/webpack'],
 });

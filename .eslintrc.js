@@ -1,6 +1,6 @@
 // чтоб появился этот файл делаем npm init @eslint/config
 module.exports = {
-  env: { browser: true, es2021: true, jest: true },
+  env: { browser: true, es2021: true, jest: true, node: true },
   // расширяем стандартный плагин для реакта и подключаем модуль стандарта тайпскрипта и airbnb + автоматом добавился сторибук
   extends: [
     'plugin:react/recommended',
@@ -9,6 +9,7 @@ module.exports = {
     'plugin:storybook/recommended',
     'plugin:import/warnings',
     'prettier',
+    'plugin:typescript-sort-keys/recommended',
   ],
   globals: {
     __API__: true,
@@ -33,6 +34,7 @@ module.exports = {
     'react',
     '@typescript-eslint',
     'i18next',
+    'prettier',
     // чтоб зависимости useEffect подсвечивались
     'react-hooks',
     // кастомный плагин для импортов
@@ -42,9 +44,10 @@ module.exports = {
     // например настроить импорты по алфавиту
     'import',
     'sort-keys-fix',
+    'typescript-sort-keys',
+    'sort-destructure-keys',
   ],
   rules: {
-    // 'prettier/prettier': ['error', { endOfLine: 'auto' }],
     '@typescript-eslint/no-shadow': 'error',
     '@typescript-eslint/no-unused-vars': 'off',
     camelcase: ['warn', { properties: 'always' }],
@@ -76,7 +79,6 @@ module.exports = {
       },
     ],
     'import/prefer-default-export': 'off',
-    indent: 'off',
     'jsx-a11y/click-events-have-key-events': 'off',
     'jsx-a11y/no-noninteractive-element-interactions': 'off',
     'jsx-a11y/no-static-element-interactions': 'off',
@@ -109,6 +111,7 @@ module.exports = {
         ],
       },
     ],
+    'prettier/prettier': ['error', { endOfLine: 'auto' }],
     quotes: [2, 'single', { avoidEscape: true }],
     radix: 'off',
     'react/function-component-definition': 'off',
@@ -117,7 +120,7 @@ module.exports = {
     'react/jsx-curly-newline': 'off',
     'react/jsx-filename-extension': [
       2,
-      { extensions: ['.js', '.jsx', '.tsx'] },
+      { extensions: ['.js', '.jsx', '.tsx', '.ts'] },
     ],
     'react/jsx-newline': [1, { allowMultilines: false, prevent: true }],
     'react/jsx-no-leaked-render': [
@@ -150,6 +153,10 @@ module.exports = {
     'react/require-default-props': 'off',
     'react-hooks/exhaustive-deps': 'warn',
     'react-hooks/rules-of-hooks': 'error',
+    'sort-destructure-keys/sort-destructure-keys': [
+      2,
+      { caseSensitive: false },
+    ],
     // сортировка ключей объекта по алфавиту.
     'sort-keys-fix/sort-keys-fix': [
       'warn',

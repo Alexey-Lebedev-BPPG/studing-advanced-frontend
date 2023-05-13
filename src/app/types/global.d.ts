@@ -17,11 +17,15 @@ declare module '*.module.css' {
 declare module '*.png';
 declare module '*.jpeg';
 declare module '*.jpg';
+declare module '*.webp';
+declare module '*.avif';
+declare module '*.bmp';
+declare module '*.gif';
 
 declare module '*.svg' {
-  import { SVGProps, VFC } from 'react';
+  import { SVGProps, FunctionComponent } from 'react';
 
-  const SVG: VFC<SVGProps<SVGSVGElement>>;
+  const SVG: FunctionComponent<SVGProps<SVGSVGElement> & { title?: string }>;
   export default SVG;
 }
 

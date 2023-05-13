@@ -14,33 +14,33 @@ import { Text, TextAlign, TextTheme } from '@/shared/ui/Text';
 interface IProfileCardProps {
   className?: string;
   data?: Profile;
-  isLoading?: boolean;
   error?: string;
-  readonly?: boolean;
+  isLoading?: boolean;
+  onChangeAge?: (value?: string) => void;
+  onChangeAvatar?: (value?: string) => void;
+  onChangeCity?: (value?: string) => void;
+  onChangeCountry?: (country: Country) => void;
+  onChangeCurrency?: (currency: Currency) => void;
   onChangeFirstname?: (value?: string) => void;
   onChangeLastname?: (value?: string) => void;
-  onChangeAge?: (value?: string) => void;
-  onChangeCity?: (value?: string) => void;
-  onChangeAvatar?: (value?: string) => void;
   onChangeUsername?: (value?: string) => void;
-  onChangeCurrency?: (currency: Currency) => void;
-  onChangeCountry?: (country: Country) => void;
+  readonly?: boolean;
 }
 
 export const ProfileCard: FC<IProfileCardProps> = ({
   className,
   data,
-  isLoading,
   error,
-  readonly,
+  isLoading,
+  onChangeAge,
+  onChangeAvatar,
+  onChangeCity,
+  onChangeCountry,
+  onChangeCurrency,
   onChangeFirstname,
   onChangeLastname,
-  onChangeAge,
-  onChangeCity,
-  onChangeAvatar,
   onChangeUsername,
-  onChangeCurrency,
-  onChangeCountry,
+  readonly,
 }) => {
   const { t } = useTranslation('profile');
 

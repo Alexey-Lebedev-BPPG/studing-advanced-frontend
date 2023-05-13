@@ -10,24 +10,24 @@ import {
 import { useTheme } from '@/shared/lib/hooks/useTheme/useTheme';
 
 interface DrawerProps {
-  className?: string;
   children: ReactNode;
+  className?: string;
   isOpen?: boolean;
-  onClose?: () => void;
   lazy?: boolean;
+  onClose?: () => void;
 }
 
 const height = window.innerHeight - 100;
 
 const DrawerContent: FC<DrawerProps> = ({
-  className,
   children,
-  onClose,
+  className,
   isOpen,
   lazy = true,
+  onClose,
 }) => {
   // получаем библиотеки, которые подгружали лениво
-  const { Spring, Gesture } = useAnimationLibs();
+  const { Gesture, Spring } = useAnimationLibs();
   const [{ y }, api] = Spring.useSpring(() => ({ y: height }));
   const { theme } = useTheme();
 
@@ -50,11 +50,11 @@ const DrawerContent: FC<DrawerProps> = ({
 
   const bind = Gesture.useDrag(
     ({
-      last,
-      velocity: [, vy],
-      direction: [, dy],
-      movement: [, my],
       cancel,
+      direction: [, dy],
+      last,
+      movement: [, my],
+      velocity: [, vy],
     }) => {
       if (my < -70) cancel();
 

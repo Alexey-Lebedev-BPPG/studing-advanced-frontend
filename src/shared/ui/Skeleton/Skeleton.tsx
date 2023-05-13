@@ -3,14 +3,14 @@ import cls from './Skeleton.module.scss';
 import { classNames } from '@/shared/lib/classNames/classNames';
 
 interface ISkeletonProps {
-  className?: string;
-  width?: string | number;
-  height?: string | number;
   border?: string;
+  className?: string;
+  height?: string | number;
+  width?: string | number;
 }
 
 export const Skeleton: FC<ISkeletonProps> = memo(
-  ({ className, width, height, border }) => {
+  ({ border, className, height, width }) => {
     const styles: CSSProperties = {
       borderRadius: border,
       height,

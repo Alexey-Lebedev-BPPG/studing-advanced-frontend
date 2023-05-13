@@ -111,5 +111,5 @@ const articlesPageSlice = createSlice({
   },
 });
 
-export const { reducer: articlesPageReducer, actions: articlesPageActions } =
+export const { actions: articlesPageActions, reducer: articlesPageReducer } =
   articlesPageSlice;

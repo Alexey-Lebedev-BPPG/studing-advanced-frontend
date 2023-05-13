@@ -14,7 +14,7 @@ export const initArticlesPage = createAsyncThunk<
   URLSearchParams,
   ThunkConfig<string>
 >('articlesPage/initArticlesPage', async (searchParams, thunkApi) => {
-  const { getState, dispatch } = thunkApi;
+  const { dispatch, getState } = thunkApi;
 
   const inited = getArticlesPageInited(getState());
 

@@ -17,22 +17,22 @@ type HTMLInputProps = Omit<
 >;
 
 interface IInputProps extends HTMLInputProps {
-  className?: string;
-  value?: string | number;
-  onChange?: (value: string) => void;
   autofocus?: boolean;
+  className?: string;
+  onChange?: (value: string) => void;
   readonly?: boolean;
+  value?: string | number;
 }
 // memo позволяет избежать лишних перерисовок
 export const Input: FC<IInputProps> = memo(props => {
   const {
-    className,
-    value,
-    onChange,
-    type = 'text',
-    placeholder,
     autofocus,
+    className,
+    onChange,
+    placeholder,
     readonly,
+    type = 'text',
+    value,
     ...otherProps
   } = props;
   const ref = useRef<HTMLInputElement>(null);

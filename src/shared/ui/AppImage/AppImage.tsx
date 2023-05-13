@@ -9,14 +9,14 @@ import {
 
 export interface IAppImageProps extends ImgHTMLAttributes<HTMLImageElement> {
   className?: string;
-  // компонент для отрисовки при загрузке
-  fallback?: ReactElement;
   // компонент для отрисовки при ошибке загрузки
   errorFallback?: ReactElement;
+  // компонент для отрисовки при загрузке
+  fallback?: ReactElement;
 }
 
 export const AppImage: FC<IAppImageProps> = memo(
-  ({ className, src, alt = '', fallback, errorFallback, ...otherProps }) => {
+  ({ alt = '', className, errorFallback, fallback, src, ...otherProps }) => {
     const [isLoading, setIsLoading] = useState(true);
     // если при загрузке произошла ошибка
     const [hasError, setHasError] = useState(false);

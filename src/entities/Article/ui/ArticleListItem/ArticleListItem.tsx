@@ -17,14 +17,14 @@ import { Text } from '@/shared/ui/Text';
 // import { useHover } from "shared/lib/hooks/useHover/useHover";
 
 export interface IArticleListItemProps {
-  className?: string;
   article: Article;
-  view: ArticleView;
+  className?: string;
   target?: HTMLAttributeAnchorTarget;
+  view: ArticleView;
 }
 
 export const ArticleListItem: FC<IArticleListItemProps> = memo(
-  ({ className, article, view, target }) => {
+  ({ article, className, target, view }) => {
     // const [isHover, bindHover] = useHover();
 
     const types = <Text text={article.type.join(', ')} className={cls.type} />;

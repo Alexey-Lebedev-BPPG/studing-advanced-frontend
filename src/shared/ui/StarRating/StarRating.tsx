@@ -8,9 +8,9 @@ export interface IStartRatingProps {
   className?: string;
   // для выбора оценки
   onSelect?: (starsCount: number) => void;
-  size?: number;
   // для подсветки оценки, которую раньше пользователь уже выбирал
   selectedStars?: number;
+  size?: number;
 }
 
 const stars = [1, 2, 3, 4, 5];

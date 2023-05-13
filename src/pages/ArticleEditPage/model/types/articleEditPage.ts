@@ -1,5 +1,5 @@
 export interface ArticleEditPageSchema {
-  isLoading: boolean;
   data?: any;
   error?: string;
+  isLoading: boolean;
 }

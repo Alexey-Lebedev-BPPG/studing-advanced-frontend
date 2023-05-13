@@ -3,15 +3,15 @@ import cls from './Icon.module.scss';
 import { classNames } from '@/shared/lib/classNames/classNames';
 
 interface IIconProps extends SVGProps<SVGSVGElement> {
-  className?: string;
   // принимаем ссылку на свг
   Svg: VFC<SVGProps<SVGSVGElement>>;
+  className?: string;
   inverted?: boolean;
 }
 
 // обертка для свг, которая будет задавать цвета
 export const Icon: FC<IIconProps> = memo(
-  ({ className, Svg, inverted, ...otherProps }) => (
+  ({ className, inverted, Svg, ...otherProps }) => (
     <Svg
       className={classNames(inverted ? cls.inverted : cls.icon, {}, [
         className,

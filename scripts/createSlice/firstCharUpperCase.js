@@ -1,2 +1,2 @@
 // херпер, который проводит первую букву нвзвания к верхнему регистру, а остальное оставляет неизменным
-module.exports = (str) => str[0].toUpperCase() + str.slice(1);
+module.exports = str => str[0].toUpperCase() + str.slice(1);

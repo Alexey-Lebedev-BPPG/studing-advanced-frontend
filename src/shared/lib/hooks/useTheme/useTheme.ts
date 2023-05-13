@@ -4,13 +4,13 @@ import { Theme } from '../../../const/theme';
 import { ThemeContext } from '../../context/ThemeContext';
 
 interface UseThemeResult {
-  toggleTheme: () => void;
   theme: Theme;
+  toggleTheme: () => void;
 }
 
 export const useTheme = (): UseThemeResult => {
   // достаем переменную темы и функцию ее изменения
-  const { theme, setTheme } = useContext(ThemeContext);
+  const { setTheme, theme } = useContext(ThemeContext);
 
   const toggleTheme = () => {
     let newTheme: Theme = Theme.LIGHT;

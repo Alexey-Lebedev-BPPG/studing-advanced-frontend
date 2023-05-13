@@ -13,16 +13,16 @@ import { useThrottle } from '@/shared/lib/hooks/useThrottle/useThrottle';
 import { TestProps } from '@/shared/types/tests';
 
 export interface IPageProps extends TestProps {
-  className?: string;
   children: ReactNode;
+  className?: string;
   // функция для отработки при достижении конца страницы
   onScrollEnd?: () => void;
 }
 
 // компонент для оборачивания страниц, который применяет некоторые стили для всех страниц
 export const Page: FC<IPageProps> = ({
-  className,
   children,
+  className,
   onScrollEnd,
   ...otherProps
 }) => {

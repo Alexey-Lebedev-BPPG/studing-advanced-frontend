@@ -5,8 +5,8 @@ import { User, userActions } from '@/entities/User';
 import { USER_LOCALSTORAGE_KEY } from '@/shared/const/localStorage';
 
 interface LoginByUsernameProps {
-  username: string;
   password: string;
+  username: string;
 }
 
 // первым аргументом дженерика - что возвращаем, второй - что передаем, а третим можно передать свои типизацию объекта thunkAPI, в котором есть методы для использования в thunke
@@ -14,7 +14,7 @@ export const loginByUsername = createAsyncThunk<
   User,
   LoginByUsernameProps,
   ThunkConfig<string>
->('login/loginByUsername', async ({ username, password }, thunkApi) => {
+>('login/loginByUsername', async ({ password, username }, thunkApi) => {
   const { dispatch, extra, rejectWithValue } = thunkApi;
 
   try {

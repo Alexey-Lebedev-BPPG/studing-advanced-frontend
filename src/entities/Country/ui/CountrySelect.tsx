@@ -5,9 +5,9 @@ import { ListBox } from '@/shared/ui/Popups';
 
 interface ICountryProps {
   className?: string;
-  value?: Country;
   onChange?: (value: Country) => void;
   readonly?: boolean;
+  value?: Country;
 }
 
 // ввиду того, что массив всегда статичен, его не нужно оборачивать в memo
@@ -20,7 +20,7 @@ const options = [
 ];
 
 export const CountrySelect: FC<ICountryProps> = memo(
-  ({ className, value, onChange, readonly }) => {
+  ({ className, onChange, readonly, value }) => {
     const { t } = useTranslation();
 
     // явно преобразовываем значения из onChange в наш тип

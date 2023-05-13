@@ -5,9 +5,9 @@ import { ListBox } from '@/shared/ui/Popups';
 
 interface ICurrencyProps {
   className?: string;
-  value?: Currency;
   onChange?: (value: Currency) => void;
   readonly?: boolean;
+  value?: Currency;
 }
 
 // ввиду того, что массив всегда статичен, его не нужно оборачивать в memo
@@ -18,7 +18,7 @@ const options = [
 ];
 
 export const CurrencySelect: FC<ICurrencyProps> = memo(
-  ({ className, value, onChange, readonly }) => {
+  ({ className, onChange, readonly, value }) => {
     const { t } = useTranslation();
 
     // явно преобразовываем значения из onChange в наш тип

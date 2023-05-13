@@ -14,10 +14,10 @@ export type ReducersList = {
 };
 
 interface IDynamicModuleLoaderProps {
+  children: ReactNode;
   reducers: ReducersList;
   // флаг, чтоб можно было удалять редьюсер после размонтирования
   removeAfterUnmount?: boolean;
-  children: ReactNode;
 }
 
 // обертка для использования асинхронных редьюсеров в асинхронных компонентах

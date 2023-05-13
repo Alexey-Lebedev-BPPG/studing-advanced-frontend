@@ -1,30 +1,31 @@
 export type BuildMode = 'production' | 'development';
 
 export interface BuildPaths {
-  entry: string;
   build: string;
-  html: string;
-  src: string;
-  // путь до файлов с переводами
-  locales: string;
   // путь, куда переводы помещать
   buildLocales: string;
+  entry: string;
+  html: string;
+  icon?: string;
+  // путь до файлов с переводами
+  locales: string;
+  src: string;
 }
 
 export interface BuildEnv {
+  apiURL: string;
   mode: BuildMode;
   modeDebug: boolean;
   port: number;
-  apiURL: string;
 }
 
 export interface BuildOptions {
-  mode: BuildMode;
-  paths: BuildPaths;
+  apiURL: string;
   isDev: boolean;
   isDevDebug: boolean;
+  mode: BuildMode;
+  paths: BuildPaths;
   port: number;
-  apiURL: string;
   // создаем переменную для разделения сред выполнения
   project: 'storybook' | 'frontend' | 'jest';
 }

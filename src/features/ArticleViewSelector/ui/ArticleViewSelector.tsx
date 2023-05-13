@@ -9,8 +9,8 @@ import { Icon } from '@/shared/ui/Icon';
 
 export interface IArticleViewSelectorProps {
   className?: string;
-  view: ArticleView;
   onViewClick?: (view: ArticleView) => void;
+  view: ArticleView;
 }
 
 const viewTypes = [
@@ -19,7 +19,7 @@ const viewTypes = [
 ];
 
 export const ArticleViewSelector: FC<IArticleViewSelectorProps> = memo(
-  ({ className, view, onViewClick }) => {
+  ({ className, onViewClick, view }) => {
     // делаем замыкание (внешняя функция принимает отображение, а внутренняя уже срабатывает как событие)
     const onClick = (newView: ArticleView) => () => {
       onViewClick?.(newView);

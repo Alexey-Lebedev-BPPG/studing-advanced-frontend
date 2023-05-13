@@ -7,20 +7,20 @@ import { Skeleton } from '../Skeleton';
 import { classNames } from '@/shared/lib/classNames/classNames';
 
 interface IAvatarProps {
-  className?: string;
-  src?: string;
-  size?: number;
   alt?: string;
+  className?: string;
   // для использования в компонентах, где инвертированы цвета
   fallbackInverted?: boolean;
+  size?: number;
+  src?: string;
 }
 
 export const Avatar: FC<IAvatarProps> = ({
-  className,
-  src,
-  size = 100,
   alt = '',
+  className,
   fallbackInverted,
+  size = 100,
+  src,
 }) => {
   const styles = useMemo<CSSProperties>(
     () => ({

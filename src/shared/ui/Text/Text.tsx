@@ -3,21 +3,21 @@ import cls from './Text.module.scss';
 import { classNames } from '@/shared/lib/classNames/classNames';
 
 export enum TextTheme {
-  PRIMARY = 'primary',
-  INVERTED = 'inverted',
   ERROR = 'error',
+  INVERTED = 'inverted',
+  PRIMARY = 'primary',
 }
 
 export enum TextAlign {
-  RIGHT = 'right',
-  LEFT = 'left',
   CENTER = 'center',
+  LEFT = 'left',
+  RIGHT = 'right',
 }
 
 export enum TextSize {
-  S = 'size_s',
-  M = 'size_m',
   L = 'size_l',
+  M = 'size_m',
+  S = 'size_s',
 }
 
 type HeaderTagType = 'h1' | 'h2' | 'h3';
@@ -30,25 +30,25 @@ const mapSizeToHeaderTag: Record<TextSize, HeaderTagType> = {
 };
 
 interface ITextProps {
+  align?: TextAlign;
   className?: string;
-  title?: string;
+  'data-testid'?: string;
+  size?: TextSize;
   text?: string;
   theme?: TextTheme;
-  align?: TextAlign;
-  size?: TextSize;
-  'data-testid'?: string;
+  title?: string;
 }
 
 export const Text: FC<ITextProps> = memo(
   ({
+    align = TextAlign.LEFT,
     className,
-    title,
+    'data-testid': dataTestId = 'Text',
+    size = TextSize.M,
     text,
     theme = TextTheme.PRIMARY,
-    align = TextAlign.LEFT,
-    size = TextSize.M,
     // ввиду того, что такое свойство не позволительно деструктуризировать, нужно переименовать его
-    'data-testid': dataTestId = 'Text',
+    title,
   }) => {
     const HeaderTag = mapSizeToHeaderTag[size];
 

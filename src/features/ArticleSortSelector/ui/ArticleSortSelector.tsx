@@ -8,10 +8,10 @@ import { Select, SelectOption } from '@/shared/ui/Select';
 
 export interface IArticleSortSelectorProps {
   className?: string;
-  sort: ArticleSortFields;
-  order: SortOrder;
   onChangeOrder: (newOrder: SortOrder) => void;
   onChangeSort: (newSort: ArticleSortFields) => void;
+  order: SortOrder;
+  sort: ArticleSortFields;
 }
 
 export const ArticleSortSelector: FC<IArticleSortSelectorProps> = memo(

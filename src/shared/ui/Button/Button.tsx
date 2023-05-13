@@ -3,75 +3,75 @@ import cls from './Button.module.scss';
 import { classNames } from '@/shared/lib/classNames/classNames';
 
 export enum ButtonTheme {
+  BACKGROUND = 'background',
+  BACKGROUND_INVERTED = 'backgroundInverted',
   CLEAR = 'clear',
   CLEAR_INVERTED = 'clearInverted',
   OUTLINE = 'outline',
   OUTLINE_RED = 'outline_red',
-  BACKGROUND = 'background',
-  BACKGROUND_INVERTED = 'backgroundInverted',
 }
 
 export enum ButtonSize {
-  M = 'size_m',
   L = 'size_l',
+  M = 'size_m',
   XL = 'size_xl',
 }
 
 interface IButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  /**
+   * Содержимое кнопки
+   */
+  children?: ReactNode;
   className?: string;
-  /**
-   * Тема кнопки. Отвечает за визуал (в рамке, без стилей, противоположный теме приложения цвет и тд)
-   */
-  theme?: ButtonTheme;
-  /**
-   * Флаг, делающий кнопку квадратной
-   */
-  square?: boolean;
-  /**
-   * Размер кнопки в соответствии с дизайн системой
-   */
-  size?: ButtonSize;
   /**
    * Флаг, отвечающий за работу кнопки
    */
   disabled?: boolean;
   /**
-   * Содержимое кнопки
-   */
-  children?: ReactNode;
-  /**
    * Увеличивает кнопку на всю свободную ширину
    */
   fullWidth?: boolean;
+  /**
+   * Размер кнопки в соответствии с дизайн системой
+   */
+  size?: ButtonSize;
+  /**
+   * Флаг, делающий кнопку квадратной
+   */
+  square?: boolean;
+  /**
+   * Тема кнопки. Отвечает за визуал (в рамке, без стилей, противоположный теме приложения цвет и тд)
+   */
+  theme?: ButtonTheme;
 }
 
 // обернем кнопку тоже в memo, хоть она и принимает чилдрены, но они будут в виде простого примитива без сложной древовидной структуры
-export const Button: FC<IButtonProps> = memo(
-  ({
-    className,
+export const Button: FC<IButtonProps> = memo(props => {
+  const {
     children,
-    theme = ButtonTheme.OUTLINE,
-    square,
-    size = ButtonSize.M,
-    fullWidth,
+    className,
     disabled,
+    fullWidth,
+    size = ButtonSize.M,
+    square,
+    theme = ButtonTheme.OUTLINE,
     ...otherProps
-  }) => {
-    const mods = {
-      [cls[theme]]: true,
-      [cls.square]: square,
-      [cls[size]]: true,
-      [cls.disabled]: disabled,
-      [cls.fullWidth]: fullWidth,
-    };
-    return (
-      <button
-        type='button'
-        className={classNames(cls.button, mods, [className])}
-        {...otherProps}
-      >
-        {children}
-      </button>
-    );
-  },
-);
+  } = props;
+
+  const mods = {
+    [cls[theme]]: true,
+    [cls.square]: square,
+    [cls[size]]: true,
+    [cls.disabled]: disabled,
+    [cls.fullWidth]: fullWidth,
+  };
+  return (
+    <button
+      type='button'
+      className={classNames(cls.button, mods, [className])}
+      {...otherProps}
+    >
+      {children}
+    </button>
+  );
+});

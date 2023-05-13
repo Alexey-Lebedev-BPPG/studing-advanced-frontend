@@ -7,22 +7,22 @@ import { useModal } from '@/shared/lib/hooks/useModal/useModal';
 import { useTheme } from '@/shared/lib/hooks/useTheme/useTheme';
 
 interface IModalProps {
-  className?: string;
   children?: ReactNode;
+  className?: string;
   isOpen?: boolean;
-  onClose?: () => void;
   lazy?: boolean;
+  onClose?: () => void;
 }
 
 export const Modal: FC<IModalProps> = ({
-  className,
   children,
+  className,
   isOpen,
-  onClose,
   lazy = true,
+  onClose,
 }) => {
   const { theme } = useTheme();
-  const { isClosing, isMounting, close } = useModal({
+  const { close, isClosing, isMounting } = useModal({
     animationDelay: 300,
     isOpen,
     onClose,

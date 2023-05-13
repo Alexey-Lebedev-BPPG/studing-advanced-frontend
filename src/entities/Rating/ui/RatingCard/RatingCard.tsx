@@ -14,7 +14,6 @@ import { Text } from '@/shared/ui/Text';
 
 export interface IRatingCardProps {
   className?: string;
-  title: string;
   // отзыв, который будем писать внутри модального окна
   feedbackTitle: string;
   // указывает, нужно ли будет писать отзыв
@@ -24,17 +23,18 @@ export interface IRatingCardProps {
   onCancel?: (starCount: number) => void;
   // количество звезд, которое юзер оставил ранее
   rate?: number;
+  title: string;
 }
 
 export const RatingCard: FC<IRatingCardProps> = memo(
   ({
     className,
-    title,
     feedbackTitle,
     hasFeedback,
     onAccept,
     onCancel,
     rate = 0,
+    title,
   }) => {
     const { t } = useTranslation();
     const isMobile = useDetectDevice();

@@ -9,31 +9,31 @@ import { mapDirectionClass } from '../../styles/consts';
 import popupCls from '../../styles/popups.module.scss';
 
 export interface ListBoxItem {
-  value: string;
   content: ReactNode;
   disabled?: boolean;
+  value: string;
 }
 
 interface IListBoxProps {
   className?: string;
-  items?: ListBoxItem[];
-  value?: string;
   defaultValue?: string;
+  direction?: DropDownDirection;
+  items?: ListBoxItem[];
+  label?: string;
   onChange: (value: string) => void;
   readonly?: boolean;
-  direction?: DropDownDirection;
-  label?: string;
+  value?: string;
 }
 
 export const ListBox: FC<IListBoxProps> = ({
   className,
-  items,
-  value,
   defaultValue,
+  direction = 'bottom left',
+  items,
+  label,
   onChange,
   readonly,
-  direction = 'bottom left',
-  label,
+  value,
 }) => {
   const optionsClasses = [mapDirectionClass[direction]];
 

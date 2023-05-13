@@ -10,12 +10,12 @@ import { getUserAuthData } from '@/entities/User';
 import { Skeleton } from '@/shared/ui/Skeleton';
 
 export interface IArticleRatingProps {
-  className?: string;
   articleId: string;
+  className?: string;
 }
 
 const ArticleRating: FC<IArticleRatingProps> = memo(
-  ({ className, articleId }) => {
+  ({ articleId, className }) => {
     const { t } = useTranslation();
     const userData = useSelector(getUserAuthData);
     const { data, isLoading } = useArticleRating({

@@ -8,17 +8,17 @@ export enum CardTheme {
 }
 
 export interface ICardProps extends HTMLAttributes<HTMLDivElement> {
-  className?: string;
   children: ReactNode;
-  theme?: CardTheme;
+  className?: string;
   fullWidth?: boolean;
+  theme?: CardTheme;
 }
 
 export const Card: FC<ICardProps> = ({
-  className,
   children,
-  theme = CardTheme.NORMAL,
+  className,
   fullWidth,
+  theme = CardTheme.NORMAL,
   ...otherProps
 }) => (
   <div

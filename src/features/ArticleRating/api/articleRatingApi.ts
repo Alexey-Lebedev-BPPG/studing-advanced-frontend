@@ -2,13 +2,13 @@ import { Rating } from '@/entities/Rating';
 import { rtkApi } from '@/shared/api/rtkApi';
 
 interface GetArticleRatingArg {
-  userId: string;
   articleId: string;
+  userId: string;
 }
 
 interface CreateArticleRatingArg extends GetArticleRatingArg {
-  rate: number;
   feedback?: string;
+  rate: number;
 }
 
 // вызываем кастомный rtk запрос, в котором динамически можем указывать данные

@@ -1,10 +1,10 @@
-coverage
 /node_modules/
 /.git
 /.idea
 /.vscode
 /.github
 /build
-*.html
-*.css
-*.scss
+/storybook-static
+/reports
+/maintenance
+/helm-charts

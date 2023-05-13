@@ -15,8 +15,8 @@ export const ArticleRecommendationsList: FC<IArticleRecommendationsListProps> =
     // передаем в хук наш лимит и получаем поля по умолчанию (data, isLoading, error и т.д)
     const {
       data: recommendations,
-      isLoading,
       error,
+      isLoading,
     } = useArticleRecommendationsList(3);
 
     if (isLoading || error || !recommendations) return null;

@@ -13,7 +13,7 @@ export const Counter: FC = () => {
   // const handleDecrement = () => dispatch(CounterActions.decrement());
 
   // либо делаем то же самое, только уже с новыми кастомными экшенами и сами экшены вызывать без диспача
-  const { increment, decrement } = useCounterActions();
+  const { decrement, increment } = useCounterActions();
   const handleIncrement = () => increment();
   const handleDecrement = () => decrement();
 

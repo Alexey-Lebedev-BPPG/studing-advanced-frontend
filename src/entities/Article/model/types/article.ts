@@ -7,20 +7,20 @@ export interface ArticleBlockBase {
 }
 
 export interface ArticleCodeBlock extends ArticleBlockBase {
-  type: ArticleBlockType.CODE;
   code: string;
+  type: ArticleBlockType.CODE;
 }
 
 export interface ArticleImageBlock extends ArticleBlockBase {
-  type: ArticleBlockType.IMAGE;
   src: string;
   title: string;
+  type: ArticleBlockType.IMAGE;
 }
 
 export interface ArticleTextBlock extends ArticleBlockBase {
-  type: ArticleBlockType.TEXT;
-  title?: string;
   paragraphs: string[];
+  title?: string;
+  type: ArticleBlockType.TEXT;
 }
 
 export type ArticleBlock =
@@ -29,13 +29,13 @@ export type ArticleBlock =
   | ArticleTextBlock;
 
 export interface Article {
-  id: string;
-  title: string;
-  user: User;
-  subtitle: string;
-  img: string;
-  views: number;
-  createdAt: string;
-  type: ArticleType[];
   blocks: ArticleBlock[];
+  createdAt: string;
+  id: string;
+  img: string;
+  subtitle: string;
+  title: string;
+  type: ArticleType[];
+  user: User;
+  views: number;
 }

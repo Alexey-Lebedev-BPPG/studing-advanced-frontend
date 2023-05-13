@@ -12,7 +12,7 @@ export const updateProfileData = createAsyncThunk<
   ThunkConfig<ValidateProfileError[]>
 >('profile/updateProfileData', async (_, thunkApi) => {
   // получаем стейт, что потом вызывать селекторы, в которые прокидываются стейт
-  const { extra, rejectWithValue, getState } = thunkApi;
+  const { extra, getState, rejectWithValue } = thunkApi;
 
   const formData = getProfileForm(getState());
 

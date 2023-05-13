@@ -3,20 +3,20 @@ import cls from './Select.module.scss';
 import { classNames } from '@/shared/lib/classNames/classNames';
 
 export interface SelectOption<T extends string> {
-  // значение опции
-  valueOpt: T;
   // отображение опции
   content: string;
+  // значение опции
+  valueOpt: T;
 }
 
 interface ISelectProps<T extends string> {
   className?: string;
   label?: string;
+  onChange?: (value: T) => void;
   options?: SelectOption<T>[];
+  readonly?: boolean;
   // выбранное значение
   value?: T;
-  onChange?: (value: T) => void;
-  readonly?: boolean;
 }
 // делаем обертку для того, чтоб принимать дженериком тип для пропсов в компоненте, который использует мемо
 const typedMemo: <T>(c: T) => T = memo;
@@ -25,16 +25,16 @@ export const Select = typedMemo(
   <T extends string>({
     className,
     label,
-    options,
-    value,
     onChange,
+    options,
     readonly,
+    value,
   }: ISelectProps<T>) => {
     const mods = {};
 
     const optionList = useMemo(
       () =>
-        options?.map(({ valueOpt, content }) => (
+        options?.map(({ content, valueOpt }) => (
           <option key={valueOpt} className={cls.option} value={valueOpt}>
             {content}
           </option>

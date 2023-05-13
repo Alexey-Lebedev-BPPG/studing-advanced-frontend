@@ -9,13 +9,13 @@ export enum AppLinkTheme {
 }
 
 interface AppLinkProps extends LinkProps {
-  theme?: AppLinkTheme;
   className?: string;
+  theme?: AppLinkTheme;
 }
 
 export const AppLink: FC<AppLinkProps> = forwardRef(
   (
-    { to, className, theme = AppLinkTheme.PRIMARY, children, ...otherProps },
+    { children, className, theme = AppLinkTheme.PRIMARY, to, ...otherProps },
     // добавляем реф, чтоб не было ошибки "Function components cannot be given refs..." в консоли
     ref: ForwardedRef<HTMLAnchorElement>,
   ) => (

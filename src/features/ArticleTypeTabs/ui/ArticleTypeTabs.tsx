@@ -6,12 +6,12 @@ import { ITabItem, Tabs } from '@/shared/ui/Tabs';
 
 export interface IArticleTypeTabsProps {
   className?: string;
-  selectedValue: ArticleType;
   onChangeType: (type: ArticleType) => void;
+  selectedValue: ArticleType;
 }
 
 export const ArticleTypeTabs: FC<IArticleTypeTabsProps> = memo(
-  ({ className, selectedValue, onChangeType }) => {
+  ({ className, onChangeType, selectedValue }) => {
     const { t } = useTranslation();
 
     const tabs = useMemo<ITabItem<ArticleType>[]>(

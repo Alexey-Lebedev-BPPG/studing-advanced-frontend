@@ -6,16 +6,16 @@ import { StateSchema } from '../config/stateSchema';
 import { createReduxStore } from '../config/store';
 
 interface IStoreProviderProps {
-  children?: ReactNode;
-  initialState?: DeepPartial<StateSchema>;
   // добавляем пропс в виде async редьюсеров, чтоб в сторибук не падала ошибка
   asyncReducers?: DeepPartial<ReducersMapObject<StateSchema>>;
+  children?: ReactNode;
+  initialState?: DeepPartial<StateSchema>;
 }
 
 export const StoreProvider: FC<IStoreProviderProps> = ({
+  asyncReducers,
   children,
   initialState,
-  asyncReducers,
 }) => {
   // в стор можно прокинуть навигейт, однако тогда компоненты будут перерендерится. потом решим эту проблему
   // const navigate = useNavigate();

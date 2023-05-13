@@ -4,15 +4,15 @@ import { Card, CardTheme } from '../Card/Card';
 import { classNames } from '@/shared/lib/classNames/classNames';
 
 export interface ITabItem<T> {
-  value: T;
   content: ReactNode;
+  value: T;
 }
 
 export interface ITabsProps<T> {
   className?: string;
-  tabs: ITabItem<T>[];
-  selectedValue: T;
   onTabClick: (tab: ITabItem<T>) => void;
+  selectedValue: T;
+  tabs: ITabItem<T>[];
 }
 
 // делаем обертку для того, чтоб принимать дженериком тип для пропсов в компоненте, который использует мемо
@@ -21,9 +21,9 @@ const typedMemo: <T>(c: T) => T = memo;
 export const Tabs = typedMemo(
   <T extends string>({
     className,
-    tabs,
-    selectedValue,
     onTabClick,
+    selectedValue,
+    tabs,
   }: ITabsProps<T>) => {
     // используем замыкание, чтоб в JSX не указывать колбек
     const clickHandle = useCallback(

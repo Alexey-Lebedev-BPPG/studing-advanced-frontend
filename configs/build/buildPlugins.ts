@@ -1,12 +1,15 @@
-import webpack, { DefinePlugin, HotModuleReplacementPlugin } from "webpack";
-import htmlWebpackPlugin from "html-webpack-plugin";
-import MiniCssExtractPlugin from "mini-css-extract-plugin";
-import { BundleAnalyzerPlugin } from "webpack-bundle-analyzer";
-import ReactRefreshWebpackPlugin from "@pmmmwh/react-refresh-webpack-plugin";
-import CopyPlugin from "copy-webpack-plugin";
-import CircularDependencyPlugin from "circular-dependency-plugin";
-import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin";
-import { BuildOptions } from "./types/config";
+import webpack, { DefinePlugin, HotModuleReplacementPlugin } from 'webpack';
+import htmlWebpackPlugin from 'html-webpack-plugin';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
+import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
+import CopyPlugin from 'copy-webpack-plugin';
+import CircularDependencyPlugin from 'circular-dependency-plugin';
+import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
+import { BuildOptions } from './types/config';
+import { CleanWebpackPlugin } from 'clean-webpack-plugin';
+import ESLintPlugin from 'eslint-webpack-plugin';
+// import { WebpackManifestPlugin } from 'webpack-manifest-plugin';
 
 export const buildPlugins = ({
   paths,
@@ -20,8 +23,36 @@ export const buildPlugins = ({
   const plugins = [
     // генерим главный html (index.tsx) из пути src, чтоб в него встраивались скрипты
     new htmlWebpackPlugin({
+      favicon: paths.icon,
+      inject: true,
+      minify: !isDev
+        ? {
+            collapseWhitespace: true,
+            keepClosingSlash: true,
+            minifyCSS: true,
+            minifyJS: true,
+            minifyURLs: true,
+            removeComments: true,
+            removeEmptyAttributes: true,
+            removeRedundantAttributes: true,
+            removeStyleLinkTypeAttributes: true,
+            useShortDoctype: true,
+          }
+        : undefined,
       template: paths.html,
     }),
+    // для сентри
+    // new SentryWebpackPlugin({
+    //   configFile: 'sentry.properties',
+    //   debug: Boolean(isDevDebug),
+    //   dryRun: true,
+    //   ignore: ['node_modules', 'config-overrides.js'],
+    //   ignoreFile: '.sentrycliignore',
+    //   include: '.',
+    //   silent: !isDevDebug,
+    // }),
+    // можно использовать для того, чтоб в html использовать переменные такого типа: . Для этого подключаем такую библу (const InterpolateHtmlPlugin = require('react-dev-utils/InterpolateHtmlPlugin')) и первым аргументом прокидываем HtmlWebpackPlugin, а вторым переменные, которые хотим туда прокидывать.
+    // new InterpolateHtmlPlugin(HtmlWebpackPlugin, env.raw),
     // с ним можно прокидывать глобальные переменные в само приложение
     new DefinePlugin({
       // называем переменные таким образом, чтоб четко понимать где переменные вебпака, а где приложения
@@ -29,23 +60,47 @@ export const buildPlugins = ({
       __IS_DEV_DEBUG__: JSON.stringify(isDevDebug), // теперь эта переменная доступна в коде (например, файл i18n.ts)
       __API__: JSON.stringify(apiURL),
       __PROJECT__: JSON.stringify(project),
+      'process.env': JSON.stringify(process.env),
     }),
     // проверяет круговые зависимости в проекте
     new CircularDependencyPlugin({
       exclude: /node_modules/,
       // чтоб при нахождении зависимостей вылетала ошибка в консоли
-      failOnError: true,
+      failOnError: Boolean(isDevDebug),
     }),
     // плагин для анализа бейблом ошибок тайпскрипта и вынесение его в отдельный процесс
     new ForkTsCheckerWebpackPlugin({
       typescript: {
-        diagnosticOptions: {
-          semantic: true,
-          syntactic: true,
-        },
-        mode: "write-references",
+        diagnosticOptions: { semantic: true, syntactic: true },
+        mode: 'write-references',
       },
     }),
+    new CleanWebpackPlugin({
+      cleanAfterEveryBuildPatterns: ['dist', 'build'],
+    }),
+    new ESLintPlugin({
+      extensions: ['js', 'jsx', 'ts', 'tsx'],
+      formatter: 'stylish',
+    }),
+    // для файлов manifest
+    // new WebpackManifestPlugin({
+    //   fileName: 'asset-manifest.json',
+    //   publicPath: '/',
+    //   generate: (seed, files, entrypoints) => {
+    //     const manifestFiles = files.reduce((manifest, file) => {
+    //       manifest[file.name] = file.path;
+    //       return manifest;
+    //     }, seed);
+    //     const entrypointFiles = entrypoints.main.filter(
+    //       fileName => !fileName.endsWith('.map')
+    //     );
+
+    //     return {
+    //       files: manifestFiles,
+    //       entrypoints: entrypointFiles,
+    //     };
+    //   },
+    // }),
   ];
 
   // данные плагины добавляем, только если не продакш сборка
@@ -62,7 +117,7 @@ export const buildPlugins = ({
       // показывает прогресс сборки
       new webpack.ProgressPlugin(),
       // включаем плагин анализа размера пакетов
-      new BundleAnalyzerPlugin()
+      new BundleAnalyzerPlugin(),
     );
   }
 
@@ -71,16 +126,16 @@ export const buildPlugins = ({
     plugins.push(
       new MiniCssExtractPlugin({
         // название на выходе
-        filename: "css/[name].[contenthash:8].css",
+        filename: 'css/[name].[contenthash:8].css',
         // название для чанков
-        chunkFilename: "css/[name].[contenthash:8].css",
-      })
+        chunkFilename: 'css/[name].[contenthash:8].css',
+      }),
     );
     // используем плагин, чтоб переместить файлы переводов в сборке
     plugins.push(
       new CopyPlugin({
         patterns: [{ from: paths.locales, to: paths.buildLocales }],
-      })
+      }),
     );
   }
 

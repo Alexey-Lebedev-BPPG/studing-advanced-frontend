@@ -1,20 +1,20 @@
-const fs = require("fs/promises");
-const resolveRoot = require("../resolveRoot");
-const firstCharUpperCase = require("../firstCharUpperCase");
-const componentTemplate = require("./componentTemplate");
-const storyTemplate = require("./storyTemplate");
-const styleTemplate = require("./styleTemplate");
+const fs = require('fs/promises');
+const componentTemplate = require('./componentTemplate');
+const storyTemplate = require('./storyTemplate');
+const styleTemplate = require('./styleTemplate');
+const firstCharUpperCase = require('../firstCharUpperCase');
+const resolveRoot = require('../resolveRoot');
 
 module.exports = async (layer, sliceName) => {
   const resolveUIPath = (...segments) =>
-    resolveRoot("src", layer, sliceName, "ui", ...segments);
+    resolveRoot('src', layer, sliceName, 'ui', ...segments);
 
   // создаем папку ui
   const createUIDir = async () => {
     try {
       await fs.mkdir(resolveUIPath());
     } catch (e) {
-      console.log("Не удалось создать UI директорию");
+      console.log('Не удалось создать UI директорию');
     }
   };
 
@@ -28,20 +28,20 @@ module.exports = async (layer, sliceName) => {
       // создаем файл компонента
       await fs.writeFile(
         resolveUIPath(componentName, `${componentName}.tsx`),
-        componentTemplate(componentName)
+        componentTemplate(componentName),
       );
       // создаем файл сторибука
       await fs.writeFile(
         resolveUIPath(componentName, `${componentName}.stories.tsx`),
-        storyTemplate(layer, componentName)
+        storyTemplate(layer, componentName),
       );
       // создаем файл стилей
       await fs.writeFile(
         resolveUIPath(componentName, `${componentName}.module.scss`),
-        styleTemplate(componentName)
+        styleTemplate(componentName),
       );
     } catch (e) {
-      console.log("Не удалось создать компонент");
+      console.log('Не удалось создать компонент');
     }
   };
 

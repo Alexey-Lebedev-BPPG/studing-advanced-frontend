@@ -6,12 +6,12 @@ import { AppImage } from '@/shared/ui/AppImage';
 import { Text, TextAlign } from '@/shared/ui/Text';
 
 interface IArticleImageBlockComponentProps {
-  className?: string;
   block: ArticleImageBlock;
+  className?: string;
 }
 
 export const ArticleImageBlockComponent: FC<IArticleImageBlockComponentProps> =
-  memo(({ className, block }) => (
+  memo(({ block, className }) => (
     <div
       className={classNames(cls.articleImageBlockComponent, {}, [className])}
     >
