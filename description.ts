@@ -69,8 +69,7 @@
 
 // !!!дополнительно разобраться с фикстурами сайпресса (попробовать подключить правильно)
 
-// !!! разобраться со сторибуком.не запускает storybook:test + (когда разберусь добавить в  .lintstagedrc "src/**/*.test.{js,jsx,ts,tsx}": "jest --config ./configs/jest/jest.config.ts",
-)
+// !!! разобраться со сторибуком.не запускает storybook:test + (когда разберусь добавить в  .lintstagedrc "src/**/*.test.{js,jsx,ts,tsx}": "jest --config ./configs/jest/jest.config.ts",)
 
 // деплоим на netlify
 // 1. логинимся
