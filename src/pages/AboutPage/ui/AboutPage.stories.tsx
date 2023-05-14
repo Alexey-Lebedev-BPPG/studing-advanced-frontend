@@ -15,7 +15,9 @@ export default {
 const Template: StoryFn<typeof AboutPage> = arg => <AboutPage {...arg} />;
 
 export const Light = Template.bind({});
+Light.args = {};
 Light.decorators = [StoreDecorator({})];
 
 export const Dark = Template.bind({});
+Dark.args = {};
 Dark.decorators = [StoreDecorator({}), ThemeDecorator(Theme.DARK)];

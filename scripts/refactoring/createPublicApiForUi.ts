@@ -1,4 +1,5 @@
-// скрипт для создания паблик апи.
+// скрипт для создания паблик апи. позволяет быстро добавить паблик апи в директориях (в нашем случае в shared слой), а также заменить по всему проекту путь из publicApi. запускается командой npx ts-node ./scripts/refactoring/createPublicApiForUi.ts
+
 // вместо export * from "./Button" формируется именованный экспорт с учетом вложенных файлов.
 // Добавлен globPattern для поиска всех вложенных файлов tsx за исключением test.* или stories.*
 import path from 'path';
@@ -27,7 +28,7 @@ function isAbsolute(path: string) {
 
 // получаем все файлы проекта
 const files = project.getSourceFiles();
-// указываем название файла, в который буде помещать publicApi
+// указываем название файла, в который будем помещать publicApi
 const indexFilename = 'index.ts';
 // указываем слой, который мы можем прокинуть в env или shared по ум.
 const layer = process.argv[2] || 'shared';
@@ -76,7 +77,7 @@ directories?.forEach(directory => {
       { overwrite: true },
     );
 
-    // сохраняем файл в дирректории
+    // сохраняем файл в директории
     file
       .save()
       .then(() => console.log(`${indexFilePath} --> index.ts created!`));
@@ -97,7 +98,7 @@ files.forEach(sourceFile => {
     // делим путь на сегменты
     const segments = value.split('/');
 
-    // указывает, является ли слайс слайсо, а слой слоем
+    // указывает, является ли слайс слайсом, а слой слоем
     const isLayer = segments?.[0] === layer;
     const isSlice = segments?.[1] === slice;
 

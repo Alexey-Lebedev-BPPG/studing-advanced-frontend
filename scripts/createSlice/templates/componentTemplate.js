@@ -1,23 +1,31 @@
-const interfaceConst = 'interface';
+const getCamelCase = require('../helpers/stringToCamelCase');
+const getPascalCase = require('../helpers/stringToPascalCase');
 
-// шаблон создания компонентов
-module.exports =
-  componentName => `import { classNames } from 'shared/lib/classNames/classNames';
+// шаблон создания файла компонентов
+module.exports = componentName => {
+  const nameToCamelCase = `${getCamelCase(componentName)}`;
+  const nameToPascalCase = `${getPascalCase(componentName)}`;
+
+  return `import { FC, memo } from 'react';
 import { useTranslation } from 'react-i18next';
-import cls from './${componentName}.module.scss';
-import { memo } from 'react';
+import cls from './${nameToPascalCase}.module.scss';
+import { classNames } from '@/shared/lib/classNames/classNames';
 
-${interfaceConst} ${componentName}Props {
-    className?: string;
+export interface I${nameToPascalCase}Props {
+  className?: string;
 }
 
-export const ${componentName} = memo((props: ${componentName}Props) => {
-    const { className } = props;
-    const { t } = useTranslation();
-    
-    return (
-        <div className={classNames(cls.${componentName}, {}, [className])}>
-           
-        </div>
-    );
-});`;
+export const ${nameToPascalCase}: FC<I${nameToPascalCase}Props> = memo(props => {
+  const { className } = props;
+  const { t } = useTranslation();
+
+  return (
+    <div className={classNames(cls.${nameToCamelCase}, {}, [className])}>
+      <div />
+    </div>
+  );
+});
+
+// export default ${nameToPascalCase};
+`;
+};

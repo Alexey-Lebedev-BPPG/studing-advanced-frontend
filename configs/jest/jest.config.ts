@@ -12,7 +12,7 @@ export default () => {
     globals: {
       __IS_DEV__: true,
       __IS_DEV_DEBUG__: true,
-      __API__: '',
+      __API__: 'https://test.com',
       __PROJECT__: 'jest',
     },
     // удалять моки после тестов
@@ -24,7 +24,6 @@ export default () => {
     // добавляем "src", чтоб заработали абсолютные пути
     moduleDirectories: ['node_modules', 'src'],
     // альтернативным вариантом, чтоб абсолютные пути заработали будет добавление такого свойства
-    // modulePaths: ["<rootDir>src"],
     modulePaths: ['<rootDir>src'],
     // расширения файлов, в которых проводить тестирования
     moduleFileExtensions: ['js', 'jsx', 'ts', 'tsx', 'json', 'node'],
@@ -38,7 +37,7 @@ export default () => {
     moduleNameMapper: {
       '\\.s?css$': 'identity-obj-proxy',
       // мок для всех импортов, в которых будет присутствовать svg
-      '\\.svg': path.resolve(__dirname, 'jestEmptyComponent.tsx'),
+      '\\.(svg|jpg)': path.resolve(__dirname, 'jestEmptyComponent.tsx'),
       // добавляем поддержку алиасов
       '^@/(.*)$': '<rootDir>/src/$1',
     },
@@ -55,6 +54,8 @@ export default () => {
         },
       ],
     ],
+    modulePathIgnorePatterns: ['node_modules', '../../reports/unit'],
+    snapshotResolver: '<rootDir>/configs/jest/snapshotResolve.ts',
     // All imported modules in your tests should be mocked automatically
     // automock: false,
 

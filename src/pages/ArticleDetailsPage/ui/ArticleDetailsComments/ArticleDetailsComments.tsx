@@ -1,5 +1,5 @@
-import { t } from 'i18next';
 import { FC, memo, useCallback } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { getArticleCommentsIsLoading } from '../../model/selectors/comments';
 import { addCommentForArticle } from '../../model/services/addCommentForArticle/addCommentForArticle';
@@ -21,6 +21,7 @@ export interface IArticleDetailsCommentsProps {
 const ArticleDetailsComments: FC<IArticleDetailsCommentsProps> = memo(
   ({ className, id }) => {
     const dispatch = useAppDispatch();
+    const { t } = useTranslation();
     const comments = useSelector(getArticleComments.selectAll);
     const commentsIsLoading = useSelector(getArticleCommentsIsLoading);
 

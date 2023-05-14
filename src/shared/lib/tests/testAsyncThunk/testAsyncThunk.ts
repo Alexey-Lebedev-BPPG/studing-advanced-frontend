@@ -2,7 +2,7 @@ import { AsyncThunkAction } from '@reduxjs/toolkit';
 import axios, { AxiosStatic } from 'axios';
 import { StateSchema } from '@/app/providers/StoreProvider';
 
-// создаем универсальный тип для функции, которая принимает аргумент и возращает любой экшен
+// создаем универсальный тип для функции, которая принимает аргумент и возвращает любой экшен
 type ActionCreatorType<Return, Arg, RejectedValue> = (
   arg: Arg,
 ) => AsyncThunkAction<Return, Arg, { rejectValue: RejectedValue }>;
@@ -13,10 +13,10 @@ jest.mock('axios');
 // чтоб использовать не только модуль, но и все внутренности, мокаем глубоким способом (добавляем флаг true вторым аргументом в функцию mocked)
 const mockedAxios = jest.mocked(axios);
 
-// создаем класс, внутри которого мы изорируем логику по тестированию асинхронных thuk-ов
+// создаем класс, внутри которого мы изолируем логику по тестированию асинхронных thunk-ов
 // в дженерике: первый тип - то, что возвращает thunk; второй - аргумент; третий - то, что возвращает thunk при ошибке
 export class TestAsyncThunk<Return, Arg, RejectedValue> {
-  // добавляем типы для диспатча, получения стейта и thunk-а
+  // добавляем типы для диспача, получения стейта и thunk-а
   dispatch: jest.MockedFn<any>;
 
   getState: () => StateSchema;

@@ -8,7 +8,7 @@ const config = {
   stories: [
     {
       directory: '../../src',
-      files: '**/*.stories.@(js|jsx|ts|tsx)',
+      files: '**/*.stories.@(js|jsx|ts|tsx|mdx)',
     },
   ],
   addons: [
@@ -27,6 +27,9 @@ const config = {
     // чтоб не заморачиваться с созданием разных кнопок для разных тем, можно поставить аддон: https://storybook.js.org/addons/@dhruvkb/storybook-addon-themes
     'storybook-addon-themes',
     '@storybook/addon-mdx-gfm',
+    '@storybook/addon-jest',
+    '@storybook/addon-storyshots',
+    '@storybook/addon-storyshots-puppeteer',
   ],
   framework: {
     name: '@storybook/react-webpack5',
@@ -93,6 +96,7 @@ const config = {
         __IS_DEV__: JSON.stringify(true),
         __API__: JSON.stringify('https://testapi.ru'),
         __PROJECT__: JSON.stringify('storybook'),
+        __IS_DEV_DEBUG__: JSON.stringify(true),
       }),
     );
     return config;

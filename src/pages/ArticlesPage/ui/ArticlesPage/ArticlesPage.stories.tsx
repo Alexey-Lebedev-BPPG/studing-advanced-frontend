@@ -91,30 +91,12 @@ const article: Article = {
 
 export const Normal = Template.bind({});
 Normal.args = {};
-Normal.decorators = [
-  StoreDecorator({
-    articleDetails: {
-      data: article,
-    },
-  }),
-];
+Normal.decorators = [StoreDecorator({ articleDetails: { data: article } })];
 
 export const WithError = Template.bind({});
 WithError.args = {};
-WithError.decorators = [
-  StoreDecorator({
-    articleDetails: {
-      error: 'error',
-    },
-  }),
-];
+WithError.decorators = [StoreDecorator({ articleDetails: { error: 'error' } })];
 
 export const Loading = Template.bind({});
 Loading.args = {};
-Loading.decorators = [
-  StoreDecorator({
-    articleDetails: {
-      isLoading: true,
-    },
-  }),
-];
+Loading.decorators = [StoreDecorator({ articleDetails: { isLoading: true } })];

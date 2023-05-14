@@ -12,6 +12,7 @@ interface IStoreProviderProps {
   initialState?: DeepPartial<StateSchema>;
 }
 
+// не используем memo в компонентах, где у нас есть children
 export const StoreProvider: FC<IStoreProviderProps> = ({
   asyncReducers,
   children,

@@ -90,7 +90,7 @@ describe('features/EditableProfileCard', () => {
   });
 
   test('then none errors PUT-request going on the server', async () => {
-    // мокаем запрос на изменение инпутов, используя spyOn(первым аргументом передаем инстанс аксиуса, а вторым аргументом название метода)
+    // мокаем запрос на изменение инпутов, используя spyOn(первым аргументом передаем инстанс аксиоса, а вторым аргументом название метода)
     const mockPutReq = jest.spyOn($api, 'put');
     await userEvent.click(
       screen.getByTestId('EditableProfileCardHeader.EditButton'),

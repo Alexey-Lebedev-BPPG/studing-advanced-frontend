@@ -9,6 +9,7 @@ i18n.use(initReactI18next).init({
     escapeValue: false,
   },
   lng: 'ru',
+  react: { useSuspense: false },
   resources: { ru: { translations: {} } },
   returnNull: false,
 });

@@ -11,6 +11,8 @@ interface ThemeProviderProps {
   // добавляем пропс, чтоб мы могли менять тему извне
   initialTheme?: Theme;
 }
+
+// не используем memo в компонентах, где у нас есть children
 // чтоб иметь глобальный доступ к темам в любых компонентах
 const ThemeProvider: FC<ThemeProviderProps> = ({ children, initialTheme }) => {
   const [theme, setTheme] = useState<Theme>(initialTheme || defaultTheme);

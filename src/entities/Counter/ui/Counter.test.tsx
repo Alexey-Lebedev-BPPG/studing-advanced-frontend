@@ -1,7 +1,11 @@
 import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import renderer from 'react-test-renderer';
 import { Counter } from './Counter';
-import { componentRender } from '@/shared/lib/tests/componentRender/componentRender';
+import {
+  TestProvider,
+  componentRender,
+} from '@/shared/lib/tests/componentRender/componentRender';
 
 describe('Counter', () => {
   test('Test render', () => {
@@ -21,4 +25,13 @@ describe('Counter', () => {
     await userEvent.click(screen.getByTestId('decrement-btn'));
     expect(screen.getByTestId('value-title')).toHaveTextContent('9');
   });
+
+  const tree = renderer
+    .create(
+      <TestProvider options={{ initialState: { counter: { value: 10 } } }}>
+        <Counter />
+      </TestProvider>,
+    )
+    .toJSON();
+  expect(tree).toMatchSnapshot();
 });

@@ -17,7 +17,7 @@ const data = {
 
 describe('updateProfileData', () => {
   test('success', async () => {
-    // передаем наш thunk в наш класс и прокидуем инитиал стейт
+    // передаем наш thunk в наш класс и прокидываем инишиал стейт
     const thunk = new TestAsyncThunk(updateProfileData, {
       profile: { form: data },
     });
@@ -32,7 +32,7 @@ describe('updateProfileData', () => {
   });
 
   test('server error', async () => {
-    // передаем наш thunk в наш класс и прокидуем инитиал стейт
+    // передаем наш thunk в наш класс и прокидываем инишиал стейт
     const thunk = new TestAsyncThunk(updateProfileData, {
       profile: { form: data },
     });
@@ -44,7 +44,7 @@ describe('updateProfileData', () => {
   });
 
   test('validate error', async () => {
-    // передаем наш thunk в наш класс и прокидуем инитиал стейт
+    // передаем наш thunk в наш класс и прокидываем инишиал стейт
     const thunk = new TestAsyncThunk(updateProfileData, {
       profile: { form: { ...data, lastname: '' } },
     });

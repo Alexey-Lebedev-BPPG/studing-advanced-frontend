@@ -45,6 +45,7 @@ interface IButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   theme?: ButtonTheme;
 }
 
+// не используем memo в компонентах, где у нас есть children
 // обернем кнопку тоже в memo, хоть она и принимает чилдрены, но они будут в виде простого примитива без сложной древовидной структуры
 export const Button: FC<IButtonProps> = memo(props => {
   const {

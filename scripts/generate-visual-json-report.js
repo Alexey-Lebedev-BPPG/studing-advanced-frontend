@@ -1,4 +1,4 @@
-// добаляем данный скрипт, чтоб удобно сравнивать скриншоты + также нужно будет разобраться с флагом "update" в команде "test:ui:ci": "loki update --requireReference --reactUri file:./storybook-static", которая запускается в package.json, т.к. она не дает показывать разницу между скриншотами и автоматически принимает все
+// добавляем данный скрипт, чтоб удобно сравнивать скриншоты + также нужно будет разобраться с флагом "update" в команде "test:ui:ci": "loki update --requireReference --reactUri file:./storybook-static", которая запускается в package.json, т.к. она не дает показывать разницу между скриншотами и автоматически принимает все
 // скрипт берется отсюда https://github.com/oblador/loki/issues/76
 const { readdir, writeFile } = require('fs');
 const { join: joinPath, relative } = require('path');

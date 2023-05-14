@@ -67,6 +67,6 @@ export interface ThunkExtraArg {
 export interface ThunkConfig<T> {
   extra: ThunkExtraArg;
   rejectValue: T;
-  // добавляем типи для стейта общего
+  // добавляем типы для стейта общего
   state: StateSchema;
 }

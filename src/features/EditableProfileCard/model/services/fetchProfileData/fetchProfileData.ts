@@ -20,7 +20,7 @@ export const fetchProfileData = createAsyncThunk<
 
     return response.data;
   } catch (error) {
-    console.log(error);
+    __PROJECT__ !== 'jest' && console.log(error);
     // для обработки ошибок
     return rejectWithValue(i18next.t('LOGIN_ERROR'));
   }

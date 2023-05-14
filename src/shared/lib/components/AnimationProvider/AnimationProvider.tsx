@@ -8,7 +8,7 @@ import {
   useState,
 } from 'react';
 
-// вытягиваем типы из библиотеки
+// вытягиваем типы из библиотек (@use-gesture/react - библиотека для dnd, @react-spring/web - библиотека для анимаций)
 type SpringType = typeof import('@react-spring/web');
 type GestureType = typeof import('@use-gesture/react');
 
@@ -39,7 +39,7 @@ export const useAnimationLibs = () =>
 
 // создаем провайдер, который будет оборачивать только те компоненты, в которых используются вышеуказанные библиотеки
 export const AnimationProvider = ({ children }: { children: ReactNode }) => {
-  // создаем рефы и в них будем складывать сами библиотеки (используем рефы, чтоб от рендера к рендеру был доступ к значенийм без лишних перерисовок)
+  // создаем рефы и в них будем складывать сами библиотеки (используем рефы, чтоб от рендера к рендеру был доступ к значений без лишних перерисовок)
   const SpringRef = useRef<SpringType>();
   const GestureRef = useRef<GestureType>();
 

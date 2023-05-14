@@ -9,6 +9,8 @@ interface RequireAuthProps {
   children: JSX.Element;
   roles?: UserRole[];
 }
+
+// не используем memo в компонентах, где у нас есть children
 export const RequireAuth = ({ children, roles }: RequireAuthProps) => {
   // проверяем авторизован ли пользователь
   const auth = useSelector(getUserAuthData);

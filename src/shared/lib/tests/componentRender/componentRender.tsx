@@ -25,7 +25,7 @@ interface TestProviderProps {
 }
 
 // выносим все обертки в одну, чтоб можно было также использовать в изолированных тестах в сайпресс
-export function TestProvider(props: TestProviderProps) {
+export const TestProvider = (props: TestProviderProps) => {
   const { children, options = {} } = props;
   const {
     asyncReducer,
@@ -45,12 +45,10 @@ export function TestProvider(props: TestProviderProps) {
       </StoreProvider>
     </MemoryRouter>
   );
-}
+};
 
 // обертка для тестируемого компонента с добавлением конфигурации для роутов и i18n
 export const componentRender = (
   component: ReactNode,
   options: IComponentRenderOptions = {},
 ) => render(<TestProvider options={options}>{component}</TestProvider>);
-
-// !!! переделать на 18 реакт (Warning: ReactDOM.render is no longer supported in React 18. Use createRoot instead. Until you switch to the new API, your app will behave as if it's running React 17. Learn more: https://reactjs.org/link/switch-to-createroot)

@@ -4,7 +4,10 @@ import { StyleDecorator } from '../../src/shared/config/storybook/StyleDecorator
 import { ThemeDecorator } from '../../src/shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { RouterDecorator } from '../../src/shared/config/storybook/RouterDecorator/RouterDecorator';
 import { SuspenseDecorator } from '../../src/shared/config/storybook/SuspenseDecorator/SuspenseDecorator';
-// import { TranslationDecorator } from '../../src/shared/config/storybook/TranslationDecorator/TranslationDecorator';
+import { TranslationDecorator } from '../../src/shared/config/storybook/TranslationDecorator/TranslationDecorator';
+import { withTests } from '@storybook/addon-jest';
+import results from '../../reports/unit/.jest-test-results.json';
+// import initStoryshots from '@storybook/addon-storyshots';
 
 const parameters: Preview = {
   parameters: {
@@ -32,6 +35,8 @@ const parameters: Preview = {
 };
 // здесь вызываются обертки для каждого сторибук компонента:
 export const decorators = [
+  withTests({ results }),
+  // initStoryshots(),
   // добавляем декоратор для глобальных стилей
   StyleDecorator,
   // добавляем локально главную тему, а уже в стори компонентов будем использовать темную по необходимости
@@ -39,7 +44,7 @@ export const decorators = [
   // добавляем общий декоратор для роутов
   RouterDecorator,
   // добавляем декоратор для переводов
-  // TranslationDecorator,
+  TranslationDecorator,
   // добавляем декоратор для обертывания саспенсом компонентов, которые вложены глубоко в дерево (в сторибуке возможен такой сценарий, когда компонент подгружается асинхронно(через lazy) и поэтому его необходимо обернуть в саспенс, чтоб дождаться загрузки)
   SuspenseDecorator,
 ];

@@ -1,4 +1,4 @@
-const createTemplate = require('./templates/createTemplate');
+const createTemplate = require('./creators/createTemplate');
 
 // из аргументов достаем слой
 const layer = process.argv[2];
@@ -7,7 +7,7 @@ const sliceName = process.argv[3];
 // [0] аргументом идет путь до скрипта, [1] - аргументом идет путь до ноды
 
 // слои, в которых допустимо создание
-const layers = ['features', 'entities', 'pages'];
+const layers = ['features', 'entities', 'pages', 'widgets', 'shared'];
 
 // проверка, что название слоя должно быть обязательно из списка
 if (!layer || !layers.includes(layer))

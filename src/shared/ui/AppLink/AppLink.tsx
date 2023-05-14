@@ -13,6 +13,7 @@ interface AppLinkProps extends LinkProps {
   theme?: AppLinkTheme;
 }
 
+// не используем memo в компонентах, где у нас есть children
 export const AppLink: FC<AppLinkProps> = forwardRef(
   (
     { children, className, theme = AppLinkTheme.PRIMARY, to, ...otherProps },

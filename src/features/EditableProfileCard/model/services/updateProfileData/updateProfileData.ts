@@ -5,7 +5,7 @@ import { validateProfileData } from '../validateProfileData/validateProfileData'
 import { ThunkConfig } from '@/app/providers/StoreProvider';
 import { Profile } from '@/entities/Profile';
 
-// первым аргументом дженерика - что возвращаем, второй - что передаем, а третим можно передать свои типизацию объекта thunkAPI, в котором есть методы для использования в thunke
+// первым аргументом дженерика - что возвращаем, второй - что передаем, а третьим можно передать свои типизацию объекта thunkAPI, в котором есть методы для использования в thunk-e
 export const updateProfileData = createAsyncThunk<
   Profile,
   void,
@@ -29,7 +29,8 @@ export const updateProfileData = createAsyncThunk<
 
     return response.data;
   } catch (error) {
-    console.log(error);
+    // чтоб не показывался консоль при тестах
+    __PROJECT__ !== 'jest' && console.log(error);
     // для обработки ошибок
     return rejectWithValue([ValidateProfileError.SERVER_ERROR]);
   }

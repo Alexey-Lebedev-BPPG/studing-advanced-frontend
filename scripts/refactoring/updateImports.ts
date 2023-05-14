@@ -1,3 +1,5 @@
+// позволяет быстро добавить алиасы в абсолютные пути в проекте. запускается командой npx ts-node ./scripts/refactoring/updateImports.ts
+
 // библиотека позволяет редактировать .ts файлы
 import { Project } from 'ts-morph';
 
@@ -14,7 +16,7 @@ const files = project.getSourceFiles();
 function isAbsolute(value: string) {
   const layers = ['app', 'entities', 'features', 'pages', 'shared', 'widgets'];
 
-  // проверяем, что если путь начинается с нашего массива слоев и возвращаем знаение
+  // проверяем, что если путь начинается с нашего массива слоев и возвращаем значение
   return layers.some(layer => value.startsWith(layer));
 }
 

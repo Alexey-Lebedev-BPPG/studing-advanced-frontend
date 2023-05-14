@@ -24,7 +24,8 @@ export const fetchArticleById = createAsyncThunk<
 
     return response.data;
   } catch (error) {
-    console.log(error);
+    // чтоб не показывался консоль при тестах
+    __PROJECT__ !== 'jest' && console.log(error);
     // для обработки ошибок
     return rejectWithValue(i18next.t('ARTICLE_ERROR'));
   }
