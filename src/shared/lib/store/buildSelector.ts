@@ -1,12 +1,19 @@
 import { useSelector } from 'react-redux';
 import { StateSchema } from '@/app/providers/StoreProvider';
 
-type Selector<T> = (state: StateSchema) => T;
-type Result<T> = [() => T, Selector<T>];
+// добавляем возможность прокидывать доп аргументы
+type Selector<T, Args extends any[]> = (state: StateSchema, ...args: Args) => T;
+// делаем отдельный тип для хука
+type Hook<T, Args extends any[]> = (...args: Args) => T;
+type Result<T, Args extends any[]> = [Hook<T, Args>, Selector<T, Args>];
 
-// используя эту функцию в файлах серекторов, мы создаем хук (который будет использоваться вместо useSelector) и значение, которое будем вытягивать (пример в компоненте <Counter> и его селекторах)
-export function buildSelector<T>(selector: Selector<T>): Result<T> {
-  const useSelectorHook = () => useSelector(selector);
+// используя эту функцию в файлах селекторов, мы создаем хук (который будет использоваться вместо useSelector) и значение, которое будем вытягивать (пример в компоненте <Counter> и его селекторах)
+export function buildSelector<T, Args extends any[]>(
+  selector: Selector<T, Args>,
+): Result<T, Args> {
+  const useSelectorHook: Hook<T, Args> = (...args: Args) =>
+    // добавляем прокинутые аргументы
+    useSelector((state: StateSchema) => selector(state, ...args));
 
   return [useSelectorHook, selector];
 }

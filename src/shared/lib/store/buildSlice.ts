@@ -16,14 +16,13 @@ export function buildSlice<
 >(options: CreateSliceOptions<State, CaseReducers, Name>) {
   const slice = createSlice(options);
 
-  const useActions = () => {
+  const useActions = (): typeof slice.actions => {
     const dispatch = useDispatch();
 
     return useMemo(
       () =>
         bindActionCreators<
-          // @ts-ignore
-          CaseReducerActions<CaseReducers>,
+          CaseReducerActions<CaseReducers, Name>,
           // @ts-ignore
           CaseReducerActions<CaseReducers>
         >(slice.actions, dispatch),

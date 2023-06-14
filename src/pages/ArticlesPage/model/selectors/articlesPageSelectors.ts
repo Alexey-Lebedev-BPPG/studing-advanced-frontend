@@ -4,6 +4,7 @@ import {
   ArticleType,
   ArticleView,
 } from '@/entities/Article';
+import { buildSelector } from '@/shared/lib/store';
 
 export const getArticlesPageIsLoading = (state: StateSchema) =>
   state.articlesPage?.isLoading;
@@ -37,3 +38,8 @@ export const getArticlesPageSearch = (state: StateSchema) =>
 
 export const getArticlesPageType = (state: StateSchema) =>
   state.articlesPage?.type ?? ArticleType.ALL;
+
+// получим данные, при этом передав аргумент
+export const [useArticleItemById] = buildSelector(
+  (state: StateSchema, id: string) => state.articlesPage?.entities[id],
+);
