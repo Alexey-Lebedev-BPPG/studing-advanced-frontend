@@ -8,9 +8,9 @@ const initialState: ArticleDetailsSchema = {
 };
 
 export const articleDetailsSlice = createSlice({
-  // исgользуется для асинхронного изменения стейта
+  // используется для асинхронного изменения стейта
   extraReducers: builder => {
-    // у каждого thunka есть 3 состояния: 1. pending, 2. fulfilled, 3. rejected
+    // у каждого thunk-a есть 3 состояния: 1. pending, 2. fulfilled, 3. rejected
     // все 3 состояния можно здесь обработать
     builder
       // используем наш thunk
@@ -29,16 +29,13 @@ export const articleDetailsSlice = createSlice({
         },
       )
       .addCase(fetchArticleById.rejected, (state, action) => {
-        // action - поле, которое мы возвращаем из thunka при ошибке(3 аргумент в дженерике)
+        // action - поле, которое мы возвращаем из thunk-a при ошибке(3 аргумент в дженерике)
         state.isLoading = false;
         state.error = action.payload;
       });
   },
-
   initialState,
-
   name: 'articleDetails',
-
   reducers: {},
 });
 

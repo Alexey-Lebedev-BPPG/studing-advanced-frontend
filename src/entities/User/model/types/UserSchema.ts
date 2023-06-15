@@ -1,11 +1,12 @@
-// eslint-disable-next-line path-checher-ulbi-example/layer-imports
-import { UserRole } from '@/app/consts/consts';
+import { JsonSettings } from './jsonSetting';
+import { UserRole } from '../../../../app/consts/consts';
 import { FeatureFlags } from '@/shared/types/featureFlags';
 
 export interface User {
   avatar?: string;
   features?: FeatureFlags;
   id: string;
+  jsonSettings?: JsonSettings;
   roles?: UserRole[];
   username: string;
 }
