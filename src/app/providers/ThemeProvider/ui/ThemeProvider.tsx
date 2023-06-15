@@ -12,18 +12,20 @@ interface ThemeProviderProps {
 // не используем memo в компонентах, где у нас есть children
 // чтоб иметь глобальный доступ к темам в любых компонентах
 const ThemeProvider: FC<ThemeProviderProps> = ({ children, initialTheme }) => {
-  // получаем тему из редакса. а если ее нет, то ставим тему по ум.
-  const { theme: defaultTheme = Theme.LIGHT } = useJsonSettings();
+  // получаем тему из редакса
+  const { theme: defaultTheme } = useJsonSettings();
   // для того, чтоб useEffect сработал только один раз, делаем флаг
   const [isThemeInited, setIsThemeInited] = useState(false);
 
-  const [theme, setTheme] = useState<Theme>(initialTheme || defaultTheme);
+  const [theme, setTheme] = useState<Theme>(
+    initialTheme || defaultTheme || Theme.LIGHT,
+  );
   // навешиваем стили темы на боди
   document.body.className = theme;
 
   // чтоб не инициировалась тема только дефолтная, нужно отслеживать ее изменение и поменять
   useEffect(() => {
-    if (!isThemeInited) {
+    if (!isThemeInited && defaultTheme) {
       setTheme(defaultTheme);
       setIsThemeInited(true);
     }

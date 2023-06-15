@@ -1,6 +1,7 @@
 import { Reducer } from '@reduxjs/toolkit';
 import { FC, ReactNode, useEffect } from 'react';
-import { useDispatch, useStore } from 'react-redux';
+import { useStore } from 'react-redux';
+import { useAppDispatch } from '../../hooks/useAppDispatch/useAppDispatch';
 import {
   ReduxStoreWithManager,
   StateSchema,
@@ -26,7 +27,7 @@ export const DynamicModuleLoader: FC<IDynamicModuleLoaderProps> = ({
   reducers,
   removeAfterUnmount = true,
 }) => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   // получаем стор, чтоб посмотреть что там
   const store = useStore() as ReduxStoreWithManager;
 
@@ -38,11 +39,11 @@ export const DynamicModuleLoader: FC<IDynamicModuleLoaderProps> = ({
     Object.entries(reducers).forEach(([keyReducer, reducer]) => {
       // по названию ключа достаем нужный редьюсер
       const mounted = mountedReducers[keyReducer as StateSchemaKey];
-      // проверяем, если он не вмотрирован, то тогда добавляем его в редьюсер менеджер
+      // проверяем, если он не вмонтирован, то тогда добавляем его в редьюсер менеджер
       if (!mounted) {
-        // это позволяет изолировать редьюсер внути модуля и в паблик апи его можно удалять. Этот редьюсер будет подгружаться только тогда, когда будет загружен данный компонент
+        // это позволяет изолировать редьюсер внутри модуля и в паблик апи его можно удалять. Этот редьюсер будет подгружаться только тогда, когда будет загружен данный компонент
         store.reducerManager.add(keyReducer as StateSchemaKey, reducer);
-        // чтоб просматривать сработало ли или нет (если убрать, то действие сработает, однако в девтулзах не обновится. Обновление происходит после следущего действия)
+        // чтоб просматривать сработало ли или нет (если убрать, то действие сработает, однако в девтулзах не обновится. Обновление происходит после следующего действия)
         dispatch({ type: `@INIT ${keyReducer} reducer` });
       }
     });
@@ -52,7 +53,7 @@ export const DynamicModuleLoader: FC<IDynamicModuleLoaderProps> = ({
       if (removeAfterUnmount)
         Object.entries(reducers).forEach(([keyReducer]) => {
           store.reducerManager.remove(keyReducer as StateSchemaKey);
-          // чтоб просматривать сработало ли или нет (если убрать, то действие сработает, однако в девтулзах не обновится. Обновление происходит после следущего действия)
+          // чтоб просматривать сработало ли или нет (если убрать, то действие сработает, однако в девтулзах не обновится. Обновление происходит после следующего действия)
           dispatch({ type: `@DESTROY ${keyReducer} reducer` });
         });
     };

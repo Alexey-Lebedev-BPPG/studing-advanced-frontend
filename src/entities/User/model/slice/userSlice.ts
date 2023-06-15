@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { initAuthData } from '../services/initAuthData';
 import { saveJsonSettings } from '../services/saveJsonSettings';
 import { User, UserSchema } from '../types/UserSchema';
 import { JsonSettings } from '../types/jsonSetting';
@@ -16,7 +17,6 @@ export const userSlice = createSlice({
     // все 3 состояния можно здесь обработать
     builder
       // используем наш thunk
-
       .addCase(
         saveJsonSettings.fulfilled,
         (state, { payload }: PayloadAction<JsonSettings>) => {
@@ -24,22 +24,24 @@ export const userSlice = createSlice({
           if (state.authData) state.authData.jsonSettings = payload;
         },
       );
+    builder.addCase(initAuthData.rejected, state => {
+      state._inited = true;
+    });
+    // слайс для проверки авторизации пользователя при закрытии и открытии впоследствии вкладки
+    builder.addCase(
+      initAuthData.fulfilled,
+      (state, { payload }: PayloadAction<User>) => {
+        state.authData = payload;
+        // когда инициировали юзера, то меняем фичи-флаг
+        setFeatureFlags(payload?.features);
+        // делаем true только после добавления данных
+        state._inited = true;
+      },
+    );
   },
   initialState,
   name: 'user',
   reducers: {
-    // слайс для проверки авторизации пользователя при закрытии и открытии впоследствии вкладки
-    initAuthData: state => {
-      const user = localStorage.getItem(USER_LOCALSTORAGE_KEY);
-      if (user) {
-        const jsonUser = JSON.parse(user) as User;
-        state.authData = jsonUser;
-        // когда инициировали юзера, то меняем фичи-флаг
-        setFeatureFlags(jsonUser?.features);
-      }
-      // делаем true только после добавления данных
-      state._inited = true;
-    },
     logout: state => {
       state.authData = undefined;
       localStorage.removeItem(USER_LOCALSTORAGE_KEY);
@@ -48,6 +50,8 @@ export const userSlice = createSlice({
       state.authData = payload;
       // когда авторизовались, то меняем фичи-флаг
       setFeatureFlags(payload.features);
+      // добавляем данные в локальное хранилище (аналог токена)
+      localStorage.setItem(USER_LOCALSTORAGE_KEY, payload.id);
     },
   },
 });

@@ -6,7 +6,7 @@ import {
   createSlice,
 } from '@reduxjs/toolkit';
 import { useMemo } from 'react';
-import { useDispatch } from 'react-redux';
+import { useAppDispatch } from '../hooks/useAppDispatch/useAppDispatch';
 
 // создаем функцию, которая позволяет использовать buildSlice вместо createSlice в слайсах компонентов, а также использовать useActions вместо dispatch(actions) в самих компонентах, при этом типы берем из библиотеки (пример в файле counterSlice)
 export function buildSlice<
@@ -17,7 +17,7 @@ export function buildSlice<
   const slice = createSlice(options);
 
   const useActions = (): typeof slice.actions => {
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
 
     return useMemo(
       () =>

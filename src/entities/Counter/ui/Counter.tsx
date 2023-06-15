@@ -5,7 +5,7 @@ import { useCounterActions } from '../model/slice/counterSlice';
 import { Button } from '@/shared/ui/Button';
 
 export const Counter: FC = () => {
-  // const dispatch = useDispatch();
+  // const dispatch = useAppDispatch();
   // берем хук, который мы создали из функции buildSelector и достаем оттуда значение (аналог useSelector)
   const counterValue = useCounterValue();
   // применяем экшены по ум
