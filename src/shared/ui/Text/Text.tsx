@@ -34,9 +34,9 @@ interface ITextProps {
   className?: string;
   'data-testid'?: string;
   size?: TextSize;
-  text?: string;
+  text?: string | null;
   theme?: TextTheme;
-  title?: string;
+  title?: string | null;
 }
 
 export const Text: FC<ITextProps> = memo(

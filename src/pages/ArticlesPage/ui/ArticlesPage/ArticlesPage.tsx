@@ -6,6 +6,7 @@ import { initArticlesPage } from '../../model/services/initArticlesPage/initArti
 import { articlesPageReducer } from '../../model/slice/articlesPageSlice';
 import { ArticleInfiniteList } from '../ArticleInfiniteList/ArticleInfiniteList';
 import { ArticlePageFilters } from '../ArticlePageFilters/ArticlePageFilters';
+import { ArticlePageGreeting } from '@/features/ArticlePageGreeting';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import {
   DynamicModuleLoader,
@@ -47,6 +48,7 @@ const ArticlesPage: FC<IArticlesPageProps> = ({ className }) => {
       >
         <ArticlePageFilters />
         <ArticleInfiniteList className={cls.list} />
+        <ArticlePageGreeting />
       </Page>
     </DynamicModuleLoader>
   );
