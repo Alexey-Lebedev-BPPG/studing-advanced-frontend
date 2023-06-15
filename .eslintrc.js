@@ -147,6 +147,8 @@ module.exports = {
     ],
     'react/no-array-index-key': 'off',
     'react/no-typos': 'warn',
+    // позволяет создавать компоненты перед рендером родительского (где стейты)
+    'react/no-unstable-nested-components': 'warn',
     'react/no-unused-prop-types': 'warn',
     'react/prop-types': 'off',
     'react/react-in-jsx-scope': 'off',

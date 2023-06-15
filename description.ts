@@ -135,3 +135,90 @@
 // - сейчас пока будет со стороны бэка говорить, что сертификат протухший
 // - настраиваем проксирование (редирект запроса с одного адреса на другой) в ngix (https://www.dmosk.ru/miniinstruktions.php?mini=nginx-redirects)
 // - также создадим скрипт на автоматический деплой сборки на нашем сервере (альтернативным вариантом будет использовать веб хуки или докер(https://dev-gang.ru/article/kak-obsluzhivat-prilozhenija-react-s-pomosczu-nginx-i-docker-mf53hirfey/, https://github.com/marketplace/actions/ssh-remote-commands))
+
+// для работы с фичи-флагами мы будем использовать спец. функцию. Например:
+// const TestComponent = () => {
+//   // выбираем компонент для отрисовки на основании фичи-флага
+//   const counter = toggleFeatures({
+//     name: 'isCounterEnabled',
+//     on: () => <CounterRedesigned />,
+//     off: () => <Counter />
+//   })
+//   // выбираем выполнение функции на основании фичи-флага
+//   toggleFeatures({
+//     name: 'isCounterEnabled',
+//     on: () => functionTodo1(),
+//     off: () => functionTodo2()
+//   })
+//   // выбираем значение на основании фичи-флага
+//   const value = toggleFeatures({
+//     name: 'isCounterEnabled',
+//     on: () => 'value1',
+//     off: () => 'value2'
+//   })
+//   return <div>{counter}</div>;
+// }
+// также мы напишем скрипт remove-feature.ts, который будет запускаться:
+// - npx ts-node ./scripts/remove-feature.ts [название фичи] (npx ts-node ./scripts/remove-feature.ts isCounterEnabled). Удаляет старый функционал и трансформирует это:
+//     const counter = toggleFeatures({
+//       name: 'isCounterEnabled',
+//       on: () => <CounterRedesigned />,
+//       off: () => <Counter />
+//     })
+//     toggleFeatures({
+//       name: 'isCounterEnabled',
+//       on: () => functionTodo1(),
+//       off: () => functionTodo2()
+//     })
+//     const value = toggleFeatures({
+//       name: 'isCounterEnabled',
+//       on: () => 'value1',
+//       off: () => 'value2'
+//     })
+//   в это:
+//     const counter = <CounterRedesigned />;
+//     functionTodo1();
+//     const value = 'value1';
+// - npx ts-node ./scripts/remove-feature.ts [название фичи] [метод] (npx ts-node ./scripts/remove-feature.ts isCounterEnabled off). Удаляет новый функционал и трансформирует это:
+//     const counter = toggleFeatures({
+//       name: 'isCounterEnabled',
+//       on: () => <CounterRedesigned />,
+//       off: () => <Counter />
+//     })
+//     toggleFeatures({
+//       name: 'isCounterEnabled',
+//       on: () => functionTodo1(),
+//       off: () => functionTodo2()
+//     })
+//     const value = toggleFeatures({
+//       name: 'isCounterEnabled',
+//       on: () => 'value1',
+//       off: () => 'value2'
+//     })
+//   в это:
+//     const counter = <Counter />;
+//     functionTodo2();
+//     const value = 'value2';
+// тем самым мы сможем управлять фичами всегда изз одной и той же функции
+// !!!!!ОБЯЗАТЕЛЬНЫМ условием является, что если мы хотим аргументом в функции on/off передать какую-то логику, то эта логика должна быть в отдельной функции. Например:
+// - не верно:
+// const counter = toggleFeatures({
+//   name: 'isCounterEnabled',
+//   off: () => <Counter />,
+//   on: () => {
+//      let test1 = 1;
+//      let test2 = test1 + 3;
+//      return test2;
+//   },
+// });
+// - верно:
+// const testing = () => {
+//    let test1 = 1;
+//    let test2 = test1 + 3;
+//    return test2;
+// }
+// const counter = toggleFeatures({
+//   name: 'isCounterEnabled',
+//   off: () => <Counter />,
+//   on: () => testing(),
+// });

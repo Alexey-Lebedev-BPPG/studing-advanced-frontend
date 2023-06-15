@@ -5,7 +5,6 @@ import { articleDetailsPageReducer } from '../../model/slice';
 import ArticleDetailsComments from '../ArticleDetailsComments/ArticleDetailsComments';
 import { ArticleDetailsPageHeader } from '../ArticleDetailsPageHeader/ArticleDetailsPageHeader';
 import { ArticleDetails } from '@/entities/Article';
-import { Counter } from '@/entities/Counter';
 import { ArticleRating } from '@/features/ArticleRating';
 import { ArticleRecommendationsList } from '@/features/ArticleRecommendationsList';
 import { classNames } from '@/shared/lib/classNames/classNames';
@@ -13,7 +12,8 @@ import {
   DynamicModuleLoader,
   ReducersList,
 } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
-import { getFeatureFlags } from '@/shared/lib/features';
+import { getFeatureFlags, toggleFeatures } from '@/shared/lib/features';
+import { Card } from '@/shared/ui/Card';
 import { VStack } from '@/shared/ui/Stack';
 import { Page } from '@/widgets/Page';
 
@@ -34,16 +34,21 @@ const ArticleDetailsPage: FC<IArticleDetailsPageProps> = ({ className }) => {
 
   if (!id) return null;
 
+  // пример применения функционала по фичи-флага
+  const articleRatingCard = toggleFeatures({
+    name: 'isArticleRatingEnabled',
+    off: () => <Card>{'Оценка статей скоро появится!'}</Card>,
+    on: () => <ArticleRating articleId={id} />,
+  });
+
   return (
     <DynamicModuleLoader reducers={reducers}>
       <Page className={classNames(cls.articleDetailsPage, {}, [className])}>
         <VStack max gap='16'>
           <ArticleDetailsPageHeader />
           <ArticleDetails id={id} />
-          {/* пример применения функционала по фичи-флагу */}
-          {/* {!!isArticleRatingEnable && <ArticleRating articleId={id} />} */}
-          {!!isCounterEnable && <Counter />}
-          <ArticleRating articleId={id} />
+          {/* пример применения функционала по фичи-флага */}
+          {articleRatingCard}
           <ArticleRecommendationsList />
           <ArticleDetailsComments id={id} />
         </VStack>
