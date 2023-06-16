@@ -12,7 +12,7 @@ import {
   DynamicModuleLoader,
   ReducersList,
 } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
-import { getFeatureFlags, toggleFeatures } from '@/shared/lib/features';
+import { ToggleFeatures } from '@/shared/lib/features';
 import { Card } from '@/shared/ui/Card';
 import { VStack } from '@/shared/ui/Stack';
 import { Page } from '@/widgets/Page';
@@ -27,19 +27,8 @@ const reducers: ReducersList = {
 
 const ArticleDetailsPage: FC<IArticleDetailsPageProps> = ({ className }) => {
   const { id } = useParams<{ id: string }>();
-  // добавление фичи-флага (данные, кому показывать, а кому нет, должны храниться в БД (например, в модели юзера))
-  // в нашем случае мы добавили пользователю с id=1 этот фичи-флаг и второму пользователю отключили
-  const isArticleRatingEnable = getFeatureFlags('isArticleRatingEnabled');
-  const isCounterEnable = getFeatureFlags('isCounterEnabled');
 
   if (!id) return null;
-
-  // пример применения функционала по фичи-флага
-  const articleRatingCard = toggleFeatures({
-    name: 'isArticleRatingEnabled',
-    off: () => <Card>{'Оценка статей скоро появится!'}</Card>,
-    on: () => <ArticleRating articleId={id} />,
-  });
 
   return (
     <DynamicModuleLoader reducers={reducers}>
@@ -47,8 +36,12 @@ const ArticleDetailsPage: FC<IArticleDetailsPageProps> = ({ className }) => {
         <VStack max gap='16'>
           <ArticleDetailsPageHeader />
           <ArticleDetails id={id} />
-          {/* пример применения функционала по фичи-флага */}
-          {articleRatingCard}
+          {/* пример использования компонента по фичи-флагу */}
+          <ToggleFeatures
+            nameFeatures='isArticleRatingEnabled'
+            off={<Card>{'Оценка статей скоро появится!'}</Card>}
+            on={<ArticleRating articleId={id} />}
+          />
           <ArticleRecommendationsList />
           <ArticleDetailsComments id={id} />
         </VStack>

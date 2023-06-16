@@ -38,7 +38,8 @@
     "chromatic": "chromatic --exit-zero-on-changes --project-token=430a91684282",
     "prepare": "husky install",
     "generate:slices": "node ./scripts/createSlice/index.js",
-    "postinstall": "node ./scripts/remove-cache.js"
+    "postinstall": "node ./scripts/remove-cache.js",
+    "remove-features": "npx ts-node ./scripts/remove-feature.ts"
   },
   "overrides": {
     "chrome-remote-interface": "0.31.3"
