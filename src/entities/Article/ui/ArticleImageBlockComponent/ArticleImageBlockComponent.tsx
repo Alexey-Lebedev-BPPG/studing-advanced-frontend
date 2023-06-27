@@ -2,8 +2,8 @@ import { FC, memo } from 'react';
 import cls from './ArticleImageBlockComponent.module.scss';
 import { ArticleImageBlock } from '../../model/types/article';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { AppImage } from '@/shared/ui/AppImage';
-import { Text, TextAlign } from '@/shared/ui/Text';
+import { AppImage } from '@/shared/ui/deprecated/AppImage';
+import { Text, TextAlign } from '@/shared/ui/deprecated/Text';
 
 interface IArticleImageBlockComponentProps {
   block: ArticleImageBlock;

@@ -1,7 +1,7 @@
 import { FC, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Counter } from '@/entities/Counter';
-import { Input } from '@/shared/ui/Input';
+import { Input } from '@/shared/ui/deprecated/Input';
 import { Page } from '@/widgets/Page';
 import { BugButton } from '@/widgets/PageError';
 

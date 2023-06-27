@@ -3,14 +3,14 @@ import { useTranslation } from 'react-i18next';
 import cls from './RatingCard.module.scss';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { useDetectDevice } from '@/shared/lib/hooks/useDetectDevice/useDetectDevice';
-import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button';
-import { Card } from '@/shared/ui/Card';
-import { Drawer } from '@/shared/ui/Drawer';
-import { Input } from '@/shared/ui/Input';
-import { Modal } from '@/shared/ui/Modal';
 import { HStack, VStack } from '@/shared/ui/Stack';
-import { StarRating } from '@/shared/ui/StarRating';
-import { Text } from '@/shared/ui/Text';
+import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/deprecated/Button';
+import { Card } from '@/shared/ui/deprecated/Card';
+import { Drawer } from '@/shared/ui/deprecated/Drawer';
+import { Input } from '@/shared/ui/deprecated/Input';
+import { Modal } from '@/shared/ui/deprecated/Modal';
+import { StarRating } from '@/shared/ui/deprecated/StarRating';
+import { Text } from '@/shared/ui/deprecated/Text';
 
 export interface IRatingCardProps {
   className?: string;
