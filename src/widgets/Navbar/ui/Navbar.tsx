@@ -8,6 +8,7 @@ import { AvatarDropdown } from '@/features/AvatarDropdown';
 import { NotificationButton } from '@/features/NotificationButton';
 import { getRouteArticleCreate } from '@/shared/const/router';
 import { classNames } from '@/shared/lib/classNames/classNames';
+import { ToggleFeatures } from '@/shared/lib/features';
 import { AppLink, AppLinkTheme } from '@/shared/ui/AppLink';
 import { Button, ButtonTheme } from '@/shared/ui/Button';
 import { HStack } from '@/shared/ui/Stack';
@@ -36,20 +37,36 @@ export const Navbar = memo(({ className }: NavbarProps) => {
   // для авторизованного юзера
   if (authData)
     return (
-      <header className={classNames(cls.navbar, {}, [className])}>
-        <Text
-          theme={TextTheme.INVERTED}
-          className={cls.appName}
-          title={`${t('Ulbi Example')}`}
-        />
-        <AppLink to={getRouteArticleCreate()} theme={AppLinkTheme.SECONDARY}>
-          {t('Создать статью')}
-        </AppLink>
-        <HStack gap='16' className={cls.actions}>
-          <NotificationButton />
-          <AvatarDropdown />
-        </HStack>
-      </header>
+      <ToggleFeatures
+        nameFeatures={'isAppRedesigned'}
+        on={
+          <header className={classNames(cls.navbarRedesigned, {}, [className])}>
+            <HStack gap='16' className={cls.actions}>
+              <NotificationButton />
+              <AvatarDropdown />
+            </HStack>
+          </header>
+        }
+        off={
+          <header className={classNames(cls.navbar, {}, [className])}>
+            <Text
+              theme={TextTheme.INVERTED}
+              className={cls.appName}
+              title={`${t('Ulbi Example')}`}
+            />
+            <AppLink
+              to={getRouteArticleCreate()}
+              theme={AppLinkTheme.SECONDARY}
+            >
+              {t('Создать статью')}
+            </AppLink>
+            <HStack gap='16' className={cls.actions}>
+              <NotificationButton />
+              <AvatarDropdown />
+            </HStack>
+          </header>
+        }
+      />
     );
 
   // для не авторизованного юзера

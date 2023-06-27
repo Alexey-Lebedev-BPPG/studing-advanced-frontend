@@ -6,6 +6,8 @@ import { SidebarItem } from '../SidebarItem';
 import { LanguageSwitcher } from '@/features/LanguageSwitcher';
 import { ThemeSwitcher } from '@/features/ThemeSwitcher';
 import { classNames } from '@/shared/lib/classNames/classNames';
+import { ToggleFeatures } from '@/shared/lib/features';
+import { AppLogo } from '@/shared/ui/AppLogo';
 import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button';
 import { VStack } from '@/shared/ui/Stack';
 
@@ -28,32 +30,50 @@ export const SideBar: FC<ISideBarProps> = memo(({ className }) => {
       )),
     [collapsed, sidebarItemsList],
   );
+
   return (
-    <section
-      data-testid='sidebar'
-      className={classNames(cls.sideBar, { [cls.collapsed]: collapsed }, [
-        className,
-      ])}
-    >
-      <Button
-        square
-        type='button'
-        data-testid='sidebar-toggle'
-        className={cls.collapsedBtn}
-        theme={ButtonTheme.BACKGROUND_INVERTED}
-        size={ButtonSize.L}
-        onClick={onToggle}
-      >
-        {collapsed ? '>' : '<'}
-      </Button>
-      <VStack role='navigation' gap='8' className={cls.items}>
-        {/* рендерим наши ссылки сайтбара */}
-        {itemsList}
-      </VStack>
-      <div className={cls.switchers}>
-        <ThemeSwitcher />
-        <LanguageSwitcher short={collapsed} className={cls.lang} />
-      </div>
-    </section>
+    <ToggleFeatures
+      nameFeatures='isAppRedesigned'
+      on={
+        <aside
+          data-testid='sidebar'
+          className={classNames(
+            cls.sideBarRedesigned,
+            { [cls.collapsed]: collapsed },
+            [className],
+          )}
+        >
+          <AppLogo className={cls.appLogo} />
+        </aside>
+      }
+      off={
+        <aside
+          data-testid='sidebar'
+          className={classNames(cls.sideBar, { [cls.collapsed]: collapsed }, [
+            className,
+          ])}
+        >
+          <Button
+            square
+            type='button'
+            data-testid='sidebar-toggle'
+            className={cls.collapsedBtn}
+            theme={ButtonTheme.BACKGROUND_INVERTED}
+            size={ButtonSize.L}
+            onClick={onToggle}
+          >
+            {collapsed ? '>' : '<'}
+          </Button>
+          <VStack role='navigation' gap='8' className={cls.items}>
+            {/* рендерим наши ссылки сайдбара */}
+            {itemsList}
+          </VStack>
+          <div className={cls.switchers}>
+            <ThemeSwitcher />
+            <LanguageSwitcher short={collapsed} className={cls.lang} />
+          </div>
+        </aside>
+      }
+    />
   );
 });

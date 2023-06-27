@@ -57,7 +57,7 @@ export const ListBox: FC<IListBoxProps> = ({
             <HListbox.Option
               key={item.value}
               value={item.value}
-              // делаем как фрагмент элемент, чотб не создавать новые ноды
+              // делаем как фрагмент элемент, чтоб не создавать новые ноды
               as={Fragment}
               disabled={item.disabled}
             >

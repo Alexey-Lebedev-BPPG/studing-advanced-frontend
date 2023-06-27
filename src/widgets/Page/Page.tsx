@@ -6,6 +6,7 @@ import { StateSchema } from '@/app/providers/StoreProvider';
 import { getScrollSavePath, scrollSaveActions } from '@/features/ScrollSave';
 import { PAGE_ID } from '@/shared/const/pageId';
 import { classNames } from '@/shared/lib/classNames/classNames';
+import { toggleFeatures } from '@/shared/lib/features';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useInfiniteScroll } from '@/shared/lib/hooks/useInfiniteScroll/useInfiniteScroll';
 import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect/useInitialEffect';
@@ -59,9 +60,18 @@ export const Page: FC<IPageProps> = ({
   return (
     <main
       ref={wrapperRef}
-      className={classNames(cls.page, {}, [className])}
       id={PAGE_ID}
       data-testid={otherProps['data-testid'] || 'Page'}
+      className={classNames(
+        // отображаем класс от фичи
+        toggleFeatures({
+          name: 'isAppRedesigned',
+          off: () => cls.page,
+          on: () => cls.pageRedesigned,
+        }),
+        {},
+        [className],
+      )}
       onScroll={onScrollHandler}
     >
       {children}
