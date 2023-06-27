@@ -29,7 +29,7 @@
 .content {
   // указываем название контента
   grid-area: content;
-  min-width: 1200px;
+  max-width: 1200px;
   justify-self: center;
 }
 

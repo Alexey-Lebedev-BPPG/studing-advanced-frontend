@@ -1,5 +1,5 @@
 import { FC, ReactElement, memo } from 'react';
-import cls from './MainLayout.module.scss';
+import cls from './mainLayout.module.scss';
 import { classNames } from '@/shared/lib/classNames/classNames';
 
 interface IMainLayoutProps {
