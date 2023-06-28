@@ -1,6 +1,6 @@
 import { FC, ReactNode, useCallback, useEffect } from 'react';
 import cls from './Drawer.module.scss';
-import { Portal } from '../../Portal/Portal';
+import { Portal } from '../../redesigned/Portal';
 import { Overlay } from '../Overlay/Overlay';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import {

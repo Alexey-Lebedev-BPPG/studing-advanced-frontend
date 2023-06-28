@@ -1,6 +1,6 @@
 import { FC, ReactNode } from 'react';
 import cls from './Modal.module.scss';
-import { Portal } from '../../../ui/Portal/Portal';
+import { Portal } from '../../redesigned/Portal';
 import { Overlay } from '../Overlay/Overlay';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { useModal } from '@/shared/lib/hooks/useModal/useModal';

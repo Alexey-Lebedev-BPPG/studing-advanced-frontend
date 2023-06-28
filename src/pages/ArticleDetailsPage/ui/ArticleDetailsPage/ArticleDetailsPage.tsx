@@ -13,8 +13,8 @@ import {
   ReducersList,
 } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { ToggleFeatures } from '@/shared/lib/features';
-import { VStack } from '@/shared/ui/Stack';
 import { Card } from '@/shared/ui/deprecated/Card';
+import { VStack } from '@/shared/ui/redesigned/Stack';
 import { Page } from '@/widgets/Page';
 
 interface IArticleDetailsPageProps {

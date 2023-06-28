@@ -6,7 +6,7 @@
   grid-template-areas: 'sidebar content rightbar';
 
   // указываем ширину каждого элемента
-  grid-template-columns: 284px 1fr 176px;
+  grid-template-columns: 284px 1fr 100px;
 }
 
 .sidebar,
@@ -19,11 +19,7 @@
 .sidebar {
   // указываем название контента
   grid-area: sidebar;
-
-  // выравниваем по центру допустимой ширины
-  justify-self: center;
   padding: 32px;
-
 }
 
 .content {
@@ -31,6 +27,7 @@
   grid-area: content;
   max-width: 1200px;
   justify-self: center;
+  width: 100%;
 }
 
 .rightbar {
