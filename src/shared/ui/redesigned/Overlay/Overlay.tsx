@@ -8,10 +8,6 @@ export interface IOverlayProps {
   onClick?: () => void;
 }
 
-/**
- * Устарел, используем новые компоненты из папки redesigned
- * @deprecated
- */
 // компонент для затемнения модального окна
 export const Overlay: FC<IOverlayProps> = memo(({ className, onClick }) => {
   const { t } = useTranslation();

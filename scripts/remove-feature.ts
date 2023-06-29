@@ -167,16 +167,16 @@ files.forEach(sourceFile => {
   // обходим всех потомков
   sourceFile.forEachDescendant(node => {
     // находим тип функции (можно посмотреть в АСД) и проверяем, что вызов функции совпадает с названием toggleFeatures
-    if (node.isKind(SyntaxKind.CallExpression) && isToggleFunction(node)) {
-      replaceToggleFunction(node);
-    }
+    if (node.isKind(SyntaxKind.CallExpression) && isToggleFunction(node))
+      return replaceToggleFunction(node);
     // находим тип компонента (можно посмотреть в АСД) и проверяем, что нода является JSX-элементом и название совпадает с ToggleFeatures
     if (
       node.isKind(SyntaxKind.JsxSelfClosingElement) &&
       isToggleComponent(node)
-    ) {
-      replaceToggleComponent(node);
-    }
+    )
+      return replaceToggleComponent(node);
+
+    return;
   });
 });
 

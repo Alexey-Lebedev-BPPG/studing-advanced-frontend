@@ -9,10 +9,6 @@ interface ISkeletonProps {
   width?: string | number;
 }
 
-/**
- * Устарел, используем новые компоненты из папки redesigned
- * @deprecated
- */
 export const Skeleton: FC<ISkeletonProps> = memo(
   ({ border, className, height, width }) => {
     const styles: CSSProperties = {
