@@ -26,43 +26,53 @@ const mapSizeToHeaderTag: Record<TextSize, HeaderTagType> = {
 
 interface ITextProps {
   align?: TextAlign;
+  bold?: boolean;
   className?: string;
   'data-testid'?: string;
+  nowrap?: boolean;
   size?: TextSize;
   text?: string | null;
   title?: string | null;
   variant?: TextVariant;
 }
 
-export const Text: FC<ITextProps> = memo(
-  ({
+export const Text: FC<ITextProps> = memo(props => {
+  const {
     align = 'left',
-    className,
+    bold,
     // ввиду того, что такое свойство не позволительно деструктуризировать, нужно переименовать его
+    className,
     'data-testid': dataTestId = 'Text',
+    nowrap = false,
     size = 'm',
     text,
     title,
     variant = 'primary',
-  }) => {
-    const HeaderTag = mapSizeToHeaderTag[size];
-    const sizeClass = mapSizeToClass[size];
+  } = props;
 
-    const additionalClasses = [className, cls[variant], cls[align], sizeClass];
+  const HeaderTag = mapSizeToHeaderTag[size];
+  const sizeClass = mapSizeToClass[size];
 
-    return (
-      <div className={classNames(cls.textWrapper, {}, additionalClasses)}>
-        {!!title && (
-          <HeaderTag className={cls.title} data-testid={`${dataTestId}.Header`}>
-            {title}
-          </HeaderTag>
-        )}
-        {!!text && (
-          <p className={cls.text} data-testid={`${dataTestId}.Paragraph`}>
-            {text}
-          </p>
-        )}
-      </div>
-    );
-  },
-);
+  const additionalClasses = [className, cls[variant], cls[align], sizeClass];
+
+  return (
+    <div
+      className={classNames(
+        cls.textWrapper,
+        { [cls.bold]: bold, [cls.wrap]: nowrap },
+        additionalClasses,
+      )}
+    >
+      {!!title && (
+        <HeaderTag className={cls.title} data-testid={`${dataTestId}.Header`}>
+          {title}
+        </HeaderTag>
+      )}
+      {!!text && (
+        <p className={cls.text} data-testid={`${dataTestId}.Paragraph`}>
+          {text}
+        </p>
+      )}
+    </div>
+  );
+});

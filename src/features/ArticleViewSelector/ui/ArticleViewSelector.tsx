@@ -82,6 +82,7 @@ export const ArticleViewSelector: FC<IArticleViewSelectorProps> = memo(
           >
             {viewTypes.map(viewType => (
               <Icon
+                key={viewType.view}
                 clickable
                 Svg={viewType.icon}
                 width={24}

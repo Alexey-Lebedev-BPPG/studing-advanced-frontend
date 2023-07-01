@@ -2,8 +2,11 @@ import { FC, memo } from 'react';
 import cls from './ArticleListItem.module.scss';
 import { ArticleView } from '../../model/consts/consts';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { Card } from '@/shared/ui/deprecated/Card';
-import { Skeleton } from '@/shared/ui/redesigned/Skeleton';
+import { toggleFeatures } from '@/shared/lib/features';
+import { Card as CardDeprecated } from '@/shared/ui/deprecated/Card';
+import { Skeleton as SkeletonDeprecated } from '@/shared/ui/deprecated/Skeleton';
+import { Card as CardRedesigned } from '@/shared/ui/redesigned/Card';
+import { Skeleton as SkeletonRedesigned } from '@/shared/ui/redesigned/Skeleton';
 
 export interface IArticleListItemSkeletonProps {
   className?: string;
@@ -11,7 +14,21 @@ export interface IArticleListItemSkeletonProps {
 }
 
 export const ArticleListItemSkeleton: FC<IArticleListItemSkeletonProps> = memo(
-  ({ className, view }) => {
+  props => {
+    const { className, view } = props;
+
+    const Skeleton = toggleFeatures({
+      name: 'isAppRedesigned',
+      off: () => SkeletonDeprecated,
+      on: () => SkeletonRedesigned,
+    });
+
+    const Card = toggleFeatures({
+      name: 'isAppRedesigned',
+      off: () => CardDeprecated,
+      on: () => CardRedesigned,
+    });
+
     if (view === ArticleView.BIG)
       return (
         <div className={classNames('', {}, [className, cls[view]])}>

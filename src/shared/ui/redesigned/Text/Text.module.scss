@@ -1,4 +1,4 @@
-.textWrapper {
+.wrap{
   text-wrap: nowrap;
 }
 
@@ -8,6 +8,13 @@
 
 .text {
   color: var(--text-redesigned);
+}
+
+.bold {
+  .title,
+  .text {
+    font-weight: 700;
+  }
 }
 
 .error {

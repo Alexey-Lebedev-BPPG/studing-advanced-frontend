@@ -11,6 +11,7 @@ export enum CardTheme {
  * Устарел, используем новые компоненты из папки redesigned
  * @deprecated
  */
+
 export interface ICardProps extends HTMLAttributes<HTMLDivElement> {
   children: ReactNode;
   className?: string;
