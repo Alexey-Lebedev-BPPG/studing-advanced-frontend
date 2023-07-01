@@ -7,7 +7,9 @@ import { Article } from '../../model/types/article';
 import { ArticleListItem } from '../ArticleListItem/ArticleListItem';
 import { ArticleListItemSkeleton } from '../ArticleListItem/ArticleListItemSkeleton';
 import { classNames } from '@/shared/lib/classNames/classNames';
+import { ToggleFeatures } from '@/shared/lib/features';
 import { Text, TextSize } from '@/shared/ui/deprecated/Text';
+import { HStack } from '@/shared/ui/redesigned/Stack';
 
 export interface IArticleListProps {
   articles: Article[];
@@ -81,32 +83,54 @@ export const ArticleList: FC<IArticleListProps> = memo(
       );
 
     return (
-      // для примера используем react-virtualized, но она устарела. ПОэтому предподчтительнее использовать react-virtuoso
-      // <div className={classNames(cls.articleList, {}, [className])}>
-      //   <VirtuosoGrid
-      //     data={articles}
-      //     itemContent={(index, article) => renderArticle(article)}
-      //   />
-      //   {isLoading && getSkeletons(view)}
-      // </div>
-      // @ts-ignore
-      // <WindowScroller
-      //   scrollElement={document.getElementById(PAGE_ID) as Element}
-      // >
-      //   {({
-      //     width,
-      //     height,
-      //     registerChild,
-      //     onChildScroll,
-      //     isScrolling,
-      //     scrollTop,
-      //   }) => (
-      <div
-        // ref={registerChild}
-        className={classNames('', {}, [className, cls[view]])}
-        data-testid='ArticleList'
-      >
-        {/* {virtualized ? (
+      <ToggleFeatures
+        nameFeatures='isAppRedesigned'
+        on={
+          <HStack
+            wrap='wrap'
+            gap='16'
+            data-testid='ArticleList'
+            className={classNames(cls.ArticleListRedesigned, {})}
+          >
+            {articles.map(item => (
+              <ArticleListItem
+                key={item.id}
+                target={target}
+                article={item}
+                view={view}
+                className={cls.card}
+              />
+            ))}
+            {!!isLoading && getSkeletons(view)}
+          </HStack>
+        }
+        off={
+          // для примера используем react-virtualized, но она устарела. ПОэтому предпочтительнее использовать react-virtuoso
+          // <div className={classNames(cls.articleList, {}, [className])}>
+          //   <VirtuosoGrid
+          //     data={articles}
+          //     itemContent={(index, article) => renderArticle(article)}
+          //   />
+          //   {isLoading && getSkeletons(view)}
+          // </div>
+          // @ts-ignore
+          // <WindowScroller
+          //   scrollElement={document.getElementById(PAGE_ID) as Element}
+          // >
+          //   {({
+          //     width,
+          //     height,
+          //     registerChild,
+          //     onChildScroll,
+          //     isScrolling,
+          //     scrollTop,
+          //   }) => (
+          <div
+            // ref={registerChild}
+            className={classNames(cls.ArticleList, {}, [className, cls[view]])}
+            data-testid='ArticleList'
+          >
+            {/* {virtualized ? (
           <List
             height={height || 700}
             rowCount={rowCount}
@@ -129,19 +153,21 @@ export const ArticleList: FC<IArticleListProps> = memo(
             />
           ))
         )} */}
-        {articles.map(item => (
-          <ArticleListItem
-            key={item.id}
-            target={target}
-            article={item}
-            view={view}
-            className={cls.card}
-          />
-        ))}
-        {!!isLoading && getSkeletons(view)}
-      </div>
-      //   )}
-      // </WindowScroller>
+            {articles.map(item => (
+              <ArticleListItem
+                key={item.id}
+                target={target}
+                article={item}
+                view={view}
+                className={cls.card}
+              />
+            ))}
+            {!!isLoading && getSkeletons(view)}
+          </div>
+          //   )}
+          // </WindowScroller>
+        }
+      />
     );
   },
 );

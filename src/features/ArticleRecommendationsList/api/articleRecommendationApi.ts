@@ -10,6 +10,7 @@ const recommendationsList = rtkApi.injectEndpoints({
       query: limit => ({
         // указываем параметры
         params: {
+          _expand: 'user',
           _limit: limit,
         },
 

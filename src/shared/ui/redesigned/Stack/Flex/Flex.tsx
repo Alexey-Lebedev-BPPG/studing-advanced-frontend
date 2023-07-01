@@ -2,10 +2,11 @@ import { DetailedHTMLProps, FC, HTMLAttributes, ReactNode } from 'react';
 import cls from './Flex.module.scss';
 import { classNames } from '@/shared/lib/classNames/classNames';
 
-export type FlexJustify = 'start' | 'center' | 'end' | 'between';
-export type FlexAlign = 'start' | 'center' | 'end';
+type FlexJustify = 'start' | 'center' | 'end' | 'between';
+type FlexAlign = 'start' | 'center' | 'end';
 export type FlexDirection = 'row' | 'column';
-export type FlexGap = '4' | '8' | '16' | '24' | '32';
+type FlexWrap = 'nowrap' | 'wrap';
+type FlexGap = '4' | '8' | '16' | '24' | '32';
 
 // делаем сопоставлении пропса с классом, который хотим потом повесить
 const justifyClasses: Record<FlexJustify, string> = {
@@ -48,6 +49,7 @@ export interface IFlexProps extends DivProps {
   gap?: FlexGap;
   justify?: FlexJustify;
   max?: boolean;
+  wrap?: FlexWrap;
 }
 
 export const Flex: FC<IFlexProps> = ({
@@ -58,6 +60,7 @@ export const Flex: FC<IFlexProps> = ({
   gap,
   justify = 'start',
   max,
+  wrap = 'nowrap',
   ...otherProps
 }) => {
   const classes = [
@@ -66,6 +69,7 @@ export const Flex: FC<IFlexProps> = ({
     alignClasses[align],
     directionClasses[direction],
     gap && gapClasses[gap],
+    cls[wrap],
   ];
 
   const mods = {
