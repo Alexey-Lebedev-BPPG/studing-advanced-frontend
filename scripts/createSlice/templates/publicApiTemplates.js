@@ -6,7 +6,7 @@ module.exports = componentName => {
   const nameToCamelCase = `${getCamelCase(componentName)}`;
   const nameToPascalCase = `${getPascalCase(componentName)}`;
 
-  return `export { ${nameToPascalCase}Async as ${nameToPascalCase} } from './ui/${nameToPascalCase}.async'
+  return `export { ${nameToPascalCase}Async as ${nameToPascalCase} } from './ui/${nameToPascalCase}.async;'
 export type { ${nameToPascalCase}Schema } from './model/types/${nameToCamelCase}';
 `;
 };

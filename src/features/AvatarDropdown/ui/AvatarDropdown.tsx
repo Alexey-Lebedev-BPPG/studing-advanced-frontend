@@ -7,7 +7,11 @@ import {
   isUserManager,
   userActions,
 } from '@/entities/User';
-import { getRouteAdminPanel, getRouteProfile } from '@/shared/const/router';
+import {
+  getRouteAdminPanel,
+  getRouteProfile,
+  getRouteSettings,
+} from '@/shared/const/router';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { ToggleFeatures } from '@/shared/lib/features';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
@@ -41,6 +45,7 @@ export const AvatarDropdown: FC<IAvatarDropdownProps> = memo(
       ...(isAdminPanelAvailable
         ? [{ content: t('Админка'), href: getRouteAdminPanel() }]
         : []),
+      { content: t('Настройки'), href: getRouteSettings() },
       { content: t('Профиль'), href: getRouteProfile(authData.id) },
       { content: t('Выйти'), onClick: onLogout },
     ];
