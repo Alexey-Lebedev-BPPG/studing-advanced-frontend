@@ -39,7 +39,16 @@ export const Page: FC<IPageProps> = ({
     // eslint-disable-next-line function-paren-newline
   );
 
-  useInfiniteScroll({ callback: onScrollEnd, triggerRef, wrapperRef });
+  useInfiniteScroll({
+    callback: onScrollEnd,
+    triggerRef,
+    // чиним скролл, т.к. теперь у нас скролл на главной странице
+    wrapperRef: toggleFeatures({
+      name: 'isAppRedesigned',
+      off: () => wrapperRef,
+      on: () => undefined,
+    }),
+  });
 
   // возвращаем страницу на позицию
   useInitialEffect(() => {

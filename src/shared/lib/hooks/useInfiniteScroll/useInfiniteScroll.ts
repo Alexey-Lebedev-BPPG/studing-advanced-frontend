@@ -6,7 +6,7 @@ export interface UseInfiniteScrollProps {
   // реф, при достижении которого будем триггерить функцию
   triggerRef: MutableRefObject<Element>;
   // контейнер, в котором появляется скролл
-  wrapperRef: MutableRefObject<Element>;
+  wrapperRef?: MutableRefObject<Element>;
 }
 
 export const useInfiniteScroll = ({
@@ -17,7 +17,8 @@ export const useInfiniteScroll = ({
   useEffect(() => {
     let observer: IntersectionObserver | null = null;
     // чтоб не валились ошибки, изолируем рефы с помощью замыкания в данном эффекте
-    const wrapperElement = wrapperRef.current;
+    // также, если нам не поступает wrapperRef, то мы задаем null, что будет значить, что будет отслеживаться скролл от глобального родителя
+    const wrapperElement = wrapperRef?.current || null;
     const triggerElement = triggerRef.current;
 
     if (callback) {

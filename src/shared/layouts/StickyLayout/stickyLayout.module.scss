@@ -1,0 +1,33 @@
+.stickyLayout {
+  display: grid;
+  gap: 16px;
+
+  // указываем порядок отображения
+  grid-template-areas: 'left content right';
+
+  // указываем ширину каждого элемента
+  grid-template-columns: min-content 1fr 264px;
+}
+
+.left,
+.right {
+  position: sticky;
+  top: 32px;
+  height: fit-content;
+}
+
+.left {
+  grid-area: left;
+}
+
+.content {
+  grid-area: content;
+  max-width: 1200px;
+  justify-self: center;
+  width: 100%;
+}
+
+.right {
+  grid-area: right;
+  width: fit-content;
+}

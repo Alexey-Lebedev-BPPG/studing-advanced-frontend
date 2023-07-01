@@ -1,5 +1,5 @@
 import { Listbox as HListbox } from '@headlessui/react';
-import { FC, Fragment, ReactNode } from 'react';
+import { Fragment, ReactNode, memo, useMemo } from 'react';
 import cls from './ListBox.module.scss';
 import { classNames } from '../../../../../lib/classNames/classNames';
 import { DropDownDirection } from '../../../../../types/ui';
@@ -8,75 +8,89 @@ import { Button } from '../../../Button/Button';
 import { mapDirectionClass } from '../../styles/consts';
 import popupCls from '../../styles/popups.module.scss';
 
-export interface ListBoxItem {
+export interface ListBoxItem<T extends string> {
   content: ReactNode;
   disabled?: boolean;
-  value: string;
+  valueOpt: T;
 }
 
-interface IListBoxProps {
+interface IListBoxProps<T extends string> {
   className?: string;
-  defaultValue?: string;
+  defaultValue?: T;
   direction?: DropDownDirection;
-  items?: ListBoxItem[];
+  items?: ListBoxItem<T>[];
   label?: string;
-  onChange: (value: string) => void;
+  onChange: (value: T) => void;
   readonly?: boolean;
   value?: string;
 }
 
-export const ListBox: FC<IListBoxProps> = ({
-  className,
-  defaultValue,
-  direction = 'bottom left',
-  items,
-  label,
-  onChange,
-  readonly,
-  value,
-}) => {
-  const optionsClasses = [mapDirectionClass[direction], popupCls.menu];
+const typedMemo: <T>(c: T) => T = memo;
 
-  return (
-    <HStack gap='4'>
-      {!!label && <span>{`${label}>`}</span>}
-      <HListbox
-        as='div'
-        disabled={readonly}
-        className={classNames('', {}, [className, popupCls.popup])}
-        value={value}
-        onChange={onChange}
-      >
-        <HListbox.Button as='div' className={popupCls.trigger}>
-          <Button disabled={readonly}>{value ?? defaultValue}</Button>
-        </HListbox.Button>
-        <HListbox.Options
-          className={classNames(cls.options, {}, optionsClasses)}
+export const ListBox = typedMemo(
+  <T extends string>(props: IListBoxProps<T>) => {
+    const {
+      className,
+      defaultValue,
+      direction = 'bottom left',
+      items,
+      label,
+      onChange,
+      readonly,
+      value,
+    } = props;
+
+    const optionsClasses = [mapDirectionClass[direction], popupCls.menu];
+
+    const selectedItem = useMemo(
+      () => items?.find(item => item.valueOpt === value),
+      [items, value],
+    );
+
+    return (
+      <HStack gap='4'>
+        {!!label && <span>{`${label}>`}</span>}
+        <HListbox
+          as='div'
+          disabled={readonly}
+          className={classNames('', {}, [className, popupCls.popup])}
+          value={value}
+          onChange={onChange}
         >
-          {items?.map(item => (
-            <HListbox.Option
-              key={item.value}
-              value={item.value}
-              // делаем как фрагмент элемент, чтоб не создавать новые ноды
-              as={Fragment}
-              disabled={item.disabled}
-            >
-              {/* selected - выбранный элемент, а active - ховер элемент */}
-              {({ active, selected }) => (
-                <li
-                  className={classNames(cls.item, {
-                    [popupCls.active]: active,
-                    [popupCls.disabled]: item.disabled,
-                  })}
-                >
-                  {selected ? '!!!' : null}
-                  {item.content}
-                </li>
-              )}
-            </HListbox.Option>
-          ))}
-        </HListbox.Options>
-      </HListbox>
-    </HStack>
-  );
-};
+          <HListbox.Button as='div' className={popupCls.trigger}>
+            <Button variant='filled' disabled={readonly}>
+              {selectedItem?.content ?? defaultValue}
+            </Button>
+          </HListbox.Button>
+          <HListbox.Options
+            className={classNames(cls.options, {}, optionsClasses)}
+          >
+            {items?.map(item => (
+              <HListbox.Option
+                key={item.valueOpt}
+                value={item.valueOpt}
+                // делаем как фрагмент элемент, чтоб не создавать новые ноды
+                as={Fragment}
+                disabled={item.disabled}
+              >
+                {/* selected - выбранный элемент, а active - ховер элемент */}
+                {({ active, selected }) => (
+                  <li
+                    className={classNames(cls.item, {
+                      [popupCls.active]: active,
+                      [popupCls.disabled]: item.disabled,
+                      [popupCls.selected]: selected,
+                    })}
+                  >
+                    {selected}
+                    {item.content}
+                  </li>
+                )}
+              </HListbox.Option>
+            ))}
+          </HListbox.Options>
+        </HListbox>
+      </HStack>
+    );
+  },
+);

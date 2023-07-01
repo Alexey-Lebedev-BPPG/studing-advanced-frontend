@@ -31,7 +31,7 @@ interface ITextProps {
   size?: TextSize;
   text?: string | null;
   title?: string | null;
-  variant?: 'primary';
+  variant?: TextVariant;
 }
 
 export const Text: FC<ITextProps> = memo(

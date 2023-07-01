@@ -4,8 +4,10 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 
 type CardTheme = 'normal' | 'outline' | 'light';
 type CardPadding = '0' | '8' | '16' | '24';
+type CardBorder = 'round' | 'normalBorder';
 
 export interface ICardProps extends HTMLAttributes<HTMLDivElement> {
+  border?: CardBorder;
   children: ReactNode;
   className?: string;
   fullWidth?: boolean;
@@ -22,6 +24,7 @@ const mapPaddingToClass: Record<CardPadding, string> = {
 
 export const Card: FC<ICardProps> = props => {
   const {
+    border = 'normal',
     children,
     className,
     fullWidth,
@@ -37,6 +40,7 @@ export const Card: FC<ICardProps> = props => {
         className,
         cls[variant],
         cls[paddings],
+        cls[border],
       ])}
       {...otherProps}
     >
