@@ -5,8 +5,10 @@ import { classNames } from '../../../../../lib/classNames/classNames';
 import { DropDownDirection } from '../../../../../types/ui';
 import { HStack } from '../../../../redesigned/Stack';
 import { Button } from '../../../Button/Button';
+import { Icon } from '../../../Icon';
 import { mapDirectionClass } from '../../styles/consts';
 import popupCls from '../../styles/popups.module.scss';
+import ArrowIcon from '@/shared/assets/icons/arrow-bottom.svg';
 
 export interface ListBoxItem<T extends string> {
   content: ReactNode;
@@ -58,7 +60,11 @@ export const ListBox = typedMemo(
           onChange={onChange}
         >
           <HListbox.Button as='div' className={popupCls.trigger}>
-            <Button variant='filled' disabled={readonly}>
+            <Button
+              variant='filled'
+              disabled={readonly}
+              addonRight={<Icon Svg={ArrowIcon} />}
+            >
               {selectedItem?.content ?? defaultValue}
             </Button>
           </HListbox.Button>

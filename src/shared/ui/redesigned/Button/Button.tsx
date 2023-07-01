@@ -7,6 +7,8 @@ type ButtonVariant = 'clear' | 'outline' | 'filled';
 type ButtonSize = 'm' | 'l' | 'xl';
 
 interface IButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  addonLeft?: ReactNode;
+  addonRight?: ReactNode;
   /**
    * Содержимое кнопки
    */
@@ -38,6 +40,8 @@ interface IButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 // обернем кнопку тоже в memo, хоть она и принимает чилдрены, но они будут в виде простого примитива без сложной древовидной структуры
 export const Button: FC<IButtonProps> = memo(props => {
   const {
+    addonLeft,
+    addonRight,
     children,
     className,
     disabled,
@@ -52,7 +56,9 @@ export const Button: FC<IButtonProps> = memo(props => {
     [cls.square]: square,
     [cls.disabled]: disabled,
     [cls.fullWidth]: fullWidth,
+    [cls.withAddon]: Boolean(addonLeft) || Boolean(addonRight),
   };
+
   return (
     <button
       type='button'
@@ -63,7 +69,9 @@ export const Button: FC<IButtonProps> = memo(props => {
       ])}
       {...otherProps}
     >
+      <div className={cls.addonLeft}>{addonLeft}</div>
       {children}
+      <div className={cls.addonRight}>{addonRight}</div>
     </button>
   );
 });

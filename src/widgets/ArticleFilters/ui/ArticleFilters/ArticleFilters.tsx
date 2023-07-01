@@ -4,9 +4,11 @@ import cls from './articleFilters.module.scss';
 import { ArticleSortFields, ArticleType } from '@/entities/Article';
 import { ArticleSortSelector } from '@/features/ArticleSortSelector';
 import { ArticleTypeTabs } from '@/features/ArticleTypeTabs';
+import SearchIcon from '@/shared/assets/icons/search.svg';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { SortOrder } from '@/shared/types/sort';
 import { Card } from '@/shared/ui/redesigned/Card';
+import { Icon } from '@/shared/ui/redesigned/Icon';
 import { Input } from '@/shared/ui/redesigned/Input';
 import { VStack } from '@/shared/ui/redesigned/Stack';
 
@@ -46,6 +48,7 @@ export const ArticleFilters: FC<IArticleFiltersProps> = memo(props => {
         <Input
           value={search}
           placeholder={`${t('Поиск')}`}
+          addonLeft={<Icon Svg={SearchIcon} />}
           onChange={onChangeSearch}
         />
         <ArticleTypeTabs selectedValue={type} onChangeType={onChangeType} />
