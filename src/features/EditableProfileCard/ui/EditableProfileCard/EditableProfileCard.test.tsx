@@ -53,13 +53,13 @@ describe('features/EditableProfileCard', () => {
       screen.getByTestId('EditableProfileCardHeader.EditButton'),
     );
     // очищаем пару инпутов
-    await userEvent.clear(screen.getByTestId('ProfileCard.firstname'));
+    await userEvent.clear(screen.getByTestId('ProfileCard.firstName'));
     await userEvent.clear(screen.getByTestId('ProfileCard.lastname'));
     // добавляем новые значения в инпуты
-    await userEvent.type(screen.getByTestId('ProfileCard.firstname'), 'user');
+    await userEvent.type(screen.getByTestId('ProfileCard.firstName'), 'user');
     await userEvent.type(screen.getByTestId('ProfileCard.lastname'), 'user');
     // проверяем, что значения попали в инпуты
-    expect(screen.getByTestId('ProfileCard.firstname')).toHaveValue('user');
+    expect(screen.getByTestId('ProfileCard.firstName')).toHaveValue('user');
     expect(screen.getByTestId('ProfileCard.lastname')).toHaveValue('user');
 
     // нажимаем на кнопку отмены
@@ -68,7 +68,7 @@ describe('features/EditableProfileCard', () => {
     );
 
     // проверяем, что значения в инпутах остались как и сначала
-    expect(screen.getByTestId('ProfileCard.firstname')).toHaveValue('admin');
+    expect(screen.getByTestId('ProfileCard.firstName')).toHaveValue('admin');
     expect(screen.getByTestId('ProfileCard.lastname')).toHaveValue('admin');
   });
 
@@ -77,7 +77,7 @@ describe('features/EditableProfileCard', () => {
       screen.getByTestId('EditableProfileCardHeader.EditButton'),
     );
     // очищаем инпут
-    await userEvent.clear(screen.getByTestId('ProfileCard.firstname'));
+    await userEvent.clear(screen.getByTestId('ProfileCard.firstName'));
     // нажимаем на кнопку сохранения
     await userEvent.click(
       screen.getByTestId('EditableProfileCardHeader.SaveButton'),
@@ -96,7 +96,7 @@ describe('features/EditableProfileCard', () => {
       screen.getByTestId('EditableProfileCardHeader.EditButton'),
     );
     // вводим новые значения в инпут
-    await userEvent.type(screen.getByTestId('ProfileCard.firstname'), 'user');
+    await userEvent.type(screen.getByTestId('ProfileCard.firstName'), 'user');
     // нажимаем на кнопку сохранения
     await userEvent.click(
       screen.getByTestId('EditableProfileCardHeader.SaveButton'),

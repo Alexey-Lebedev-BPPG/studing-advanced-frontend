@@ -48,10 +48,10 @@ export const EditableProfileCard: FC<IEditableProfileCardProps> = memo(
       [ValidateProfileError.INCORRECT_COUNTRY]: t('Некорректный регион'),
       [ValidateProfileError.NO_DATA]: t('Данные не указаны'),
       [ValidateProfileError.INCORRECT_USER_DATA]: t('Имя и фамилия не указаны'),
-      [ValidateProfileError.INCORRECT_AGE]: t('Некрректный возраст'),
+      [ValidateProfileError.INCORRECT_AGE]: t('Некорректный возраст'),
     };
 
-    const onChangeFirstname = useCallback(
+    const onChangeFirstName = useCallback(
       (value?: string) =>
         dispatch(profileActions.updateProfile({ first: value || '' })),
       [dispatch],
@@ -123,7 +123,7 @@ export const EditableProfileCard: FC<IEditableProfileCardProps> = memo(
             isLoading={isLoading}
             error={error}
             readonly={readonly}
-            onChangeFirstname={onChangeFirstname}
+            onChangeFirstName={onChangeFirstName}
             onChangeLastname={onChangeLastname}
             onChangeAge={onChangeAge}
             onChangeCity={onChangeCity}

@@ -1,7 +1,9 @@
 import { FC, memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Country } from '../model/consts/consts';
-import { ListBox } from '@/shared/ui/deprecated/Popups';
+import { ToggleFeatures } from '@/shared/lib/features';
+import { ListBox as ListBoxDeprecated } from '@/shared/ui/deprecated/Popups';
+import { ListBox } from '@/shared/ui/redesigned/Popups';
 
 interface ICountryProps {
   className?: string;
@@ -12,11 +14,11 @@ interface ICountryProps {
 
 // ввиду того, что массив всегда статичен, его не нужно оборачивать в memo
 const options = [
-  { content: Country.Armenia, value: Country.Armenia },
-  { content: Country.Russia, value: Country.Russia },
-  { content: Country.Belarus, value: Country.Belarus },
-  { content: Country.Kazakhstan, value: Country.Kazakhstan },
-  { content: Country.Ukraine, value: Country.Ukraine },
+  { content: Country.Armenia, valueOpt: Country.Armenia },
+  { content: Country.Russia, valueOpt: Country.Russia },
+  { content: Country.Belarus, valueOpt: Country.Belarus },
+  { content: Country.Kazakhstan, valueOpt: Country.Kazakhstan },
+  { content: Country.Ukraine, valueOpt: Country.Ukraine },
 ];
 
 export const CountrySelect: FC<ICountryProps> = memo(
@@ -31,16 +33,22 @@ export const CountrySelect: FC<ICountryProps> = memo(
       [onChange],
     );
 
+    const childrenProps = {
+      className,
+      defaultValue: `${t('Укажите страну')}`,
+      direction: 'top right' as const,
+      items: options,
+      label: `${t('Укажите страну')}`,
+      onChange: onChangeHandler,
+      readonly,
+      value,
+    };
+
     return (
-      <ListBox
-        value={value}
-        className={className}
-        defaultValue={`${t('Укажите страну')}`}
-        label={`${t('Укажите страну')}`}
-        readonly={readonly}
-        items={options}
-        direction='top right'
-        onChange={onChangeHandler}
+      <ToggleFeatures
+        nameFeatures={'isAppRedesigned'}
+        off={<ListBoxDeprecated {...childrenProps} />}
+        on={<ListBox {...childrenProps} />}
       />
     );
   },

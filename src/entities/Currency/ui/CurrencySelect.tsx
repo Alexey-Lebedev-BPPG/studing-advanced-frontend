@@ -1,7 +1,9 @@
 import { FC, memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Currency } from '../model/consts/consts';
-import { ListBox } from '@/shared/ui/deprecated/Popups';
+import { ToggleFeatures } from '@/shared/lib/features';
+import { ListBox as ListBoxDeprecated } from '@/shared/ui/deprecated/Popups';
+import { ListBox } from '@/shared/ui/redesigned/Popups';
 
 interface ICurrencyProps {
   className?: string;
@@ -12,9 +14,9 @@ interface ICurrencyProps {
 
 // ввиду того, что массив всегда статичен, его не нужно оборачивать в memo
 const options = [
-  { content: Currency.RUB, value: Currency.RUB },
-  { content: Currency.EUR, value: Currency.EUR },
-  { content: Currency.USD, value: Currency.USD },
+  { content: Currency.RUB, valueOpt: Currency.RUB },
+  { content: Currency.EUR, valueOpt: Currency.EUR },
+  { content: Currency.USD, valueOpt: Currency.USD },
 ];
 
 export const CurrencySelect: FC<ICurrencyProps> = memo(
@@ -29,16 +31,22 @@ export const CurrencySelect: FC<ICurrencyProps> = memo(
       [onChange],
     );
 
+    const childrenProps = {
+      className,
+      defaultValue: `${t('Укажите валюту')}`,
+      direction: 'top right' as const,
+      items: options,
+      label: `${t('Укажите валюту')}`,
+      onChange: onChangeHandler,
+      readonly,
+      value,
+    };
+
     return (
-      <ListBox
-        value={value}
-        className={className}
-        defaultValue={`${t('Укажите валюту')}`}
-        label={`${t('Укажите валюту')}`}
-        readonly={readonly}
-        items={options}
-        direction='top right'
-        onChange={onChangeHandler}
+      <ToggleFeatures
+        nameFeatures={'isAppRedesigned'}
+        off={<ListBoxDeprecated {...childrenProps} />}
+        on={<ListBox {...childrenProps} />}
       />
     );
   },

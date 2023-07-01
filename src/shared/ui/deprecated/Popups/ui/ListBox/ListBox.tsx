@@ -11,7 +11,7 @@ import popupCls from '../../styles/popups.module.scss';
 export interface ListBoxItem {
   content: ReactNode;
   disabled?: boolean;
-  value: string;
+  valueOpt: string;
 }
 
 interface IListBoxProps {
@@ -59,8 +59,8 @@ export const ListBox: FC<IListBoxProps> = ({
         >
           {items?.map(item => (
             <HListbox.Option
-              key={item.value}
-              value={item.value}
+              key={item.valueOpt}
+              value={item.valueOpt}
               // делаем как фрагмент элемент, чтоб не создавать новые ноды
               as={Fragment}
               disabled={item.disabled}

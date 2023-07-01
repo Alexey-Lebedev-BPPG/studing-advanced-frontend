@@ -17,19 +17,19 @@ describe('Пользователь заходит на страницу', () => 
 
   it('Профиль успешно загрузился', () => {
     // получаем элемент и проверяем, что внутри инпута (это первый метод)
-    // cy.get(selectByTestId("ProfileCard.firstname")).should(
+    // cy.get(selectByTestId("ProfileCard.firstName")).should(
     //   "have.value",
     //   "user"
     // );
     // второй метод уде через собственную команду
-    cy.getByTestId('ProfileCard.firstname').should('have.value', 'test');
+    cy.getByTestId('ProfileCard.firstName').should('have.value', 'test');
   });
   it('редактирование профиля', () => {
-    const newFirstname = 'test';
+    const newFirstName = 'test';
     const newLastname = 'lastname';
-    cy.updateProfile(newFirstname, newLastname);
+    cy.updateProfile(newFirstName, newLastname);
     // проверяем, что значение инпутников поменялось
-    cy.getByTestId('ProfileCard.firstname').should('have.value', newFirstname);
+    cy.getByTestId('ProfileCard.firstName').should('have.value', newFirstName);
     cy.getByTestId('ProfileCard.lastname').should('have.value', newLastname);
   });
   it('passes', () => {});

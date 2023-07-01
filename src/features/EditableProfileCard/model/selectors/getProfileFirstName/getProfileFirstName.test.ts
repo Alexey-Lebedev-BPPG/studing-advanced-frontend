@@ -1,9 +1,9 @@
-import { getProfileFirstname } from './getProfileFirstname';
+import { getProfileFirstName } from './getProfileFirstName';
 import { StateSchema } from '@/app/providers/StoreProvider';
 import { Country } from '@/entities/Country';
 import { Currency } from '@/entities/Currency';
 
-describe('getProfileFirstname', () => {
+describe('getProfileFirstName', () => {
   test('should return data', () => {
     const data = {
       age: 22,
@@ -19,11 +19,11 @@ describe('getProfileFirstname', () => {
         data,
       },
     };
-    expect(getProfileFirstname(state as StateSchema)).toEqual(data.first);
+    expect(getProfileFirstName(state as StateSchema)).toEqual(data.first);
   });
 
   test('should work with empty state', () => {
     const state: DeepPartial<StateSchema> = {};
-    expect(getProfileFirstname(state as StateSchema)).toEqual(undefined);
+    expect(getProfileFirstName(state as StateSchema)).toEqual(undefined);
   });
 });
