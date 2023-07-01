@@ -69,9 +69,9 @@ export const Button: FC<IButtonProps> = memo(props => {
       ])}
       {...otherProps}
     >
-      <div className={cls.addonLeft}>{addonLeft}</div>
+      {!!addonLeft && <div className={cls.addonLeft}>{addonLeft}</div>}
       {children}
-      <div className={cls.addonRight}>{addonRight}</div>
+      {!!addonRight && <div className={cls.addonRight}>{addonRight}</div>}
     </button>
   );
 });

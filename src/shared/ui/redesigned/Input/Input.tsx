@@ -68,7 +68,7 @@ export const Input: FC<IInputProps> = memo(props => {
   }, [autofocus]);
   return (
     <div className={classNames(cls.inputWrapper, mods, [className])}>
-      <div className={cls.addonLeft}>{addonLeft}</div>
+      {!!addonLeft && <div className={cls.addonLeft}>{addonLeft}</div>}
       <input
         ref={ref}
         type={type}
@@ -81,7 +81,7 @@ export const Input: FC<IInputProps> = memo(props => {
         onBlur={onBlurHandler}
         {...otherProps}
       />
-      <div className={cls.addonRight}>{addonRight}</div>
+      {!!addonRight && <div className={cls.addonRight}>{addonRight}</div>}
     </div>
   );
 });
