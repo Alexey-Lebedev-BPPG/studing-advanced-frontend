@@ -3,7 +3,10 @@ import { initAuthData } from '../services/initAuthData';
 import { saveJsonSettings } from '../services/saveJsonSettings';
 import { User, UserSchema } from '../types/UserSchema';
 import { JsonSettings } from '../types/jsonSetting';
-import { USER_LOCALSTORAGE_KEY } from '@/shared/const/localStorage';
+import {
+  LOCAL_STORAGE_LAST_DESIGN_KEY,
+  USER_LOCALSTORAGE_KEY,
+} from '@/shared/const/localStorage';
 import { setFeatureFlags } from '@/shared/lib/features';
 
 const initialState: UserSchema = {
@@ -52,6 +55,11 @@ export const userSlice = createSlice({
       setFeatureFlags(payload.features);
       // добавляем данные в локальное хранилище (аналог токена)
       localStorage.setItem(USER_LOCALSTORAGE_KEY, payload.id);
+      // сохраняем в локал сторадж данные о выбранной фиче у пользователя
+      localStorage.setItem(
+        LOCAL_STORAGE_LAST_DESIGN_KEY,
+        payload.features?.isAppRedesigned ? 'new' : 'old',
+      );
     },
   },
 });

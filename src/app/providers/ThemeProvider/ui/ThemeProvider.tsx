@@ -1,5 +1,6 @@
 import { FC, ReactNode, useEffect, useMemo, useState } from 'react';
 import { useJsonSettings } from '@/entities/User';
+import { LOCAL_STORAGE_THEME_KEY } from '@/shared/const/localStorage';
 import { Theme } from '@/shared/const/theme';
 import { ThemeContext } from '@/shared/lib/context/ThemeContext';
 
@@ -9,6 +10,9 @@ interface ThemeProviderProps {
   initialTheme?: Theme;
 }
 
+// переменная из локал стораджа, которая показывает последнюю выбранную тему пользователя.нужна для того, чтоб показывать скелетон в зависимости от темы, т.к. какая теа установлена у пользователя мы узнает, только когда подгрузим о нем данные
+const fallbackTheme = localStorage.getItem(LOCAL_STORAGE_THEME_KEY) as Theme;
+
 // не используем memo в компонентах, где у нас есть children
 // чтоб иметь глобальный доступ к темам в любых компонентах
 const ThemeProvider: FC<ThemeProviderProps> = ({ children, initialTheme }) => {
@@ -17,8 +21,9 @@ const ThemeProvider: FC<ThemeProviderProps> = ({ children, initialTheme }) => {
   // для того, чтоб useEffect сработал только один раз, делаем флаг
   const [isThemeInited, setIsThemeInited] = useState(false);
 
+  // инициализируем тему из локал стораджа в стейте
   const [theme, setTheme] = useState<Theme>(
-    initialTheme || defaultTheme || Theme.LIGHT,
+    initialTheme || fallbackTheme || Theme.LIGHT,
   );
   // навешиваем стили темы на боди
   document.body.className = theme;
@@ -34,6 +39,8 @@ const ThemeProvider: FC<ThemeProviderProps> = ({ children, initialTheme }) => {
   useEffect(() => {
     // навешиваем класс темы на боди, т.к. у нас теперь общий скролл
     document.body.className = theme;
+    // при изменении темы также меняем тему в локал сторадже
+    localStorage.setItem(LOCAL_STORAGE_THEME_KEY, theme);
   }, [theme]);
 
   const defaultProps = useMemo(() => ({ setTheme, theme }), [theme]);
