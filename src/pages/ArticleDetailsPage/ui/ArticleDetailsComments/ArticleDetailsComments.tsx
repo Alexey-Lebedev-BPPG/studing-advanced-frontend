@@ -8,10 +8,12 @@ import { getArticleComments } from '../../model/slice/articleDetailsCommentSlice
 import { CommentList } from '@/entities/Comment';
 import { AddCommentForm } from '@/features/AddCommentForm';
 import { classNames } from '@/shared/lib/classNames/classNames';
+import { ToggleFeatures } from '@/shared/lib/features';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect/useInitialEffect';
-import { Text, TextSize } from '@/shared/ui/deprecated/Text';
+import { Text as TextDeprecated, TextSize } from '@/shared/ui/deprecated/Text';
 import { VStack } from '@/shared/ui/redesigned/Stack';
+import { Text } from '@/shared/ui/redesigned/Text';
 
 export interface IArticleDetailsCommentsProps {
   className?: string;
@@ -38,7 +40,13 @@ const ArticleDetailsComments: FC<IArticleDetailsCommentsProps> = memo(
 
     return (
       <VStack max gap='16' className={classNames('', {}, [className])}>
-        <Text size={TextSize.L} title={`${t('Комментарии')}`} />
+        <ToggleFeatures
+          nameFeatures={'isAppRedesigned'}
+          on={<Text size='l' title={`${t('Комментарии')}`} />}
+          off={
+            <TextDeprecated size={TextSize.L} title={`${t('Комментарии')}`} />
+          }
+        />
         <AddCommentForm onSendComment={onSendComment} />
         <CommentList isLoading={commentsIsLoading} comments={comments} />
       </VStack>

@@ -3,15 +3,18 @@ import { FC, memo } from 'react';
 import { useArticleRecommendationsList } from '../api/articleRecommendationApi';
 import { ArticleList } from '@/entities/Article';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { Text, TextSize } from '@/shared/ui/deprecated/Text';
+import { ToggleFeatures } from '@/shared/lib/features';
+import { Text as TextDeprecated, TextSize } from '@/shared/ui/deprecated/Text';
 import { VStack } from '@/shared/ui/redesigned/Stack';
+import { Text } from '@/shared/ui/redesigned/Text';
 
 export interface IArticleRecommendationsListProps {
   className?: string;
 }
 
 export const ArticleRecommendationsList: FC<IArticleRecommendationsListProps> =
-  memo(({ className }) => {
+  memo(props => {
+    const { className } = props;
     // передаем в хук наш лимит и получаем поля по умолчанию (data, isLoading, error и т.д)
     const {
       data: recommendations,
@@ -27,7 +30,13 @@ export const ArticleRecommendationsList: FC<IArticleRecommendationsListProps> =
         gap='8'
         className={classNames('', {}, [className])}
       >
-        <Text size={TextSize.L} title={`${t('Рекомендуем')}`} />
+        <ToggleFeatures
+          nameFeatures={'isAppRedesigned'}
+          on={<Text size='l' title={`${t('Рекомендуем')}`} />}
+          off={
+            <TextDeprecated size={TextSize.L} title={`${t('Рекомендуем')}`} />
+          }
+        />
         <ArticleList
           target='_blank'
           articles={recommendations}

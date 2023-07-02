@@ -107,10 +107,6 @@ const DrawerAsync = (props: DrawerProps) => {
   return <DrawerContent {...props} />;
 };
 
-/**
- * Устарел, используем новые компоненты из папки redesigned
- * @deprecated
- */
 // компонент, который ведет себя как выезжающая шторка. часто используется на мобильных экранах (у нас выезжает снизу вверх)
 export const Drawer = (props: DrawerProps) => (
   <AnimationProvider>

@@ -10,6 +10,7 @@ import cls from '../ArticleDetails.module.scss';
 import { renderArticleBlock } from '../renderBlock';
 import { AppImage } from '@/shared/ui/redesigned/AppImage';
 import { Skeleton } from '@/shared/ui/redesigned/Skeleton';
+import { VStack } from '@/shared/ui/redesigned/Stack';
 import { Text } from '@/shared/ui/redesigned/Text';
 
 export const RedesignedContent: FC = memo(props => {
@@ -20,7 +21,7 @@ export const RedesignedContent: FC = memo(props => {
 
   if (isLoading)
     return (
-      <>
+      <VStack max gap='16'>
         <Skeleton
           className={cls.avatar}
           width={200}
@@ -31,7 +32,7 @@ export const RedesignedContent: FC = memo(props => {
         <Skeleton className={cls.skeleton} width={600} height={24} />
         <Skeleton className={cls.skeleton} width='100%' height={200} />
         <Skeleton className={cls.skeleton} width='100%' height={200} />
-      </>
+      </VStack>
     );
 
   if (error)

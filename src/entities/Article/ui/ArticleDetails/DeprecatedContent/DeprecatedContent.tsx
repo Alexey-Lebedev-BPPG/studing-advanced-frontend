@@ -24,7 +24,7 @@ export const DeprecatedContent: FC = memo(props => {
 
   if (isLoading)
     return (
-      <>
+      <VStack max gap='16'>
         <Skeleton
           className={cls.avatar}
           width={200}
@@ -35,7 +35,7 @@ export const DeprecatedContent: FC = memo(props => {
         <Skeleton className={cls.skeleton} width={600} height={24} />
         <Skeleton className={cls.skeleton} width='100%' height={200} />
         <Skeleton className={cls.skeleton} width='100%' height={200} />
-      </>
+      </VStack>
     );
 
   if (error)
