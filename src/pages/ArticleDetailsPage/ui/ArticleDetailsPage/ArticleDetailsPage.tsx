@@ -2,11 +2,14 @@ import { FC, memo } from 'react';
 import { useParams } from 'react-router-dom';
 import cls from './ArticleDetailsPage.module.scss';
 import { articleDetailsPageReducer } from '../../model/slice';
+import { AdditionalInfoContainer } from '../AdditionalInfoContainer/AdditionalInfoContainer';
 import ArticleDetailsComments from '../ArticleDetailsComments/ArticleDetailsComments';
 import { ArticleDetailsPageHeader } from '../ArticleDetailsPageHeader/ArticleDetailsPageHeader';
+import { DetailsContainer } from '../DetailsContainer/DetailsContainer';
 import { ArticleDetails } from '@/entities/Article';
 import { ArticleRating } from '@/features/ArticleRating';
 import { ArticleRecommendationsList } from '@/features/ArticleRecommendationsList';
+import { StickyLayout } from '@/shared/layouts/StickyLayout';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import {
   DynamicModuleLoader,
@@ -32,20 +35,38 @@ const ArticleDetailsPage: FC<IArticleDetailsPageProps> = ({ className }) => {
 
   return (
     <DynamicModuleLoader reducers={reducers}>
-      <Page className={classNames(cls.articleDetailsPage, {}, [className])}>
-        <VStack max gap='16'>
-          <ArticleDetailsPageHeader />
-          <ArticleDetails id={id} />
-          {/* пример использования компонента по фичи-флагу */}
-          <ToggleFeatures
-            nameFeatures='isArticleRatingEnabled'
-            off={<Card>{'Оценка статей скоро появится!'}</Card>}
-            on={<ArticleRating articleId={id} />}
+      <ToggleFeatures
+        nameFeatures={'isArticleRatingEnabled'}
+        off={
+          <Page className={classNames(cls.articleDetailsPage, {}, [className])}>
+            <VStack max gap='16'>
+              <ArticleDetailsPageHeader />
+              <DetailsContainer />
+              <Card>{'Оценка статей скоро появится!'}</Card>
+              <ArticleRecommendationsList />
+              <ArticleDetailsComments id={id} />
+            </VStack>
+          </Page>
+        }
+        on={
+          <StickyLayout
+            right={<AdditionalInfoContainer />}
+            content={
+              <Page
+                className={classNames(cls.articleDetailsPage, {}, [className])}
+              >
+                <VStack max gap='16'>
+                  <ArticleDetailsPageHeader />
+                  <ArticleDetails id={id} />
+                  <ArticleRating articleId={id} />
+                  <ArticleRecommendationsList />
+                  <ArticleDetailsComments id={id} />
+                </VStack>
+              </Page>
+            }
           />
-          <ArticleRecommendationsList />
-          <ArticleDetailsComments id={id} />
-        </VStack>
-      </Page>
+        }
+      />
     </DynamicModuleLoader>
   );
 };

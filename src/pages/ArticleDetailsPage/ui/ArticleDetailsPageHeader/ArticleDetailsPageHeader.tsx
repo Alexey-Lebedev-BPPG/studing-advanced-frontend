@@ -14,7 +14,8 @@ export interface IArticleDetailsPageHeaderProps {
 }
 
 export const ArticleDetailsPageHeader: FC<IArticleDetailsPageHeaderProps> =
-  memo(({ className }) => {
+  memo(props => {
+    const { className } = props;
     const { t } = useTranslation();
     const navigate = useNavigate();
 
