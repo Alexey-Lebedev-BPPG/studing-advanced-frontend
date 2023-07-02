@@ -1,5 +1,6 @@
 import { Suspense, useEffect } from 'react';
 import { useSelector } from 'react-redux';
+import { useAppToolbar } from './lib/useAppToolbar';
 import { AppRouter } from './providers/router';
 import { getUserInited, initAuthData } from '@/entities/User';
 import { AppLoadLayout } from '@/shared/layouts/AppLoadLayout';
@@ -16,6 +17,8 @@ function App() {
   const { theme } = useTheme();
   const dispatch = useAppDispatch();
   const inited = useSelector(getUserInited);
+  // получаем компонент, который необходимо показывать на текущей странице
+  const toolbar = useAppToolbar();
 
   // при инициализации приложения проверяем авторизованность юзера из локал стораджа
   useEffect(() => {
@@ -64,6 +67,7 @@ function App() {
               content={<AppRouter />}
               header={<Navbar />}
               sidebar={<SideBar />}
+              toolbar={toolbar}
             />
           </Suspense>
         </div>
