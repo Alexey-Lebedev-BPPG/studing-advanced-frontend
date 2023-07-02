@@ -15,6 +15,7 @@ import {
 } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { ToggleFeatures } from '@/shared/lib/features';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { useForceUpdate } from '@/shared/lib/render/forceUpdate';
 import {
   Button as ButtonDeprecated,
   ButtonTheme,
@@ -39,6 +40,8 @@ const initialReducers: ReducersList = {
 const LoginForm: FC<ILoginFormProps> = memo(({ className, onSuccess }) => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
+
+  const forceUpdate = useForceUpdate();
 
   // ввиду того, что мы достаем данные до того, как у нас сработает useEffect, нам необходимо либо сделать инишиал стейт для getLoginState или сделать для каждого поля getLoginState свой селектор (сейчас сделаем для каждого свой)
   // вместо:
@@ -67,8 +70,12 @@ const LoginForm: FC<ILoginFormProps> = memo(({ className, onSuccess }) => {
     // вызываем наш thunk для передачи данных на бэк
     const result = await dispatch(loginByUsername({ password, username }));
     // вызываем функцию, которая сработает (здесь закрытие модалки), если запрос прошел успешно
-    if (result.meta.requestStatus === 'fulfilled') onSuccess();
-  }, [dispatch, onSuccess, password, username]);
+    if (result.meta.requestStatus === 'fulfilled') {
+      onSuccess();
+      // + перерисовываем все приложение для изменения фичи-флагов
+      forceUpdate();
+    }
+  }, [dispatch, forceUpdate, onSuccess, password, username]);
 
   return (
     <DynamicModuleLoader reducers={initialReducers}>
