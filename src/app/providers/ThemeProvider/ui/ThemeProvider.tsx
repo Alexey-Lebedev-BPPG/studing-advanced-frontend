@@ -31,6 +31,11 @@ const ThemeProvider: FC<ThemeProviderProps> = ({ children, initialTheme }) => {
     }
   }, [defaultTheme, isThemeInited]);
 
+  useEffect(() => {
+    // навешиваем класс темы на боди, т.к. у нас теперь общий скролл
+    document.body.className = theme;
+  }, [theme]);
+
   const defaultProps = useMemo(() => ({ setTheme, theme }), [theme]);
 
   return (

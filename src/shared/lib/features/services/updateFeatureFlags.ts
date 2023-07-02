@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import i18next from 'i18next';
 import { updateFeatureFlagsMutation } from '../api/featureFlagsApi';
-import { getAllFeatureFlags, setFeatureFlags } from '../lib/setGetFeatures';
+import { getAllFeatureFlags } from '../lib/setGetFeatures';
 import { ThunkConfig } from '@/app/providers/StoreProvider';
 import { FeatureFlags } from '@/shared/types/featureFlags';
 
@@ -33,7 +33,10 @@ export const updateFeatureFlags = createAsyncThunk<
       // ввиду того, что фичи у нас не реактивные (не хранятся в стейте), при их изменении страница не перерисуется. поэтому принудительно обновляем страницу. Если мы используем forceUpdate, то эту строку можно убрать
       // window.location.reload();
       // тогда нужно будет вручную изменить тогл-фичи
-      setFeatureFlags(allFeatures);
+      // setFeatureFlags(allFeatures);
+
+      // на данный момент сделаем перезагрузку страницы, чтоб избежать побочных эффектов
+      window.location.reload();
       return undefined;
     } catch (error) {
       // чтоб не показывался консоль при тестах
