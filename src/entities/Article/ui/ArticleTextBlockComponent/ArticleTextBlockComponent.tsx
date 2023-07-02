@@ -2,7 +2,9 @@ import { FC, memo } from 'react';
 import cls from './ArticleTextBlockComponent.module.scss';
 import { ArticleTextBlock } from '../../model/types/article';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { Text } from '@/shared/ui/deprecated/Text';
+import { ToggleFeatures } from '@/shared/lib/features';
+import { Text as TextDeprecated } from '@/shared/ui/deprecated/Text';
+import { Text } from '@/shared/ui/redesigned/Text';
 
 interface IArticleTextBlockComponentProps {
   block: ArticleTextBlock;
@@ -10,15 +12,28 @@ interface IArticleTextBlockComponentProps {
 }
 
 export const ArticleTextBlockComponent: FC<IArticleTextBlockComponentProps> =
-  memo(({ block, className }) => (
-    <div className={classNames(cls.articleTextBlockComponent, {}, [className])}>
-      {!!block.title && <Text title={block.title} className={cls.title} />}
-      {block.paragraphs.map((paragraph, index) => (
-        <Text
-          key={index + paragraph.slice(0, 5)}
-          text={paragraph}
-          className={cls.paragraph}
-        />
-      ))}
-    </div>
-  ));
+  memo(props => {
+    const { block, className } = props;
+
+    return (
+      <div
+        className={classNames(cls.articleTextBlockComponent, {}, [className])}
+      >
+        {!!block.title && (
+          <ToggleFeatures
+            nameFeatures={'isAppRedesigned'}
+            off={<TextDeprecated title={block.title} className={cls.title} />}
+            on={<Text title={block.title} className={cls.title} />}
+          />
+        )}
+        {block.paragraphs.map((paragraph, index) => (
+          <ToggleFeatures
+            key={index + paragraph.slice(0, 5)}
+            nameFeatures={'isAppRedesigned'}
+            off={<TextDeprecated text={paragraph} className={cls.paragraph} />}
+            on={<Text text={paragraph} className={cls.paragraph} />}
+          />
+        ))}
+      </div>
+    );
+  });

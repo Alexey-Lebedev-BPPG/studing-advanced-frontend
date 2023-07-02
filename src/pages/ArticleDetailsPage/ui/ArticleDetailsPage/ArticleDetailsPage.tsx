@@ -56,7 +56,6 @@ const ArticleDetailsPage: FC<IArticleDetailsPageProps> = ({ className }) => {
                 className={classNames(cls.articleDetailsPage, {}, [className])}
               >
                 <VStack max gap='16'>
-                  <ArticleDetailsPageHeader />
                   <ArticleDetails id={id} />
                   <ArticleRating articleId={id} />
                   <ArticleRecommendationsList />

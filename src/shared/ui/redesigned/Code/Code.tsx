@@ -1,0 +1,53 @@
+import { FC, memo, useCallback } from 'react';
+import cls from './Code.module.scss';
+import {
+  Button as ButtonDeprecated,
+  ButtonTheme,
+} from '../../deprecated/Button/Button';
+import { Icon } from '../Icon';
+import CopyIcon from '@/shared/assets/icons/copy-20-20.svg';
+import CopyIconNew from '@/shared/assets/icons/copy.svg';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { ToggleFeatures } from '@/shared/lib/features';
+
+interface ICodeProps {
+  className?: string;
+  text: string;
+}
+
+export const Code: FC<ICodeProps> = memo(({ className, text }) => {
+  const onCopy = useCallback(() => {
+    navigator.clipboard.writeText(text);
+  }, [text]);
+
+  return (
+    <ToggleFeatures
+      nameFeatures={'isAppRedesigned'}
+      off={
+        // pre позволяет сохранять пробелы и переносы для кода
+        <pre className={classNames(cls.code, {}, [className])}>
+          <ButtonDeprecated
+            className={cls.copyBtn}
+            theme={ButtonTheme.CLEAR}
+            onClick={onCopy}
+          >
+            <CopyIcon className={cls.copyIcon} />
+          </ButtonDeprecated>
+          <code>{text}</code>
+        </pre>
+      }
+      on={
+        // pre позволяет сохранять пробелы и переносы для кода
+        <pre className={classNames(cls.codeRedesigned, {}, [className])}>
+          <Icon
+            clickable
+            className={cls.copyBtn}
+            Svg={CopyIconNew}
+            onClick={onCopy}
+          />
+          <code>{text}</code>
+        </pre>
+      }
+    />
+  );
+});

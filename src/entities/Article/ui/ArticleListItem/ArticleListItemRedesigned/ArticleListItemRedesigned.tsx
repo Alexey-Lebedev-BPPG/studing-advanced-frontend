@@ -25,7 +25,7 @@ export const ArticleListItemRedesigned: FC<IArticleListItemProps> = memo(
 
     const userInfo = (
       <>
-        <Avatar size={32} src={article.user.avatar} />
+        <Avatar size={32} src={article.user.avatar} className={cls.avatar} />
         <Text bold text={article.user.username} />
       </>
     );
@@ -88,9 +88,9 @@ export const ArticleListItemRedesigned: FC<IArticleListItemProps> = memo(
         data-testid='ArticleListItem'
         // {...bindHover}
       >
-        <Card className={cls.card} border='round'>
+        <Card className={cls.card} border='round' padding='0'>
           <AppImage
-            fallback={<Skeleton width={200} height={200} />}
+            fallback={<Skeleton width='100%' height={200} />}
             src={article.img}
             className={cls.img}
             alt={article.title}
