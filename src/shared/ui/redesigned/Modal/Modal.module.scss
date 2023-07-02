@@ -7,7 +7,6 @@
   // взаимодействовать с ним нельзя
   pointer-events: none;
   z-index: 100;
-  color: var(--primary-color);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -16,11 +15,22 @@
 .content {
   padding: 20px;
   border-radius: 12px;
-  background-color: var(--bg-color);
   transition: 0.3s transform;
   transform: scale(0.5);
   max-width: 60%;
   z-index: var(--modal-z-index);
+}
+
+.oldModal {
+  .content {
+    background-color: var(--bg-color);
+  }
+}
+
+.newModal {
+  .content {
+    background-color: var(--light-bg-redesigned);
+  }
 }
 
 .opened {

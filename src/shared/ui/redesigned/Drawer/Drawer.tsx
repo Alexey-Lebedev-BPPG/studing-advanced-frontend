@@ -7,6 +7,7 @@ import {
   AnimationProvider,
   useAnimationLibs,
 } from '@/shared/lib/components/AnimationProvider';
+import { toggleFeatures } from '@/shared/lib/features';
 import { useTheme } from '@/shared/lib/hooks/useTheme/useTheme';
 
 interface DrawerProps {
@@ -19,17 +20,8 @@ interface DrawerProps {
 
 const height = window.innerHeight - 100;
 
-/**
- * Устарел, используем новые компоненты из папки redesigned
- * @deprecated
- */
-const DrawerContent: FC<DrawerProps> = ({
-  children,
-  className,
-  isOpen,
-  lazy = true,
-  onClose,
-}) => {
+const DrawerContent: FC<DrawerProps> = props => {
+  const { children, className, isOpen, lazy = true, onClose } = props;
   // получаем библиотеки, которые подгружали лениво
   const { Gesture, Spring } = useAnimationLibs();
   const [{ y }, api] = Spring.useSpring(() => ({ y: height }));
@@ -82,7 +74,16 @@ const DrawerContent: FC<DrawerProps> = ({
   return (
     <Portal>
       <div
-        className={classNames(cls.Drawer, {}, [className, theme, 'app_drawer'])}
+        className={classNames(cls.Drawer, {}, [
+          className,
+          theme,
+          'app_drawer',
+          toggleFeatures({
+            name: 'isAppRedesigned',
+            off: () => cls.oldDrawer,
+            on: () => cls.newDrawer,
+          }),
+        ])}
       >
         <Overlay onClick={close} />
         <Spring.a.div

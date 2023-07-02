@@ -28,7 +28,7 @@ function App() {
     <ToggleFeatures
       nameFeatures='isAppRedesigned'
       off={
-        <div className={classNames('app', {}, [theme])}>
+        <div id='app' className={classNames('app', {}, [theme])}>
           {/* оборачиваем приложение в Suspense, чтоб корректно работали переводы */}
           <Suspense fallback=''>
             <Navbar />
@@ -40,7 +40,7 @@ function App() {
         </div>
       }
       on={
-        <div className={classNames('app-redesigned', {}, [theme])}>
+        <div id='app' className={classNames('app-redesigned', {}, [theme])}>
           {/* оборачиваем приложение в Suspense, чтоб корректно работали переводы */}
           <Suspense fallback=''>
             <MainLayout

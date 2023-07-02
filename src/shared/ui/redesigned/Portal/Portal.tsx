@@ -10,5 +10,6 @@ interface IPortalProps {
 
 export const Portal: FC<IPortalProps> = ({
   children,
-  element = document.body,
+  // указываем расположение внутри App, чтоб стили применялись адекватно
+  element = document.getElementById('app') || document.body,
 }) => createPortal(children, element);
