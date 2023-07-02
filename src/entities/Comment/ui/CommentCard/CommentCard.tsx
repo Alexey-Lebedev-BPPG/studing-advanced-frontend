@@ -74,7 +74,7 @@ export const CommentCard: FC<ICommentCardProps> = memo(props => {
         </VStack>
       }
       on={
-        <Card fullWidth padding='24' border='round'>
+        <Card fullWidth padding='24' border='partial'>
           <VStack
             max
             gap='8'

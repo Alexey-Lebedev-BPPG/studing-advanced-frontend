@@ -75,7 +75,7 @@ const AddCommentForm: FC<IAddCommentFormProps> = memo(
             </HStack>
           }
           on={
-            <Card fullWidth padding='24' border='round'>
+            <Card fullWidth padding='24' border='partial'>
               <HStack
                 max
                 gap='16'

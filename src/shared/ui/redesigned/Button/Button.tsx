@@ -3,7 +3,7 @@ import cls from './Button.module.scss';
 import { classNames } from '@/shared/lib/classNames/classNames';
 
 type ButtonVariant = 'clear' | 'outline' | 'filled';
-
+type ButtonColor = 'normal' | 'success' | 'error';
 type ButtonSize = 'm' | 'l' | 'xl';
 
 interface IButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
@@ -14,6 +14,7 @@ interface IButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
    */
   children?: ReactNode;
   className?: string;
+  color?: ButtonColor;
   /**
    * Флаг, отвечающий за работу кнопки
    */
@@ -44,6 +45,7 @@ export const Button: FC<IButtonProps> = memo(props => {
     addonRight,
     children,
     className,
+    color = 'normal',
     disabled,
     fullWidth,
     size = 'm',
@@ -66,6 +68,7 @@ export const Button: FC<IButtonProps> = memo(props => {
         className,
         cls[variant],
         cls[size],
+        cls[color],
       ])}
       {...otherProps}
     >

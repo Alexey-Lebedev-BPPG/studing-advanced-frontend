@@ -4,7 +4,7 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 
 type CardTheme = 'normal' | 'outline' | 'light';
 type CardPadding = '0' | '8' | '16' | '24';
-type CardBorder = 'round' | 'normalBorder';
+type CardBorder = 'round' | 'normalBorder' | 'partial';
 
 export interface ICardProps extends HTMLAttributes<HTMLDivElement> {
   border?: CardBorder;

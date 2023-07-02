@@ -192,7 +192,7 @@ export const RatingCard: FC<IRatingCardProps> = memo(props => {
         </CardDeprecated>
       }
       on={
-        <Card fullWidth padding='24' border='round' data-testid='RatingCard'>
+        <Card fullWidth padding='24' border='partial' data-testid='RatingCard'>
           {mainContent}
         </Card>
       }

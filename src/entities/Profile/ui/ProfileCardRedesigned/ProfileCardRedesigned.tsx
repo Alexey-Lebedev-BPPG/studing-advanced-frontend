@@ -32,7 +32,7 @@ export const ProfileCardRedesignedError = () => {
 };
 
 export const ProfileCardRedesignedSkeleton = () => (
-  <Card fullWidth padding='24'>
+  <Card fullWidth padding='24' border='partial'>
     <VStack gap='32'>
       <HStack max justify='center'>
         <Skeleton border='100%' width={128} height={128} />
@@ -78,6 +78,7 @@ export const ProfileCardRedesigned: FC<IProfileCardProps> = memo(props => {
     <Card
       fullWidth
       padding='24'
+      border='partial'
       data-testid='ProfileCard'
       className={className}
     >

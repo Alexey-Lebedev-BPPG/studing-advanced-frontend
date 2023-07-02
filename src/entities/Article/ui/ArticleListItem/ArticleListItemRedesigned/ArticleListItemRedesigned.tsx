@@ -88,7 +88,7 @@ export const ArticleListItemRedesigned: FC<IArticleListItemProps> = memo(
         data-testid='ArticleListItem'
         // {...bindHover}
       >
-        <Card className={cls.card} border='round' padding='0'>
+        <Card className={cls.card} border='partial' padding='0'>
           <AppImage
             fallback={<Skeleton width='100%' height={200} />}
             src={article.img}

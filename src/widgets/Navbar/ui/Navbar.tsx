@@ -8,10 +8,14 @@ import { AvatarDropdown } from '@/features/AvatarDropdown';
 import { NotificationButton } from '@/features/NotificationButton';
 import { getRouteArticleCreate } from '@/shared/const/router';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { ToggleFeatures } from '@/shared/lib/features';
+import { ToggleFeatures, toggleFeatures } from '@/shared/lib/features';
 import { AppLink, AppLinkTheme } from '@/shared/ui/deprecated/AppLink';
-import { Button, ButtonTheme } from '@/shared/ui/deprecated/Button';
+import {
+  Button as ButtonDeprecated,
+  ButtonTheme,
+} from '@/shared/ui/deprecated/Button';
 import { Text, TextTheme } from '@/shared/ui/deprecated/Text';
+import { Button } from '@/shared/ui/redesigned/Button';
 import { HStack } from '@/shared/ui/redesigned/Stack';
 
 interface NavbarProps {
@@ -20,7 +24,8 @@ interface NavbarProps {
 
 // все, что в виджете будет экспортиться не по дефолту
 // навбар будет принимать доп класс, чтоб извне можно было поправить какие-то стили в нем
-export const Navbar = memo(({ className }: NavbarProps) => {
+export const Navbar = memo((props: NavbarProps) => {
+  const { className } = props;
   const { t } = useTranslation();
   const authData = useSelector(getUserAuthData);
   const [isAuthModal, setIsAuthModal] = useState(false);
@@ -34,13 +39,19 @@ export const Navbar = memo(({ className }: NavbarProps) => {
     setIsAuthModal(true);
   }, []);
 
+  const mainClass = toggleFeatures({
+    name: 'isAppRedesigned',
+    off: () => cls.navbar,
+    on: () => cls.navbarRedesigned,
+  });
+
   // для авторизованного юзера
   if (authData)
     return (
       <ToggleFeatures
         nameFeatures={'isAppRedesigned'}
         on={
-          <header className={classNames(cls.navbarRedesigned, {}, [className])}>
+          <header className={classNames(mainClass, {}, [className])}>
             <HStack gap='16' className={cls.actions}>
               <NotificationButton />
               <AvatarDropdown />
@@ -48,7 +59,7 @@ export const Navbar = memo(({ className }: NavbarProps) => {
           </header>
         }
         off={
-          <header className={classNames(cls.navbar, {}, [className])}>
+          <header className={classNames(mainClass, {}, [className])}>
             <Text
               theme={TextTheme.INVERTED}
               className={cls.appName}
@@ -71,14 +82,24 @@ export const Navbar = memo(({ className }: NavbarProps) => {
 
   // для не авторизованного юзера
   return (
-    <header className={classNames(cls.navbar, {}, [className])}>
-      <Button
-        theme={ButtonTheme.CLEAR_INVERTED}
-        className={cls.links}
-        onClick={onShowModal}
-      >
-        {t('Войти')}
-      </Button>
+    <header className={classNames(mainClass, {}, [className])}>
+      <ToggleFeatures
+        nameFeatures={'isAppRedesigned'}
+        off={
+          <ButtonDeprecated
+            theme={ButtonTheme.CLEAR_INVERTED}
+            className={cls.links}
+            onClick={onShowModal}
+          >
+            {t('Войти')}
+          </ButtonDeprecated>
+        }
+        on={
+          <Button className={cls.links} variant='clear' onClick={onShowModal}>
+            {t('Войти')}
+          </Button>
+        }
+      />
       {/* если у нас модалка открывается, то только тогда мы модалку монтируем.если нет, то убираем ее из DOM-дерева */}
       {!!isAuthModal && (
         <LoginModal isOpen={isAuthModal} onClose={onCloseModal} />

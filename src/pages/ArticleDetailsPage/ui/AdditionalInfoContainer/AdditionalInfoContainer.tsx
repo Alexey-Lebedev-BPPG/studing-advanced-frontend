@@ -19,7 +19,7 @@ export const AdditionalInfoContainer: FC = memo(props => {
   if (!article) return null;
 
   return (
-    <Card padding='24' border='round' className={cls.card}>
+    <Card padding='24' border='partial' className={cls.card}>
       <ArticleAdditionalInfo
         author={article.user}
         createdAt={article.createdAt}
