@@ -59,14 +59,14 @@ export const ListBox = typedMemo(
           value={value}
           onChange={onChange}
         >
-          <HListbox.Button as='div' className={popupCls.trigger}>
-            <Button
-              variant='filled'
-              disabled={readonly}
-              addonRight={<Icon Svg={ArrowIcon} />}
-            >
-              {selectedItem?.content ?? defaultValue}
-            </Button>
+          <HListbox.Button
+            as={Button}
+            variant='filled'
+            readonly={readonly}
+            addonRight={<Icon Svg={ArrowIcon} />}
+            className={popupCls.trigger}
+          >
+            {selectedItem?.content ?? defaultValue}
           </HListbox.Button>
           <HListbox.Options
             className={classNames(cls.options, {}, optionsClasses)}
