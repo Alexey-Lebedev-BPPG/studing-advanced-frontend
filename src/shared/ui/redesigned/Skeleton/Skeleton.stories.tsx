@@ -8,7 +8,7 @@ export default {
     backgroundColor: { control: 'color' },
   },
   component: Skeleton,
-  title: 'shared/Skeleton',
+  title: 'shared/redesigned/Skeleton',
 } as Meta<typeof Skeleton>;
 
 const Template: StoryFn<typeof Skeleton> = () => <Skeleton />;

@@ -1,8 +1,11 @@
 import { Meta, StoryFn } from '@storybook/react';
-import { ProfileCard } from '../ProfileCard/ProfileCard';
+import { ProfileCard } from './ProfileCard';
 import { Country } from '@/entities/Country';
 import { Currency } from '@/entities/Currency';
 import AvatarImg from '@/shared/assets/tests/AvatarImg.jpg';
+import { NewDesignDecorator } from '@/shared/config/storybook/NewDesignDecorator/NewDesignDecorator';
+import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
+import { Theme } from '@/shared/const/theme';
 
 export default {
   argTypes: {
@@ -27,6 +30,21 @@ Primary1.args = {
     username: 'admin',
   },
 };
+
+export const PrimaryRedesigned = Template.bind({});
+PrimaryRedesigned.args = {
+  data: {
+    age: 22,
+    avatar: AvatarImg,
+    city: 'asd',
+    country: Country.Ukraine,
+    currency: Currency.USD,
+    first: 'asd',
+    lastname: 'test',
+    username: 'admin',
+  },
+};
+PrimaryRedesigned.decorators = [NewDesignDecorator, ThemeDecorator(Theme.DARK)];
 
 export const WithError = Template.bind({});
 WithError.args = {

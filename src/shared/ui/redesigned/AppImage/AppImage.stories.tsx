@@ -12,7 +12,7 @@ export default {
     backgroundColor: { control: 'color' },
   },
   component: AppImage,
-  title: 'shared/AppImage',
+  title: 'shared/redesigned/AppImage',
 } as Meta<typeof AppImage>;
 
 const Template: StoryFn<typeof AppImage> = arg => <AppImage {...arg} />;

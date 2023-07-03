@@ -1,5 +1,6 @@
 import { Meta, StoryFn } from '@storybook/react';
 import { CommentCard } from './CommentCard';
+import { FeaturesFlagsDecorator } from '@/shared/config/storybook/FeaturesFlagsDecorator/FeaturesFlagsDecorator';
 
 export default {
   argTypes: {
@@ -11,8 +12,7 @@ export default {
 
 const Template: StoryFn<typeof CommentCard> = arg => <CommentCard {...arg} />;
 
-export const Normal = Template.bind({});
-Normal.args = {
+const otherArgs = {
   comment: {
     id: '1',
     text: 'lorem1',
@@ -22,6 +22,16 @@ Normal.args = {
     },
   },
 };
+
+export const Normal = Template.bind({});
+Normal.args = otherArgs;
+
+// пример использования декоратора с компонентом с фичи-флагами
+export const NormalRedesigned = Template.bind({});
+NormalRedesigned.args = otherArgs;
+NormalRedesigned.decorators = [
+  FeaturesFlagsDecorator({ isAppRedesigned: true }),
+];
 
 export const Loading = Template.bind({});
 Loading.args = {

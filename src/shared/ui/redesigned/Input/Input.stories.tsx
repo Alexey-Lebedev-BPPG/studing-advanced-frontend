@@ -6,7 +6,7 @@ export default {
     backgroundColor: { control: 'color' },
   },
   component: Input,
-  title: 'shared/Input',
+  title: 'shared/redesigned/Input',
 } as Meta<typeof Input>;
 
 const Template: StoryFn<typeof Input> = args => <Input {...args} />;

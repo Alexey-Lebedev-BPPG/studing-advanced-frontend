@@ -9,7 +9,7 @@ export default {
     backgroundColor: { control: 'color' },
   },
   component: Drawer,
-  title: 'shared/Drawer',
+  title: 'shared/redesigned/Drawer',
 } as Meta<typeof Drawer>;
 
 const Template: StoryFn<typeof Drawer> = arg => <Drawer {...arg} />;

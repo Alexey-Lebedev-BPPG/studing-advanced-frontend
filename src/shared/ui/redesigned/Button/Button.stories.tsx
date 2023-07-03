@@ -10,7 +10,7 @@ export default {
 
   component: Button,
   // меняем название сториса
-  title: 'shared/Button',
+  title: 'shared/redesigned/Button',
 } as Meta<typeof Button>;
 
 const Template: StoryFn<typeof Button> = args => <Button {...args} />;

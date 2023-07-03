@@ -22,8 +22,8 @@ project.addSourceFilesAtPaths('src/**/*.ts');
 project.addSourceFilesAtPaths('src/**/*.tsx');
 
 // функция, которая проверяет только те пути, которые начинаются со значений, которые мы указали
-function isAbsolute(path: string) {
-  return PROJECT_LAYERS.some(layer => path.startsWith(layer));
+function isAbsolute(currentPath: string) {
+  return PROJECT_LAYERS.some(layer => currentPath.startsWith(layer));
 }
 
 // получаем все файлы проекта

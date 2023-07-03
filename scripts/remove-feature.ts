@@ -41,9 +41,8 @@ const isToggleFunction = (node: Node): boolean => {
     if (
       child.isKind(SyntaxKind.Identifier) &&
       child.getText() === toggleFunctionName
-    ) {
+    )
       isToggleFeatures = true;
-    }
   });
 
   return isToggleFeatures;
@@ -103,15 +102,13 @@ const replaceToggleFunction = (node: Node) => {
   if (featureName !== removedFeatureName) return;
 
   // если у нас передана функция on
-  if (featureState === 'on') {
+  if (featureState === 'on')
     // получаем то, что функция должна вернуть и перезаписываем в элементе
     node.replaceWithText(onFunction?.getBody().getText() || '');
-  }
   // если у нас передана функция off
-  if (featureState === 'off') {
+  if (featureState === 'off')
     // получаем то, что функция должна вернуть и перезаписываем в элементе
     node.replaceWithText(offFunction?.getBody().getText() || '');
-  }
 };
 
 const getAttributeNodeByName = (jsxAttributes: JsxAttribute[], name: string) =>
@@ -151,15 +148,13 @@ const replaceToggleComponent = (node: Node) => {
   if (featureNameValue !== removedFeatureName) return;
 
   // если у нас передана функция on
-  if (featureState === 'on' && onValue) {
+  if (featureState === 'on' && onValue)
     // получаем то, что функция должна вернуть и перезаписываем в элементе
     node.replaceWithText(onValue);
-  }
   // если у нас передана функция off
-  if (featureState === 'off' && offValue) {
+  if (featureState === 'off' && offValue)
     // получаем то, что функция должна вернуть и перезаписываем в элементе
     node.replaceWithText(offValue);
-  }
 };
 
 // итерируем по файлам
@@ -175,8 +170,6 @@ files.forEach(sourceFile => {
       isToggleComponent(node)
     )
       return replaceToggleComponent(node);
-
-    return;
   });
 });
 

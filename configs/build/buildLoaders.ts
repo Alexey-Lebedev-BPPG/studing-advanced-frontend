@@ -1,11 +1,11 @@
-import webpack from "webpack";
-import { BuildOptions } from "./types/config";
-import { buildCssLoaders } from "./loaders/buildCssLoaders";
-import { buildBabelLoader } from "./loaders/buildBabelLoader";
+import webpack from 'webpack';
+import { buildBabelLoader } from './loaders/buildBabelLoader';
+import { buildCssLoaders } from './loaders/buildCssLoaders';
 // import { buildTypesciptLoader } from "./loaders/buildTypesciptLoader";
-import { buildFileLoader } from "./loaders/buildFileLoader";
-import { buildSvgLoader } from "./loaders/buildSvgLoader";
+import { buildFileLoader } from './loaders/buildFileLoader';
 import { buildMjsLoader } from './loaders/buildMjsLoader';
+import { buildSvgLoader } from './loaders/buildSvgLoader';
+import { BuildOptions } from './types/config';
 
 export const buildLoaders = (options: BuildOptions): webpack.RuleSetRule[] => {
   // порядок лоадеров имеет значение, поэтому выносим в отдельные переменные

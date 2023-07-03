@@ -16,7 +16,7 @@ export default {
       </div>
     ),
   ],
-  title: 'shared/ListBox',
+  title: 'shared/redesigned/ListBox',
 } as Meta<typeof ListBox>;
 
 const Template: StoryFn<typeof ListBox> = arg => <ListBox {...arg} />;

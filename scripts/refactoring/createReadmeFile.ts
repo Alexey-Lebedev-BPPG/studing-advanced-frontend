@@ -14,16 +14,14 @@ project.addSourceFilesAtPaths('src/**/*.ts');
 project.addSourceFilesAtPaths('src/**/*.tsx');
 
 const sliceMap: Record<string, string> = {
-  pages: 'Page',
   entities: 'Entity',
   features: 'Feature',
+  pages: 'Page',
   widgets: 'Widget',
 };
 
 const createReadmeForSlice = (slice: string) => {
-  if (!Object.keys(sliceMap).includes(slice)) {
-    return;
-  }
+  if (!Object.keys(sliceMap).includes(slice)) return;
 
   const slicePaths = path.resolve(__dirname, '..', '..', 'src', `${slice}`);
   const sliceDirectory = project.getDirectory(slicePaths);

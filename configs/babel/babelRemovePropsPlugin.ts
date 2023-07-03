@@ -17,10 +17,9 @@ export default function (): PluginItem {
             // получаем имя искомой ноды
             const nodeName = current.node.name;
             // чтоб не хардкодить такого вида условие (nodeName === "data-testid"), исп. более динамичный подход
-            if (forbidden.includes(nodeName)) {
+            if (forbidden.includes(nodeName))
               // и удаляем этот атрибут
               current.parentPath.remove();
-            }
           },
         });
       },

@@ -1,5 +1,5 @@
 // https://github.com/typicode/json-server#custom-routes-example
-// у нас будет реализована имитация авторизации. Чтоб получить доступ на данный момент, необходимо к запросу добавить заголовок Authtorization с любым значение. Также, при необходимости, нужно добавить загловок Content-Type":"application/json", чтоб избежать возврата request.body в виде {}
+// у нас будет реализована имитация авторизации. Чтоб получить доступ на данный момент, необходимо к запросу добавить заголовок Authorization с любым значение. Также, при необходимости, нужно добавить заголовок Content-Type":"application/json", чтоб избежать возврата request.body в виде {}
 const fs = require('fs');
 const path = require('path');
 const jsonServer = require('json-server');
@@ -31,7 +31,7 @@ server.use(async (req, res, next) => {
 // Эндпоинт для логина
 server.post('/login', (req, res) => {
   try {
-    const { username, password } = req.body;
+    const { password, username } = req.body;
     const db = JSON.parse(
       fs.readFileSync(path.resolve(__dirname, 'db.json'), 'UTF-8'),
     );
@@ -41,9 +41,7 @@ server.post('/login', (req, res) => {
       user => user.username === username && user.password === password,
     );
 
-    if (userFromBd) {
-      return res.json(userFromBd);
-    }
+    if (userFromBd) return res.json(userFromBd);
 
     return res.status(403).json({ message: 'User not found' });
   } catch (e) {
@@ -55,9 +53,8 @@ server.post('/login', (req, res) => {
 // проверяем, авторизован ли пользователь
 // eslint-disable-next-line
 server.use((req, res, next) => {
-  if (!req.headers.authorization) {
+  if (!req.headers.authorization)
     return res.status(403).json({ message: 'AUTH ERROR' });
-  }
 
   next();
 });

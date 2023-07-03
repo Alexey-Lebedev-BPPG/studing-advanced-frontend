@@ -6,7 +6,7 @@ export default {
     backgroundColor: { control: 'color' },
   },
   component: Flex,
-  title: 'shared/Flex',
+  title: 'shared/redesigned/Flex',
 } as Meta<typeof Flex>;
 
 const Template: StoryFn<typeof Flex> = arg => <Flex {...arg} />;

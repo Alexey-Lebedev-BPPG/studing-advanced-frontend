@@ -10,7 +10,7 @@ export default {
   // добавляем аргумент в каждую сторис
   args: { to: '/' },
   component: AppLink,
-  title: 'shared/AppLink',
+  title: 'shared/redesigned/AppLink',
 } as Meta<typeof AppLink>;
 
 const Template: StoryFn<typeof AppLink> = args => <AppLink {...args} />;

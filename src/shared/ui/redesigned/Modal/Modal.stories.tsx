@@ -8,7 +8,7 @@ export default {
     backgroundColor: { control: 'color' },
   },
   component: Modal,
-  title: 'shared/Modal',
+  title: 'shared/redesigned/Modal',
 } as Meta<typeof Modal>;
 
 const Template: StoryFn<typeof Modal> = args => <Modal {...args} />;

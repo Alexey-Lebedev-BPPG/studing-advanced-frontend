@@ -8,7 +8,7 @@ export default {
     backgroundColor: { control: 'color' },
   },
   component: Text,
-  title: 'shared/Text',
+  title: 'shared/redesigned/Text',
 } as Meta<typeof Text>;
 
 const Template: StoryFn<typeof Text> = args => <Text {...args} />;

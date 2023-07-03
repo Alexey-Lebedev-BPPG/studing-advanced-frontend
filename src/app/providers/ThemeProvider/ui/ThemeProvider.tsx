@@ -1,5 +1,4 @@
 import { FC, ReactNode, useEffect, useMemo, useState } from 'react';
-import { useJsonSettings } from '@/entities/User';
 import { LOCAL_STORAGE_THEME_KEY } from '@/shared/const/localStorage';
 import { Theme } from '@/shared/const/theme';
 import { ThemeContext } from '@/shared/lib/context/ThemeContext';
@@ -16,8 +15,6 @@ const fallbackTheme = localStorage.getItem(LOCAL_STORAGE_THEME_KEY) as Theme;
 // не используем memo в компонентах, где у нас есть children
 // чтоб иметь глобальный доступ к темам в любых компонентах
 const ThemeProvider: FC<ThemeProviderProps> = ({ children, initialTheme }) => {
-  // получаем тему из редакса
-  const { theme: defaultTheme } = useJsonSettings();
   // для того, чтоб useEffect сработал только один раз, делаем флаг
   const [isThemeInited, setIsThemeInited] = useState(false);
 
@@ -30,11 +27,11 @@ const ThemeProvider: FC<ThemeProviderProps> = ({ children, initialTheme }) => {
 
   // чтоб не инициировалась тема только дефолтная, нужно отслеживать ее изменение и поменять
   useEffect(() => {
-    if (!isThemeInited && defaultTheme) {
-      setTheme(defaultTheme);
+    if (!isThemeInited && initialTheme) {
+      setTheme(initialTheme);
       setIsThemeInited(true);
     }
-  }, [defaultTheme, isThemeInited]);
+  }, [initialTheme, isThemeInited]);
 
   useEffect(() => {
     // навешиваем класс темы на боди, т.к. у нас теперь общий скролл

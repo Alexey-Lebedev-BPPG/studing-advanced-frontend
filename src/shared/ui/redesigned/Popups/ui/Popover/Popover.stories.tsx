@@ -9,7 +9,7 @@ export default {
     backgroundColor: { control: 'color' },
   },
   component: Popover,
-  title: 'shared/Popover',
+  title: 'shared/redesigned/Popover',
 } as Meta<typeof Popover>;
 
 const Template: StoryFn<typeof Popover> = arg => <Popover {...arg} />;

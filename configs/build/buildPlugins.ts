@@ -1,27 +1,28 @@
-import webpack, { DefinePlugin, HotModuleReplacementPlugin } from 'webpack';
+import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
+import CircularDependencyPlugin from 'circular-dependency-plugin';
+import { CleanWebpackPlugin } from 'clean-webpack-plugin';
+import CopyPlugin from 'copy-webpack-plugin';
+import ESLintPlugin from 'eslint-webpack-plugin';
+import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 import htmlWebpackPlugin from 'html-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import webpack, { DefinePlugin, HotModuleReplacementPlugin } from 'webpack';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
-import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
-import CopyPlugin from 'copy-webpack-plugin';
-import CircularDependencyPlugin from 'circular-dependency-plugin';
-import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 import { BuildOptions } from './types/config';
-import { CleanWebpackPlugin } from 'clean-webpack-plugin';
-import ESLintPlugin from 'eslint-webpack-plugin';
 // import { WebpackManifestPlugin } from 'webpack-manifest-plugin';
 
 export const buildPlugins = ({
-  paths,
+  apiURL,
   isDev,
   isDevDebug,
-  apiURL,
+  paths,
   project,
 }: BuildOptions): webpack.WebpackPluginInstance[] => {
   const isProd = !isDev;
 
   const plugins = [
     // генерим главный html (index.tsx) из пути src, чтоб в него встраивались скрипты
+    // eslint-disable-next-line new-cap
     new htmlWebpackPlugin({
       favicon: paths.icon,
       inject: true,
@@ -56,9 +57,9 @@ export const buildPlugins = ({
     // с ним можно прокидывать глобальные переменные в само приложение
     new DefinePlugin({
       // называем переменные таким образом, чтоб четко понимать где переменные вебпака, а где приложения
+      __API__: JSON.stringify(apiURL), // теперь эта переменная доступна в коде (например, файл i18n.ts)
       __IS_DEV__: JSON.stringify(isDev), // теперь эта переменная доступна в коде (например, файл i18n.ts)
-      __IS_DEV_DEBUG__: JSON.stringify(isDevDebug), // теперь эта переменная доступна в коде (например, файл i18n.ts)
-      __API__: JSON.stringify(apiURL),
+      __IS_DEV_DEBUG__: JSON.stringify(isDevDebug),
       __PROJECT__: JSON.stringify(project),
       'process.env': JSON.stringify(process.env),
     }),
@@ -112,23 +113,22 @@ export const buildPlugins = ({
     plugins.push(new HotModuleReplacementPlugin());
   }
 
-  if (isDevDebug) {
+  if (isDevDebug)
     plugins.push(
       // показывает прогресс сборки
       new webpack.ProgressPlugin(),
       // включаем плагин анализа размера пакетов
       new BundleAnalyzerPlugin(),
     );
-  }
 
   if (isProd) {
     // чтоб файлы css в сборке находились отдельно (не внутри js файла)
     plugins.push(
       new MiniCssExtractPlugin({
-        // название на выходе
-        filename: 'css/[name].[contenthash:8].css',
         // название для чанков
         chunkFilename: 'css/[name].[contenthash:8].css',
+        // название на выходе
+        filename: 'css/[name].[contenthash:8].css',
       }),
     );
     // используем плагин, чтоб переместить файлы переводов в сборке

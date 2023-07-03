@@ -9,7 +9,7 @@ export default {
     backgroundColor: { control: 'color' },
   },
   component: Dropdown,
-  title: 'shared/Dropdown',
+  title: 'shared/redesigned/Dropdown',
 } as Meta<typeof Dropdown>;
 
 const Template: StoryFn<typeof Dropdown> = arg => <Dropdown {...arg} />;

@@ -9,7 +9,7 @@ export default {
     backgroundColor: { control: 'color' },
   },
   component: Card,
-  title: 'shared/Card',
+  title: 'shared/redesigned/Card',
 } as Meta<typeof Card>;
 
 const Template: StoryFn<typeof Card> = arg => <Card {...arg} />;

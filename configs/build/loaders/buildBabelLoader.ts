@@ -1,5 +1,5 @@
-import { BuildOptions } from '../types/config';
 import babelRemovePropsPlugin from '../../babel/babelRemovePropsPlugin';
+import { BuildOptions } from '../types/config';
 
 interface BuildBabelLoaderProps extends BuildOptions {
   isDev: boolean;
@@ -11,10 +11,10 @@ export const buildBabelLoader = ({ isDev, isTsx }: BuildBabelLoaderProps) => {
   const isProd = !isDev;
 
   return {
-    // ловим файлы .js, .jsx, .ts, .tsx (при этом, в зависимости от переменной, обрабатываем млм то, или то)
-    test: isTsx ? /\.(jsx|tsx)$/ : /\.(js|ts)$/,
     // исключаем node_modules
     exclude: /node_modules/,
+    // ловим файлы .js, .jsx, .ts, .tsx (при этом, в зависимости от переменной, обрабатываем млм то, или то)
+    test: isTsx ? /\.(jsx|tsx)$/ : /\.(js|ts)$/,
     // для них исп. лоадер
     use: {
       loader: 'babel-loader',
@@ -23,16 +23,14 @@ export const buildBabelLoader = ({ isDev, isTsx }: BuildBabelLoaderProps) => {
         // для кэширования данных редко изменчивых кусков кода
         cacheDirectory: true,
         compact: !isDev,
-        // при этом использовать preset-env, чтоб преобразовывать новые форматы в старые
-        presets: ['@babel/preset-env'],
         // подключаем плагин для переводов
         plugins: [
           [
             'i18next-extract',
             {
-              locales: ['ru', 'en'],
               // будет доставать ключи из кода и автоматически подставлять их
               keyAsDefaultValue: true,
+              locales: ['ru', 'en'],
             },
           ],
           // добавляем плагин для парсинга jsx и обработки тайпскрипта
@@ -46,6 +44,8 @@ export const buildBabelLoader = ({ isDev, isTsx }: BuildBabelLoaderProps) => {
           isDev && require.resolve('react-refresh/babel'),
           // если у нас какой-то плагин не добавится из-за условий, то в массив добавляется false.чтоб не подхватить этот false, делаем фильтрацию трушных занчений
         ].filter(Boolean),
+        // при этом использовать preset-env, чтоб преобразовывать новые форматы в старые
+        presets: ['@babel/preset-env'],
       },
     },
   };

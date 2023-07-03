@@ -9,7 +9,7 @@ export default {
     backgroundColor: { control: 'color' },
   },
   component: Tabs,
-  title: 'shared/Tabs',
+  title: 'shared/redesigned/Tabs',
 } as Meta<typeof Tabs>;
 
 const Template: StoryFn<typeof Tabs> = arg => <Tabs {...arg} />;

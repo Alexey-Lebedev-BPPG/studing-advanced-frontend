@@ -10,7 +10,7 @@ export default {
     backgroundColor: { control: 'color' },
   },
   component: Avatar,
-  title: 'shared/Avatar',
+  title: 'shared/redesigned/Avatar',
 } as Meta<typeof Avatar>;
 
 const Template: StoryFn<typeof Avatar> = args => <Avatar {...args} />;

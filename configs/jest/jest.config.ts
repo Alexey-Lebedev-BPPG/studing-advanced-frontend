@@ -8,54 +8,54 @@ export default () => {
     : false;
 
   return {
-    // чтоб объявлять глобальные переменные
-    globals: {
-      __IS_DEV__: true,
-      __IS_DEV_DEBUG__: true,
-      __API__: 'https://test.com',
-      __PROJECT__: 'jest',
-    },
     // удалять моки после тестов
     clearMocks: true,
-    // тестовые переменные, которые используются при тестировании
-    testEnvironment: 'jsdom',
     // игнорируемые папки для тестирования
     coveragePathIgnorePatterns: ['/node_modules/'],
+    // чтоб объявлять глобальные переменные
+    globals: {
+      __API__: 'https://test.com',
+      __IS_DEV__: true,
+      __IS_DEV_DEBUG__: true,
+      __PROJECT__: 'jest',
+    },
     // добавляем "src", чтоб заработали абсолютные пути
     moduleDirectories: ['node_modules', 'src'],
-    // альтернативным вариантом, чтоб абсолютные пути заработали будет добавление такого свойства
-    modulePaths: ['<rootDir>src'],
     // расширения файлов, в которых проводить тестирования
     moduleFileExtensions: ['js', 'jsx', 'ts', 'tsx', 'json', 'node'],
-    // т.к. файл конфигурации лежит не в корне, то нужно выйти в корень проекта
-    rootDir: '../../',
-    // регулярка для поиска файлов тестирования (rootDir заменяется на вышестоящий путь)
-    testMatch: ['<rootDir>src/**/*(*.)@(spec|test).[tj]s?(x)'],
-    // добавляем файл импорта @testing-library/jest-dom, предварительно создав для него файл импорта
-    setupFilesAfterEnv: ['<rootDir>configs/jest/setupTests.ts'],
     // добавляем css, scss файлы для распознавания джестом
     moduleNameMapper: {
-      '\\.s?css$': 'identity-obj-proxy',
       // мок для всех импортов, в которых будет присутствовать svg
       '\\.(svg|jpg)': path.resolve(__dirname, 'jestEmptyComponent.tsx'),
+      '\\.s?css$': 'identity-obj-proxy',
       // добавляем поддержку алиасов
       '^@/(.*)$': '<rootDir>/src/$1',
     },
+    modulePathIgnorePatterns: ['node_modules', '../../reports/unit'],
+    // альтернативным вариантом, чтоб абсолютные пути заработали будет добавление такого свойства
+    modulePaths: ['<rootDir>src'],
     // чтоб появлялся отчет о пройденных unit тестах на отдельной странице
     reporters: [
       'default',
       [
         'jest-html-reporters',
         {
-          publicPath: '<rootDir>/reports/unit',
           filename: 'report.html',
-          openReport: isDevDebug,
           inlineSource: true,
+          openReport: isDevDebug,
+          publicPath: '<rootDir>/reports/unit',
         },
       ],
     ],
-    modulePathIgnorePatterns: ['node_modules', '../../reports/unit'],
+    // т.к. файл конфигурации лежит не в корне, то нужно выйти в корень проекта
+    rootDir: '../../',
+    // добавляем файл импорта @testing-library/jest-dom, предварительно создав для него файл импорта
+    setupFilesAfterEnv: ['<rootDir>configs/jest/setupTests.ts'],
     snapshotResolver: '<rootDir>/configs/jest/snapshotResolve.ts',
+    // тестовые переменные, которые используются при тестировании
+    testEnvironment: 'jsdom',
+    // регулярка для поиска файлов тестирования (rootDir заменяется на вышестоящий путь)
+    testMatch: ['<rootDir>src/**/*(*.)@(spec|test).[tj]s?(x)'],
     // All imported modules in your tests should be mocked automatically
     // automock: false,
 

@@ -9,7 +9,7 @@ export default {
     backgroundColor: { control: 'color' },
   },
   component: Overlay,
-  title: 'shared/Overlay',
+  title: 'shared/redesigned/Overlay',
 } as Meta<typeof Overlay>;
 
 const Template: StoryFn<typeof Overlay> = arg => <Overlay {...arg} />;
