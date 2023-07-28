@@ -1,6 +1,5 @@
 import { FC, memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useSelector } from 'react-redux';
 import {
   getUserAuthData,
   isUserAdmin,
@@ -14,7 +13,10 @@ import {
 } from '@/shared/const/router';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { ToggleFeatures } from '@/shared/lib/features';
-import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
+import {
+  useAppDispatch,
+  useAppSelector,
+} from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { Avatar as AvatarDeprecated } from '@/shared/ui/deprecated/Avatar';
 import { Dropdown as DropdownDeprecated } from '@/shared/ui/deprecated/Popups';
 import { Avatar } from '@/shared/ui/redesigned/Avatar';
@@ -27,10 +29,10 @@ export interface IAvatarDropdownProps {
 export const AvatarDropdown: FC<IAvatarDropdownProps> = memo(
   ({ className }) => {
     const { t } = useTranslation();
-    const authData = useSelector(getUserAuthData);
+    const authData = useAppSelector(getUserAuthData);
     const dispatch = useAppDispatch();
-    const isAdmin = useSelector(isUserAdmin);
-    const isManager = useSelector(isUserManager);
+    const isAdmin = useAppSelector(isUserAdmin);
+    const isManager = useAppSelector(isUserManager);
 
     const isAdminPanelAvailable = isAdmin || isManager;
 

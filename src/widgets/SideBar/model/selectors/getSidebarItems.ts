@@ -1,4 +1,3 @@
-import { useSelector } from 'react-redux';
 import { SidebarItemType } from '../types/sidebar';
 import { getUserAuthData } from '@/entities/User';
 import AboutIcon from '@/shared/assets/icons/Info.svg';
@@ -16,6 +15,7 @@ import {
   getRouteProfile,
 } from '@/shared/const/router';
 import { toggleFeatures } from '@/shared/lib/features';
+import { useAppSelector } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 
 // предназначен для того, чтоб получать items для сайдбара во взаимодействии с редаксом
 // используем createSelector, чтоб мемоизировать значения, т.к. они изменяться не будут
@@ -70,7 +70,7 @@ import { toggleFeatures } from '@/shared/lib/features';
 
 // когда мы стали менять фичи флаги с принудительной перерисовкой всего приложения, появился баг, что иконки не перерисовываются. это из-за того, что мы используем реселект, а данные для него не изменились.чтоб обойти эту проблему, избавимся от реселекта и воспользуемся обычным селектором.
 export const useSidebarItems = () => {
-  const userData = useSelector(getUserAuthData);
+  const userData = useAppSelector(getUserAuthData);
 
   const sidebarItemsList: SidebarItemType[] = [
     {

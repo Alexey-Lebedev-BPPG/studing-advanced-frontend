@@ -48,6 +48,15 @@ module.exports = {
     'sort-destructure-keys',
   ],
   rules: {
+    '@typescript-eslint/no-restricted-imports': [
+      'warn',
+      {
+        importNames: ['useSelector', 'useDispatch'],
+        message:
+          'Use typed hooks `useAppDispatch` and `useAppSelector` instead.',
+        name: 'react-redux',
+      },
+    ],
     '@typescript-eslint/no-shadow': 'error',
     '@typescript-eslint/no-unused-vars': 'off',
     camelcase: ['warn', { properties: 'always' }],
@@ -86,11 +95,11 @@ module.exports = {
     'no-debugger': 'warn',
     'no-param-reassign': 'off',
     'no-plusplus': 'off',
+    'no-restricted-imports': 'off',
     'no-shadow': 'off',
     'no-undef': 'off',
     'no-underscore-dangle': 'off',
     'no-unused-expressions': 'off',
-    // 'max-len': 'off',
     'no-unused-vars': 'off',
     'nonblock-statement-body-position': 'off',
     'object-curly-newline': 'off',
@@ -111,7 +120,11 @@ module.exports = {
         ],
       },
     ],
-    'prettier/prettier': ['error', { endOfLine: 'auto' }],
+    'prettier/prettier': [
+      'error',
+      { endOfLine: 'auto' },
+      { usePrettierrc: true },
+    ],
     quotes: [2, 'single', { avoidEscape: true }],
     radix: 'off',
     'react/function-component-definition': 'off',

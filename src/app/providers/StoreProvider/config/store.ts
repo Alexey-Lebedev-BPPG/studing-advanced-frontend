@@ -36,13 +36,12 @@ export const createReduxStore = (
   // Ввиду того, что сам компонент мы сделали асинхронным, но импортируемые редьюсеры и т.п. из него загружаются в главный бандл, сделаем асинхронную подгрузку редьюсеров через редьюсер-менеджера
   const reducerManager = createReducerManager(rootReducers);
 
-  // указываем тип стейта в дженерике (убираем при указании мидлвеара)
+  // указываем тип стейта в дженерике (убираем при указании мидлваера)
   const store = configureStore({
     // отключаем девтулзы для продакшена
     devTools: __IS_DEV__,
 
-    // создаем мидлвеар, что передать туда наш инстанс аксиоса
-    // eslint-disable-next-line @typescript-eslint/no-shadow
+    // создаем мидлваер, что передать туда наш инстанс аксиоса
     middleware: getDefaultMiddleware =>
       getDefaultMiddleware({
         thunk: {
@@ -50,10 +49,10 @@ export const createReduxStore = (
           // extraArgument: { api: $api, navigate },
           extraArgument: { api: $api },
         },
-        // добавляем мидлвеар для rtk запросов
+        // добавляем мидлваер для rtk запросов
       }).concat(rtkApi.middleware),
 
-    // делаем инитиал стейт по ум.
+    // делаем инишиал стейт по ум.
     preloadedState: initialState,
 
     // чтоб для взаимодействия с асинхронными редьюсерами в компонентах, нам нужно передавать редьюсером не rootReducer, а функцию reduce из reduceManager

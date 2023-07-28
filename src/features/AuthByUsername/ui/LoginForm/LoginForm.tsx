@@ -1,6 +1,5 @@
 import { FC, memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useSelector } from 'react-redux';
 import cls from './LoginForm.module.scss';
 import { getLoginError } from '../../model/selectors/getLoginError/getLoginError';
 import { getLoginIsLoading } from '../../model/selectors/getLoginIsLoading/getLoginIsLoading';
@@ -14,7 +13,10 @@ import {
   ReducersList,
 } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { ToggleFeatures } from '@/shared/lib/features';
-import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
+import {
+  useAppDispatch,
+  useAppSelector,
+} from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useForceUpdate } from '@/shared/lib/render/forceUpdate';
 import {
   Button as ButtonDeprecated,
@@ -45,12 +47,12 @@ const LoginForm: FC<ILoginFormProps> = memo(({ className, onSuccess }) => {
 
   // ввиду того, что мы достаем данные до того, как у нас сработает useEffect, нам необходимо либо сделать инишиал стейт для getLoginState или сделать для каждого поля getLoginState свой селектор (сейчас сделаем для каждого свой)
   // вместо:
-  // const { username, password, isLoading, error } = useSelector(getLoginState);
+  // const { username, password, isLoading, error } = useAppSelector(getLoginState);
   // вот это:
-  const username = useSelector(getLoginUsername);
-  const password = useSelector(getLoginPassword);
-  const isLoading = useSelector(getLoginIsLoading);
-  const error = useSelector(getLoginError);
+  const username = useAppSelector(getLoginUsername);
+  const password = useAppSelector(getLoginPassword);
+  const isLoading = useAppSelector(getLoginIsLoading);
+  const error = useAppSelector(getLoginError);
 
   const onChangeUsername = useCallback(
     (value: string) => {

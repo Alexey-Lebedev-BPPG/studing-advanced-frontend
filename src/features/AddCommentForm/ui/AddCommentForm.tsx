@@ -1,6 +1,5 @@
 import { FC, memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useSelector } from 'react-redux';
 import cls from './AddCommentForm.module.scss';
 import { getAddCommentFormText } from '../model/selectors/getAddCommentForm/getAddCommentForm';
 import {
@@ -13,7 +12,10 @@ import {
   ReducersList,
 } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { ToggleFeatures } from '@/shared/lib/features';
-import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
+import {
+  useAppDispatch,
+  useAppSelector,
+} from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { Button as ButtonDeprecated } from '@/shared/ui/deprecated/Button';
 import { Input as InputDeprecated } from '@/shared/ui/deprecated/Input';
 import { Button } from '@/shared/ui/redesigned/Button';
@@ -34,7 +36,7 @@ const AddCommentForm: FC<IAddCommentFormProps> = memo(
   ({ className, onSendComment }) => {
     const { t } = useTranslation();
     const dispatch = useAppDispatch();
-    const text = useSelector(getAddCommentFormText);
+    const text = useAppSelector(getAddCommentFormText);
 
     const onCommentTextChange = useCallback(
       (value: string) => {

@@ -1,6 +1,5 @@
 import { FC, memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useSelector } from 'react-redux';
 import { ValidateProfileError } from '../../model/consts/consts';
 import { getProfileError } from '../../model/selectors/getProfileError/getProfileError';
 import { getProfileForm } from '../../model/selectors/getProfileForm/getProfileForm';
@@ -18,7 +17,10 @@ import {
   DynamicModuleLoader,
   ReducersList,
 } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
-import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
+import {
+  useAppDispatch,
+  useAppSelector,
+} from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect/useInitialEffect';
 import { Text, TextTheme } from '@/shared/ui/deprecated/Text';
 import { VStack } from '@/shared/ui/redesigned/Stack';
@@ -37,11 +39,11 @@ export const EditableProfileCard: FC<IEditableProfileCardProps> = memo(
     const dispatch = useAppDispatch();
     const { t } = useTranslation('profile');
 
-    const formData = useSelector(getProfileForm);
-    const isLoading = useSelector(getProfileIsLoading);
-    const error = useSelector(getProfileError);
-    const readonly = useSelector(getProfileIsReadonly);
-    const errors = useSelector(getProfileValidateErrors);
+    const formData = useAppSelector(getProfileForm);
+    const isLoading = useAppSelector(getProfileIsLoading);
+    const error = useAppSelector(getProfileError);
+    const readonly = useAppSelector(getProfileIsReadonly);
+    const errors = useAppSelector(getProfileValidateErrors);
 
     const validateErrorTranslate = {
       [ValidateProfileError.SERVER_ERROR]: t('Серверная ошибка при сохранении'),

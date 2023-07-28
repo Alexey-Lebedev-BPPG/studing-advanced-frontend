@@ -7,14 +7,15 @@
 }
 
 .input {
-  background-color: transparent;
-  border: none;
-  outline: none;
   width: 100%;
 
   // скрываем браузерную каретку по ум.
   color: transparent;
   text-shadow: 0 0 0 var(--primary-color);
+
+  background-color: transparent;
+  border: none;
+  outline: none;
 
   &:focus {
     outline: none;
@@ -22,18 +23,22 @@
 }
 
 .caretWrapper {
+  position: relative;
+
   // растянуть на всю свободную площадь
   flex-grow: 1;
-  position: relative;
 }
 
 .caret {
   position: absolute;
-  height: 3px;
-  width: 9px;
-  background-color: var(--primary-color);
   bottom: 0;
   left: 0;
+
+  width: 9px;
+  height: 3px;
+
+  background-color: var(--primary-color);
+
   animation: blink 0.7s forwards infinite;
 }
 

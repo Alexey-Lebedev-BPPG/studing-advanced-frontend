@@ -1,7 +1,8 @@
 .options {
-  background: var(--dark-bg-redesigned);
   position: absolute;
   z-index: 1000;
+
+  background: var(--dark-bg-redesigned);
   border-radius: 12px;
   box-shadow: 4px 4px 8px var(--dark-bg-redesigned);
 }

@@ -1,5 +1,4 @@
 import { useCallback } from 'react';
-import { useSelector } from 'react-redux';
 import {
   getArticlesPageView,
   getArticlesPageOrder,
@@ -14,18 +13,21 @@ import {
   ArticleSortFields,
   ArticleType,
 } from '@/entities/Article';
-import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
+import {
+  useAppDispatch,
+  useAppSelector,
+} from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useDebounce } from '@/shared/lib/hooks/useDebounce/useDebounce';
 import { SortOrder } from '@/shared/types/sort';
 
 export const useArticleFilters = () => {
   const dispatch = useAppDispatch();
 
-  const view = useSelector(getArticlesPageView);
-  const order = useSelector(getArticlesPageOrder);
-  const sort = useSelector(getArticlesPageSort);
-  const search = useSelector(getArticlesPageSearch);
-  const type = useSelector(getArticlesPageType);
+  const view = useAppSelector(getArticlesPageView);
+  const order = useAppSelector(getArticlesPageOrder);
+  const sort = useAppSelector(getArticlesPageSort);
+  const search = useAppSelector(getArticlesPageSearch);
+  const type = useAppSelector(getArticlesPageType);
 
   const fetchData = useCallback(() => {
     dispatch(fetchArticlesList({ replace: true }));

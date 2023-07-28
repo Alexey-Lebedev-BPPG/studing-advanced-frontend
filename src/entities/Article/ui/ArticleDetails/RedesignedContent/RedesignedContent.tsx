@@ -1,6 +1,5 @@
 import { FC, memo } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useSelector } from 'react-redux';
 import {
   getArticleDetailsData,
   getArticleDetailsError,
@@ -8,15 +7,16 @@ import {
 } from '../../../model/selectors/articleDetails';
 import cls from '../ArticleDetails.module.scss';
 import { renderArticleBlock } from '../renderBlock';
+import { useAppSelector } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { AppImage } from '@/shared/ui/redesigned/AppImage';
 import { Skeleton } from '@/shared/ui/redesigned/Skeleton';
 import { VStack } from '@/shared/ui/redesigned/Stack';
 import { Text } from '@/shared/ui/redesigned/Text';
 
 export const RedesignedContent: FC = memo(props => {
-  const isLoading = useSelector(getArticleDetailsIsLoading);
-  const article = useSelector(getArticleDetailsData);
-  const error = useSelector(getArticleDetailsError);
+  const isLoading = useAppSelector(getArticleDetailsIsLoading);
+  const article = useAppSelector(getArticleDetailsData);
+  const error = useAppSelector(getArticleDetailsError);
   const { t } = useTranslation();
 
   if (isLoading)

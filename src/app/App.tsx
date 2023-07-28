@@ -1,5 +1,4 @@
 import { Suspense, memo, useEffect } from 'react';
-import { useSelector } from 'react-redux';
 import { useAppToolbar } from './lib/useAppToolbar';
 import { withTheme } from './providers/ThemeProvider';
 import { AppRouter } from './providers/router';
@@ -8,7 +7,10 @@ import { AppLoadLayout } from '@/shared/layouts/AppLoadLayout';
 import { MainLayout } from '@/shared/layouts/MainLayout';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { ToggleFeatures } from '@/shared/lib/features';
-import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
+import {
+  useAppDispatch,
+  useAppSelector,
+} from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useTheme } from '@/shared/lib/hooks/useTheme/useTheme';
 import { Navbar } from '@/widgets/Navbar';
 import { PageLoader } from '@/widgets/PageLoader';
@@ -17,7 +19,7 @@ import { SideBar } from '@/widgets/SideBar';
 const App = memo(() => {
   const { theme } = useTheme();
   const dispatch = useAppDispatch();
-  const inited = useSelector(getUserInited);
+  const inited = useAppSelector(getUserInited);
   // получаем компонент, который необходимо показывать на текущей странице
   const toolbar = useAppToolbar();
 

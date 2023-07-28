@@ -3,18 +3,20 @@
 }
 
 .trigger {
-  background: none;
-  outline: none;
+  cursor: pointer;
+
   margin: 0;
   padding: 0;
+
+  background: none;
   border: none;
-  cursor: pointer;
+  outline: none;
 }
 
 .menu {
-  border-radius: 18px;
-  border: 1px solid var(--accent-redesigned);
   overflow: hidden;
+  border: 1px solid var(--accent-redesigned);
+  border-radius: 18px;
 }
 
 .active {
@@ -30,8 +32,8 @@
 }
 
 .menuTopLeft {
-  bottom: 100%;
   right: 0;
+  bottom: 100%;
 }
 
 .menuTopRight {

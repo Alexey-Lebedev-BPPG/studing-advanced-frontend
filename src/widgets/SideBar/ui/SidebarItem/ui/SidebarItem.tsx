@@ -1,10 +1,10 @@
 import { FC, memo } from 'react';
-import { useSelector } from 'react-redux';
 import cls from './SidebarItem.module.scss';
 import { SidebarItemType } from '../../../model/types/sidebar';
 import { getUserAuthData } from '@/entities/User';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { ToggleFeatures } from '@/shared/lib/features';
+import { useAppSelector } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import {
   AppLink as AppLinkDeprecated,
   AppLinkTheme,
@@ -19,7 +19,7 @@ interface ISidebarItemProps {
 
 export const SidebarItem: FC<ISidebarItemProps> = memo(
   ({ collapsed, item }) => {
-    const isAuth = useSelector(getUserAuthData);
+    const isAuth = useAppSelector(getUserAuthData);
 
     if (item.authOnly && !isAuth) return null;
 

@@ -1,5 +1,4 @@
 import { FC, MutableRefObject, ReactNode, UIEvent, useRef } from 'react';
-import { useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import cls from './Page.module.scss';
 import { StateSchema } from '@/app/providers/StoreProvider';
@@ -7,7 +6,10 @@ import { getScrollSavePath, scrollSaveActions } from '@/features/ScrollSave';
 import { PAGE_ID } from '@/shared/const/pageId';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { toggleFeatures } from '@/shared/lib/features';
-import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
+import {
+  useAppDispatch,
+  useAppSelector,
+} from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useInfiniteScroll } from '@/shared/lib/hooks/useInfiniteScroll/useInfiniteScroll';
 import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect/useInitialEffect';
 import { useThrottle } from '@/shared/lib/hooks/useThrottle/useThrottle';
@@ -34,7 +36,7 @@ export const Page: FC<IPageProps> = ({
   const triggerRef = useRef() as MutableRefObject<HTMLDivElement>;
 
   // получаем позицию скролла из редакса по нашей странице
-  const scrollPosition = useSelector(
+  const scrollPosition = useAppSelector(
     (state: StateSchema) => getScrollSavePath(state, pathname),
     // eslint-disable-next-line function-paren-newline
   );

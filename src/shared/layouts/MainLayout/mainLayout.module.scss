@@ -1,5 +1,4 @@
 .mainLayout {
-  min-height: 100vh;
   display: grid;
 
   // указываем порядок отображения
@@ -7,6 +6,7 @@
 
   // указываем ширину каждого элемента
   grid-template-columns: min-content 1fr 100px;
+  min-height: 100vh;
 }
 
 .sidebar,
@@ -19,29 +19,31 @@
 .sidebar {
   // указываем название контента
   grid-area: sidebar;
-  padding: 32px;
   max-width: 284px;
+  padding: 32px;
 }
 
 .content {
   // указываем название контента
   grid-area: content;
-  max-width: 1200px;
   justify-self: center;
+
   width: 100%;
+  max-width: 1200px;
   padding-top: 32px;
 }
 
 .rightbar {
+  display: flex;
+
   // указываем название контента
   grid-area: rightbar;
-  display: flex;
   flex-direction: column;
   align-items: flex-end;
 }
 
 
 .toolbar {
-  height: 100%;
   width: 100%;
+  height: 100%;
 }

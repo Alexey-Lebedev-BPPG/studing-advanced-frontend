@@ -1,4 +1,4 @@
-import { useSelector } from 'react-redux';
+import { useAppSelector } from '../hooks/useAppDispatch/useAppDispatch';
 import { StateSchema } from '@/app/providers/StoreProvider';
 
 // добавляем возможность прокидывать доп аргументы
@@ -13,7 +13,7 @@ export function buildSelector<T, Args extends any[]>(
 ): Result<T, Args> {
   const useSelectorHook: Hook<T, Args> = (...args: Args) =>
     // добавляем прокинутые аргументы
-    useSelector((state: StateSchema) => selector(state, ...args));
+    useAppSelector((state: StateSchema) => selector(state, ...args));
 
   return [useSelectorHook, selector];
 }

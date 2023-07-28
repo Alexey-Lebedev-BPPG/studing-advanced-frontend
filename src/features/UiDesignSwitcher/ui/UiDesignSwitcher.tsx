@@ -1,8 +1,10 @@
 import { FC, memo, useState } from 'react';
-import { useSelector } from 'react-redux';
 import { getUserAuthData } from '@/entities/User';
 import { getFeatureFlags, updateFeatureFlags } from '@/shared/lib/features';
-import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
+import {
+  useAppDispatch,
+  useAppSelector,
+} from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useForceUpdate } from '@/shared/lib/render/forceUpdate';
 import { ListBox } from '@/shared/ui/redesigned/Popups';
 import { Skeleton } from '@/shared/ui/redesigned/Skeleton';
@@ -19,7 +21,7 @@ export const UiDesignSwitcher: FC<IUiDesignSwitcherProps> = memo(props => {
   const forceUpdate = useForceUpdate();
 
   const isAppRedesign = getFeatureFlags('isAppRedesigned');
-  const authData = useSelector(getUserAuthData);
+  const authData = useAppSelector(getUserAuthData);
   const [isLoading, setIsLoading] = useState(false);
 
   const items = [

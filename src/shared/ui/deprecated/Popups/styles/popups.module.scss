@@ -3,12 +3,14 @@
 }
 
 .trigger {
-  background: none;
-  outline: none;
+  cursor: pointer;
+
   margin: 0;
   padding: 0;
+
+  background: none;
   border: none;
-  cursor: pointer;
+  outline: none;
 }
 
 .active {
@@ -20,8 +22,8 @@
 }
 
 .menuTopLeft {
-  bottom: 100%;
   right: 0;
+  bottom: 100%;
 }
 
 .menuTopRight {

@@ -1,15 +1,16 @@
 .Drawer {
   position: fixed;
-  inset: 0;
   z-index: 100;
+  inset: 0;
+
   display: flex;
   align-items: flex-end;
 }
 
 .opened {
   pointer-events: auto;
-  opacity: 1;
   z-index: var(--modal-z-index);
+  opacity: 1;
 
   .content {
     transform: translateY(0%);
@@ -17,14 +18,17 @@
 }
 
 .sheet {
-  z-index: var(--modal-z-index);
-  position: fixed;
-  left: 2vw;
-  height: calc(100vh + 100px);
-  width: 96vw;
-  border-radius: 12px 12px 0;
   touch-action: none;
+
+  position: fixed;
+  z-index: var(--modal-z-index);
+  left: 2vw;
+
+  width: 96vw;
+  height: calc(100vh + 100px);
   padding: 15px;
+
+  border-radius: 12px 12px 0;
 }
 
 .oldDrawer {

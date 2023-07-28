@@ -48,15 +48,15 @@ export const ArticleListItemSkeleton = memo(
         <div className={classNames(mainClass, {}, [className, cls[view]])}>
           <ToggleFeatures
             nameFeatures='isAppRedesigned'
-            on={
-              <CardRedesigned border='round' className={cls.card}>
-                {cardContent}
-              </CardRedesigned>
-            }
             off={
               <CardDeprecated className={cls.card}>
                 {cardContent}
               </CardDeprecated>
+            }
+            on={
+              <CardRedesigned border='round' className={cls.card}>
+                {cardContent}
+              </CardRedesigned>
             }
           />
         </div>
@@ -92,13 +92,13 @@ export const ArticleListItemSkeleton = memo(
       <div className={classNames(mainClass, {}, [className, cls[view]])}>
         <ToggleFeatures
           nameFeatures='isAppRedesigned'
+          off={
+            <CardDeprecated className={cls.card}>{cardContent}</CardDeprecated>
+          }
           on={
             <CardRedesigned border='round' className={cls.card}>
               {cardContent}
             </CardRedesigned>
-          }
-          off={
-            <CardDeprecated className={cls.card}>{cardContent}</CardDeprecated>
           }
         />
       </div>

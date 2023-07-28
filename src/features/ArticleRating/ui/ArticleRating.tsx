@@ -1,12 +1,12 @@
 import { FC, memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useSelector } from 'react-redux';
 import {
   useArticleRating,
   useCreateArticleRating,
 } from '../api/articleRatingApi';
 import { RatingCard } from '@/entities/Rating';
 import { getUserAuthData } from '@/entities/User';
+import { useAppSelector } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { Skeleton } from '@/shared/ui/deprecated/Skeleton';
 
 export interface IArticleRatingProps {
@@ -17,7 +17,7 @@ export interface IArticleRatingProps {
 const ArticleRating: FC<IArticleRatingProps> = memo(
   ({ articleId, className }) => {
     const { t } = useTranslation();
-    const userData = useSelector(getUserAuthData);
+    const userData = useAppSelector(getUserAuthData);
     const { data, isLoading } = useArticleRating({
       articleId,
       userId: userData?.id || '',

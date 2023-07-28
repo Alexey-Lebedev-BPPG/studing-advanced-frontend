@@ -12,7 +12,7 @@ import {
 } from './stateSchema';
 
 // https://redux.js.org/usage/code-splitting
-// предназанчен для того, чтоб в реальном времени подгружать/удалять редьюсеры в стейте
+// предназначен для того, чтоб в реальном времени подгружать/удалять редьюсеры в стейте
 // на вход подается начальные редьюсеры
 export function createReducerManager(
   initialReducers: ReducersMapObject<StateSchema>,
@@ -37,7 +37,7 @@ export function createReducerManager(
 
     getMountedReducers: () => mountedReducers,
 
-    // функци получения всех редьюсеров
+    // функция получения всех редьюсеров
     getReducerMap: () => reducers,
 
     // обычная функция, которая проверяет, что если какие-то редьюсеры есть в keysToRemove, то она их удаляет из стейта

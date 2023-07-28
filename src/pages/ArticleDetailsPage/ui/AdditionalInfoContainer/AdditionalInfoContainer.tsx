@@ -1,14 +1,14 @@
 import { FC, memo, useCallback } from 'react';
-import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import cls from './additionalInfoContainer.module.scss';
 import { getArticleDetailsData } from '@/entities/Article';
 import { getRouteArticleEdit } from '@/shared/const/router';
+import { useAppSelector } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { Card } from '@/shared/ui/redesigned/Card';
 import { ArticleAdditionalInfo } from '@/widgets/ArticleAdditionalInfo';
 
 export const AdditionalInfoContainer: FC = memo(props => {
-  const article = useSelector(getArticleDetailsData);
+  const article = useAppSelector(getArticleDetailsData);
 
   const navigate = useNavigate();
 

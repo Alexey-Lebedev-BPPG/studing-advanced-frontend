@@ -1,9 +1,9 @@
 import { useMemo } from 'react';
-import { useSelector } from 'react-redux';
 import { Navigate, useLocation } from 'react-router-dom';
 import { UserRole } from '../../../consts/consts';
 import { getUserAuthData, getUserRoles } from '@/entities/User';
 import { getRouteForbidden, getRouteMain } from '@/shared/const/router';
+import { useAppSelector } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 
 interface RequireAuthProps {
   children: JSX.Element;
@@ -13,9 +13,9 @@ interface RequireAuthProps {
 // не используем memo в компонентах, где у нас есть children
 export const RequireAuth = ({ children, roles }: RequireAuthProps) => {
   // проверяем авторизован ли пользователь
-  const auth = useSelector(getUserAuthData);
+  const auth = useAppSelector(getUserAuthData);
   const location = useLocation();
-  const userRoles = useSelector(getUserRoles);
+  const userRoles = useAppSelector(getUserRoles);
 
   const hasRequireRoles = useMemo(() => {
     if (!roles) return true;

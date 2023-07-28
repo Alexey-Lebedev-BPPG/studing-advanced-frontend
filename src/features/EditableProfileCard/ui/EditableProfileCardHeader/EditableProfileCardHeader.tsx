@@ -1,6 +1,5 @@
 import { FC, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useSelector } from 'react-redux';
 import { getProfileData } from '../../model/selectors/getProfileData/getProfileData';
 import { getProfileIsReadonly } from '../../model/selectors/getProfileIsReadonly/getProfileIsReadonly';
 import { updateProfileData } from '../../model/services/updateProfileData/updateProfileData';
@@ -8,7 +7,10 @@ import { profileActions } from '../../model/slice/profileSlice';
 import { getUserAuthData } from '@/entities/User';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { ToggleFeatures } from '@/shared/lib/features';
-import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
+import {
+  useAppDispatch,
+  useAppSelector,
+} from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import {
   Button as ButtonDeprecated,
   ButtonTheme,
@@ -28,9 +30,9 @@ export const EditableProfileCardHeader: FC<IEditableProfileCardHeaderProps> = ({
 }) => {
   const { t } = useTranslation('profile');
   const dispatch = useAppDispatch();
-  const authData = useSelector(getUserAuthData);
-  const profileData = useSelector(getProfileData);
-  const readonly = useSelector(getProfileIsReadonly);
+  const authData = useAppSelector(getUserAuthData);
+  const profileData = useAppSelector(getProfileData);
+  const readonly = useAppSelector(getProfileIsReadonly);
 
   const canEdit = authData?.id === profileData?.id;
 

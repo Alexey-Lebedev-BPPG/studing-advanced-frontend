@@ -23,8 +23,8 @@
   .img {
     width: 100%;
     max-height: 250px;
-    object-fit: cover;
     margin: 16px 0;
+    object-fit: cover;
   }
 
   .footer {
@@ -34,26 +34,26 @@
   }
 
   .textBlock {
-    min-height: 200px;
     overflow-y: hidden;
+    min-height: 200px;
   }
 }
 
 .SMALL {
+  cursor: pointer;
   width: 230px;
   transition: 0.2s;
-  cursor: pointer;
 
   .date {
     position: absolute;
-    right: 0;
     top: 0;
+    right: 0;
     display: none;
   }
 
   &:hover {
-    opacity: 0.8;
     transform: scale(1.01);
+    opacity: 0.8;
 
     .date {
       display: block;
@@ -61,9 +61,9 @@
   }
 
   .imageWrapper {
+    position: relative;
     width: 200px;
     height: 200px;
-    position: relative;
   }
 
   .img {
@@ -79,15 +79,15 @@
   }
 
   .types p {
-    width: 115px;
-    white-space: nowrap;
     overflow: hidden;
+    width: 115px;
     text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
   .views {
-    margin-left: auto;
     margin-right: 8px;
+    margin-left: auto;
   }
 
   .title {
@@ -95,10 +95,10 @@
   }
 
   .title p {
-    width: 200px;
-    white-space: nowrap;
     overflow: hidden;
+    width: 200px;
     text-overflow: ellipsis;
+    white-space: nowrap;
   }
 }
 
