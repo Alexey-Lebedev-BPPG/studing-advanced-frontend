@@ -18,24 +18,24 @@
 #         with:
 #           node-version: ${{ matrix.node-version }}
 #       - name: install modules
-#         run: npm ci --force
+#         run: pnpm ci --force
 #       - name: build production project
-#         run: npm run build:prod
+#         run: pnpm run build:prod
 #         if: always()
 #       - name: linting typescript
-#         run: npm run lint:ts
+#         run: pnpm run lint:ts
 #         if: always()
 #       - name: linting scss
-#         run: npm run lint:scss
+#         run: pnpm run lint:scss
 #         if: always()
 #       - name: linting unit testing
-#         run: npm run test:unit
+#         run: pnpm run test:unit
 #         if: always()
 #       - name: build storybook
-#         run: npm run storybook:build
+#         run: pnpm run storybook:build
 #         if: always()
 #       - name: screenshot testing
-#         run: npm run test:ui:ci
+#         run: pnpm run test:ui:ci
 #         if: always()
 
 # чтоб не было проблем с скриншотными тестами, обновляем пайплайны
@@ -70,24 +70,24 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - name: install modules
-        run: npm ci --force
+        run: pnpm ci --force
       - name: build production project
-        run: npm run build:prod
+        run: pnpm run build:prod
         if: always()
       - name: build storybook
-        run: npm run build-storybook
+        run: pnpm run build-storybook
         if: always()
       # - name: screenshot testing
-      #   run: npm run test:ui:ci
+      #   run: pnpm run test:ui:ci
       #   if: always()
       - name: unit testing
         if: always()
-        run: npm run test:unit
+        run: pnpm run test:unit
       - name: chromatic testing
         if: always()
-        run: npm run chromatic
+        run: pnpm run chromatic
       # - name: Generate HTML report
-      #   run: npm run test:ui:report
+      #   run: pnpm run test:ui:report
       #   if: always()
       # - name: move loki
       #   run: mv .loki reports/
@@ -118,9 +118,9 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - name: install modules
-        run: npm ci --force
+        run: pnpm ci --force
       - name: linting typescript
-        run: npm run lint:ts
+        run: pnpm run lint:ts
         if: always()
       - name: linting css
-        run: npm run lint:scss
+        run: pnpm run lint:scss

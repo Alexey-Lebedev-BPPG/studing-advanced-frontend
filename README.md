@@ -1,36 +1,36 @@
 ## Запуск проекта
 
 ```
-npm install - устанавливаем зависимости
-npm run start:dev или npm run start:dev:vite - запуск сервера + frontend проекта в dev режиме
+pnpm install - устанавливаем зависимости
+pnpm run start:dev или pnpm run start:dev:vite - запуск сервера + frontend проекта в dev режиме
 ```
 
 ---
 
 ## Скрипты
 
-- `npm run start` - Запуск frontend проекта на webpack dev server
-- `npm run start:vite` - Запуск frontend проекта на vite
-- `npm run start:dev` - Запуск frontend проекта на webpack dev server + backend
-- `npm run start:dev:vite` - Запуск frontend проекта на vite + backend
-- `npm run start:dev:server` - Запуск backend сервера
-- `npm run build:prod` - Сборка в prod режиме
-- `npm run build:dev` - Сборка в dev режиме (не минимизирован)
-- `npm run lint:ts` - Проверка ts файлов линтером
-- `npm run lint:ts:fix` - Исправление ts файлов линтером
-- `npm run lint:scss` - Проверка scss файлов style линтером
-- `npm run lint:scss:fix` - Исправление scss файлов style линтером
-- `npm run test:unit` - Запуск unit тестов с jest
-- `npm run test:ui` - Запуск скриншотных тестов с loki
-- `npm run test:ui:ok` - Подтверждение новых скриншотов
-- `npm run test:ui:ci` - Запуск скриншотных тестов в CI
-- `npm run test:ui:report` - Генерация полного отчета для скриншотных тестов
-- `npm run test:ui:json` - Генерация json отчета для скриншотных тестов
-- `npm run test:ui:html` - Генерация HTML отчета для скриншотных тестов
-- `npm run storybook` - запуск Storybook
-- `npm run storybook:build` - Сборка storybook билда
-- `npm run prepare` - прекоммит хуки
-- `npm run generate:slice` - Скрипт для генерации FSD слайсов
+- `pnpm run start` - Запуск frontend проекта на webpack dev server
+- `pnpm run start:vite` - Запуск frontend проекта на vite
+- `pnpm run start:dev` - Запуск frontend проекта на webpack dev server + backend
+- `pnpm run start:dev:vite` - Запуск frontend проекта на vite + backend
+- `pnpm run start:dev:server` - Запуск backend сервера
+- `pnpm run build:prod` - Сборка в prod режиме
+- `pnpm run build:dev` - Сборка в dev режиме (не минимизирован)
+- `pnpm run lint:ts` - Проверка ts файлов линтером
+- `pnpm run lint:ts:fix` - Исправление ts файлов линтером
+- `pnpm run lint:scss` - Проверка scss файлов style линтером
+- `pnpm run lint:scss:fix` - Исправление scss файлов style линтером
+- `pnpm run test:unit` - Запуск unit тестов с jest
+- `pnpm run test:ui` - Запуск скриншотных тестов с loki
+- `pnpm run test:ui:ok` - Подтверждение новых скриншотов
+- `pnpm run test:ui:ci` - Запуск скриншотных тестов в CI
+- `pnpm run test:ui:report` - Генерация полного отчета для скриншотных тестов
+- `pnpm run test:ui:json` - Генерация json отчета для скриншотных тестов
+- `pnpm run test:ui:html` - Генерация HTML отчета для скриншотных тестов
+- `pnpm run storybook` - запуск Storybook
+- `pnpm run storybook:build` - Сборка storybook билда
+- `pnpm run prepare` - прекоммит хуки
+- `pnpm run generate:slice` - Скрипт для генерации FSD слайсов
 
 ---
 
@@ -57,10 +57,10 @@ npm run start:dev или npm run start:dev:vite - запуск сервера + 
 
 В проекте используются 4 вида тестов:
 
-1. Обычные unit тесты на jest - `npm run test:unit`
-2. Тесты на компоненты с React testing library -`npm run test:unit`
-3. Скриншотное тестирование с loki `npm run test:ui`
-4. e2e тестирование с Cypress `npm run test:e2e`
+1. Обычные unit тесты на jest - `pnpm run test:unit`
+2. Тесты на компоненты с React testing library -`pnpm run test:unit`
+3. Скриншотное тестирование с loki `pnpm run test:ui`
+4. e2e тестирование с Cypress `pnpm run test:e2e`
 
 Подробнее о тестах - [документация тестирование](/docs/tests.md)
 
@@ -81,10 +81,10 @@ npm run start:dev или npm run start:dev:vite - запуск сервера + 
 
 ##### Запуск линтеров
 
-- `npm run lint:ts` - Проверка ts файлов линтером
-- `npm run lint:ts:fix` - Исправление ts файлов линтером
-- `npm run lint:scss` - Проверка scss файлов style линтером
-- `npm run lint:scss:fix` - Исправление scss файлов style линтером
+- `pnpm run lint:ts` - Проверка ts файлов линтером
+- `pnpm run lint:ts:fix` - Исправление ts файлов линтером
+- `pnpm run lint:scss` - Проверка scss файлов style линтером
+- `pnpm run lint:scss:fix` - Исправление scss файлов style линтером
 
 ---
 
@@ -97,7 +97,7 @@ npm run start:dev или npm run start:dev:vite - запуск сервера + 
 
 Запустить сторибук можно командой:
 
-- `npm run storybook`
+- `pnpm run storybook`
 
 Подробнее о [Storybook](/docs/storybook.md)
 

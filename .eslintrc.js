@@ -1,4 +1,4 @@
-// чтоб появился этот файл делаем npm init @eslint/config
+// чтоб появился этот файл делаем pnpm init @eslint/config
 module.exports = {
   env: { browser: true, es2021: true, jest: true, node: true },
   // расширяем стандартный плагин для реакта и подключаем модуль стандарта тайпскрипта и airbnb + автоматом добавился сторибук

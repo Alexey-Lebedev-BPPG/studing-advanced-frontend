@@ -6,7 +6,7 @@
 'start:debug: ./node_modules/.bin/webpack serve --env port=3000 --env mode=development --env modeDebug=true';
 
 // запускаем одновременно проект и бэк
-'start:dev: concurrently "npm start" "npm run start:dev:server"';
+'start:dev: concurrently "pnpm start" "pnpm run start:dev:server"';
 
 // бэкенд часть
 'start:dev:server: node ./json-server/index.js';
@@ -39,7 +39,7 @@
 ('test:ui:ok: npx loki approve');
 
 // "test:ui:ci": "loki update --requireReference --reactUri file:./storybook-static",
-// "test:ui:report": "npm run test:ui:json && npm run test:ui:html",
+// "test:ui:report": "pnpm run test:ui:json && pnpm run test:ui:html",
 // "test:ui:json": "node scripts/generate-visual-json-report.js",
 // "test:ui:html": "npx reg-cli --from .loki/report.json --report .loki/report.html",
 
@@ -55,7 +55,7 @@
 // установка хаски для пайплайнов
 ('prepare: husky install');
 
-// генерация шаблонов папок и файлов (например, npm run generate:slices entities test-component)
+// генерация шаблонов папок и файлов (например, pnpm run generate:slices entities test-component)
 ('generate:slices: node ./scripts/createSlice/index.js');
 
 // выполняется всегда после установки какой-либо зависимости (для виндовс: rmdir /s /q .\\node_modules\\.cache, для линукс: rm -rf ./node_modules/.cache)
@@ -77,7 +77,7 @@
 // 3. import from git
 // 4. выбираем свой проект
 // 5. нажимаем на него и выбираем дефолт ветку - мастер;
-// Build command - в нашем случае npm run build:prod;
+// Build command - в нашем случае pnpm run build:prod;
 // Publish directory - в нашем случае - build
 // 6. при необходимости задаем переменные окружения
 // 7. нажимаем деплой. ждем когда задеплоится и можно использовать
@@ -86,8 +86,8 @@
 
 // чтоб создать свой плагин:
 // 1. создаем новую папку, которая должна начинаться с eslint-plugin
-// 2. устанавливаем  npm install --global yo
-// 3. устанавливаем npm install --global generator-eslint
+// 2. устанавливаем  pnpm install --global yo
+// 3. устанавливаем pnpm install --global generator-eslint
 // 3. запускаем команду yo eslint:plugin
 // 4. заполняем все по инструкции
 // 5. в папке lib=> index.js есть список правил
@@ -103,12 +103,12 @@
 // fail: test error)
 // AST - абстрактное синтаксическое дерево (https://astexplorer.net)
 // подробный гайд по созданию плагина (https://eslint.org/docs/latest/extend/custom-rules)
-// внеся изменения в плагин, запускаем npm login и указываем свои данные
-// делаем npm publish и проверяем на сайте публикование пакета
+// внеся изменения в плагин, запускаем pnpm login и указываем свои данные
+// делаем pnpm publish и проверяем на сайте публикование пакета
 // можно устанавливать в свой проект данные пакет
 // добавляем название плагина в поле plugins в файле .eslintrc.js
 // чтоб пакет отображал в виде предупреждений, в поле rules в файле .eslintrc.js указываем  "path-checher-ulbi-example/path-checker": "warn",
-// если хотим внести какие-то изменения, то вносим их, меняем версию в файле package.json и снова вызываем npm publish
+// если хотим внести какие-то изменения, то вносим их, меняем версию в файле package.json и снова вызываем pnpm publish
 
 // для размещения на свой удаленный сервер своего проекта:
 // - выбираем любой сервис по аренде серверов (в России можно использовать selectel) и создаем сервер по предпочтениям (минимум 2 оперативы и 20 памяти)
