@@ -1,8 +1,13 @@
 {
-  "extends": ["stylelint-config-standard-scss", "stylelint-config-standard", "stylelint-config-clean-order"],
+  "extends": [
+    "stylelint-config-standard-scss",
+    "stylelint-config-standard",
+    "stylelint-config-clean-order"
+  ],
   "plugins": ["stylelint-order"],
   "rules": {
     "no-missing-end-of-source-newline": null,
-    "selector-class-pattern": null
+    "selector-class-pattern": null,
+    "import-notation": "string"
   }
 }

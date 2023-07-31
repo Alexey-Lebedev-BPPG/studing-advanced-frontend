@@ -1,8 +1,8 @@
-@import url("./reset");
-@import url("./themes/dark");
-@import url("./themes/normal");
-@import url("./themes/orange");
-@import url("./variables/global");
+@import "./reset";
+@import "./themes/dark";
+@import "./themes/normal";
+@import "./themes/orange";
+@import "./variables/global";
 
 .app {
   min-height: 100vh;
