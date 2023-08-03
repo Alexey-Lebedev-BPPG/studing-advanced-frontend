@@ -3,6 +3,7 @@
 @import "./themes/normal";
 @import "./themes/orange";
 @import "./variables/global";
+@import "./fonts";
 
 .app {
   min-height: 100vh;
@@ -16,6 +17,14 @@
   font: var(--font-m-redesigned);
   color: var(--text-redesigned);
   background: var(--bg-redesigned);
+}
+
+@font-face {
+  font-family: clash-display;
+  font-weight: 600;
+  src:
+    local("clash-display"),
+    url("./fonts/ClashDisplay-Variable.ttf") format("woff");
 }
 
 .content-page {

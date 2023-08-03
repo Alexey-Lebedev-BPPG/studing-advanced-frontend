@@ -1,7 +1,7 @@
-export const buildFileLoader = () => ({
+export const buildFontLoader = () => ({
   // исключаем node_modules
   exclude: /node_modules/,
-  test: /\.(png|jpe?g|gif|webp|ico)$/i,
+  test: /\.(woff2?|eot|ttf|otf)$/i,
   // use: ['file-loader?name=[name].[ext]'],
   type: 'asset',
 });

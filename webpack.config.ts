@@ -1,4 +1,5 @@
 import path from 'path';
+import dotenv from 'dotenv';
 import webpack from 'webpack';
 // import clear from 'clear';
 import { buildWebpackConfig } from './configs/build/buildWebpackConfig';
@@ -8,7 +9,7 @@ import { BuildEnv, BuildMode, BuildPaths } from './configs/build/types/config';
 const getApiUrl = (mode: BuildMode, apiUrl?: string) => {
   if (apiUrl) return apiUrl;
   if (mode === 'production') return '/api';
-  return 'http://localhost:8000';
+  return 'http://localhost:3000';
 };
 
 // заводим такую функцию, а не просто возвращаем конфиг, чтоб можно было прокидывать сюда переменные окружения
@@ -36,13 +37,19 @@ export default (env: BuildEnv) => {
     // icon: path.resolve(__dirname, 'public', 'logo.svg'),
   };
 
-  // берем env из параметра функции
+  // initialization config for dotenv
+  dotenv.config().parsed || {};
+
+  // берем env из параметра функции или из dotenv
   const mode = env?.mode || 'development';
-  const PORT = env?.port || 3000;
-  const apiURL = getApiUrl(mode, env?.apiURL);
+  const PORT = Number(env?.port) || Number(process.env?.PORT) || 3000;
+  const apiURL = getApiUrl(mode, env?.apiURL || process.env?.API_URL);
 
   const isDev = mode === 'development';
-  const isDevDebug = Boolean(JSON.stringify(env?.modeDebug)) || false;
+  const isDevDebug =
+    JSON.parse(env?.modeDebug || 'false') ||
+    JSON.parse(process.env?.DEBUG || 'false') ||
+    false;
 
   // генерируем общий конфиг webpack
   const config: webpack.Configuration = buildWebpackConfig({

@@ -22,7 +22,7 @@ export const buildBabelLoader = ({ isDev, isTsx }: BuildBabelLoaderProps) => {
         cacheCompression: false,
         // для кэширования данных редко изменчивых кусков кода
         cacheDirectory: true,
-        compact: !isDev,
+        compact: isProd,
         // подключаем плагин для переводов
         plugins: [
           [

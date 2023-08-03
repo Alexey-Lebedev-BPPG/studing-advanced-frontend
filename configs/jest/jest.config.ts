@@ -3,9 +3,7 @@ import path from 'path';
 require('dotenv').config();
 
 export default () => {
-  const isDevDebug = process.env.REACT_APP_DEBUG
-    ? JSON.parse(process.env.REACT_APP_DEBUG)
-    : false;
+  const isDevDebug = JSON.parse(process.env?.DEBUG || 'false') || false;
 
   return {
     // удалять моки после тестов

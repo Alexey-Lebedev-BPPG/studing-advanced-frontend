@@ -26,7 +26,7 @@ export const buildPlugins = ({
     new htmlWebpackPlugin({
       favicon: paths.icon,
       inject: true,
-      minify: !isDev
+      minify: isProd
         ? {
             collapseWhitespace: true,
             keepClosingSlash: true,
@@ -45,7 +45,7 @@ export const buildPlugins = ({
     // для сентри
     // new SentryWebpackPlugin({
     //   configFile: 'sentry.properties',
-    //   debug: Boolean(isDevDebug),
+    //   debug: isDevDebug,
     //   dryRun: true,
     //   ignore: ['node_modules', 'config-overrides.js'],
     //   ignoreFile: '.sentrycliignore',
@@ -67,7 +67,7 @@ export const buildPlugins = ({
     new CircularDependencyPlugin({
       exclude: /node_modules/,
       // чтоб при нахождении зависимостей вылетала ошибка в консоли
-      failOnError: Boolean(isDevDebug),
+      failOnError: isDevDebug,
     }),
     // плагин для анализа бейблом ошибок тайпскрипта и вынесение его в отдельный процесс
     new ForkTsCheckerWebpackPlugin({

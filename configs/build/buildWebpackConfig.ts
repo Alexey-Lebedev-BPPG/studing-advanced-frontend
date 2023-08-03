@@ -1,4 +1,5 @@
 import CssMinimizerPlugin from 'css-minimizer-webpack-plugin';
+import ImageMinimizerPlugin from 'image-minimizer-webpack-plugin';
 import TerserPlugin from 'terser-webpack-plugin';
 import webpack from 'webpack';
 import { buildDevServer } from './buildDevServer';
@@ -35,6 +36,19 @@ export const buildWebpackConfig = (
           terserOptions: { format: { comments: false } },
         }),
         new CssMinimizerPlugin(),
+        // доп изучить https://webpack.js.org/plugins/image-minimizer-webpack-plugin/
+        new ImageMinimizerPlugin({
+          minimizer: {
+            implementation: ImageMinimizerPlugin.imageminMinify,
+            options: {
+              plugins: [
+                ['gifsicle', { interlaced: true }],
+                ['jpegtran', { progressive: true }],
+                ['optipng', { optimizationLevel: 5 }],
+              ],
+            },
+          },
+        }),
       ],
       removeAvailableModules: true,
       sideEffects: true,
@@ -54,11 +68,11 @@ export const buildWebpackConfig = (
     resolve: buildResolvers(options),
     stats: {
       // показ в консоли загрузку assets
-      assets: Boolean(isDevDebug),
+      assets: isDevDebug,
       // показ в консоли загрузку модулей
-      entrypoints: Boolean(isDevDebug),
+      entrypoints: isDevDebug,
       // показ в консоли ентрипоинтов
-      modules: Boolean(isDevDebug),
+      modules: isDevDebug,
     },
   };
 };
