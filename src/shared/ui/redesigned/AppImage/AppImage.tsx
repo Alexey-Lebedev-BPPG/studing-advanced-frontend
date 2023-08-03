@@ -38,6 +38,16 @@ export const AppImage: FC<IAppImageProps> = memo(
 
     if (hasError && errorFallback) return errorFallback;
 
-    return <img src={src} alt={alt} className={className} {...otherProps} />;
+    return (
+      <img
+        src={src}
+        alt={alt}
+        className={className}
+        loading='lazy'
+        style={{ contentVisibility: 'auto' }}
+        decoding='async'
+        {...otherProps}
+      />
+    );
   },
 );
