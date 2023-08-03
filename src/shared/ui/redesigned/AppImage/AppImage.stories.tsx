@@ -1,6 +1,6 @@
 import { Meta, StoryFn } from '@storybook/react';
 import { AppImage } from './AppImage';
-import UserIcon from '../../assets/icons/user-filled.svg';
+import UserIcon from '../../../assets/icons/user-filled.svg';
 import { Icon } from '../Icon';
 import { Skeleton } from '../Skeleton';
 import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';

@@ -2,7 +2,7 @@ import { Meta, StoryFn } from '@storybook/react';
 import { ProfileCard } from './ProfileCard';
 import { Country } from '@/entities/Country';
 import { Currency } from '@/entities/Currency';
-import AvatarImg from '@/shared/assets/tests/AvatarImg.jpg';
+import AvatarImg from '@/shared/assets/tests/AvatarImg.jpeg';
 import { NewDesignDecorator } from '@/shared/config/storybook/NewDesignDecorator/NewDesignDecorator';
 import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { Theme } from '@/shared/const/theme';

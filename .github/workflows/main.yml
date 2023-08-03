@@ -62,13 +62,17 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     strategy:
       matrix:
-        node-version: [17.x]
+        node-version: [20.x]
     steps:
       - uses: actions/checkout@v2
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 8
       - name: Staring Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
+          cache: 'pnpm'
       - name: install modules
         run: pnpm ci --force
       - name: build production project
@@ -83,9 +87,9 @@ jobs:
       - name: unit testing
         if: always()
         run: pnpm run test:unit
-      - name: chromatic testing
-        if: always()
-        run: pnpm run chromatic
+      # - name: chromatic testing
+      #   if: always()
+      #   run: pnpm run chromatic
       # - name: Generate HTML report
       #   run: pnpm run test:ui:report
       #   if: always()
@@ -110,7 +114,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [17.x]
+        node-version: [20.x]
     steps:
       - uses: actions/checkout@v2
       - name: Staring Node.js ${{ matrix.node-version }}

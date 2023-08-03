@@ -34,5 +34,5 @@
   // чтоб при сборке не ругался на импорты
   "ts-node": { "compilerOptions": { "module": "CommonJS" } },
   // добавляем путь к файлу, где импортится @testing-library/jest-dom, чтоб пользоваться функциями, а также добавляем еще места, чтоб подхватывались типы для этих файлов
-  "include": ["./configs/jest/setupTests.ts", "./src/**/*.ts", "./src/**/*.tsx", "src/shared/config/storybook/Storybook.test.ts"]
+  "include": ["./configs/jest/setupTests.ts", "./src/**/*.ts", "./src/**/*.tsx", "src/shared/config/storybook/Storybook.ts"]
 }

@@ -6,3 +6,4 @@ node_modules
 .loki/report.json
 /reports/unit
 /reports/dependency-graph
+/build-storybook.log
