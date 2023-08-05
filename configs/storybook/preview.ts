@@ -15,13 +15,35 @@ const parameters: Preview = {
   parameters: {
     actions: { argTypesRegex: '^on[A-Z].*' },
     controls: {
+      expanded: true,
       matchers: {
         color: /(background|color)$/i,
         date: /Date$/,
       },
+      sort: 'requiredFirst',
     },
     // добавляем, чтоб компоненты сторибука открывались на весь экран без паддингов
     layout: 'fullscreen',
+    // сортировка по алфавиту
+    options: {
+      storySort: {
+        locales: '',
+        method: 'alphabetical',
+        order: [],
+      },
+    },
+    // отступы от краев
+    paddings: {
+      default: 'VeryLarge',
+      values: [
+        { name: 'VerySmall', value: '16px' },
+        { name: 'Small', value: '32px' },
+        { name: 'VeryMedium', value: '48px' },
+        { name: 'Medium', value: '64px' },
+        { name: 'Large', value: '80px' },
+        { name: 'VeryLarge', value: '96px' },
+      ],
+    },
     // настройки аддона storybook-addon-themes под темы
     themes: {
       // указываем дефолтную тему

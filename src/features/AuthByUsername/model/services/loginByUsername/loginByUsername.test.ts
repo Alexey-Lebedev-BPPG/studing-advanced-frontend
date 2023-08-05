@@ -43,7 +43,7 @@ describe('loginByUsername', () => {
   //   const result = await action(dispatch, getState, undefined);
   //   // убедимся, что наш запрос вызвался
   //   expect(mockedAxios.post).toHaveBeenCalled();
-  //   // проверяем, что у нас диспатч вызвался 2 раза (т.к. не вызывается дипатч, который ретернет данные перед завершением loginByUsername)
+  //   // проверяем, что у нас диспатч вызвался 2 раза (т.к. не вызывается диспатч, который ретернет данные перед завершением loginByUsername)
   //   expect(dispatch).toHaveBeenCalledTimes(2);
   //   // проверим, что асинкфанк отработал c ошибкой
   //   expect(result.meta.requestStatus).toBe("rejected");

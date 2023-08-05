@@ -32,7 +32,6 @@ export default () => {
     modulePathIgnorePatterns: ['node_modules', '../../reports/unit'],
     // альтернативным вариантом, чтоб абсолютные пути заработали будет добавление такого свойства
     modulePaths: ['<rootDir>src'],
-    preset: 'jest-puppeteer',
     // чтоб появлялся отчет о пройденных unit тестах на отдельной странице
     reporters: [
       'default',

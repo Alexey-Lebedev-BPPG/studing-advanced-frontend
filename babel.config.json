@@ -5,7 +5,7 @@
       { "targets": { "node": "current", "esmodules": true } }
     ],
     "@babel/preset-typescript",
-    // добавляем пресет для реакта и указываем, чтоб добалялся импорт React from 'react' в рантайме
+    // добавляем пресет для реакта и указываем, чтоб добавлялся импорт React from 'react' в рантайме
     ["@babel/preset-react", { "runtime": "automatic" }]
   ],
   // добавляем плагин в конфиг

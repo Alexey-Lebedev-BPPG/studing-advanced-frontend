@@ -50,7 +50,7 @@
 ('storybook: start-storybook -p 6006 -c ./configs/storybook');
 
 // билд сторибука
-('storybook:build: npx build-storybook -c ./configs/storybook');
+('storybook:build: npx storybook:build -c ./configs/storybook');
 
 // установка хаски для пайплайнов
 ('prepare: husky install');

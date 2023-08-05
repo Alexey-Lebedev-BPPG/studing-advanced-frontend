@@ -54,8 +54,8 @@ describe('profileSlice', () => {
     });
   });
 
-  // далее тестируем fullfiled состояние
-  test('test update profile service fullfilled', () => {
+  // далее тестируем fulfilled состояние
+  test('test update profile service fulfilled', () => {
     const state: DeepPartial<ProfileSchema> = {
       isLoading: true,
       validateError: [ValidateProfileError.SERVER_ERROR],

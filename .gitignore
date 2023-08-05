@@ -7,3 +7,4 @@ node_modules
 /reports/unit
 /reports/dependency-graph
 /build-storybook.log
+/test-results/

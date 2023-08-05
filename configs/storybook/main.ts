@@ -6,6 +6,7 @@ import { BuildPaths } from '../build/types/config';
 
 const config = {
   addons: [
+    // для переходов по страницам сторибука
     '@storybook/addon-links',
     // этот аддон добавляет сразу несколько аддонов, можно какие-то внутренние отключать
     {
@@ -15,22 +16,31 @@ const config = {
         backgrounds: false,
       },
     },
+    // для взаимодействия с пропсами
     '@storybook/addon-interactions',
     // аддон, чтоб мокать запросы в сторибуке
     'storybook-addon-mock',
     // чтоб не заморачиваться с созданием разных кнопок для разных тем, можно поставить аддон: https://storybook.js.org/addons/@dhruvkb/storybook-addon-themes
     'storybook-addon-themes',
-    '@storybook/addon-mdx-gfm',
+    // для тестов
     '@storybook/addon-jest',
-    '@storybook/addon-storyshots',
-    '@storybook/addon-storyshots-puppeteer',
+    // для отступов в историях
+    'storybook-addon-paddings',
+    // чтоб видеть код истории
+    '@storybook/addon-storysource',
+    // чтоб видеть консоль разработчика
+    '@storybook/addon-actions',
+    // для псевдоэлементов
+    'storybook-addon-pseudo-states',
+    // встроить макеты из фигмы (пример в src/widgets/ArticleAdditionalInfo/ui/ArticleAdditionalInfo.stories.tsx)
+    '@storybook/addon-designs',
   ],
+  core: { disableTelemetry: true },
   docs: { autodocs: true },
   framework: {
     name: '@storybook/react-webpack5',
     options: { builder: { lazyCompilation: true }, fastRefresh: true },
   },
-
   // чтоб переводы работали корректно
   staticDirs: ['../../public'],
   stories: [
@@ -63,6 +73,7 @@ const config = {
 
     // пройдем по каждому лоадеру и находим правило, которое обрабатывает svg
     configWebpack!.module!.rules = configWebpack!.module!.rules!.map(
+      // @ts-ignore
       (rule: RuleSetRule | '...') => {
         if (
           rule !== '...' &&

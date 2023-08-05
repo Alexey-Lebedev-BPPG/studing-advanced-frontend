@@ -79,7 +79,7 @@ jobs:
         run: pnpm run build:prod
         if: always()
       - name: build storybook
-        run: pnpm run build-storybook
+        run: pnpm run storybook:build
         if: always()
       # - name: screenshot testing
       #   run: pnpm run test:ui:ci
