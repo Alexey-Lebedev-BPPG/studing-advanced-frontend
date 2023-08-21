@@ -3,9 +3,8 @@ import { ArticleListItem } from './ArticleListItem';
 import { Article } from '../../model/types/article';
 
 export default {
-  argTypes: {
-    backgroundColor: { control: 'color' },
-  },
+  argTypes: { backgroundColor: { control: 'color' } },
+
   component: ArticleListItem,
   title: 'entities/Article/ArticleListItem',
 } as Meta<typeof ArticleListItem>;

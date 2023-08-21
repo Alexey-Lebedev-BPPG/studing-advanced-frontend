@@ -1,13 +1,11 @@
 import { Meta, StoryFn } from '@storybook/react';
 import { Dropdown } from './Dropdown';
-import { Button } from '../../../Button/Button';
+import { Button } from '../../../Button';
 import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { Theme } from '@/shared/const/theme';
 
 export default {
-  argTypes: {
-    backgroundColor: { control: 'color' },
-  },
+  argTypes: { backgroundColor: { control: 'color' } },
   component: Dropdown,
   title: 'shared/redesigned/Dropdown',
 } as Meta<typeof Dropdown>;

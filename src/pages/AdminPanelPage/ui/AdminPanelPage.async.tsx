@@ -3,9 +3,9 @@ import { lazy } from 'react';
 export const AdminPanelPageAsync = lazy(() => import('./AdminPanelPage'));
 
 // import { IAdminPanelPageProps } from './AdminPanelPage';
-// !Важно: для подгрузки импортируемый компонет должен экспортироваться ТОЛЬКО по дефолту
+// !Важно: для подгрузки импортируемый компонент должен экспортироваться ТОЛЬКО по дефолту
 // так используем в реальных проектах
-// *** export const AdminPanelPageAsync = lazy(() => import('./AdminPanelPage'));
+// export const AdminPanelPageAsync = lazy(() => import('./AdminPanelPage'));
 
 // чтоб тестить в дев режиме при разработке:
 // export const AdminPanelPageAsync = lazy<FC<IAdminPanelPageProps>>(

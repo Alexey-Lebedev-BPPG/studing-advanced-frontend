@@ -5,11 +5,9 @@ import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDe
 import { Theme } from '@/shared/const/theme';
 
 export default {
-  argTypes: {
-    backgroundColor: { control: 'color' },
-  },
+  argTypes: { backgroundColor: { control: 'color' } },
   component: ScrollToolbar,
-  title: '***/ScrollToolbar',
+  title: 'widgets/ScrollToolbar',
 } as Meta<typeof ScrollToolbar>;
 
 const Template: StoryFn<typeof ScrollToolbar> = arg => (

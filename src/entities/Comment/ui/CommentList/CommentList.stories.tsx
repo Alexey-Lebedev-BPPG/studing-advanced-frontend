@@ -2,9 +2,8 @@ import { Meta, StoryFn } from '@storybook/react';
 import { CommentList } from './CommentList';
 
 export default {
-  argTypes: {
-    backgroundColor: { control: 'color' },
-  },
+  argTypes: { backgroundColor: { control: 'color' } },
+
   component: CommentList,
   title: 'entities/Comment/CommentList',
 } as Meta<typeof CommentList>;

@@ -4,7 +4,7 @@ import cls from './ListBox.module.scss';
 import { classNames } from '../../../../../lib/classNames/classNames';
 import { DropDownDirection } from '../../../../../types/ui';
 import { HStack } from '../../../../redesigned/Stack';
-import { Button } from '../../../Button/Button';
+import { Button } from '../../../Button';
 import { mapDirectionClass } from '../../styles/consts';
 import popupCls from '../../styles/popups.module.scss';
 
@@ -29,16 +29,18 @@ interface IListBoxProps {
  * Устарел, используем новые компоненты из папки redesigned
  * @deprecated
  */
-export const ListBox: FC<IListBoxProps> = ({
-  className,
-  defaultValue,
-  direction = 'bottom left',
-  items,
-  label,
-  onChange,
-  readonly,
-  value,
-}) => {
+export const ListBox: FC<IListBoxProps> = props => {
+  const {
+    className,
+    defaultValue,
+    direction = 'bottom left',
+    items,
+    label,
+    onChange,
+    readonly,
+    value,
+  } = props;
+
   const optionsClasses = [mapDirectionClass[direction]];
 
   return (

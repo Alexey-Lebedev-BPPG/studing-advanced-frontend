@@ -3,9 +3,8 @@ import { CommentCard } from './CommentCard';
 import { FeaturesFlagsDecorator } from '@/shared/config/storybook/FeaturesFlagsDecorator/FeaturesFlagsDecorator';
 
 export default {
-  argTypes: {
-    backgroundColor: { control: 'color' },
-  },
+  argTypes: { backgroundColor: { control: 'color' } },
+
   component: CommentCard,
   title: 'entities/Comment/CommentCard',
 } as Meta<typeof CommentCard>;

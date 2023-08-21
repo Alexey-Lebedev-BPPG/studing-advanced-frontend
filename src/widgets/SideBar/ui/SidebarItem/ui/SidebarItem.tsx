@@ -14,38 +14,38 @@ interface ISidebarItemProps {
   item: SidebarItemType;
 }
 
-export const SidebarItem: FC<ISidebarItemProps> = memo(
-  ({ collapsed, item }) => {
-    const isAuth = useAppSelector(getUserAuthData);
+export const SidebarItem: FC<ISidebarItemProps> = memo(props => {
+  const { collapsed, item } = props;
 
-    if (item.authOnly && !isAuth) return null;
+  const isAuth = useAppSelector(getUserAuthData);
 
-    return (
-      <ToggleFeatures
-        nameFeatures={'isAppRedesigned'}
-        off={
-          <AppLinkDeprecated
-            to={item.path}
-            theme='secondary'
-            className={classNames(cls.item, { [cls.collapsed]: collapsed })}
-          >
-            <item.Icon className={cls.icon} />
-            <span className={cls.link}>{item.text}</span>
-          </AppLinkDeprecated>
-        }
-        on={
-          <AppLink
-            to={item.path}
-            activeClassName={cls.active}
-            className={classNames(cls.itemRedesigned, {
-              [cls.collapsedRedesigned]: collapsed,
-            })}
-          >
-            <Icon Svg={item.Icon} />
-            <span className={cls.link}>{item.text}</span>
-          </AppLink>
-        }
-      />
-    );
-  },
-);
+  if (item.authOnly && !isAuth) return null;
+
+  return (
+    <ToggleFeatures
+      nameFeatures={'isAppRedesigned'}
+      off={
+        <AppLinkDeprecated
+          to={item.path}
+          theme='secondary'
+          className={classNames(cls.item, { [cls.collapsed]: collapsed })}
+        >
+          <item.Icon className={cls.icon} />
+          <span className={cls.link}>{item.text}</span>
+        </AppLinkDeprecated>
+      }
+      on={
+        <AppLink
+          to={item.path}
+          activeClassName={cls.active}
+          className={classNames(cls.itemRedesigned, {
+            [cls.collapsedRedesigned]: collapsed,
+          })}
+        >
+          <Icon Svg={item.Icon} />
+          <span className={cls.link}>{item.text}</span>
+        </AppLink>
+      }
+    />
+  );
+});

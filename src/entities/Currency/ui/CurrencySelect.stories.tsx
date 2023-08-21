@@ -2,9 +2,8 @@ import { Meta, StoryFn } from '@storybook/react';
 import { CurrencySelect } from './CurrencySelect';
 
 export default {
-  argTypes: {
-    backgroundColor: { control: 'color' },
-  },
+  argTypes: { backgroundColor: { control: 'color' } },
+
   component: CurrencySelect,
   title: 'entities/CurrencySelect',
 } as Meta<typeof CurrencySelect>;

@@ -13,7 +13,7 @@ export const SettingsPageAsync = lazy(() => import('./SettingsPage'));
 
 // !Важно: для подгрузки импортируемый компонент должен экспортироваться ТОЛЬКО по дефолту
 // так используем в реальных проектах
-// *** export const SettingsPageAsync = lazy(() => import('./SettingsPage'));
+// export const SettingsPageAsync = lazy(() => import('./SettingsPage'));
 
 // чтоб тестить в дев режиме при разработке:
 // export const SettingsPageAsync = lazy<FC<ISettingsPageProps>>(

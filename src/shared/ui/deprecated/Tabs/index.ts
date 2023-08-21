@@ -1,2 +1,2 @@
-export { Tabs } from './Tabs';
-export type { ITabItem } from './Tabs';
+export { Tabs } from './ui/Tabs';
+export type { ITabItem } from './ui/Tabs';

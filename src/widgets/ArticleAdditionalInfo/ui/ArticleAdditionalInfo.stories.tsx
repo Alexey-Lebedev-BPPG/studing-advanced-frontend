@@ -7,11 +7,9 @@ import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDe
 import { Theme } from '@/shared/const/theme';
 
 export default {
-  argTypes: {
-    backgroundColor: { control: 'color' },
-  },
+  argTypes: { backgroundColor: { control: 'color' } },
   component: ArticleAdditionalInfo,
-  title: '***/ArticleAdditionalInfo',
+  title: 'widgets/ArticleAdditionalInfo',
 } as Meta<typeof ArticleAdditionalInfo>;
 
 const Template: StoryFn<typeof ArticleAdditionalInfo> = arg => (

@@ -4,7 +4,7 @@ import { ScrollToTopButton } from '@/features/ScrollToTopButton';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { VStack } from '@/shared/ui/redesigned/Stack';
 
-export interface IScrollToolbarProps {
+interface IScrollToolbarProps {
   className?: string;
 }
 

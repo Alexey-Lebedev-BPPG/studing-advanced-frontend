@@ -1,7 +1,7 @@
 import { Menu } from '@headlessui/react';
 import { FC, Fragment, ReactNode } from 'react';
 import cls from './Dropdown.module.scss';
-import { AppLink } from '../../../AppLink/AppLink';
+import { AppLink } from '../../../AppLink/ui/AppLink';
 import { mapDirectionClass } from '../../styles/consts';
 import popupCls from '../../styles/popups.module.scss';
 import { classNames } from '@/shared/lib/classNames/classNames';
@@ -21,12 +21,9 @@ interface IDropdownProps {
   trigger: ReactNode;
 }
 
-export const Dropdown: FC<IDropdownProps> = ({
-  className,
-  direction = 'bottom left',
-  items,
-  trigger,
-}) => {
+export const Dropdown: FC<IDropdownProps> = props => {
+  const { className, direction = 'bottom left', items, trigger } = props;
+
   const menuClasses = [mapDirectionClass[direction], popupCls.menu];
 
   return (

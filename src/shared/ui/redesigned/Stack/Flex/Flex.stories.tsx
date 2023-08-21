@@ -2,9 +2,7 @@ import { Meta, StoryFn } from '@storybook/react';
 import { Flex } from './Flex';
 
 export default {
-  argTypes: {
-    backgroundColor: { control: 'color' },
-  },
+  argTypes: { backgroundColor: { control: 'color' } },
   component: Flex,
   title: 'shared/redesigned/Flex',
 } as Meta<typeof Flex>;

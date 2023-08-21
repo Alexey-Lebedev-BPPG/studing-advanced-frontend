@@ -52,17 +52,19 @@ export interface IFlexProps extends DivProps {
   wrap?: FlexWrap;
 }
 
-export const Flex: FC<IFlexProps> = ({
-  align = 'center',
-  children,
-  className,
-  direction = 'row',
-  gap,
-  justify = 'start',
-  max,
-  wrap = 'nowrap',
-  ...otherProps
-}) => {
+export const Flex: FC<IFlexProps> = props => {
+  const {
+    align = 'center',
+    children,
+    className,
+    direction = 'row',
+    gap,
+    justify = 'start',
+    max,
+    wrap = 'nowrap',
+    ...otherProps
+  } = props;
+
   const classes = [
     className,
     justifyClasses[justify],
@@ -75,6 +77,7 @@ export const Flex: FC<IFlexProps> = ({
   const mods = {
     [cls.max]: max,
   };
+
   return (
     <div className={classNames(cls.flex, mods, classes)} {...otherProps}>
       {children}

@@ -4,9 +4,7 @@ import { Article } from '../../model/types/article';
 import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
 
 export default {
-  argTypes: {
-    backgroundColor: { control: 'color' },
-  },
+  argTypes: { backgroundColor: { control: 'color' } },
   component: ArticleDetails,
   title: 'entities/Article/ArticleDetails',
 } as Meta<typeof ArticleDetails>;

@@ -1,14 +1,15 @@
 import { Listbox as HListbox } from '@headlessui/react';
-import { Fragment, ReactNode, memo, useMemo } from 'react';
+import { Fragment, ReactNode, useMemo } from 'react';
 import cls from './ListBox.module.scss';
 import { classNames } from '../../../../../lib/classNames/classNames';
 import { DropDownDirection } from '../../../../../types/ui';
 import { HStack } from '../../../../redesigned/Stack';
-import { Button } from '../../../Button/Button';
+import { Button } from '../../../Button';
 import { Icon } from '../../../Icon';
 import { mapDirectionClass } from '../../styles/consts';
 import popupCls from '../../styles/popups.module.scss';
 import ArrowIcon from '@/shared/assets/icons/arrow-bottom.svg';
+import { typedMemo } from '@/shared/lib/typedMemo/typedMemo';
 
 export interface ListBoxItem<T extends string> {
   content: ReactNode;
@@ -26,8 +27,6 @@ interface IListBoxProps<T extends string> {
   readonly?: boolean;
   value?: string;
 }
-
-const typedMemo: <T>(c: T) => T = memo;
 
 export const ListBox = typedMemo(
   <T extends string>(props: IListBoxProps<T>) => {

@@ -4,8 +4,8 @@ import { ThunkConfig } from '@/app/providers/StoreProvider';
 
 interface IArticleEditFormProps {}
 
-// первым аргументом дженерика - что возвращаем, второй - что передаем, а третим можно передать свои типизацию объекта
-// thunkAPI, в котором есть методы для использования в thunke
+// первым аргументом дженерика - что возвращаем, второй - что передаем, а третьим можно передать свои типизацию объекта
+// thunkAPI, в котором есть методы для использования в thunk-e
 export const fetchArticleEditForm = createAsyncThunk<
   any,
   IArticleEditFormProps,

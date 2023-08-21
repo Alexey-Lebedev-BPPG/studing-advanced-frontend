@@ -1,10 +1,10 @@
 import { lazy } from 'react';
-// !Важно: для подгрузки импортируемый компонет должен экспортироваться ТОЛЬКО по дефолту
+// !Важно: для подгрузки импортируемый компонент должен экспортироваться ТОЛЬКО по дефолту
 // так используем в реальных проектах
-// *** export const AboutePageAsync = lazy(() => import("./AboutPage"));
+// export const AboutPageAsync = lazy(() => import("./AboutPage"));
 
 // если не хотим использовать экспорт по дефолту, то пишем так:
-// export const AboutePageAsync = lazy(() => import('./AboutPage').then(module=>({default:module.AboutPage})));
+// export const AboutPageAsync = lazy(() => import('./AboutPage').then(module=>({default:module.AboutPage})));
 
 // чтоб тестить в дев режиме при разработке:
 // export const AboutPageAsync = lazy(

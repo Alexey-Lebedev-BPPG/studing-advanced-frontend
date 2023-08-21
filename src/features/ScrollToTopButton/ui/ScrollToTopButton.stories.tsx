@@ -5,11 +5,9 @@ import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDe
 import { Theme } from '@/shared/const/theme';
 
 export default {
-  argTypes: {
-    backgroundColor: { control: 'color' },
-  },
+  argTypes: { backgroundColor: { control: 'color' } },
   component: ScrollToTopButton,
-  title: '***/ScrollToTopButton',
+  title: 'features/ScrollToTopButton',
 } as Meta<typeof ScrollToTopButton>;
 
 const Template: StoryFn<typeof ScrollToTopButton> = arg => (

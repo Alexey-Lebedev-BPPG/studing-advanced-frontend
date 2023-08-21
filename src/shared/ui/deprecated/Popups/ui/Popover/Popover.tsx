@@ -17,12 +17,9 @@ export interface IPopoverProps {
  * Устарел, используем новые компоненты из папки redesigned
  * @deprecated
  */
-export const Popover: FC<IPopoverProps> = ({
-  children,
-  className,
-  direction = 'bottom left',
-  trigger,
-}) => {
+export const Popover: FC<IPopoverProps> = props => {
+  const { children, className, direction = 'bottom left', trigger } = props;
+
   const menuClasses = [mapDirectionClass[direction]];
 
   return (

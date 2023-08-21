@@ -13,12 +13,9 @@ export interface IPopoverProps {
   trigger: ReactNode;
 }
 
-export const Popover: FC<IPopoverProps> = ({
-  children,
-  className,
-  direction = 'bottom left',
-  trigger,
-}) => {
+export const Popover: FC<IPopoverProps> = props => {
+  const { children, className, direction = 'bottom left', trigger } = props;
+
   const menuClasses = [mapDirectionClass[direction], popupCls.menu];
 
   return (

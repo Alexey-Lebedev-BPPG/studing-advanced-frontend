@@ -16,7 +16,9 @@ interface ISideBarProps {
   className?: string;
 }
 
-export const SideBar: FC<ISideBarProps> = memo(({ className }) => {
+export const SideBar: FC<ISideBarProps> = memo(props => {
+  const { className } = props;
+
   const [collapsed, setCollapsed] = useState(false);
   const sidebarItemsList = useSidebarItems();
 

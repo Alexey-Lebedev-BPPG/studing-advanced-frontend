@@ -23,9 +23,7 @@ import { Theme } from '@/shared/const/theme';
 export default {
   title: 'shared/Button',
   component: Button,
-  argTypes: {
-    backgroundColor: { control: 'color' },
-  },
+  argTypes: { backgroundColor: { control: 'color' } },
 } as Meta<typeof Button>;
 
 const Template: StoryFn<typeof Button> = args => <Button {...args} />;

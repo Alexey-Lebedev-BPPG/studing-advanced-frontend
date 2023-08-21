@@ -4,9 +4,8 @@ import { Article } from '@/entities/Article';
 import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
 
 export default {
-  argTypes: {
-    backgroundColor: { control: 'color' },
-  },
+  argTypes: { backgroundColor: { control: 'color' } },
+
   component: ArticlesPage,
   title: 'pages/ArticlesPage/ArticlesPage',
 } as Meta<typeof ArticlesPage>;

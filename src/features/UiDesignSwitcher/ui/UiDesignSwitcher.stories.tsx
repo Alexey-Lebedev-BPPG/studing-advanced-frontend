@@ -5,11 +5,9 @@ import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDe
 import { Theme } from '@/shared/const/theme';
 
 export default {
-  argTypes: {
-    backgroundColor: { control: 'color' },
-  },
+  argTypes: { backgroundColor: { control: 'color' } },
   component: UiDesignSwitcher,
-  title: '***/UiDesignSwitcher',
+  title: 'features/UiDesignSwitcher',
 } as Meta<typeof UiDesignSwitcher>;
 
 const Template: StoryFn<typeof UiDesignSwitcher> = arg => (

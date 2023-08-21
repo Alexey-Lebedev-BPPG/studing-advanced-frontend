@@ -3,9 +3,8 @@ import LoginForm from './LoginForm';
 import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
 
 export default {
-  argTypes: {
-    backgroundColor: { control: 'color' },
-  },
+  argTypes: { backgroundColor: { control: 'color' } },
+
   component: LoginForm,
   title: 'features/LoginForm',
 } as Meta<typeof LoginForm>;
