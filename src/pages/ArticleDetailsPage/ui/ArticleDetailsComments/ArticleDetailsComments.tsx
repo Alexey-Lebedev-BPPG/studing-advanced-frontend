@@ -1,6 +1,6 @@
 import { FC, memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
-import { getArticleCommentsIsLoading } from '../../model/selectors/comments';
+import { getArticleCommentsIsLoading } from '../../model/selectors/comments/comments';
 import { addCommentForArticle } from '../../model/services/addCommentForArticle/addCommentForArticle';
 import { fetchCommentsByArticleId } from '../../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId';
 import { getArticleComments } from '../../model/slice/articleDetailsCommentSlice';
@@ -13,7 +13,7 @@ import {
   useAppSelector,
 } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect/useInitialEffect';
-import { Text as TextDeprecated, TextSize } from '@/shared/ui/deprecated/Text';
+import { Text as TextDeprecated } from '@/shared/ui/deprecated/Text';
 import { VStack } from '@/shared/ui/redesigned/Stack';
 import { Text } from '@/shared/ui/redesigned/Text';
 
@@ -45,9 +45,7 @@ const ArticleDetailsComments: FC<IArticleDetailsCommentsProps> = memo(
         <ToggleFeatures
           nameFeatures={'isAppRedesigned'}
           on={<Text size='l' title={`${t('Комментарии')}`} />}
-          off={
-            <TextDeprecated size={TextSize.L} title={`${t('Комментарии')}`} />
-          }
+          off={<TextDeprecated size='l' title={`${t('Комментарии')}`} />}
         />
         <AddCommentForm onSendComment={onSendComment} />
         <CommentList isLoading={commentsIsLoading} comments={comments} />

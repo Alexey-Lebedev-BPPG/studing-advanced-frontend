@@ -8,11 +8,7 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import { Avatar as AvatarDeprecated } from '@/shared/ui/deprecated/Avatar';
 import { Input as InputDeprecated } from '@/shared/ui/deprecated/Input';
 import { Loader as LoaderDeprecated } from '@/shared/ui/deprecated/Loader';
-import {
-  Text as TextDeprecated,
-  TextAlign,
-  TextTheme,
-} from '@/shared/ui/deprecated/Text';
+import { Text as TextDeprecated } from '@/shared/ui/deprecated/Text';
 import { VStack, HStack } from '@/shared/ui/redesigned/Stack';
 
 export interface IProfileCardProps {
@@ -41,10 +37,10 @@ export const ProfileCardDeprecatedError = () => {
       className={classNames(cls.profileCard, {}, [cls.error])}
     >
       <TextDeprecated
-        theme={TextTheme.ERROR}
+        theme='error'
         title={`${t('Произошла ошибка при загрузке профиля')}`}
         text={`${t('Попробуйте обновить страницу')}`}
-        align={TextAlign.CENTER}
+        align='center'
       />
     </HStack>
   );

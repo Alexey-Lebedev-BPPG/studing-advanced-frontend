@@ -1,10 +1,12 @@
 import { FC, memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import cls from './LoginForm.module.scss';
-import { getLoginError } from '../../model/selectors/getLoginError/getLoginError';
-import { getLoginIsLoading } from '../../model/selectors/getLoginIsLoading/getLoginIsLoading';
-import { getLoginPassword } from '../../model/selectors/getLoginPassword/getLoginPassword';
-import { getLoginUsername } from '../../model/selectors/getLoginUsername/getLoginUsername';
+import {
+  getLoginUsername,
+  getLoginPassword,
+  getLoginIsLoading,
+  getLoginError,
+} from '../../model/selectors/getAuthByUsername';
 import { loginByUsername } from '../../model/services/loginByUsername/loginByUsername';
 import { loginActions, loginReducer } from '../../model/slice/loginSlice';
 import { classNames } from '@/shared/lib/classNames/classNames';
@@ -18,12 +20,9 @@ import {
   useAppSelector,
 } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useForceUpdate } from '@/shared/lib/render/forceUpdate';
-import {
-  Button as ButtonDeprecated,
-  ButtonTheme,
-} from '@/shared/ui/deprecated/Button';
+import { Button as ButtonDeprecated } from '@/shared/ui/deprecated/Button';
 import { Input as InputDeprecated } from '@/shared/ui/deprecated/Input';
-import { Text as TextDeprecated, TextTheme } from '@/shared/ui/deprecated/Text';
+import { Text as TextDeprecated } from '@/shared/ui/deprecated/Text';
 import { Button } from '@/shared/ui/redesigned/Button';
 import { Input } from '@/shared/ui/redesigned/Input';
 import { VStack } from '@/shared/ui/redesigned/Stack';
@@ -86,7 +85,7 @@ const LoginForm: FC<ILoginFormProps> = memo(({ className, onSuccess }) => {
         off={
           <div className={classNames(cls.loginForm, {}, [className])}>
             <TextDeprecated title={`${t('Форма авторизации')}`} />
-            {!!error && <TextDeprecated text={error} theme={TextTheme.ERROR} />}
+            {!!error && <TextDeprecated text={error} theme='error' />}
             <InputDeprecated
               autofocus
               type='text'
@@ -103,7 +102,7 @@ const LoginForm: FC<ILoginFormProps> = memo(({ className, onSuccess }) => {
               onChange={onChangePassword}
             />
             <ButtonDeprecated
-              theme={ButtonTheme.OUTLINE}
+              theme='outline'
               className={cls.loginBtn}
               disabled={isLoading}
               onClick={onLoginClick}

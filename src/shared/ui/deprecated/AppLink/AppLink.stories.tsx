@@ -1,5 +1,5 @@
 import { Meta, StoryFn } from '@storybook/react';
-import { AppLink, AppLinkTheme } from './AppLink';
+import { AppLink } from './AppLink';
 import { Theme } from '../../../const/theme';
 import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
 
@@ -8,12 +8,8 @@ export default {
     backgroundColor: { control: 'color' },
   },
   // добавляем аргумент в каждую сторис
-  args: {
-    to: '/',
-  },
-
+  args: { to: '/' },
   component: AppLink,
-
   title: 'shared/AppLink',
 } as Meta<typeof AppLink>;
 
@@ -22,25 +18,25 @@ const Template: StoryFn<typeof AppLink> = args => <AppLink {...args} />;
 export const Primary = Template.bind({});
 Primary.args = {
   children: 'Text',
-  theme: AppLinkTheme.PRIMARY,
+  theme: 'primary',
 };
 
 export const Secondary = Template.bind({});
 Secondary.args = {
   children: 'Text',
-  theme: AppLinkTheme.SECONDARY,
+  theme: 'secondary',
 };
 
 export const PrimaryDark = Template.bind({});
 PrimaryDark.args = {
   children: 'Text',
-  theme: AppLinkTheme.PRIMARY,
+  theme: 'primary',
 };
 PrimaryDark.decorators = [ThemeDecorator(Theme.LIGHT)];
 
 export const SecondaryDark = Template.bind({});
 SecondaryDark.args = {
   children: 'Text',
-  theme: AppLinkTheme.PRIMARY,
+  theme: 'primary',
 };
 SecondaryDark.decorators = [ThemeDecorator(Theme.DARK)];

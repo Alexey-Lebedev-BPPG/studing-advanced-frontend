@@ -2,8 +2,6 @@ import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { EditableProfileCard } from './EditableProfileCard';
 import { profileReducer } from '../../model/slice/profileSlice';
-import { Country } from '@/entities/Country';
-import { Currency } from '@/entities/Currency';
 import { Profile } from '@/entities/Profile';
 import { $api } from '@/shared/api/api';
 import { componentRender } from '@/shared/lib/tests/componentRender/componentRender';
@@ -11,8 +9,8 @@ import { componentRender } from '@/shared/lib/tests/componentRender/componentRen
 const profile: Profile = {
   age: 456,
   city: 'Moscow',
-  country: Country.Kazakhstan,
-  currency: Currency.USD,
+  country: 'Kazakhstan',
+  currency: 'USD',
   first: 'admin',
   id: '1',
   lastname: 'admin',

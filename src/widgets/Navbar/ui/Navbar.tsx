@@ -9,12 +9,9 @@ import { getRouteArticleCreate } from '@/shared/const/router';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { ToggleFeatures, toggleFeatures } from '@/shared/lib/features';
 import { useAppSelector } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { AppLink, AppLinkTheme } from '@/shared/ui/deprecated/AppLink';
-import {
-  Button as ButtonDeprecated,
-  ButtonTheme,
-} from '@/shared/ui/deprecated/Button';
-import { Text, TextTheme } from '@/shared/ui/deprecated/Text';
+import { AppLink } from '@/shared/ui/deprecated/AppLink';
+import { Button as ButtonDeprecated } from '@/shared/ui/deprecated/Button';
+import { Text } from '@/shared/ui/deprecated/Text';
 import { Button } from '@/shared/ui/redesigned/Button';
 import { HStack } from '@/shared/ui/redesigned/Stack';
 
@@ -61,14 +58,11 @@ export const Navbar = memo((props: NavbarProps) => {
         off={
           <header className={classNames(mainClass, {}, [className])}>
             <Text
-              theme={TextTheme.INVERTED}
+              theme='inverted'
               className={cls.appName}
               title={`${t('Ulbi Example')}`}
             />
-            <AppLink
-              to={getRouteArticleCreate()}
-              theme={AppLinkTheme.SECONDARY}
-            >
+            <AppLink to={getRouteArticleCreate()} theme='secondary'>
               {t('Создать статью')}
             </AppLink>
             <HStack gap='16' className={cls.actions}>
@@ -87,7 +81,7 @@ export const Navbar = memo((props: NavbarProps) => {
         nameFeatures={'isAppRedesigned'}
         off={
           <ButtonDeprecated
-            theme={ButtonTheme.CLEAR_INVERTED}
+            theme='clearInverted'
             className={cls.links}
             onClick={onShowModal}
           >

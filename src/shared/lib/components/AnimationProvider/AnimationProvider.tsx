@@ -33,7 +33,7 @@ const getAsyncAnimationModules = () =>
 //   const Gesture = await import("@use-gesture/react");
 // };
 
-// для уобства использования создаем хук, чтоб использовать его по проекту (и указываем, что данные пропсы теперь точно не undefined)
+// для удобства использования создаем хук, чтоб использовать его по проекту (и указываем, что данные пропсы теперь точно не undefined)
 export const useAnimationLibs = () =>
   useContext(AnimationContext) as Required<AnimationContextPayload>;
 

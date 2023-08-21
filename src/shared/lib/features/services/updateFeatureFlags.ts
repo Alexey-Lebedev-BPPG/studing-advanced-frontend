@@ -24,16 +24,15 @@ export const updateFeatureFlags = createAsyncThunk<
 
     try {
       // отправляем запрос, минуя хуки
-      await dispatch(
-        updateFeatureFlagsMutation({
-          features: allFeatures,
-          userId,
-        }),
+      const response = await dispatch(
+        updateFeatureFlagsMutation({ features: allFeatures, userId }),
       );
       // ввиду того, что фичи у нас не реактивные (не хранятся в стейте), при их изменении страница не перерисуется. поэтому принудительно обновляем страницу. Если мы используем forceUpdate, то эту строку можно убрать
       // window.location.reload();
       // тогда нужно будет вручную изменить тогл-фичи
       // setFeatureFlags(allFeatures);
+
+      if (!response) throw new Error();
 
       // на данный момент сделаем перезагрузку страницы, чтоб избежать побочных эффектов
       window.location.reload();

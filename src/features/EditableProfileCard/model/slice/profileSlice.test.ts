@@ -8,8 +8,8 @@ import { Currency } from '@/entities/Currency';
 const data = {
   age: 22,
   city: 'asd',
-  country: Country.Ukraine,
-  currency: Currency.USD,
+  country: 'Ukraine' as Country,
+  currency: 'USD' as Currency,
   first: 'asd',
   lastname: 'test',
   username: 'admin',

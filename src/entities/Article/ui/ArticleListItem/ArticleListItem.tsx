@@ -1,8 +1,7 @@
 import { FC, HTMLAttributeAnchorTarget, memo } from 'react';
 import { ArticleListItemDeprecated } from './ArticleListItemDeprecated/ArticleListItemDeprecated';
 import { ArticleListItemRedesigned } from './ArticleListItemRedesigned/ArticleListItemRedesigned';
-import { ArticleView } from '../../model/consts/consts';
-import { Article } from '../../model/types/article';
+import { Article, ArticleView } from '../../model/types/article';
 import { ToggleFeatures } from '@/shared/lib/features';
 
 export interface IArticleListItemProps {

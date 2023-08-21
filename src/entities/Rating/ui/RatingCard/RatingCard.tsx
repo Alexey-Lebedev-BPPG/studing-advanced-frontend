@@ -4,11 +4,7 @@ import cls from './RatingCard.module.scss';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { ToggleFeatures } from '@/shared/lib/features';
 import { useDetectDevice } from '@/shared/lib/hooks/useDetectDevice/useDetectDevice';
-import {
-  Button as ButtonDeprecated,
-  ButtonSize,
-  ButtonTheme,
-} from '@/shared/ui/deprecated/Button';
+import { Button as ButtonDeprecated } from '@/shared/ui/deprecated/Button';
 import { Card as CardDeprecated } from '@/shared/ui/deprecated/Card';
 import { Input as InputDeprecated } from '@/shared/ui/deprecated/Input';
 import { StarRating } from '@/shared/ui/deprecated/StarRating';
@@ -123,11 +119,7 @@ export const RatingCard: FC<IRatingCardProps> = memo(props => {
             <ToggleFeatures
               nameFeatures={'isAppRedesigned'}
               off={
-                <ButtonDeprecated
-                  fullWidth
-                  size={ButtonSize.L}
-                  onClick={acceptHandle}
-                >
+                <ButtonDeprecated fullWidth size='l' onClick={acceptHandle}>
                   {t('Отправить')}
                 </ButtonDeprecated>
               }
@@ -148,7 +140,7 @@ export const RatingCard: FC<IRatingCardProps> = memo(props => {
               off={
                 <HStack max gap='16' justify='end'>
                   <ButtonDeprecated
-                    theme={ButtonTheme.OUTLINE_RED}
+                    theme='outline_red'
                     data-testid='RatingCard.Close'
                     onClick={cancelHandle}
                   >

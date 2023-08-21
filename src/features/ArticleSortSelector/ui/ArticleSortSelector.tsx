@@ -32,9 +32,9 @@ export const ArticleSortSelector: FC<IArticleSortSelectorProps> = memo(
 
     const sortFieldOption = useMemo<SelectOption<ArticleSortFields>[]>(
       () => [
-        { content: t('дате создания'), valueOpt: ArticleSortFields.CREATED },
-        { content: t('названию'), valueOpt: ArticleSortFields.TITLE },
-        { content: t('просмотрам'), valueOpt: ArticleSortFields.VIEWS },
+        { content: t('дате создания'), valueOpt: 'createdAt' },
+        { content: t('названию'), valueOpt: 'title' },
+        { content: t('просмотрам'), valueOpt: 'views' },
       ],
       [t],
     );

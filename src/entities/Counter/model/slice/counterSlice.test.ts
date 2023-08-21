@@ -21,7 +21,7 @@ describe('counterSlice', () => {
   });
 
   test('should work with empty state', () => {
-    // проверяем с путым стейтом
+    // проверяем с пустым стейтом
     expect(CounterReducer(undefined, CounterActions.increment())).toEqual({
       value: 1,
     });

@@ -1,7 +1,5 @@
 import { Meta, StoryFn } from '@storybook/react';
 import { ProfileCard } from './ProfileCard';
-import { Country } from '@/entities/Country';
-import { Currency } from '@/entities/Currency';
 import AvatarImg from '@/shared/assets/tests/AvatarImg.jpeg';
 import { NewDesignDecorator } from '@/shared/config/storybook/NewDesignDecorator/NewDesignDecorator';
 import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
@@ -23,8 +21,8 @@ Primary1.args = {
     age: 22,
     avatar: AvatarImg,
     city: 'asd',
-    country: Country.Ukraine,
-    currency: Currency.USD,
+    country: 'Ukraine',
+    currency: 'USD',
     first: 'asd',
     lastname: 'test',
     username: 'admin',
@@ -37,8 +35,8 @@ PrimaryRedesigned.args = {
     age: 22,
     avatar: AvatarImg,
     city: 'asd',
-    country: Country.Ukraine,
-    currency: Currency.USD,
+    country: 'Ukraine',
+    currency: 'USD',
     first: 'asd',
     lastname: 'test',
     username: 'admin',
@@ -47,11 +45,7 @@ PrimaryRedesigned.args = {
 PrimaryRedesigned.decorators = [NewDesignDecorator, ThemeDecorator(Theme.DARK)];
 
 export const WithError = Template.bind({});
-WithError.args = {
-  error: 'true',
-};
+WithError.args = { error: 'true' };
 
 export const Loading = Template.bind({});
-Loading.args = {
-  isLoading: true,
-};
+Loading.args = { isLoading: true };

@@ -7,8 +7,8 @@ import { TestAsyncThunk } from '@/shared/lib/tests/testAsyncThunk/testAsyncThunk
 const data = {
   age: 22,
   city: 'asd',
-  country: Country.Ukraine,
-  currency: Currency.USD,
+  country: 'Ukraine' as Country,
+  currency: 'USD' as Currency,
   first: 'asd',
   id: '1',
   lastname: 'test',

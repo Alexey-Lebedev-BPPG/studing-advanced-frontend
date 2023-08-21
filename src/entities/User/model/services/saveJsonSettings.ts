@@ -2,7 +2,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import i18next from 'i18next';
 import { setJsonSettingsMutation } from '../../api/userApi';
 import { getUserAuthData } from '../selectors/getUserAuthData/getUserAuthData';
-import { getJsonSettings } from '../selectors/jsonSettings';
+import { getJsonSettings } from '../selectors/jsonSettings/jsonSettings';
 import { JsonSettings } from '../types/jsonSetting';
 import { ThunkConfig } from '@/app/providers/StoreProvider';
 

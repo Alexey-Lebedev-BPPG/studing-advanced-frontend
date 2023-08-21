@@ -6,10 +6,7 @@ import NotificationIcon from '@/shared/assets/icons/notification.svg';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { ToggleFeatures } from '@/shared/lib/features';
 import { useDetectDevice } from '@/shared/lib/hooks/useDetectDevice/useDetectDevice';
-import {
-  Button as ButtonDeprecated,
-  ButtonTheme,
-} from '@/shared/ui/deprecated/Button';
+import { Button as ButtonDeprecated } from '@/shared/ui/deprecated/Button';
 import { Icon as IconDeprecated } from '@/shared/ui/deprecated/Icon';
 import { Popover as PopoverDeprecated } from '@/shared/ui/deprecated/Popups';
 import { Drawer } from '@/shared/ui/redesigned/Drawer';
@@ -38,7 +35,7 @@ export const NotificationButton: FC<INotificationButtonProps> = memo(
         nameFeatures={'isAppRedesigned'}
         on={<Icon clickable Svg={NotificationIcon} onClick={onOpenDrawer} />}
         off={
-          <ButtonDeprecated theme={ButtonTheme.CLEAR} onClick={onOpenDrawer}>
+          <ButtonDeprecated theme='clear' onClick={onOpenDrawer}>
             <IconDeprecated inverted Svg={NotificationIconDeprecated} />
           </ButtonDeprecated>
         }

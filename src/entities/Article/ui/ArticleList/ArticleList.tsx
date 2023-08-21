@@ -2,13 +2,12 @@ import { FC, HTMLAttributeAnchorTarget, memo } from 'react';
 import { useTranslation } from 'react-i18next';
 // import { List, ListRowProps, WindowScroller } from "react-virtualized";
 import cls from './ArticleList.module.scss';
-import { ArticleView } from '../../model/consts/consts';
-import { Article } from '../../model/types/article';
+import { Article, ArticleView } from '../../model/types/article';
 import { ArticleListItem } from '../ArticleListItem/ArticleListItem';
 import { ArticleListItemSkeleton } from '../ArticleListItem/ArticleListItemSkeleton';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { ToggleFeatures } from '@/shared/lib/features';
-import { Text, TextSize } from '@/shared/ui/deprecated/Text';
+import { Text } from '@/shared/ui/deprecated/Text';
 import { HStack } from '@/shared/ui/redesigned/Stack';
 
 export interface IArticleListProps {
@@ -22,7 +21,7 @@ export interface IArticleListProps {
 }
 
 const getSkeletons = (view: ArticleView) =>
-  new Array(view === ArticleView.SMALL ? 9 : 3)
+  new Array(view === 'SMALL' ? 9 : 3)
     .fill(0)
     .map((item, index) => (
       <ArticleListItemSkeleton key={index} className={cls.card} view={view} />
@@ -35,12 +34,12 @@ export const ArticleList: FC<IArticleListProps> = memo(
     className,
     isLoading,
     target,
-    view = ArticleView.SMALL,
+    view = 'SMALL',
     virtualized = true,
   }) => {
     const { t } = useTranslation();
 
-    // const isBig = view === ArticleView.BIG;
+    // const isBig = view === 'BIG';
     // // количество элементов в одной строке
     // const itemPerRow = isBig ? 1 : 3;
     // // количество строк
@@ -78,7 +77,7 @@ export const ArticleList: FC<IArticleListProps> = memo(
     if (!isLoading && !articles.length)
       return (
         <div className={classNames('', {}, [className, cls[view]])}>
-          <Text size={TextSize.L} title={`${t('Статьи не найдены')}`} />
+          <Text size='l' title={`${t('Статьи не найдены')}`} />
         </div>
       );
 

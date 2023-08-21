@@ -1,11 +1,13 @@
 import { FC, memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ValidateProfileError } from '../../model/consts/consts';
-import { getProfileError } from '../../model/selectors/getProfileError/getProfileError';
-import { getProfileForm } from '../../model/selectors/getProfileForm/getProfileForm';
-import { getProfileIsLoading } from '../../model/selectors/getProfileIsLoading/getProfileIsLoading';
-import { getProfileIsReadonly } from '../../model/selectors/getProfileIsReadonly/getProfileIsReadonly';
-import { getProfileValidateErrors } from '../../model/selectors/getProfileValidateErrors/getProfileValidateErrors';
+import {
+  getProfileForm,
+  getProfileIsLoading,
+  getProfileError,
+  getProfileIsReadonly,
+  getProfileValidateErrors,
+} from '../../model/selectors/getEditableProfileCard';
 import { fetchProfileData } from '../../model/services/fetchProfileData/fetchProfileData';
 import { profileActions, profileReducer } from '../../model/slice/profileSlice';
 import { EditableProfileCardHeader } from '../EditableProfileCardHeader/EditableProfileCardHeader';
@@ -22,7 +24,7 @@ import {
   useAppSelector,
 } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect/useInitialEffect';
-import { Text, TextTheme } from '@/shared/ui/deprecated/Text';
+import { Text } from '@/shared/ui/deprecated/Text';
 import { VStack } from '@/shared/ui/redesigned/Stack';
 
 export interface IEditableProfileCardProps {
@@ -115,7 +117,7 @@ export const EditableProfileCard: FC<IEditableProfileCardProps> = memo(
             errors.map(err => (
               <Text
                 key={err}
-                theme={TextTheme.ERROR}
+                theme='error'
                 text={validateErrorTranslate[err]}
                 data-testid='EditableProfileCard.Error'
               />

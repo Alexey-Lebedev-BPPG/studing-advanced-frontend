@@ -2,11 +2,7 @@ import { FC, HTMLAttributes, ReactNode } from 'react';
 import cls from './Card.module.scss';
 import { classNames } from '@/shared/lib/classNames/classNames';
 
-export enum CardTheme {
-  NORMAL = 'normal',
-  OUTLINE = 'outline',
-}
-
+type CardTheme = 'normal' | 'outline';
 /**
  * Устарел, используем новые компоненты из папки redesigned
  * @deprecated
@@ -23,7 +19,7 @@ export const Card: FC<ICardProps> = ({
   children,
   className,
   fullWidth,
-  theme = CardTheme.NORMAL,
+  theme = 'normal',
   ...otherProps
 }) => (
   <div

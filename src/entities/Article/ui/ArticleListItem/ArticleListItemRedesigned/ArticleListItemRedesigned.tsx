@@ -1,6 +1,5 @@
 import { FC, memo } from 'react';
 import cls from './articleListItemRedesigned.module.scss';
-import { ArticleView, ArticleBlockType } from '../../../model/consts/consts';
 import { ArticleTextBlock } from '../../../model/types/article';
 import { IArticleListItemProps } from '../ArticleListItem';
 import EyeIcon from '@/shared/assets/icons/eye.svg';
@@ -37,9 +36,9 @@ export const ArticleListItemRedesigned: FC<IArticleListItemProps> = memo(
       </HStack>
     );
 
-    if (view === ArticleView.BIG) {
+    if (view === 'BIG') {
       const textBlock = article.blocks.find(
-        block => block.type === ArticleBlockType.TEXT,
+        block => block.type === 'TEXT',
       ) as ArticleTextBlock;
 
       return (

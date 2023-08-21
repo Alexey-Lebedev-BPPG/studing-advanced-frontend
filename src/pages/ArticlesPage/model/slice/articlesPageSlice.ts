@@ -28,9 +28,9 @@ export const getArticles = articlesAdapter.getSelectors<StateSchema>(
 );
 
 const articlesPageSlice = createSlice({
-  // исgользуется для асинхронного изменения стейта
+  // используется для асинхронного изменения стейта
   extraReducers: builder => {
-    // у каждого thunka есть 3 состояния: 1. pending, 2. fulfilled, 3. rejected
+    // у каждого thunk-a есть 3 состояния: 1. pending, 2. fulfilled, 3. rejected
     // все 3 состояния можно здесь обработать
     builder
       // используем наш thunk
@@ -55,13 +55,13 @@ const articlesPageSlice = createSlice({
         state.hasMore = action.payload.length >= state.limit;
       })
       .addCase(fetchArticlesList.rejected, (state, action) => {
-        // action - поле, которое мы возвращаем из thunka при ошибке(3 аргумент в дженерике)
+        // action - поле, которое мы возвращаем из thunk-a при ошибке(3 аргумент в дженерике)
         state.isLoading = false;
         state.error = action.payload;
       });
   },
 
-  // расширем инитиал стейт нашими полями
+  // расширяем инишиал стейт нашими полями
   initialState: articlesAdapter.getInitialState<ArticlesPageSchema>({
     _inited: false,
     entities: {},
@@ -73,9 +73,9 @@ const articlesPageSlice = createSlice({
     order: 'asc',
     page: 1,
     search: '',
-    sort: ArticleSortFields.CREATED,
-    type: ArticleType.ALL,
-    view: ArticleView.SMALL,
+    sort: 'createdAt',
+    type: 'ALL',
+    view: 'SMALL',
   }),
 
   name: 'articlesPageSlice',
@@ -86,7 +86,7 @@ const articlesPageSlice = createSlice({
         ARTICLE_VIEW_LOCALSTORAGE_KEY,
       ) as ArticleView;
       state.view = view;
-      state.limit = view === ArticleView.BIG ? 4 : 9;
+      state.limit = view === 'BIG' ? 4 : 9;
       state._inited = true;
     },
     setOrder: (state, { payload }: PayloadAction<SortOrder>) => {

@@ -18,7 +18,7 @@ export const StoreProvider: FC<IStoreProviderProps> = ({
   children,
   initialState,
 }) => {
-  // в стор можно прокинуть навигейт, однако тогда компоненты будут перерендерится. потом решим эту проблему
+  // в стор можно прокинуть навигейт, однако тогда компоненты будут перерендерится.
   // const navigate = useNavigate();
   const store = createReduxStore(
     initialState as StateSchema,

@@ -1,6 +1,6 @@
 import { memo } from 'react';
 import cls from './ArticleListItem.module.scss';
-import { ArticleView } from '../../model/consts/consts';
+import { ArticleView } from '../../model/types/article';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { ToggleFeatures, toggleFeatures } from '@/shared/lib/features';
 import { Card as CardDeprecated } from '@/shared/ui/deprecated/Card';
@@ -29,7 +29,7 @@ export const ArticleListItemSkeleton = memo(
       on: () => SkeletonRedesigned,
     });
 
-    if (view === ArticleView.BIG) {
+    if (view === 'BIG') {
       const cardContent = (
         <>
           <div className={cls.header}>

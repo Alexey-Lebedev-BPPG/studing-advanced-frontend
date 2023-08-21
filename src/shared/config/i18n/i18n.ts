@@ -10,17 +10,14 @@ i18n
   .use(LanguageDetector)
   .use(initReactI18next)
   .init({
-    // уазываем откуда тянуть переводы
+    // указываем откуда тянуть переводы
     backend: {
       loadPath: '/locales/{{lng}}/{{ns}}.json',
     },
-
     // чтоб в консоли показывало данные библиотеки
     debug: __IS_DEV_DEBUG__,
-
     // язык по ум.
     fallbackLng: 'ru',
-
     interpolation: {
       escapeValue: false, // not needed for react as it escapes by default
     },

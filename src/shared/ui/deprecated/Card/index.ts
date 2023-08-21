@@ -1,1 +1,1 @@
-export { Card, CardTheme } from './Card';
+export { Card } from './Card';

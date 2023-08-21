@@ -1,6 +1,6 @@
 import { FC, memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Country } from '../model/consts/consts';
+import { Country } from '../model/types/types';
 import { ToggleFeatures } from '@/shared/lib/features';
 import { ListBox as ListBoxDeprecated } from '@/shared/ui/deprecated/Popups';
 import { ListBox } from '@/shared/ui/redesigned/Popups';
@@ -14,11 +14,11 @@ interface ICountryProps {
 
 // ввиду того, что массив всегда статичен, его не нужно оборачивать в memo
 const options = [
-  { content: Country.Armenia, valueOpt: Country.Armenia },
-  { content: Country.Russia, valueOpt: Country.Russia },
-  { content: Country.Belarus, valueOpt: Country.Belarus },
-  { content: Country.Kazakhstan, valueOpt: Country.Kazakhstan },
-  { content: Country.Ukraine, valueOpt: Country.Ukraine },
+  { content: 'Armenia', valueOpt: 'Armenia' },
+  { content: 'Russia', valueOpt: 'Russia' },
+  { content: 'Belarus', valueOpt: 'Belarus' },
+  { content: 'Kazakhstan', valueOpt: 'Kazakhstan' },
+  { content: 'Ukraine', valueOpt: 'Ukraine' },
 ];
 
 export const CountrySelect: FC<ICountryProps> = memo(

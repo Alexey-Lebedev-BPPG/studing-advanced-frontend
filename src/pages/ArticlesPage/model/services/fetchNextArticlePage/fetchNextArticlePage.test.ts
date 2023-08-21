@@ -6,7 +6,7 @@ jest.mock('../fetchArticlesList/fetchArticlesList');
 
 describe('fetchNextArticlePage', () => {
   test('success', async () => {
-    // передаем наш thunk в наш класс и вторым аргументом передаем инитиал стейт
+    // передаем наш thunk в наш класс и вторым аргументом передаем инишиал стейт
     const thunk = new TestAsyncThunk(fetchNextArticlePage, {
       articlesPage: {
         entities: {},
@@ -27,7 +27,7 @@ describe('fetchNextArticlePage', () => {
   });
 
   test('fetchArticlesList not called', async () => {
-    // передаем наш thunk в наш класс и вторым аргументом передаем инитиал стейт
+    // передаем наш thunk в наш класс и вторым аргументом передаем инишиал стейт
     const thunk = new TestAsyncThunk(fetchNextArticlePage, {
       articlesPage: {
         entities: {},
@@ -48,7 +48,7 @@ describe('fetchNextArticlePage', () => {
   });
 
   test('fetchArticlesList not called', async () => {
-    // передаем наш thunk в наш класс и вторым аргументом передаем инитиал стейт
+    // передаем наш thunk в наш класс и вторым аргументом передаем инишиал стейт
     const thunk = new TestAsyncThunk(fetchNextArticlePage, {
       articlesPage: {
         entities: {},

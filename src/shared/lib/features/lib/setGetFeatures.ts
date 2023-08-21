@@ -5,6 +5,7 @@ import { FeatureFlags } from '@/shared/types/featureFlags';
 const defaultFeatureFlags: FeatureFlags = {
   isAppRedesigned:
     localStorage.getItem(LOCAL_STORAGE_LAST_DESIGN_KEY) === 'new',
+  isTest: true,
 };
 
 // пока делаем фичи-флаги в константах, потому что в рамках одной сессии они навряд ли поменяются. Однако потом нужно будет переделать на сохранение в редакс

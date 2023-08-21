@@ -7,10 +7,7 @@ import TiledIcon from '@/shared/assets/icons/tile.svg';
 import TiledIconDeprecated from '@/shared/assets/icons/tiled-24-24.svg';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { ToggleFeatures, toggleFeatures } from '@/shared/lib/features';
-import {
-  Button as ButtonDeprecated,
-  ButtonTheme,
-} from '@/shared/ui/deprecated/Button';
+import { Button as ButtonDeprecated } from '@/shared/ui/deprecated/Button';
 import { Icon as IconDeprecated } from '@/shared/ui/deprecated/Icon';
 import { Card } from '@/shared/ui/redesigned/Card';
 import { Icon } from '@/shared/ui/redesigned/Icon';
@@ -28,7 +25,7 @@ const viewTypes = [
       off: () => TiledIconDeprecated,
       on: () => TiledIcon,
     }),
-    view: ArticleView.SMALL,
+    view: 'SMALL',
   },
   {
     icon: toggleFeatures({
@@ -36,7 +33,7 @@ const viewTypes = [
       off: () => ListIconDeprecated,
       on: () => ListIcon,
     }),
-    view: ArticleView.BIG,
+    view: 'BIG',
   },
 ];
 
@@ -55,8 +52,8 @@ export const ArticleViewSelector: FC<IArticleViewSelectorProps> = memo(
             {viewTypes.map(viewType => (
               <ButtonDeprecated
                 key={viewType.view}
-                theme={ButtonTheme.CLEAR}
-                onClick={onClick(viewType.view)}
+                theme='clear'
+                onClick={onClick(viewType.view as ArticleView)}
               >
                 <IconDeprecated
                   Svg={viewType.icon}
@@ -92,7 +89,7 @@ export const ArticleViewSelector: FC<IArticleViewSelectorProps> = memo(
                   { [cls.notSelected]: viewType.view !== view },
                   [],
                 )}
-                onClick={onClick(viewType.view)}
+                onClick={onClick(viewType.view as ArticleView)}
               />
             ))}
           </Card>

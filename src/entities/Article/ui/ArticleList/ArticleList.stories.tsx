@@ -1,6 +1,5 @@
 import { Meta, StoryFn } from '@storybook/react';
 import { ArticleList } from './ArticleList';
-import { ArticleView } from '../../model/consts/consts';
 import { Article } from '../../model/types/article';
 
 export default {
@@ -93,14 +92,14 @@ export const IsLoadingBig = Template.bind({});
 IsLoadingBig.args = {
   articles: [],
   isLoading: true,
-  view: ArticleView.BIG,
+  view: 'BIG',
 };
 
 export const IsLoadingSmall = Template.bind({});
 IsLoadingSmall.args = {
   articles: [],
   isLoading: true,
-  view: ArticleView.SMALL,
+  view: 'SMALL',
 };
 
 export const ListBig = Template.bind({});
@@ -109,7 +108,7 @@ ListBig.args = {
     .fill(0)
     .map((item, index) => ({ ...article, id: String(index) })),
   isLoading: false,
-  view: ArticleView.BIG,
+  view: 'BIG',
 };
 
 export const ListSmall = Template.bind({});
@@ -118,5 +117,5 @@ ListSmall.args = {
     .fill(0)
     .map((item, index) => ({ ...article, id: String(index) })),
   isLoading: false,
-  view: ArticleView.SMALL,
+  view: 'SMALL',
 };

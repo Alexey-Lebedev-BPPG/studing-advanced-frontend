@@ -5,10 +5,7 @@ import { getUserAuthData } from '@/entities/User';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { ToggleFeatures } from '@/shared/lib/features';
 import { useAppSelector } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
-import {
-  AppLink as AppLinkDeprecated,
-  AppLinkTheme,
-} from '@/shared/ui/deprecated/AppLink';
+import { AppLink as AppLinkDeprecated } from '@/shared/ui/deprecated/AppLink';
 import { AppLink } from '@/shared/ui/redesigned/AppLink';
 import { Icon } from '@/shared/ui/redesigned/Icon';
 
@@ -29,7 +26,7 @@ export const SidebarItem: FC<ISidebarItemProps> = memo(
         off={
           <AppLinkDeprecated
             to={item.path}
-            theme={AppLinkTheme.SECONDARY}
+            theme='secondary'
             className={classNames(cls.item, { [cls.collapsed]: collapsed })}
           >
             <item.Icon className={cls.icon} />

@@ -18,10 +18,10 @@ export const ArticleTypeTabs: FC<IArticleTypeTabsProps> = memo(
 
     const tabs = useMemo<ITabItem<ArticleType>[]>(
       () => [
-        { content: t('Все статьи'), value: ArticleType.ALL },
-        { content: t('Айти'), value: ArticleType.IT },
-        { content: t('Экономика'), value: ArticleType.ECONOMICS },
-        { content: t('Наука'), value: ArticleType.SCIENCE },
+        { content: t('Все статьи'), value: 'ALL' },
+        { content: t('Айти'), value: 'IT' },
+        { content: t('Экономика'), value: 'ECONOMICS' },
+        { content: t('Наука'), value: 'SCIENCE' },
       ],
       [t],
     );

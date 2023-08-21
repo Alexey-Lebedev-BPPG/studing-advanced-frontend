@@ -2,10 +2,7 @@ import { FC, memo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { ToggleFeatures } from '@/shared/lib/features';
-import {
-  Button as ButtonDeprecated,
-  ButtonTheme,
-} from '@/shared/ui/deprecated/Button';
+import { Button as ButtonDeprecated } from '@/shared/ui/deprecated/Button';
 import { Button } from '@/shared/ui/redesigned/Button';
 
 interface ILanguageSwitcherProps {
@@ -28,7 +25,7 @@ export const LanguageSwitcher: FC<ILanguageSwitcherProps> = memo(
         nameFeatures={'isAppRedesigned'}
         off={
           <ButtonDeprecated
-            theme={ButtonTheme.CLEAR}
+            theme='clear'
             className={classNames('', {}, [className])}
             onClick={toggle}
           >

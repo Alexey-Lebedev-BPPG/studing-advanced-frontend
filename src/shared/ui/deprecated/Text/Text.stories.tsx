@@ -1,5 +1,5 @@
 import { Meta, StoryFn } from '@storybook/react';
-import { Text, TextSize, TextTheme } from './Text';
+import { Text } from './Text';
 import { Theme } from '../../../const/theme';
 import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
 
@@ -52,27 +52,27 @@ OnlyTextDark.decorators = [ThemeDecorator(Theme.DARK)];
 export const Error = Template.bind({});
 Error.args = {
   text: 'text lorem',
-  theme: TextTheme.ERROR,
+  theme: 'error',
   title: 'Title',
 };
 
 export const SizeL = Template.bind({});
 SizeL.args = {
-  size: TextSize.L,
+  size: 'l',
   text: 'text lorem',
   title: 'Title',
 };
 
 export const SizeM = Template.bind({});
 SizeM.args = {
-  size: TextSize.M,
+  size: 'm',
   text: 'text lorem',
   title: 'Title',
 };
 
 export const SizeS = Template.bind({});
 SizeS.args = {
-  size: TextSize.S,
+  size: 's',
   text: 'text lorem',
   title: 'Title',
 };

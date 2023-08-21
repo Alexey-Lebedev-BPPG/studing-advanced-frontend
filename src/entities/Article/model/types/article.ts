@@ -1,5 +1,12 @@
-import { ArticleBlockType, ArticleType } from '../consts/consts';
 import { User } from '@/entities/User';
+
+export type ArticleSortFields = 'createdAt' | 'title' | 'views';
+
+export type ArticleBlockType = 'CODE' | 'IMAGE' | 'TEXT';
+
+export type ArticleType = 'ALL' | 'ECONOMICS' | 'IT' | 'SCIENCE';
+
+export type ArticleView = 'BIG' | 'SMALL';
 
 export interface ArticleBlockBase {
   id: string;
@@ -8,19 +15,19 @@ export interface ArticleBlockBase {
 
 export interface ArticleCodeBlock extends ArticleBlockBase {
   code: string;
-  type: ArticleBlockType.CODE;
+  type: 'CODE';
 }
 
 export interface ArticleImageBlock extends ArticleBlockBase {
   src: string;
   title: string;
-  type: ArticleBlockType.IMAGE;
+  type: 'IMAGE';
 }
 
 export interface ArticleTextBlock extends ArticleBlockBase {
   paragraphs: string[];
   title?: string;
-  type: ArticleBlockType.TEXT;
+  type: 'TEXT';
 }
 
 export type ArticleBlock =

@@ -6,7 +6,6 @@ import { useJsonSettings } from '@/entities/User';
 export const withTheme =
   (Component: ComponentType) =>
   // получаем тему из редакса
-
   () => {
     const { theme: defaultTheme } = useJsonSettings();
 

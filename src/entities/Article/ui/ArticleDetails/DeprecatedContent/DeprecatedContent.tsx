@@ -13,7 +13,7 @@ import { useAppSelector } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch
 import { Avatar } from '@/shared/ui/deprecated/Avatar';
 import { Icon } from '@/shared/ui/deprecated/Icon';
 import { Skeleton } from '@/shared/ui/deprecated/Skeleton';
-import { Text, TextAlign, TextSize } from '@/shared/ui/deprecated/Text';
+import { Text } from '@/shared/ui/deprecated/Text';
 import { HStack, VStack } from '@/shared/ui/redesigned/Stack';
 
 export const DeprecatedContent: FC = memo(props => {
@@ -42,7 +42,7 @@ export const DeprecatedContent: FC = memo(props => {
     return (
       <Text
         title={`${t('Произошла ошибка при загрузке статьи.')}`}
-        align={TextAlign.CENTER}
+        align='center'
       />
     );
 
@@ -56,7 +56,7 @@ export const DeprecatedContent: FC = memo(props => {
           title={article?.title}
           text={article?.subtitle}
           className={cls.title}
-          size={TextSize.L}
+          size='l'
         />
         <HStack gap='8' className={cls.articleInfo}>
           <Icon Svg={EyeIcon} className={cls.icon} />

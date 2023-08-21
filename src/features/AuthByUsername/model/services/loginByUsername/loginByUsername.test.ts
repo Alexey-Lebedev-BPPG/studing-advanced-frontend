@@ -60,7 +60,7 @@ describe('loginByUsername', () => {
     const thunk = new TestAsyncThunk(loginByUsername);
     // имитируем отправку post запроса, который возвращает валидные данные
     thunk.api.post.mockReturnValue(Promise.resolve({ data: userValue }));
-    // вызывваем функцию внутри класса для создания экшена
+    // вызываем функцию внутри класса для создания экшена
     const result = await thunk.callThunk({ password: '123', username: '123' });
 
     expect(thunk.dispatch).toHaveBeenCalledWith(

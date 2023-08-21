@@ -1,9 +1,6 @@
 import { FC, memo, useCallback } from 'react';
 import cls from './Code.module.scss';
-import {
-  Button as ButtonDeprecated,
-  ButtonTheme,
-} from '../../deprecated/Button/Button';
+import { Button as ButtonDeprecated } from '../../deprecated/Button/Button';
 import { Icon } from '../Icon';
 import CopyIcon from '@/shared/assets/icons/copy-20-20.svg';
 import CopyIconNew from '@/shared/assets/icons/copy.svg';
@@ -28,7 +25,7 @@ export const Code: FC<ICodeProps> = memo(({ className, text }) => {
         <pre className={classNames(cls.code, {}, [className])}>
           <ButtonDeprecated
             className={cls.copyBtn}
-            theme={ButtonTheme.CLEAR}
+            theme='clear'
             onClick={onCopy}
           >
             <CopyIcon className={cls.copyIcon} />

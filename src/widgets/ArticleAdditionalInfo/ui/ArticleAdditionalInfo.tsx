@@ -22,8 +22,8 @@ export const ArticleAdditionalInfo: FC<IArticleAdditionalInfoProps> = memo(
     return (
       <VStack gap='32' className={className}>
         <HStack gap='8'>
-          <Avatar src={author.avatar} size={32} />
-          <Text bold text={author.username} />
+          <Avatar src={author?.avatar || ''} size={32} />
+          <Text bold text={author?.username} />
           <Text text={createdAt} />
         </HStack>
         <Button onClick={onEdit}>{t('Редактировать')}</Button>

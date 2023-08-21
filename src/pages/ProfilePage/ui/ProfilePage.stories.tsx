@@ -1,7 +1,5 @@
 import { Meta, StoryFn } from '@storybook/react';
 import ProfilePage from './ProfilePage';
-import { Country } from '@/entities/Country';
-import { Currency } from '@/entities/Currency';
 import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
 import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { Theme } from '@/shared/const/theme';
@@ -24,8 +22,8 @@ Light.decorators = [
       form: {
         age: 22,
         city: 'asd',
-        country: Country.Ukraine,
-        currency: Currency.USD,
+        country: 'Ukraine',
+        currency: 'USD',
         first: 'asd',
         lastname: 'test',
         username: 'admin',
@@ -43,8 +41,8 @@ Dark.decorators = [
       form: {
         age: 22,
         city: 'asd',
-        country: Country.Ukraine,
-        currency: Currency.USD,
+        country: 'Ukraine',
+        currency: 'USD',
         first: 'asd',
         lastname: 'test',
         username: 'admin',

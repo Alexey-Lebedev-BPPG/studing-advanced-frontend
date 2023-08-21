@@ -1,5 +1,4 @@
 import { FC, memo } from 'react';
-import { ArticleView, ArticleBlockType } from '../../../model/consts/consts';
 import { ArticleTextBlock } from '../../../model/types/article';
 import { ArticleTextBlockComponent } from '../../ArticleTextBlockComponent/ArticleTextBlockComponent';
 import { IArticleListItemProps } from '../ArticleListItem';
@@ -30,9 +29,9 @@ export const ArticleListItemDeprecated: FC<IArticleListItemProps> = memo(
       </>
     );
 
-    if (view === ArticleView.BIG) {
+    if (view === 'BIG') {
       const textBlock = article.blocks.find(
-        block => block.type === ArticleBlockType.TEXT,
+        block => block.type === 'TEXT',
       ) as ArticleTextBlock;
 
       return (

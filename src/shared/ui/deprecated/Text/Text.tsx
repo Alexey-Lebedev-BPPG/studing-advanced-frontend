@@ -2,31 +2,25 @@ import { FC, memo } from 'react';
 import cls from './Text.module.scss';
 import { classNames } from '@/shared/lib/classNames/classNames';
 
-export enum TextTheme {
-  ERROR = 'error',
-  INVERTED = 'inverted',
-  PRIMARY = 'primary',
-}
+type TextTheme = 'error' | 'inverted' | 'primary';
 
-export enum TextAlign {
-  CENTER = 'center',
-  LEFT = 'left',
-  RIGHT = 'right',
-}
+type TextAlign = 'center' | 'left' | 'right';
 
-export enum TextSize {
-  L = 'size_l',
-  M = 'size_m',
-  S = 'size_s',
-}
+type TextSize = 'l' | 'm' | 's';
 
 type HeaderTagType = 'h1' | 'h2' | 'h3';
 
 // маппер, который определяет тег в зависимости от размера
 const mapSizeToHeaderTag: Record<TextSize, HeaderTagType> = {
-  [TextSize.S]: 'h3',
-  [TextSize.M]: 'h2',
-  [TextSize.L]: 'h1',
+  l: 'h1',
+  m: 'h2',
+  s: 'h3',
+};
+
+const mapSizeClass: Record<TextSize, string> = {
+  l: cls.size_l,
+  m: cls.size_m,
+  s: cls.size_s,
 };
 
 interface ITextProps {
@@ -45,25 +39,27 @@ interface ITextProps {
  */
 export const Text: FC<ITextProps> = memo(
   ({
-    align = TextAlign.LEFT,
+    align = 'left',
     className,
     'data-testid': dataTestId = 'Text',
-    size = TextSize.M,
+    size = 'm',
     text,
-    theme = TextTheme.PRIMARY,
+    theme = 'primary',
     // ввиду того, что такое свойство не позволительно деструктуризировать, нужно переименовать его
     title,
   }) => {
     const HeaderTag = mapSizeToHeaderTag[size];
 
-    const mods = {
-      [cls[theme]]: true,
-      [cls[align]]: true,
-      [cls[size]]: true,
-    };
-
     return (
-      <div className={classNames(cls.textWrapper, mods, [className])}>
+      <div
+        className={classNames(cls.textWrapper, {}, [
+          className,
+          mapSizeClass[size],
+          cls[theme],
+          cls[align],
+          cls[size],
+        ])}
+      >
         {!!title && (
           <HeaderTag className={cls.title} data-testid={`${dataTestId}.Header`}>
             {title}

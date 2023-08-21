@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import renderer from 'react-test-renderer';
-import { Button, ButtonTheme } from './Button';
+import { Button } from './Button';
 
 describe('Button', () => {
   test('Test render', () => {
@@ -9,10 +9,10 @@ describe('Button', () => {
   });
 
   test('Test clear theme', () => {
-    render(<Button theme={ButtonTheme.CLEAR}>{'TEST'}</Button>);
+    render(<Button theme='clear'>{'TEST'}</Button>);
     expect(screen.getByText('TEST')).toHaveClass('clear');
     const tree = renderer
-      .create(<Button theme={ButtonTheme.CLEAR}>{'TEST'}</Button>)
+      .create(<Button theme='clear'>{'TEST'}</Button>)
       .toJSON();
     expect(tree).toMatchSnapshot();
   });

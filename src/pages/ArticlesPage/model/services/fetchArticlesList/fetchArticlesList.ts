@@ -9,7 +9,7 @@ import {
   getArticlesPageType,
 } from '../../selectors/articlesPageSelectors';
 import { ThunkConfig } from '@/app/providers/StoreProvider';
-import { Article, ArticleType } from '@/entities/Article';
+import { Article } from '@/entities/Article';
 import { addQueryParams } from '@/shared/lib/url/addQueryParams/addQueryParams';
 
 interface FetchArticlesListProps {
@@ -17,7 +17,7 @@ interface FetchArticlesListProps {
   replace?: boolean;
 }
 
-// первым аргументом дженерика - что возвращаем, второй - что передаем, а третим можно передать свои типизацию объекта thunkAPI, в котором есть методы для использования в thunke
+// первым аргументом дженерика - что возвращаем, второй - что передаем, а третьим можно передать свои типизацию объекта thunkAPI, в котором есть методы для использования в thunk-e
 export const fetchArticlesList = createAsyncThunk<
   Article[],
   FetchArticlesListProps,
@@ -45,7 +45,7 @@ export const fetchArticlesList = createAsyncThunk<
         _page: page,
         _sort: sort,
         q: search,
-        type: type === ArticleType.ALL ? undefined : type,
+        type: type === 'ALL' ? undefined : type,
       },
     });
 
