@@ -13,6 +13,12 @@ import { StoreProvider } from '@/app/providers/StoreProvider';
 import ThemeProvider from '@/app/providers/ThemeProvider/ui/ThemeProvider';
 import { ForceUpdateProvider } from '@/shared/lib/render/forceUpdate';
 
+// для горячей перезагрузки
+new EventSource('/build-esbuild').addEventListener('change', () =>
+  // eslint-disable-next-line no-restricted-globals
+  location.reload(),
+);
+
 const container = document.getElementById('root');
 
 if (!container) throw new Error('Error load app');
