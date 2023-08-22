@@ -11,7 +11,9 @@ interface RequireAuthProps {
 }
 
 // не используем memo в компонентах, где у нас есть children
-export const RequireAuth = ({ children, roles }: RequireAuthProps) => {
+export const RequireAuth = (props: RequireAuthProps) => {
+  const { children, roles } = props;
+
   // проверяем авторизован ли пользователь
   const auth = useAppSelector(getUserAuthData);
   const location = useLocation();

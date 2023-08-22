@@ -10,7 +10,9 @@ interface IProfilePageProps {
   className?: string;
 }
 
-const ProfilePage: FC<IProfilePageProps> = ({ className }) => {
+const ProfilePage: FC<IProfilePageProps> = props => {
+  const { className } = props;
+
   const { id } = useParams<{ id: string }>();
 
   return (

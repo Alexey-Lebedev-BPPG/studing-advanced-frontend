@@ -21,35 +21,33 @@ const options = [
   { content: 'Ukraine', valueOpt: 'Ukraine' },
 ];
 
-export const CountrySelect: FC<ICountryProps> = memo(
-  ({ className, onChange, readonly, value }) => {
-    const { t } = useTranslation();
+export const CountrySelect: FC<ICountryProps> = memo(props => {
+  const { className, onChange, readonly, value } = props;
 
-    // явно преобразовываем значения из onChange в наш тип
-    const onChangeHandler = useCallback(
-      (valueOpt: string) => {
-        onChange?.(valueOpt as Country);
-      },
-      [onChange],
-    );
+  const { t } = useTranslation();
 
-    const childrenProps = {
-      className,
-      defaultValue: `${t('Укажите страну')}`,
-      direction: 'top right' as const,
-      items: options,
-      label: `${t('Укажите страну')}`,
-      onChange: onChangeHandler,
-      readonly,
-      value,
-    };
+  // явно преобразовываем значения из onChange в наш тип
+  const onChangeHandler = useCallback(
+    (valueOpt: string) => onChange?.(valueOpt as Country),
+    [onChange],
+  );
 
-    return (
-      <ToggleFeatures
-        nameFeatures={'isAppRedesigned'}
-        off={<ListBoxDeprecated {...childrenProps} />}
-        on={<ListBox {...childrenProps} />}
-      />
-    );
-  },
-);
+  const childrenProps = {
+    className,
+    defaultValue: `${t('Укажите страну')}`,
+    direction: 'top right' as const,
+    items: options,
+    label: `${t('Укажите страну')}`,
+    onChange: onChangeHandler,
+    readonly,
+    value,
+  };
+
+  return (
+    <ToggleFeatures
+      nameFeatures={'isAppRedesigned'}
+      off={<ListBoxDeprecated {...childrenProps} />}
+      on={<ListBox {...childrenProps} />}
+    />
+  );
+});

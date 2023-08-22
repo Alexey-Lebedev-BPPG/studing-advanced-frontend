@@ -28,15 +28,18 @@ const reducers: ReducersList = {
   articlesPage: articlesPageReducer,
 };
 
-const ArticlesPage: FC<IArticlesPageProps> = ({ className }) => {
+const ArticlesPage: FC<IArticlesPageProps> = props => {
+  const { className } = props;
+
   const dispatch = useAppDispatch();
   const [searchParams] = useSearchParams();
   // получаем конкретную запись, использовав возможность прокидывания аргументов (пример использования хука селектора с аргументами)
   // const articleItem = useArticleItemById('2');
 
-  const onLoadNextPart = useCallback(() => {
-    dispatch(fetchNextArticlePage());
-  }, [dispatch]);
+  const onLoadNextPart = useCallback(
+    () => dispatch(fetchNextArticlePage()),
+    [dispatch],
+  );
 
   useInitialEffect(() => {
     // достаем параметры из урл и прокидываем в сброс

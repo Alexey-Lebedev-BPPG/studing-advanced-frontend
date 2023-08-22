@@ -17,7 +17,7 @@ import { Modal } from '@/shared/ui/redesigned/Modal';
 import { HStack, VStack } from '@/shared/ui/redesigned/Stack';
 import { Text } from '@/shared/ui/redesigned/Text';
 
-export interface IRatingCardProps {
+interface IRatingCardProps {
   className?: string;
   // отзыв, который будем писать внутри модального окна
   feedbackTitle: string;

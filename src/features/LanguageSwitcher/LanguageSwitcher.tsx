@@ -11,33 +11,32 @@ interface ILanguageSwitcherProps {
   short?: boolean;
 }
 
-export const LanguageSwitcher: FC<ILanguageSwitcherProps> = memo(
-  ({ className, short }) => {
-    const { i18n, t } = useTranslation();
+export const LanguageSwitcher: FC<ILanguageSwitcherProps> = memo(props => {
+  const { className, short } = props;
 
-    const toggle = () => {
-      // вызываем функцию перевода и в ней меняем язык на противоположный
-      i18n.changeLanguage(i18n.language === 'ru' ? 'en' : 'ru');
-    };
+  const { i18n, t } = useTranslation();
 
-    return (
-      <ToggleFeatures
-        nameFeatures={'isAppRedesigned'}
-        off={
-          <ButtonDeprecated
-            theme='clear'
-            className={classNames('', {}, [className])}
-            onClick={toggle}
-          >
-            {t(short ? 'Короткий язык' : 'Язык')}
-          </ButtonDeprecated>
-        }
-        on={
-          <Button variant='clear' onClick={toggle}>
-            {t(short ? 'Короткий язык' : 'Язык')}
-          </Button>
-        }
-      />
-    );
-  },
-);
+  // вызываем функцию перевода и в ней меняем язык на противоположный
+  const toggle = () =>
+    i18n.changeLanguage(i18n.language === 'ru' ? 'en' : 'ru');
+
+  return (
+    <ToggleFeatures
+      nameFeatures={'isAppRedesigned'}
+      off={
+        <ButtonDeprecated
+          theme='clear'
+          className={classNames('', {}, [className])}
+          onClick={toggle}
+        >
+          {t(short ? 'Короткий язык' : 'Язык')}
+        </ButtonDeprecated>
+      }
+      on={
+        <Button variant='clear' onClick={toggle}>
+          {t(short ? 'Короткий язык' : 'Язык')}
+        </Button>
+      }
+    />
+  );
+});

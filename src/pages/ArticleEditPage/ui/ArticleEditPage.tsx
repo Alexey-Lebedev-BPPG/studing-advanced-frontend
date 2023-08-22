@@ -9,7 +9,9 @@ export interface IArticleEditPageProps {
   className?: string;
 }
 
-const ArticleEditPage: FC<IArticleEditPageProps> = memo(({ className }) => {
+const ArticleEditPage: FC<IArticleEditPageProps> = memo(props => {
+  const { className } = props;
+
   const { t } = useTranslation();
   const { id } = useParams<{ id: string }>();
   // если есть id, то страница для редактирования

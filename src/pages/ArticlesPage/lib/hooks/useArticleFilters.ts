@@ -29,9 +29,10 @@ export const useArticleFilters = () => {
   const search = useAppSelector(getArticlesPageSearch);
   const type = useAppSelector(getArticlesPageType);
 
-  const fetchData = useCallback(() => {
-    dispatch(fetchArticlesList({ replace: true }));
-  }, [dispatch]);
+  const fetchData = useCallback(
+    () => dispatch(fetchArticlesList({ replace: true })),
+    [dispatch],
+  );
 
   const debounceFetchData = useDebounce(fetchData);
 

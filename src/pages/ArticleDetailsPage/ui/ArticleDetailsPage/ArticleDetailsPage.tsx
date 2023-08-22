@@ -28,7 +28,9 @@ const reducers: ReducersList = {
   articleDetailsPage: articleDetailsPageReducer,
 };
 
-const ArticleDetailsPage: FC<IArticleDetailsPageProps> = ({ className }) => {
+const ArticleDetailsPage: FC<IArticleDetailsPageProps> = props => {
+  const { className } = props;
+
   const { id } = useParams<{ id: string }>();
 
   if (!id) return null;

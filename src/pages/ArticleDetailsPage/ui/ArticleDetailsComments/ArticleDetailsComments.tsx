@@ -22,36 +22,34 @@ export interface IArticleDetailsCommentsProps {
   id?: string;
 }
 
-const ArticleDetailsComments: FC<IArticleDetailsCommentsProps> = memo(
-  ({ className, id }) => {
-    const dispatch = useAppDispatch();
-    const { t } = useTranslation();
-    const comments = useAppSelector(getArticleComments.selectAll);
-    const commentsIsLoading = useAppSelector(getArticleCommentsIsLoading);
+const ArticleDetailsComments: FC<IArticleDetailsCommentsProps> = memo(props => {
+  const { className, id } = props;
 
-    const onSendComment = useCallback(
-      (text: string) => {
-        dispatch(addCommentForArticle(text));
-      },
-      [dispatch],
-    );
+  const dispatch = useAppDispatch();
+  const { t } = useTranslation();
+  const comments = useAppSelector(getArticleComments.selectAll);
+  const commentsIsLoading = useAppSelector(getArticleCommentsIsLoading);
 
-    useInitialEffect(() => {
-      dispatch(fetchCommentsByArticleId(id));
-    });
+  const onSendComment = useCallback(
+    (text: string) => dispatch(addCommentForArticle(text)),
+    [dispatch],
+  );
 
-    return (
-      <VStack max gap='16' className={classNames('', {}, [className])}>
-        <ToggleFeatures
-          nameFeatures={'isAppRedesigned'}
-          on={<Text size='l' title={`${t('Комментарии')}`} />}
-          off={<TextDeprecated size='l' title={`${t('Комментарии')}`} />}
-        />
-        <AddCommentForm onSendComment={onSendComment} />
-        <CommentList isLoading={commentsIsLoading} comments={comments} />
-      </VStack>
-    );
-  },
-);
+  useInitialEffect(() => {
+    dispatch(fetchCommentsByArticleId(id));
+  });
+
+  return (
+    <VStack max gap='16' className={classNames('', {}, [className])}>
+      <ToggleFeatures
+        nameFeatures={'isAppRedesigned'}
+        on={<Text size='l' title={`${t('Комментарии')}`} />}
+        off={<TextDeprecated size='l' title={`${t('Комментарии')}`} />}
+      />
+      <AddCommentForm onSendComment={onSendComment} />
+      <CommentList isLoading={commentsIsLoading} comments={comments} />
+    </VStack>
+  );
+});
 
 export default ArticleDetailsComments;

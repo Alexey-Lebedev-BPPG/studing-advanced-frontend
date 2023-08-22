@@ -26,58 +26,59 @@ export interface IAvatarDropdownProps {
   className?: string;
 }
 
-export const AvatarDropdown: FC<IAvatarDropdownProps> = memo(
-  ({ className }) => {
-    const { t } = useTranslation();
-    const authData = useAppSelector(getUserAuthData);
-    const dispatch = useAppDispatch();
-    const isAdmin = useAppSelector(isUserAdmin);
-    const isManager = useAppSelector(isUserManager);
+export const AvatarDropdown: FC<IAvatarDropdownProps> = memo(props => {
+  const { className } = props;
 
-    const isAdminPanelAvailable = isAdmin || isManager;
+  const { t } = useTranslation();
+  const authData = useAppSelector(getUserAuthData);
+  const dispatch = useAppDispatch();
+  const isAdmin = useAppSelector(isUserAdmin);
+  const isManager = useAppSelector(isUserManager);
 
-    const onLogout = useCallback(() => {
-      dispatch(userActions.logout());
-    }, [dispatch]);
+  const isAdminPanelAvailable = isAdmin || isManager;
 
-    if (!authData) return null;
+  const onLogout = useCallback(
+    () => dispatch(userActions.logout()),
+    [dispatch],
+  );
 
-    const items = [
-      // добавление объектов в массив по условию
-      ...(isAdminPanelAvailable
-        ? [{ content: t('Админка'), href: getRouteAdminPanel() }]
-        : []),
-      { content: t('Настройки'), href: getRouteSettings() },
-      { content: t('Профиль'), href: getRouteProfile(authData.id) },
-      { content: t('Выйти'), onClick: onLogout },
-    ];
+  if (!authData) return null;
 
-    return (
-      <ToggleFeatures
-        nameFeatures={'isAppRedesigned'}
-        off={
-          <DropdownDeprecated
-            direction='bottom left'
-            className={classNames('', {}, [className])}
-            items={items}
-            trigger={
-              <AvatarDeprecated
-                fallbackInverted
-                size={30}
-                src={authData.avatar}
-              />
-            }
-          />
-        }
-        on={
-          <Dropdown
-            direction='bottom left'
-            className={classNames('', {}, [className])}
-            items={items}
-            trigger={<Avatar size={40} src={authData.avatar} />}
-          />
-        }
-      />
-    );
-  },
-);
+  const items = [
+    // добавление объектов в массив по условию
+    ...(isAdminPanelAvailable
+      ? [{ content: t('Админка'), href: getRouteAdminPanel() }]
+      : []),
+    { content: t('Настройки'), href: getRouteSettings() },
+    { content: t('Профиль'), href: getRouteProfile(authData.id) },
+    { content: t('Выйти'), onClick: onLogout },
+  ];
+
+  return (
+    <ToggleFeatures
+      nameFeatures={'isAppRedesigned'}
+      off={
+        <DropdownDeprecated
+          direction='bottom left'
+          className={classNames('', {}, [className])}
+          items={items}
+          trigger={
+            <AvatarDeprecated
+              fallbackInverted
+              size={30}
+              src={authData.avatar}
+            />
+          }
+        />
+      }
+      on={
+        <Dropdown
+          direction='bottom left'
+          className={classNames('', {}, [className])}
+          items={items}
+          trigger={<Avatar size={40} src={authData.avatar} />}
+        />
+      }
+    />
+  );
+});

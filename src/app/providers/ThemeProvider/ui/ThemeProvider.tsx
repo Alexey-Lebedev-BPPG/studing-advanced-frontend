@@ -14,7 +14,9 @@ const fallbackTheme = localStorage.getItem(LOCAL_STORAGE_THEME_KEY) as Theme;
 
 // не используем memo в компонентах, где у нас есть children
 // чтоб иметь глобальный доступ к темам в любых компонентах
-const ThemeProvider: FC<ThemeProviderProps> = ({ children, initialTheme }) => {
+const ThemeProvider: FC<ThemeProviderProps> = props => {
+  const { children, initialTheme } = props;
+
   // для того, чтоб useEffect сработал только один раз, делаем флаг
   const [isThemeInited, setIsThemeInited] = useState(false);
 

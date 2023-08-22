@@ -14,15 +14,17 @@ interface IThemeSwitcherProps {
   className?: string;
 }
 
-export const ThemeSwitcher: FC<IThemeSwitcherProps> = memo(({ className }) => {
+export const ThemeSwitcher: FC<IThemeSwitcherProps> = memo(props => {
+  const { className } = props;
+
   const { theme, toggleTheme } = useTheme();
   const dispatch = useAppDispatch();
 
-  const onToggleHandler = useCallback(() => {
-    toggleTheme(newTheme => {
-      dispatch(saveJsonSettings({ theme: newTheme }));
-    });
-  }, [dispatch, toggleTheme]);
+  const onToggleHandler = useCallback(
+    () =>
+      toggleTheme(newTheme => dispatch(saveJsonSettings({ theme: newTheme }))),
+    [dispatch, toggleTheme],
+  );
 
   return (
     <ToggleFeatures

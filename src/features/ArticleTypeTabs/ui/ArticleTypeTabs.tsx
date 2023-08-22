@@ -12,48 +12,46 @@ export interface IArticleTypeTabsProps {
   selectedValue: ArticleType;
 }
 
-export const ArticleTypeTabs: FC<IArticleTypeTabsProps> = memo(
-  ({ className, onChangeType, selectedValue }) => {
-    const { t } = useTranslation();
+export const ArticleTypeTabs: FC<IArticleTypeTabsProps> = memo(props => {
+  const { className, onChangeType, selectedValue } = props;
 
-    const tabs = useMemo<ITabItem<ArticleType>[]>(
-      () => [
-        { content: t('Все статьи'), value: 'ALL' },
-        { content: t('Айти'), value: 'IT' },
-        { content: t('Экономика'), value: 'ECONOMICS' },
-        { content: t('Наука'), value: 'SCIENCE' },
-      ],
-      [t],
-    );
+  const { t } = useTranslation();
 
-    const onClickTab = useCallback(
-      (newTab: ITabItem<ArticleType>) => {
-        onChangeType(newTab.value);
-      },
-      [onChangeType],
-    );
+  const tabs = useMemo<ITabItem<ArticleType>[]>(
+    () => [
+      { content: t('Все статьи'), value: 'ALL' },
+      { content: t('Айти'), value: 'IT' },
+      { content: t('Экономика'), value: 'ECONOMICS' },
+      { content: t('Наука'), value: 'SCIENCE' },
+    ],
+    [t],
+  );
 
-    return (
-      <ToggleFeatures
-        nameFeatures={'isAppRedesigned'}
-        off={
-          <TabsDeprecated
-            className={classNames('', {}, [className])}
-            tabs={tabs}
-            selectedValue={selectedValue}
-            onTabClick={onClickTab}
-          />
-        }
-        on={
-          <Tabs
-            className={classNames('', {}, [className])}
-            tabs={tabs}
-            selectedValue={selectedValue}
-            direction='column'
-            onTabClick={onClickTab}
-          />
-        }
-      />
-    );
-  },
-);
+  const onClickTab = useCallback(
+    (newTab: ITabItem<ArticleType>) => onChangeType(newTab.value),
+    [onChangeType],
+  );
+
+  return (
+    <ToggleFeatures
+      nameFeatures={'isAppRedesigned'}
+      off={
+        <TabsDeprecated
+          className={classNames('', {}, [className])}
+          tabs={tabs}
+          selectedValue={selectedValue}
+          onTabClick={onClickTab}
+        />
+      }
+      on={
+        <Tabs
+          className={classNames('', {}, [className])}
+          tabs={tabs}
+          selectedValue={selectedValue}
+          direction='column'
+          onTabClick={onClickTab}
+        />
+      }
+    />
+  );
+});

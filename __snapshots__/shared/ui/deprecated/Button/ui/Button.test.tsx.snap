@@ -8,3 +8,12 @@ exports[`Button Test clear theme 1`] = `
   TEST
 </button>
 `;
+
+exports[`Button Test render 1`] = `
+<button
+  className="button outline size_m"
+  type="button"
+>
+  TEST
+</button>
+`;

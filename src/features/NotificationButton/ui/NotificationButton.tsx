@@ -17,62 +17,57 @@ export interface INotificationButtonProps {
   className?: string;
 }
 
-export const NotificationButton: FC<INotificationButtonProps> = memo(
-  ({ className }) => {
-    const [isOpenDrawer, setIsOpenDrawer] = useState(false);
-    const isMobile = useDetectDevice();
+export const NotificationButton: FC<INotificationButtonProps> = memo(props => {
+  const { className } = props;
 
-    const onOpenDrawer = useCallback(() => {
-      setIsOpenDrawer(true);
-    }, []);
+  const [isOpenDrawer, setIsOpenDrawer] = useState(false);
+  const isMobile = useDetectDevice();
 
-    const onCloseDrawer = useCallback(() => {
-      setIsOpenDrawer(false);
-    }, []);
+  const onOpenDrawer = useCallback(() => setIsOpenDrawer(true), []);
+  const onCloseDrawer = useCallback(() => setIsOpenDrawer(false), []);
 
-    const trigger = (
-      <ToggleFeatures
-        nameFeatures={'isAppRedesigned'}
-        on={<Icon clickable Svg={NotificationIcon} onClick={onOpenDrawer} />}
-        off={
-          <ButtonDeprecated theme='clear' onClick={onOpenDrawer}>
-            <IconDeprecated inverted Svg={NotificationIconDeprecated} />
-          </ButtonDeprecated>
-        }
-      />
-    );
-    return (
-      <div>
-        {isMobile ? (
-          <>
-            {trigger}
-            {/* оборачиваем компонент для ленивой подгрузки библиотек, которые в нем используются */}
-            <Drawer isOpen={isOpenDrawer} onClose={onCloseDrawer}>
-              <NotificationList />
-            </Drawer>
-          </>
-        ) : (
-          <ToggleFeatures
-            nameFeatures={'isAppRedesigned'}
-            off={
-              <PopoverDeprecated
-                className={classNames(cls.notificationButton, {}, [className])}
-                trigger={trigger}
-              >
-                <NotificationList className={cls.notifications} />
-              </PopoverDeprecated>
-            }
-            on={
-              <Popover
-                className={classNames(cls.notificationButton, {}, [className])}
-                trigger={trigger}
-              >
-                <NotificationList className={cls.notifications} />
-              </Popover>
-            }
-          />
-        )}
-      </div>
-    );
-  },
-);
+  const trigger = (
+    <ToggleFeatures
+      nameFeatures={'isAppRedesigned'}
+      on={<Icon clickable Svg={NotificationIcon} onClick={onOpenDrawer} />}
+      off={
+        <ButtonDeprecated theme='clear' onClick={onOpenDrawer}>
+          <IconDeprecated inverted Svg={NotificationIconDeprecated} />
+        </ButtonDeprecated>
+      }
+    />
+  );
+  return (
+    <div>
+      {isMobile ? (
+        <>
+          {trigger}
+          {/* оборачиваем компонент для ленивой подгрузки библиотек, которые в нем используются */}
+          <Drawer isOpen={isOpenDrawer} onClose={onCloseDrawer}>
+            <NotificationList />
+          </Drawer>
+        </>
+      ) : (
+        <ToggleFeatures
+          nameFeatures={'isAppRedesigned'}
+          off={
+            <PopoverDeprecated
+              className={classNames(cls.notificationButton, {}, [className])}
+              trigger={trigger}
+            >
+              <NotificationList className={cls.notifications} />
+            </PopoverDeprecated>
+          }
+          on={
+            <Popover
+              className={classNames(cls.notificationButton, {}, [className])}
+              trigger={trigger}
+            >
+              <NotificationList className={cls.notifications} />
+            </Popover>
+          }
+        />
+      )}
+    </div>
+  );
+});

@@ -8,7 +8,9 @@ export interface IAdminPanelPageProps {
   className?: string;
 }
 
-const AdminPanelPage: FC<IAdminPanelPageProps> = memo(({ className }) => {
+const AdminPanelPage: FC<IAdminPanelPageProps> = memo(props => {
+  const { className } = props;
+
   const { t } = useTranslation();
 
   return (

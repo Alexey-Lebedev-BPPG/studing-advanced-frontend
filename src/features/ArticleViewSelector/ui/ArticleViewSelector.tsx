@@ -38,11 +38,11 @@ const viewTypes = [
 ];
 
 export const ArticleViewSelector: FC<IArticleViewSelectorProps> = memo(
-  ({ className, onViewClick, view }) => {
+  props => {
+    const { className, onViewClick, view } = props;
+
     // делаем замыкание (внешняя функция принимает отображение, а внутренняя уже срабатывает как событие)
-    const onClick = (newView: ArticleView) => () => {
-      onViewClick?.(newView);
-    };
+    const onClick = (newView: ArticleView) => () => onViewClick?.(newView);
 
     return (
       <ToggleFeatures

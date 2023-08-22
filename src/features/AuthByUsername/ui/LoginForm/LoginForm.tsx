@@ -38,7 +38,9 @@ const initialReducers: ReducersList = {
   loginForm: loginReducer,
 };
 
-const LoginForm: FC<ILoginFormProps> = memo(({ className, onSuccess }) => {
+const LoginForm: FC<ILoginFormProps> = memo(props => {
+  const { className, onSuccess } = props;
+
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
 
@@ -54,16 +56,12 @@ const LoginForm: FC<ILoginFormProps> = memo(({ className, onSuccess }) => {
   const error = useAppSelector(getLoginError);
 
   const onChangeUsername = useCallback(
-    (value: string) => {
-      dispatch(loginActions.setUserName(value));
-    },
+    (value: string) => dispatch(loginActions.setUserName(value)),
     [dispatch],
   );
 
   const onChangePassword = useCallback(
-    (value: string) => {
-      dispatch(loginActions.setPassword(value));
-    },
+    (value: string) => dispatch(loginActions.setPassword(value)),
     [dispatch],
   );
 

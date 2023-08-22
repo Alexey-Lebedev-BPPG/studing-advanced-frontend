@@ -8,7 +8,7 @@ import { Skeleton as SkeletonDeprecated } from '@/shared/ui/deprecated/Skeleton'
 import { Skeleton as SkeletonRedesigned } from '@/shared/ui/redesigned/Skeleton';
 import { VStack } from '@/shared/ui/redesigned/Stack';
 
-export interface INotificationListProps {
+interface INotificationListProps {
   className?: string;
 }
 

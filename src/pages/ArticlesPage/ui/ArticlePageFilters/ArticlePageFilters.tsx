@@ -14,47 +14,47 @@ export interface IArticlePageFiltersProps {
   className?: string;
 }
 
-export const ArticlePageFilters: FC<IArticlePageFiltersProps> = memo(
-  ({ className }) => {
-    const { t } = useTranslation();
+export const ArticlePageFilters: FC<IArticlePageFiltersProps> = memo(props => {
+  const { className } = props;
 
-    const {
-      onChangeOrder,
-      onChangeSearch,
-      onChangeSort,
-      onChangeType,
-      onChangeView,
-      order,
-      search,
-      sort,
-      type,
-      view,
-    } = useArticleFilters();
+  const { t } = useTranslation();
 
-    return (
-      <div className={classNames(cls.articlePageFilters, {}, [className])}>
-        <div className={cls.sortWrapper}>
-          <ArticleSortSelector
-            order={order}
-            sort={sort}
-            onChangeOrder={onChangeOrder}
-            onChangeSort={onChangeSort}
-          />
-          <ArticleViewSelector view={view} onViewClick={onChangeView} />
-        </div>
-        <Card className={cls.search}>
-          <Input
-            value={search}
-            placeholder={`${t('Поиск')}`}
-            onChange={onChangeSearch}
-          />
-        </Card>
-        <ArticleTypeTabs
-          selectedValue={type}
-          className={cls.tabsWrapper}
-          onChangeType={onChangeType}
+  const {
+    onChangeOrder,
+    onChangeSearch,
+    onChangeSort,
+    onChangeType,
+    onChangeView,
+    order,
+    search,
+    sort,
+    type,
+    view,
+  } = useArticleFilters();
+
+  return (
+    <div className={classNames(cls.articlePageFilters, {}, [className])}>
+      <div className={cls.sortWrapper}>
+        <ArticleSortSelector
+          order={order}
+          sort={sort}
+          onChangeOrder={onChangeOrder}
+          onChangeSort={onChangeSort}
         />
+        <ArticleViewSelector view={view} onViewClick={onChangeView} />
       </div>
-    );
-  },
-);
+      <Card className={cls.search}>
+        <Input
+          value={search}
+          placeholder={`${t('Поиск')}`}
+          onChange={onChangeSearch}
+        />
+      </Card>
+      <ArticleTypeTabs
+        selectedValue={type}
+        className={cls.tabsWrapper}
+        onChangeType={onChangeType}
+      />
+    </div>
+  );
+});
