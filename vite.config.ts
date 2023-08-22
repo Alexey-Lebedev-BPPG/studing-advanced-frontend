@@ -12,7 +12,6 @@ export default defineConfig({
     __IS_DEV_DEBUG__: JSON.stringify(false),
     __PROJECT__: JSON.stringify('frontend'),
   },
-
   plugins: [
     // позволяет работать с svg (указываем exportAsDefault, т.к. все svg мы импортили по дефолту)
     svgr({ exportAsDefault: true }),

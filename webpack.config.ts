@@ -2,8 +2,12 @@ import path from 'path';
 import dotenv from 'dotenv';
 import webpack from 'webpack';
 // import clear from 'clear';
-import { buildWebpackConfig } from './configs/build/buildWebpackConfig';
-import { BuildEnv, BuildMode, BuildPaths } from './configs/build/types/config';
+import { buildWebpackConfig } from './configs/webpack/build/buildWebpackConfig';
+import {
+  BuildEnv,
+  BuildMode,
+  BuildPaths,
+} from './configs/webpack/build/types/config';
 
 // функция на получение дефолтного апи адреса
 const getApiUrl = (mode: BuildMode, apiUrl?: string) => {
@@ -41,7 +45,7 @@ export default (env: BuildEnv) => {
   dotenv.config().parsed || {};
 
   // берем env из параметра функции или из dotenv
-  const mode = env?.mode || 'development';
+  const mode = env?.mode || process.env?.mode || 'development';
   const PORT = Number(env?.port) || Number(process.env?.PORT) || 3000;
   const apiURL = getApiUrl(mode, env?.apiURL || process.env?.API_URL);
 

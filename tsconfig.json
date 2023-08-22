@@ -7,7 +7,7 @@
     // указываем модульную систему
     "module": "ESNext",
     // во что компилируем
-    "target": "es5",
+    "target": "ES6",
     // позволяет использовать jsx (если указать react-jsx, то не нужно в каждый файл импортить React) + Нажать комбинацию
     // клавиш "CTRL + Shift + P", в палитре команд ввести "typescript version" и выбрать "Использовать версию рабочей
     // области" ("Use workspace version")
@@ -26,7 +26,7 @@
     "esModuleInterop": true,
     // для использования привычных default импортов (вместо import * as ...)
     "allowSyntheticDefaultImports": true,
-    // позволяет выносить типы тайпскрипта в отдельные модули, чтоб упростить сборку бейблом (при этом типы нужно будет экспортить как export type {} from "...)
+    // позволяет выносить типы тайпскрипта в отдельные модули, чтоб упростить сборку бейблом (при этом типы нужно будет экспортить как export type {} from "...). Обязательное поле при использовании esbuild !!!
     "isolatedModules": true,
     // чтоб сработал автокомплит для модулей
     "plugins": [{ "name": "typescript-plugin-css-modules" }]
@@ -34,5 +34,10 @@
   // чтоб при сборке не ругался на импорты
   "ts-node": { "compilerOptions": { "module": "CommonJS" } },
   // добавляем путь к файлу, где импортится @testing-library/jest-dom, чтоб пользоваться функциями, а также добавляем еще места, чтоб подхватывались типы для этих файлов
-  "include": ["./configs/jest/setupTests.ts", "./src/**/*.ts", "./src/**/*.tsx", "src/shared/config/storybook/Storybook.ts"]
+  "include": [
+    "./configs/jest/setupTests.ts",
+    "./src/**/*.ts",
+    "./src/**/*.tsx",
+    "src/shared/config/storybook/Storybook.ts"
+  ]
 }

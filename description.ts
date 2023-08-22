@@ -14,6 +14,12 @@
 // билд в прод режиме
 ('build:prod: ./node_modules/.bin/webpack --env mode=production');
 
+// для esbuild команда, если не пишем файл конфига
+// ('build:prod:esbuild: esbuild ./src/index.tsx --bundle --outdir="build-esbuild" --minify');
+
+// для esbuild команда, если пишем файл конфига
+('build:prod:esbuild: node ./configs/esbuild/esbuild-config.js');
+
 // билд в дев режиме
 ('build:dev: ./node_modules/.bin/webpack --env mode=development');
 
