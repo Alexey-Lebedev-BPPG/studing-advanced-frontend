@@ -1,5 +1,7 @@
 import { PluginItem } from '@babel/core';
 
+// аналогов бейбла очень много. Лучше использовать swc-loader(от создателей некста)
+
 // создаем свой babel плагин, чтоб удалять аргументы вида data-testid из элементов при сборке проекта
 // eslint-disable-next-line func-names
 export default function (): PluginItem {

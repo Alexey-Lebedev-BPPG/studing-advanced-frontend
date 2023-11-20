@@ -1,4 +1,4 @@
-import webpack from 'webpack';
+import { Configuration } from 'webpack';
 import { buildBabelLoader } from './loaders/buildBabelLoader';
 import { buildCssLoaders } from './loaders/buildCssLoaders';
 // import { buildTypesciptLoader } from "./loaders/buildTypesciptLoader";
@@ -7,7 +7,9 @@ import { buildMjsLoader } from './loaders/buildMjsLoader';
 import { buildSvgLoader } from './loaders/buildSvgLoader';
 import { BuildOptions } from './types/config';
 
-export const buildLoaders = (options: BuildOptions): webpack.RuleSetRule[] => {
+export const buildLoaders = (
+  options: BuildOptions,
+): Configuration['loader'][] => {
   // порядок лоадеров имеет значение, поэтому выносим в отдельные переменные
 
   // svg loader
@@ -31,12 +33,12 @@ export const buildLoaders = (options: BuildOptions): webpack.RuleSetRule[] => {
   const scssLoaders = buildCssLoaders(options.isDev);
 
   return [
-    // если писать на нативном js (без typescript), то нужно установить @babel/preset-reactnpm run build вместо typescriptLoader
     fileLoader,
     svgLoader,
     codeBabelLoader,
     tsxCodeBabelLoader,
     mjsLoader,
+    // если писать на нативном js (без typescript), то нужно установить @babel/preset-reactnpm run build вместо typescriptLoader
     // typescriptLoader,
     scssLoaders,
   ];

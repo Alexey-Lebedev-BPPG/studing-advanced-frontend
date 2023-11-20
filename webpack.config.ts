@@ -67,7 +67,7 @@ export default (env: BuildEnv) => {
   });
 
   // для очистки консоли после изменения файлов
-  if (process.env.NODE_ENV !== 'production') {
+  if (mode !== 'production') {
     // альтернативный вариант без установки библы clear, однако криво очищает консоль
     const clearConsole = () => {
       process.stdout.write(

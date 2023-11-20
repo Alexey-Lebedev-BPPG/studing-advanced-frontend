@@ -1,6 +1,8 @@
 import babelRemovePropsPlugin from '../../babel/babelRemovePropsPlugin';
 import { BuildOptions } from '../types/config';
 
+// аналогов бейбла очень много. Лучше использовать swc-loader(от создателей некста)
+
 interface BuildBabelLoaderProps extends BuildOptions {
   isDev: boolean;
   // указывает, чтоб можно было отдельно работать с .ts  и отдельно с .tsx файлами
@@ -45,7 +47,16 @@ export const buildBabelLoader = ({ isDev, isTsx }: BuildBabelLoaderProps) => {
           // если у нас какой-то плагин не добавится из-за условий, то в массив добавляется false.чтоб не подхватить этот false, делаем фильтрацию трушных занчений
         ].filter(Boolean),
         // при этом использовать preset-env, чтоб преобразовывать новые форматы в старые
-        presets: ['@babel/preset-env'],
+        presets: [
+          '@babel/preset-env',
+          '@babel/preset-typescript',
+          [
+            '@babel/preset-react',
+            {
+              runtime: isDev ? 'automatic' : 'classic',
+            },
+          ],
+        ],
       },
     },
   };

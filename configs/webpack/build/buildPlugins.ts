@@ -6,7 +6,7 @@ import ESLintPlugin from 'eslint-webpack-plugin';
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 import htmlWebpackPlugin from 'html-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
-import webpack, { DefinePlugin, HotModuleReplacementPlugin } from 'webpack';
+import webpack, { Configuration, DefinePlugin } from 'webpack';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 import { BuildOptions } from './types/config';
 // import { WebpackManifestPlugin } from 'webpack-manifest-plugin';
@@ -17,13 +17,14 @@ export const buildPlugins = ({
   isDevDebug,
   paths,
   project,
-}: BuildOptions): webpack.WebpackPluginInstance[] => {
+}: BuildOptions): Configuration['plugins'] => {
   const isProd = !isDev;
 
   const plugins = [
     // генерим главный html (index.tsx) из пути src, чтоб в него встраивались скрипты
     // eslint-disable-next-line new-cap
     new htmlWebpackPlugin({
+      // путь для фавконки
       favicon: paths.icon,
       inject: true,
       minify: isProd
@@ -76,9 +77,7 @@ export const buildPlugins = ({
         mode: 'write-references',
       },
     }),
-    new CleanWebpackPlugin({
-      cleanAfterEveryBuildPatterns: ['dist', 'build'],
-    }),
+    new CleanWebpackPlugin({ cleanAfterEveryBuildPatterns: ['dist', 'build'] }),
     new ESLintPlugin({
       extensions: ['js', 'jsx', 'ts', 'tsx'],
       formatter: 'stylish',
@@ -105,13 +104,12 @@ export const buildPlugins = ({
   ];
 
   // данные плагины добавляем, только если не продакш сборка
-  if (isDev) {
+  if (isDev)
     // добавляем плагин для hot reload
-    plugins.push(new ReactRefreshWebpackPlugin());
+    // plugins.push(new HotModuleReplacementPlugin());
     // для горячей перезагрузки (чтоб при изменениях в коде не обновлять страницу)
     // впоследствии поменяем на ReactRefreshWebpackPlugin
-    plugins.push(new HotModuleReplacementPlugin());
-  }
+    plugins.push(new ReactRefreshWebpackPlugin());
 
   if (isDevDebug)
     plugins.push(

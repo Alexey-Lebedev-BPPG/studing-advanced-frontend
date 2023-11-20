@@ -55,8 +55,11 @@ export const buildWebpackConfig = (
     },
     // куда помещаем сборку и чистим лишнее
     output: {
+      // указываем, куда помещаем сторонние файлы и как будут называться (https://webpack.js.org/configuration/output/#template-strings)
       assetModuleFilename: 'assets/[name].[hash][ext]',
+      // очищаем папку билда перед каждым билдом
       clean: true,
+      // указываем contenthash, чтоб хеш генерировался на основе заполнения файлов
       filename: 'js/[name].[contenthash].js',
       path: paths.build,
       // добавляем для получения чанков из билда
