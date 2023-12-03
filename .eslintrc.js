@@ -64,9 +64,12 @@ module.exports = {
     'consistent-return': 'off',
     curly: ['warn', 'multi'],
     // чтоб ругался на необработанные слова + отключаем плагин для атрибутов
-    // "i18next/no-literal-string": ["error", { markupOnly: true, ignoreAttribute: ["data-testid", "to"] }],
+    'i18next/no-literal-string': [
+      'error',
+      { ignoreAttribute: ['data-testid', 'to'], markupOnly: true },
+    ],
     // отключаем, чтоб не ругался на необработанные слова
-    'i18next/no-literal-string': 0,
+    // 'i18next/no-literal-string': 0,
     'import/extensions': 'off',
     'import/no-extraneous-dependencies': 'off',
     'import/no-unresolved': 'off',

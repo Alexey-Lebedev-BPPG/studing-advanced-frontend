@@ -94,7 +94,6 @@ export const ProfileCardDeprecated: FC<IProfileCardProps> = props => {
       <InputDeprecated
         value={data?.first}
         placeholder={`${t('Ваше имя')}`}
-        className={cls.input}
         readonly={readonly}
         data-testid='ProfileCard.firstName'
         onChange={onChangeFirstName}
@@ -102,7 +101,6 @@ export const ProfileCardDeprecated: FC<IProfileCardProps> = props => {
       <InputDeprecated
         value={data?.lastname}
         placeholder={`${t('Ваша фамилия')}`}
-        className={cls.input}
         readonly={readonly}
         data-testid='ProfileCard.lastname'
         onChange={onChangeLastname}
@@ -110,40 +108,34 @@ export const ProfileCardDeprecated: FC<IProfileCardProps> = props => {
       <InputDeprecated
         value={data?.age}
         placeholder={`${t('Ваш возраст')}`}
-        className={cls.input}
         readonly={readonly}
         onChange={onChangeAge}
       />
       <InputDeprecated
         value={data?.city}
         placeholder={`${t('Город')}`}
-        className={cls.input}
         readonly={readonly}
         onChange={onChangeCity}
       />
       <InputDeprecated
         value={data?.username}
         placeholder={`${t('Введите имя пользователя')}`}
-        className={cls.input}
         readonly={readonly}
         onChange={onChangeUsername}
       />
       <InputDeprecated
         value={data?.avatar}
         placeholder={`${t('Введите ссылку на аватар')}`}
-        className={cls.input}
         readonly={readonly}
         onChange={onChangeAvatar}
       />
       <CurrencySelect
         value={data?.currency}
-        className={cls.input}
         readonly={readonly}
         onChange={onChangeCurrency}
       />
       <CountrySelect
         value={data?.country}
-        className={cls.input}
         readonly={readonly}
         onChange={onChangeCountry}
       />

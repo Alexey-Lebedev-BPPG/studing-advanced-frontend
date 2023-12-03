@@ -69,7 +69,7 @@ const DrawerContent: FC<DrawerProps> = props => {
 
   if (!isOpen) return null;
 
-  const display = y.to(py => (py < height ? 'block' : 'none'));
+  const display = y.to((py: number) => (py < height ? 'block' : 'none'));
 
   return (
     <Portal>

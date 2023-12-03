@@ -9,6 +9,7 @@ import {
 } from 'react';
 
 // вытягиваем типы из библиотек (@use-gesture/react - библиотека для dnd, @react-spring/web - библиотека для анимаций)
+// @ts-ignore
 type SpringType = typeof import('@react-spring/web');
 type GestureType = typeof import('@use-gesture/react');
 
@@ -25,6 +26,7 @@ const AnimationContext = createContext<AnimationContextPayload>({});
 // создаем функцию для асинхронной (ленивой) подгрузки библиотек
 const getAsyncAnimationModules = () =>
   // такой способ позволяет подгружать библиотеки где угодно (мы подгружаем их параллельно)
+  // @ts-ignore
   Promise.all([import('@react-spring/web'), import('@use-gesture/react')]);
 
 // если мы хотим сделать независимые подгрузки (то есть подгружается сначала одна, за ней другая), то вышеуказанная функция будет выглядеть вот так:
