@@ -1,5 +1,5 @@
 import { ComponentProps, ElementType, ReactNode, useMemo } from 'react';
-import cls from './anyText.module.scss';
+import cls from './anyText.module.css';
 import { classNames } from '@/shared/lib/classNames/classNames';
 
 type Variants =

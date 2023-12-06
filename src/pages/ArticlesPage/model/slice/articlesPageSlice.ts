@@ -17,10 +17,13 @@ import { SortOrder } from '@/shared/types/sort';
 
 // делаем через подход нормализации данных в redux toolkit (https://redux-toolkit.js.org/api/createEntityAdapter#crud-functions)
 
-const articlesAdapter = createEntityAdapter<Article>({
-  // функция получения айдишника
-  selectId: article => article.id,
-});
+// старая реализация
+// const articlesAdapter = createEntityAdapter<Article>({
+//   // функция получения айдишника
+//   selectId: (article: Article) => article.id,
+// });
+// новая реализация
+const articlesAdapter = createEntityAdapter<Article>();
 
 // создаем селектор, чтоб доставать наши комментарии из стейта или возвращает дефолтное состояние
 export const getArticles = articlesAdapter.getSelectors<StateSchema>(

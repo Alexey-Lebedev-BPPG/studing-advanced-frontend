@@ -1,9 +1,10 @@
 import { Configuration } from 'webpack';
 import { buildBabelLoader } from './loaders/buildBabelLoader';
-import { buildCssLoaders } from './loaders/buildCssLoaders';
 // import { buildTypesciptLoader } from "./loaders/buildTypesciptLoader";
+import { buildCssLoaders } from './loaders/buildCssLoaders';
 import { buildFileLoader } from './loaders/buildFileLoader';
 import { buildMjsLoader } from './loaders/buildMjsLoader';
+import { buildScssLoaders } from './loaders/buildScssLoaders';
 import { buildSvgLoader } from './loaders/buildSvgLoader';
 import { BuildOptions } from './types/config';
 
@@ -29,17 +30,21 @@ export const buildLoaders = (
 
   const mjsLoader = buildMjsLoader();
 
+  // css лоадер
+  const cssLoaders = buildCssLoaders(options.isDev);
+
   // scss лоадер
-  const scssLoaders = buildCssLoaders(options.isDev);
+  const scssLoaders = buildScssLoaders(options.isDev);
 
   return [
-    fileLoader,
     svgLoader,
+    fileLoader,
     codeBabelLoader,
     tsxCodeBabelLoader,
     mjsLoader,
     // если писать на нативном js (без typescript), то нужно установить @babel/preset-reactnpm run build вместо typescriptLoader
     // typescriptLoader,
     scssLoaders,
+    cssLoaders,
   ];
 };

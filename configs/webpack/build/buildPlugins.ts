@@ -2,22 +2,30 @@ import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
 import CircularDependencyPlugin from 'circular-dependency-plugin';
 import { CleanWebpackPlugin } from 'clean-webpack-plugin';
 import CopyPlugin from 'copy-webpack-plugin';
+// import Dotenv from 'dotenv-webpack';
 import ESLintPlugin from 'eslint-webpack-plugin';
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 import htmlWebpackPlugin from 'html-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import NodePolyfillPlugin from 'node-polyfill-webpack-plugin';
 import webpack, { Configuration, DefinePlugin } from 'webpack';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 import { BuildOptions } from './types/config';
 // import { WebpackManifestPlugin } from 'webpack-manifest-plugin';
 
-export const buildPlugins = ({
-  apiURL,
-  isDev,
-  isDevDebug,
-  paths,
-  project,
-}: BuildOptions): Configuration['plugins'] => {
+export const buildPlugins = (props: BuildOptions): Configuration['plugins'] => {
+  const {
+    apiURL,
+    isDev,
+    isDevDebug,
+    paths,
+    project,
+    // sentryToken,
+    // sentryRelease,
+    // sentryOrg,
+    // sentryProject,
+  } = props;
+
   const isProd = !isDev;
 
   const plugins = [
@@ -43,16 +51,6 @@ export const buildPlugins = ({
         : undefined,
       template: paths.html,
     }),
-    // для сентри
-    // new SentryWebpackPlugin({
-    //   configFile: 'sentry.properties',
-    //   debug: isDevDebug,
-    //   dryRun: true,
-    //   ignore: ['node_modules', 'config-overrides.js'],
-    //   ignoreFile: '.sentrycliignore',
-    //   include: '.',
-    //   silent: !isDevDebug,
-    // }),
     // можно использовать для того, чтоб в html использовать переменные такого типа: . Для этого подключаем такую библу (const InterpolateHtmlPlugin = require('react-dev-utils/InterpolateHtmlPlugin')) и первым аргументом прокидываем HtmlWebpackPlugin, а вторым переменные, которые хотим туда прокидывать.
     // new InterpolateHtmlPlugin(HtmlWebpackPlugin, env.raw),
     // с ним можно прокидывать глобальные переменные в само приложение
@@ -70,6 +68,8 @@ export const buildPlugins = ({
       // чтоб при нахождении зависимостей вылетала ошибка в консоли
       failOnError: isDevDebug,
     }),
+    // для .env
+    // new Dotenv({ systemvars: true }),
     // плагин для анализа бейблом ошибок тайпскрипта и вынесение его в отдельный процесс
     new ForkTsCheckerWebpackPlugin({
       typescript: {
@@ -77,7 +77,10 @@ export const buildPlugins = ({
         mode: 'write-references',
       },
     }),
-    new CleanWebpackPlugin({ cleanAfterEveryBuildPatterns: ['dist', 'build'] }),
+    new NodePolyfillPlugin(),
+    new CleanWebpackPlugin({
+      cleanAfterEveryBuildPatterns: ['dist', 'build', 'build-esbuild'],
+    }),
     new ESLintPlugin({
       extensions: ['js', 'jsx', 'ts', 'tsx'],
       formatter: 'stylish',
@@ -120,6 +123,21 @@ export const buildPlugins = ({
     );
 
   if (isProd) {
+    //  для сентри
+    // plugins.push(
+    //   sentryWebpackPlugin({
+    //     authToken: sentryToken,
+    //     debug: Boolean(isDevDebug),
+    //     org: sentryOrg,
+    //     project: sentryProject,
+    //     release: {
+    //       finalize: false,
+    //       name: sentryRelease,
+    //       setCommits: { auto: true },
+    //     },
+    //     silent: !isDevDebug,
+    //   }),
+    // );
     // чтоб файлы css в сборке находились отдельно (не внутри js файла)
     plugins.push(
       new MiniCssExtractPlugin({

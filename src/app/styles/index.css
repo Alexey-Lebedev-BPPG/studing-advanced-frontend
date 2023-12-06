@@ -1,9 +1,8 @@
-@import "./reset";
-@import "./themes/dark";
-@import "./themes/normal";
-@import "./themes/orange";
-@import "./variables/global";
-@import "./fonts";
+@import './reset';
+@import './themes/dark';
+@import './themes/normal';
+@import './themes/orange';
+@import './variables/global';
 
 .app {
   min-height: 100vh;
@@ -23,8 +22,8 @@
   font-family: clash-display;
   font-weight: 600;
   src:
-    local("clash-display"),
-    url("./fonts/ClashDisplay-Variable.ttf") format("woff");
+    local('clash-display'),
+    url('./fonts/ClashDisplay-Variable.ttf') format('woff');
 }
 
 .content-page {
@@ -45,7 +44,6 @@
   border: 1px solid var(--accent-redesigned);
   border-radius: 20px;
 }
-
 
 .app *::-webkit-scrollbar {
   width: 12px;

@@ -20,6 +20,8 @@ export const buildWebpackConfig = (
     devtool: isDev ? 'eval-cheap-module-source-map' : 'source-map',
     // откуда начать сборку
     entry: paths.entry,
+    // experiments: { topLevelAwait: true },
+    // ignoreWarnings: [/Failed to parse source map/],
     mode,
     module: {
       // вызываем функцию со списком лоудеров (обработка файлов, выходящих за рамки JS)
@@ -61,9 +63,13 @@ export const buildWebpackConfig = (
       clean: true,
       // указываем contenthash, чтоб хеш генерировался на основе заполнения файлов
       filename: 'js/[name].[contenthash].js',
+      // globalObject: 'this',
+      // library: 'engine',
+      // libraryTarget: 'umd',
       path: paths.build,
       // добавляем для получения чанков из билда
       publicPath: '/',
+      // umdNamedDefine: true,
     },
     // вызываем функцию со списком плагинов
     plugins: buildPlugins(options),

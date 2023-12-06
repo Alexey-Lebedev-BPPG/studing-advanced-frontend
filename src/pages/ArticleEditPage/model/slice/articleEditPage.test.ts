@@ -28,7 +28,7 @@ describe('articleEditPageSlice', () => {
     expect(
       articleEditPageReducer(
         state as ArticleEditPageSchema,
-        fetchArticleEditPage.pending,
+        fetchArticleEditPage.pending(''),
       ),
     ).toEqual({
       error: undefined,
@@ -36,8 +36,8 @@ describe('articleEditPageSlice', () => {
     });
   });
 
-  // далее тестируем fullfiled состояние
-  // test("test articleEditPage service fullfilled", () => {
+  // далее тестируем fulfilled состояние
+  // test("test articleEditPage service fulfilled", () => {
   //   const state: DeepPartial<ArticleEditPageSchema> = {
   //     isLoading: true,
   //     error: "error",

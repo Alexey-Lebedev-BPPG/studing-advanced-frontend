@@ -6,10 +6,13 @@ import { Article } from '@/entities/Article';
 
 // делаем через подход нормализации данных в redux toolkit (https://redux-toolkit.js.org/api/createEntityAdapter#crud-functions)
 
-const recommendationsAdapter = createEntityAdapter<Article>({
-  // функция получения айдишника
-  selectId: article => article.id,
-});
+// старая реализация
+// const recommendationsAdapter = createEntityAdapter<Article>({
+//   // функция получения айдишника
+//   selectId: article => article.id,
+// });
+// новая реализация
+const recommendationsAdapter = createEntityAdapter<Article>();
 
 // создаем селектор, чтоб доставать наши комментарии из стейта или возвращает дефолтное состояние
 export const getArticleRecommendations =

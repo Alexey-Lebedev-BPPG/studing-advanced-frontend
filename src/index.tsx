@@ -4,7 +4,7 @@ import App from '@/app/App';
 // импортим конфиг переводов
 import '@/shared/config/i18n/i18n';
 // импорт глобальных стилей
-import './app/styles/index.scss';
+import './app/styles/index.css';
 
 // для горячей перезагрузки
 new EventSource('/build-esbuild').addEventListener('change', () =>

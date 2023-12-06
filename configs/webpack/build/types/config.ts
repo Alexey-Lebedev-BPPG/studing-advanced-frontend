@@ -10,6 +10,7 @@ export interface BuildPaths {
   // путь до файлов с переводами
   locales: string;
   src: string;
+  // envPath: string;
 }
 
 export interface BuildEnv {
@@ -17,6 +18,10 @@ export interface BuildEnv {
   mode: BuildMode;
   modeDebug: string;
   port: string;
+  // SENTRY_AUTH_TOKEN?: string;
+  // SENTRY_ORG?: string;
+  // SENTRY_RELEASE?: string;
+  // SENTRY_PROJECT?: string;
 }
 
 export interface BuildOptions {
@@ -28,4 +33,8 @@ export interface BuildOptions {
   port: number;
   // создаем переменную для разделения сред выполнения
   project: 'storybook' | 'frontend' | 'jest';
+  // sentryToken: string;
+  // sentryRelease: string;
+  // sentryOrg: string;
+  // sentryProject: string;
 }

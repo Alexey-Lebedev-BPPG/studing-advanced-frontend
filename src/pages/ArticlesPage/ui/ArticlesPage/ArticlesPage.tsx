@@ -67,9 +67,7 @@ const ArticlesPage: FC<IArticlesPageProps> = props => {
           content={
             <Page
               data-testid='ArticlesPage'
-              className={classNames(cls.articlesPageRedesigned, {}, [
-                className,
-              ])}
+              className={classNames(cls.articlesPage, {}, [className])}
               onScrollEnd={onLoadNextPart}
             >
               <ArticleInfiniteList className={cls.list} />

@@ -1,9 +1,4 @@
-import {
-  CombinedState,
-  configureStore,
-  Reducer,
-  ReducersMapObject,
-} from '@reduxjs/toolkit';
+import { configureStore, Reducer, ReducersMapObject } from '@reduxjs/toolkit';
 import { createReducerManager } from './reducerManager';
 import { StateSchema } from './stateSchema';
 import { CounterReducer } from '@/entities/Counter';
@@ -57,6 +52,7 @@ export const createReduxStore = (
 
     // чтоб для взаимодействия с асинхронными редьюсерами в компонентах, нам нужно передавать редьюсером не rootReducer, а функцию reduce из reduceManager
     // reducer: rootReducers, + !!! нужно править типизацию
+    // @ts-ignore
     reducer: reducerManager.reduce as Reducer<CombinedState<StateSchema>>,
   });
 

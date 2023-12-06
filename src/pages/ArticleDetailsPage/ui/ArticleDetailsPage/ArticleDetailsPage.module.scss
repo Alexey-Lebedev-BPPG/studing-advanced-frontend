@@ -7,8 +7,7 @@
 }
 
 .recommendations {
-  overflow-x: auto;
-  overflow-y: hidden;
+  overflow: auto hidden;
   flex-wrap: nowrap;
   margin-top: 20px;
 }

@@ -74,12 +74,12 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: 'pnpm'
       - name: install modules
-        run: pnpm ci --force
+        run: pnpm install
       - name: build production project
         run: pnpm run build:prod
         if: always()
       - name: build storybook
-        run: pnpm run storybook:build
+        run: pnpm run build-storybook
         if: always()
       # - name: screenshot testing
       #   run: pnpm run test:ui:ci
@@ -117,12 +117,16 @@ jobs:
         node-version: [20.x]
     steps:
       - uses: actions/checkout@v2
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 8
       - name: Staring Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
+          cache: 'pnpm'
       - name: install modules
-        run: pnpm ci --force
+        run: pnpm install
       - name: linting typescript
         run: pnpm run lint:ts
         if: always()

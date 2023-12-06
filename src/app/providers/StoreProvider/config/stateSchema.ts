@@ -1,6 +1,5 @@
 import {
-  AnyAction,
-  CombinedState,
+  UnknownAction,
   EnhancedStore,
   Reducer,
   ReducersMapObject,
@@ -48,7 +47,11 @@ export interface ReducerManager {
   // поле для проверки, смонтирован редьюсер или нет. Используем кастомный тип, т.к. не все редьюсеры у нас обязательны. Указанное поле НЕ ОБЯЗАТЕЛЬНО, т.к. данный функционал можно использовать из поля getReducerMap
   getMountedReducers: () => MountedReducers;
   getReducerMap: () => ReducersMapObject<StateSchema>;
-  reduce: (state: StateSchema, action: AnyAction) => CombinedState<StateSchema>;
+  reduce: (
+    state: StateSchema,
+    action: UnknownAction,
+    // @ts-ignore
+  ) => CombinedState<StateSchema>;
   remove: (key: StateSchemaKey) => void;
 }
 

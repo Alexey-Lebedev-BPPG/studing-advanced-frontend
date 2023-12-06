@@ -1,20 +1,19 @@
-
 .text {
   color: inherit;
 }
 
- /* 300	SFMono-Light */
+/* 300	SFMono-Light */
 
- /* 400	SFMono-Regular */
+/* 400	SFMono-Regular */
 
- /* 500	SFMono-Medium */
+/* 500	SFMono-Medium */
 
- /* 600	SFMono-Semibold */
+/* 600	SFMono-Semibold */
 
- /* 700	SFMono-Bold */
+/* 700	SFMono-Bold */
 
- /* Headers */
-.H1 {  
+/* Headers */
+.H1 {
   font-family: SFMono-Bold, sans-serif;
   font-size: 3.875rem;
   line-height: 4.625rem;
@@ -26,7 +25,7 @@
   }
 }
 
-.H2 {  
+.H2 {
   font-family: SFMono-Medium, sans-serif;
   font-size: 2.25rem;
   line-height: 2.625rem;
@@ -38,7 +37,7 @@
   }
 }
 
-.H3 {  
+.H3 {
   font-family: SFMono-Semibold, sans-serif;
   font-size: 1.5rem;
   line-height: 1.75rem;
@@ -50,8 +49,8 @@
   }
 }
 
- /* Paragraphs */
-.Subheading {  
+/* Paragraphs */
+.Subheading {
   font-family: SFMono-Regular, sans-serif;
   font-size: 1.25rem;
   line-height: 1.5rem;
@@ -63,7 +62,7 @@
   }
 }
 
-.BodyL {  
+.BodyL {
   font-family: SFMono-Regular, sans-serif;
   font-size: 1rem;
   line-height: 1.563rem;
@@ -75,7 +74,7 @@
   }
 }
 
-.BodyM {  
+.BodyM {
   font-family: SFMono-Light, sans-serif;
   font-size: 0.875rem;
   line-height: 1.375rem;
@@ -87,7 +86,7 @@
   }
 }
 
- /* Tables */
+/* Tables */
 .Table {
   font-family: SFMono-Regular, sans-serif;
   font-size: 0.75rem;
@@ -95,7 +94,7 @@
   text-transform: uppercase;
 }
 
- /* Buttons */
+/* Buttons */
 .Button {
   font-family: SFMono-Regular, sans-serif;
   font-size: 1rem;
@@ -109,7 +108,7 @@
   text-transform: uppercase;
 }
 
- /* Inputs */
+/* Inputs */
 .Input1 {
   font-family: SFMono-Medium, sans-serif;
   font-size: 1.125rem;

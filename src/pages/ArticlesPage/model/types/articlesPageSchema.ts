@@ -7,8 +7,8 @@ import {
 } from '@/entities/Article';
 import { SortOrder } from '@/shared/types/sort';
 
-// наследуемся от внутреннего типа redux, которое добавлет ids: string[] и entitis с нашими типами комментов
-export interface ArticlesPageSchema extends EntityState<Article> {
+// наследуемся от внутреннего типа redux, которое добавляет ids: string[] и entities с нашими типами комментов
+export interface ArticlesPageSchema extends EntityState<Article, string> {
   // указывает, инициализировался у нас стейт или нет (чтоб заново его не инициализировать, когда стейт не удаляем из редакса)
   _inited: boolean;
   error?: string;

@@ -31,6 +31,8 @@ export default (env: BuildEnv) => {
     //   RANDOM: path.resolve(__dirname, "src", "index.tsx")
     // }
     entry: path.resolve(__dirname, 'src', 'index.tsx'),
+    // для env
+    // envPath: path.resolve(__dirname, '.env'),
     // сообщаем где главный файл html лежит и куда будем встраивать скрипты
     html: path.resolve(__dirname, 'public', 'index.html'),
     // указываем путь до папки, откуда берем готовые файлы переводов
@@ -48,6 +50,13 @@ export default (env: BuildEnv) => {
   const mode = env?.mode || process.env?.mode || 'development';
   const PORT = Number(env?.port) || Number(process.env?.PORT) || 3000;
   const apiURL = getApiUrl(mode, env?.apiURL || process.env?.API_URL);
+  // const sentryToken =
+  //   env?.SENTRY_AUTH_TOKEN || process.env?.SENTRY_AUTH_TOKEN || '';
+  // const sentryOrg = env?.SENTRY_ORG || process.env?.SENTRY_ORG || '';
+  // const sentryRelease =
+  //   env?.SENTRY_RELEASE || process.env?.SENTRY_RELEASE || '';
+  // const sentryProject =
+  //   env?.SENTRY_PROJECT || process.env?.SENTRY_PROJECT || '';
 
   const isDev = mode === 'development';
   const isDevDebug =
@@ -64,6 +73,10 @@ export default (env: BuildEnv) => {
     paths,
     port: PORT,
     project: 'frontend',
+    // sentryOrg,
+    // sentryProject,
+    // sentryRelease,
+    // sentryToken,
   });
 
   // для очистки консоли после изменения файлов

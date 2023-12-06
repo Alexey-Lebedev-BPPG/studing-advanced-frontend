@@ -49,6 +49,7 @@ export function createReducerManager(
         keysToRemove = [];
       }
       // и возвращаем новый редьюсер, в который передаем новый стейт без ненужных ключей
+      // @ts-ignore
       return combinedReducer(state, action);
     },
     // эту функция добавляет ключ в массив для удаления и удаляет его из главного редьюсера

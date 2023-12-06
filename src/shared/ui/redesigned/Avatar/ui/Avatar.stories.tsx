@@ -1,6 +1,6 @@
 import { Meta, StoryFn } from '@storybook/react';
 import { Avatar } from './Avatar';
-import AvatarImg from '../../../assets/tests/AvatarImg.jpeg';
+import AvatarImg from '../../../../assets/tests/AvatarImg.jpeg';
 import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
 import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { Theme } from '@/shared/const/theme';

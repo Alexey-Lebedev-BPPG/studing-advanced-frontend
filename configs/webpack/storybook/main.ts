@@ -1,6 +1,6 @@
 import path from 'path';
 import { Configuration, DefinePlugin, RuleSetRule } from 'webpack';
-import { buildCssLoaders } from '../build/loaders/buildCssLoaders';
+import { buildScssLoaders } from '../build/loaders/buildScssLoaders';
 import { buildSvgLoader } from '../build/loaders/buildSvgLoader';
 import { BuildPaths } from '../build/types/config';
 
@@ -34,6 +34,9 @@ const config = {
     'storybook-addon-pseudo-states',
     // встроить макеты из фигмы (пример в src/widgets/ArticleAdditionalInfo/ui/ArticleAdditionalInfo.stories.tsx)
     '@storybook/addon-designs',
+    // '@storybook/addon-mdx-gfm',
+    // '@storybook/addon-storyshots',
+    // '@storybook/addon-storyshots-puppeteer',
   ],
   core: { disableTelemetry: true },
   docs: { autodocs: true },
@@ -73,12 +76,12 @@ const config = {
 
     // пройдем по каждому лоадеру и находим правило, которое обрабатывает svg
     configWebpack!.module!.rules = configWebpack!.module!.rules!.map(
-      // @ts-ignore
-      (rule: RuleSetRule | '...') => {
+      (rule: undefined | null | false | '' | 0 | RuleSetRule | '...') => {
         if (
           rule !== '...' &&
-          rule.test instanceof RegExp &&
-          rule.test.toString().includes('svg')
+          rule &&
+          rule?.test instanceof RegExp &&
+          rule?.test.toString().includes('svg')
           //   &&
           //   /svg/.test(rule.test as unknown as string)
         )
@@ -95,7 +98,7 @@ const config = {
     configWebpack.module?.rules?.push(buildSvgLoader());
 
     // добавляем css лоадер для сторибука со значением isDev как true, т.к. сторибук будет использоваться только в дев-разработке
-    configWebpack!.module!.rules.push(buildCssLoaders(true));
+    configWebpack!.module!.rules.push(buildScssLoaders(true));
 
     // добавляем глобальную переменную
     configWebpack!.plugins!.push(

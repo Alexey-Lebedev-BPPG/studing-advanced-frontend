@@ -9,7 +9,7 @@ import { ThemeProvider } from '@/app/providers/ThemeProvider';
 import i18nForTests from '@/shared/config/i18n/i18nForTests';
 import { Theme } from '@/shared/const/theme';
 // eslint-disable-next-line path-checher-ulbi-example/layer-imports
-import '@/app/styles/index.scss';
+import '@/app/styles/index.css';
 
 export interface IComponentRenderOptions {
   // добавляем этот пропс, чтоб при тестировании в компонентах, которые обернуты в DynamicModuleLoader, они могли иметь доступ к стейту

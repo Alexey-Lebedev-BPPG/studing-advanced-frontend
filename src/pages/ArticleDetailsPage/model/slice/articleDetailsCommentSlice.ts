@@ -10,10 +10,13 @@ import { Comment } from '@/entities/Comment';
 
 // делаем через подход нормализации данных в redux toolkit (https://redux-toolkit.js.org/api/createEntityAdapter#crud-functions)
 
-const commentsAdapter = createEntityAdapter<Comment>({
-  // функция получения айдишника
-  selectId: comment => comment.id,
-});
+// старая реализация
+// const commentsAdapter = createEntityAdapter<Comment>({
+//   // функция получения айдишника
+//   selectId: comment => comment.id,
+// });
+// новая реализация
+const commentsAdapter = createEntityAdapter<Comment>();
 
 // создаем селектор, чтоб доставать наши комментарии из стейта или возвращает дефолтное состояние
 export const getArticleComments = commentsAdapter.getSelectors<StateSchema>(
@@ -22,9 +25,9 @@ export const getArticleComments = commentsAdapter.getSelectors<StateSchema>(
 );
 
 const articleDetailsCommentsSlice = createSlice({
-  // исgользуется для асинхронного изменения стейта
+  // используется для асинхронного изменения стейта
   extraReducers: builder => {
-    // у каждого thunka есть 3 состояния: 1. pending, 2. fulfilled, 3. rejected
+    // у каждого thunk-a есть 3 состояния: 1. pending, 2. fulfilled, 3. rejected
     // все 3 состояния можно здесь обработать
     builder
       // используем наш thunk
@@ -50,7 +53,7 @@ const articleDetailsCommentsSlice = createSlice({
       });
   },
 
-  // расширем инитиал стейт нашими полями
+  // расширяем инишиал стейт нашими полями
   initialState: commentsAdapter.getInitialState<ArticleDetailsCommentSchema>({
     entities: {},
     error: undefined,
