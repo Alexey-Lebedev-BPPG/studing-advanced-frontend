@@ -233,3 +233,10 @@
 // ПРОИЗВОДИТЕЛЬНОСТЬ:
 // 1. не использовать () => в JSX напрямую. выносим перед рендером
 // 2. для компонентов, которые не сразу отрисовываются, используем булевое значения для отрисовки только когда флаг тру
+
+// поправить команды запуска
+// "lint:ts": "eslint -c ./configs/common/.eslintrc.js --ignore-path ./configs/common/.eslintignore \"**/*.{js,jsx,ts,tsx}\"",
+// "lint:ts:fix": "eslint -c ./configs/common/.eslintrc.js --ignore-path ./configs/common/.eslintignore \"**/*.{js,jsx,ts,tsx}\" --fix",
+// "prettier": "prettier --config ./configs/common/.prettierrc --ignore-path ./configs/common/.prettierignore --write \"**/*.{ts,tsx,json}\"",
+// "lint:scss": "stylelint -c ./configs/common/.stylelintrc --ignore-path ./configs/common/.stylelintignore \"**/*.{scss,sass,css}\"",
+// "lint:scss:fix": "stylelint -c ./configs/common/.stylelintrc --ignore-path ./configs/common/.stylelintignore \"**/*.{scss,sass,css}\" --fix",
