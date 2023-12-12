@@ -1,4 +1,4 @@
-// eslint-disable-next-line @typescript-eslint/no-restricted-imports
+/* eslint-disable @typescript-eslint/no-restricted-imports */
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, StateSchema } from '@/app/providers/StoreProvider';
 

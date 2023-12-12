@@ -1,6 +1,6 @@
 import { configureStore, Reducer, ReducersMapObject } from '@reduxjs/toolkit';
 import { createReducerManager } from './reducerManager';
-import { StateSchema } from './stateSchema';
+import { ReduxStoreWithManager, StateSchema } from './stateSchema';
 import { CounterReducer } from '@/entities/Counter';
 import { userReducer } from '@/entities/User';
 import { scrollSaveReducer } from '@/features/ScrollSave';
@@ -52,12 +52,10 @@ export const createReduxStore = (
 
     // чтоб для взаимодействия с асинхронными редьюсерами в компонентах, нам нужно передавать редьюсером не rootReducer, а функцию reduce из reduceManager
     // reducer: rootReducers, + !!! нужно править типизацию
-    // @ts-ignore
-    reducer: reducerManager.reduce as Reducer<CombinedState<StateSchema>>,
-  });
+    reducer: reducerManager.reduce as Reducer<StateSchema>,
+  }) as ReduxStoreWithManager;
 
   // добавляем наш менеджер для стейта
-  // @ts-ignore
   store.reducerManager = reducerManager;
 
   return store;

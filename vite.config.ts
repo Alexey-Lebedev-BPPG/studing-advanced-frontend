@@ -14,7 +14,7 @@ export default defineConfig({
   },
   plugins: [
     // позволяет работать с svg (указываем exportAsDefault, т.к. все svg мы импортили по дефолту)
-    svgr({ exportAsDefault: true }),
+    svgr(),
     // react - сразу позволяет работать с реактом и тайпскриптом
     react(),
     checker({
@@ -28,7 +28,6 @@ export default defineConfig({
       // },
     }),
   ],
-
   // указываем алиасы для путей
   resolve: { alias: [{ find: '@', replacement: '/src' }] },
 });

@@ -56,7 +56,6 @@ export const config: BuildOptions = {
     HTMLPlugin({ title: 'Ulbi example' }),
     svgr(),
     // sassPlugin(),
-    // @ts-ignore
     classModules(),
   ],
   // позволяет генерировать читабельные пути к файлам

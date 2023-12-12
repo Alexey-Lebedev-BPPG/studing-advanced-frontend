@@ -3,6 +3,9 @@ import {
   EnhancedStore,
   Reducer,
   ReducersMapObject,
+  Tuple,
+  StoreEnhancer,
+  ThunkDispatch,
 } from '@reduxjs/toolkit';
 import { AxiosInstance } from 'axios';
 import { ArticleDetailsSchema } from '@/entities/Article';
@@ -47,16 +50,28 @@ export interface ReducerManager {
   // поле для проверки, смонтирован редьюсер или нет. Используем кастомный тип, т.к. не все редьюсеры у нас обязательны. Указанное поле НЕ ОБЯЗАТЕЛЬНО, т.к. данный функционал можно использовать из поля getReducerMap
   getMountedReducers: () => MountedReducers;
   getReducerMap: () => ReducersMapObject<StateSchema>;
-  reduce: (
-    state: StateSchema,
-    action: UnknownAction,
-    // @ts-ignore
-  ) => CombinedState<StateSchema>;
+  reduce: (state: StateSchema, action: UnknownAction) => StateSchema;
   remove: (key: StateSchemaKey) => void;
 }
 
 // типизация для стейта, который получен с помощью редьюсер-менеджера (наследуется от стандартного типа, который появляется при создании стора в файле store.ts (21 строка))
-export interface ReduxStoreWithManager extends EnhancedStore<StateSchema> {
+export interface ReduxStoreWithManager
+  extends EnhancedStore<
+    StateSchema,
+    UnknownAction,
+    Tuple<
+      [
+        StoreEnhancer<{
+          dispatch: ThunkDispatch<
+            StateSchema,
+            { api: AxiosInstance },
+            UnknownAction
+          >;
+        }>,
+        StoreEnhancer,
+      ]
+    >
+  > {
   reducerManager: ReducerManager;
 }
 

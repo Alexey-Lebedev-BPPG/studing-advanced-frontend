@@ -113,7 +113,6 @@ export const ArticleList: FC<IArticleListProps> = memo(props => {
         //   />
         //   {isLoading && getSkeletons(view)}
         // </div>
-        // @ts-ignore
         // <WindowScroller
         //   scrollElement={document.getElementById(PAGE_ID) as Element}
         // >

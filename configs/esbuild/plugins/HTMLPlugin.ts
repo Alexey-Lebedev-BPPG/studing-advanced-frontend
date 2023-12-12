@@ -87,7 +87,6 @@ export const HTMLPlugin = (props: HTMLPluginProps): Plugin => ({
           // первый аргумент функции - путь, куда будем записывать файл,
           path.resolve(outdir, 'index.html'),
           // второй аргумент - что будем вставлять
-          // @ts-ignore
           renderHtml({ cssPath: cssPathLocal, jsPath: jsPathLocal, ...props }),
         );
     });
