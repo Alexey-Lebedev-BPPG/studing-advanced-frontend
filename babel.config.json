@@ -12,7 +12,15 @@
   ],
   // добавляем плагин в конфиг
   "plugins": [
-    "i18next-extract",
+    [
+      "i18next-extract",
+      {
+        "locales": ["en", "ru"],
+        "outputPath": "public/locales/{{locale}}/{{ns}}.json",
+        "keySeparator": null,
+        "nsSeparator": null
+      }
+    ],
     // для mui
     [
       "babel-plugin-import",

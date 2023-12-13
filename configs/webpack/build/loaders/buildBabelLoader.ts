@@ -32,7 +32,10 @@ export const buildBabelLoader = ({ isDev, isTsx }: BuildBabelLoaderProps) => {
             {
               // будет доставать ключи из кода и автоматически подставлять их
               keyAsDefaultValue: true,
-              locales: ['ru', 'en'],
+              keySeparator: null,
+              locales: ['en', 'ru'],
+              nsSeparator: null,
+              outputPath: 'public/locales/{{locale}}/{{ns}}.json',
             },
           ],
           // добавляем плагин для парсинга jsx и обработки тайпскрипта
@@ -50,12 +53,7 @@ export const buildBabelLoader = ({ isDev, isTsx }: BuildBabelLoaderProps) => {
         presets: [
           '@babel/preset-env',
           '@babel/preset-typescript',
-          [
-            '@babel/preset-react',
-            {
-              runtime: isDev ? 'automatic' : 'classic',
-            },
-          ],
+          ['@babel/preset-react', { runtime: isDev ? 'automatic' : 'classic' }],
         ],
       },
     },

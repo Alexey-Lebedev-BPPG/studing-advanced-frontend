@@ -6,7 +6,6 @@
 /node_modules
 /.idea
 /.vscode
-/.github
 /storybook-static
 /reports/dependency-graph
 /reports/unit
