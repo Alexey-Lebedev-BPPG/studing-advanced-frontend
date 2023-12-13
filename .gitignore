@@ -7,6 +7,4 @@
 /.idea
 /.vscode
 /storybook-static
-/reports/dependency-graph
-/reports/unit
 /test-results/

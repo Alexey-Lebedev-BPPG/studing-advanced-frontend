@@ -1,0 +1,2181 @@
+{
+  "numFailedTestSuites": 0,
+  "numFailedTests": 0,
+  "numPassedTestSuites": 60,
+  "numPassedTests": 119,
+  "numPendingTestSuites": 0,
+  "numPendingTests": 0,
+  "numRuntimeErrorTestSuites": 0,
+  "numTodoTests": 0,
+  "numTotalTestSuites": 60,
+  "numTotalTests": 119,
+  "openHandles": [],
+  "snapshot": {
+    "added": 0,
+    "didUpdate": false,
+    "failure": false,
+    "filesAdded": 0,
+    "filesRemoved": 0,
+    "filesRemovedList": [],
+    "filesUnmatched": 0,
+    "filesUpdated": 0,
+    "matched": 4,
+    "total": 4,
+    "unchecked": 0,
+    "uncheckedKeysByFile": [],
+    "unmatched": 0,
+    "updated": 0
+  },
+  "startTime": 1691223362273,
+  "success": true,
+  "testResults": [
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": ["loginByUsername"],
+          "duration": 18,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "loginByUsername success login",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 5,
+          "retryReasons": [],
+          "status": "passed",
+          "title": "success login"
+        },
+        {
+          "ancestorTitles": ["loginByUsername"],
+          "duration": 3,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "loginByUsername error login",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 4,
+          "retryReasons": [],
+          "status": "passed",
+          "title": "error login"
+        }
+      ],
+      "endTime": 1691223366804,
+      "message": "",
+      "name": "/home/alexey/Рабочий стол/Alexey/Ulbi-Example/src/features/AuthByUsername/model/services/loginByUsername/loginByUsername.test.ts",
+      "startTime": 1691223363609,
+      "status": "passed",
+      "summary": ""
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": ["profileSlice"],
+          "duration": 13,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "profileSlice test set readonly",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 1,
+          "retryReasons": [],
+          "status": "passed",
+          "title": "test set readonly"
+        },
+        {
+          "ancestorTitles": ["profileSlice"],
+          "duration": 1,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "profileSlice test cancel edit",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 1,
+          "retryReasons": [],
+          "status": "passed",
+          "title": "test cancel edit"
+        },
+        {
+          "ancestorTitles": ["profileSlice"],
+          "duration": 7,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "profileSlice test update profile",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 1,
+          "retryReasons": [],
+          "status": "passed",
+          "title": "test update profile"
+        },
+        {
+          "ancestorTitles": ["profileSlice"],
+          "duration": 2,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "profileSlice test update profile service pending",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 1,
+          "retryReasons": [],
+          "status": "passed",
+          "title": "test update profile service pending"
+        },
+        {
+          "ancestorTitles": ["profileSlice"],
+          "duration": 1,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "profileSlice test update profile service fulfilled",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 1,
+          "retryReasons": [],
+          "status": "passed",
+          "title": "test update profile service fulfilled"
+        }
+      ],
+      "endTime": 1691223367122,
+      "message": "",
+      "name": "/home/alexey/Рабочий стол/Alexey/Ulbi-Example/src/features/EditableProfileCard/model/slice/profileSlice.test.ts",
+      "startTime": 1691223363758,
+      "status": "passed",
+      "summary": ""
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": ["Counter"],
+          "duration": 62,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "Counter Test render",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 2,
+          "retryReasons": [],
+          "status": "passed",
+          "title": "Test render"
+        },
+        {
+          "ancestorTitles": ["Counter"],
+          "duration": 176,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "Counter increment",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 1,
+          "retryReasons": [],
+          "status": "passed",
+          "title": "increment"
+        },
+        {
+          "ancestorTitles": ["Counter"],
+          "duration": 57,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "Counter decrement",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 1,
+          "retryReasons": [],
+          "status": "passed",
+          "title": "decrement"
+        }
+      ],
+      "endTime": 1691223367589,
+      "message": "",
+      "name": "/home/alexey/Рабочий стол/Alexey/Ulbi-Example/src/entities/Counter/ui/Counter.test.tsx",
+      "startTime": 1691223363623,
+      "status": "passed",
+      "summary": ""
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": ["fetchNextArticlePage"],
+          "duration": 16,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "fetchNextArticlePage success",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 2,
+          "retryReasons": [],
+          "status": "passed",
+          "title": "success"
+        },
+        {
+          "ancestorTitles": ["fetchNextArticlePage"],
+          "duration": 2,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "fetchNextArticlePage fetchArticlesList not called",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 2,
+          "retryReasons": [],
+          "status": "passed",
+          "title": "fetchArticlesList not called"
+        },
+        {
+          "ancestorTitles": ["fetchNextArticlePage"],
+          "duration": 2,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "fetchNextArticlePage fetchArticlesList not called",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 2,
+          "retryReasons": [],
+          "status": "passed",
+          "title": "fetchArticlesList not called"
+        }
+      ],
+      "endTime": 1691223367647,
+      "message": "",
+      "name": "/home/alexey/Рабочий стол/Alexey/Ulbi-Example/src/pages/ArticlesPage/model/services/fetchNextArticlePage/fetchNextArticlePage.test.ts",
+      "startTime": 1691223363626,
+      "status": "passed",
+      "summary": ""
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": ["SideBar"],
+          "duration": 113,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "SideBar Test render",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 1,
+          "retryReasons": [],
+          "status": "passed",
+          "title": "Test render"
+        },
+        {
+          "ancestorTitles": ["SideBar"],
+          "duration": 42,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "SideBar test toggle",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 2,
+          "retryReasons": [],
+          "status": "passed",
+          "title": "test toggle"
+        }
+      ],
+      "endTime": 1691223367730,
+      "message": "",
+      "name": "/home/alexey/Рабочий стол/Alexey/Ulbi-Example/src/widgets/SideBar/ui/SideBar/SideBar.test.tsx",
+      "startTime": 1691223363719,
+      "status": "passed",
+      "summary": ""
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": ["fetchProfileData"],
+          "duration": 10,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "fetchProfileData success",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 3,
+          "retryReasons": [],
+          "status": "passed",
+          "title": "success"
+        },
+        {
+          "ancestorTitles": ["fetchProfileData"],
+          "duration": 2,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "fetchProfileData error",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 1,
+          "retryReasons": [],
+          "status": "passed",
+          "title": "error"
+        }
+      ],
+      "endTime": 1691223368051,
+      "message": "",
+      "name": "/home/alexey/Рабочий стол/Alexey/Ulbi-Example/src/features/EditableProfileCard/model/services/fetchProfileData/fetchProfileData.test.ts",
+      "startTime": 1691223367186,
+      "status": "passed",
+      "summary": ""
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": ["Button"],
+          "duration": 91,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "Button Test render",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 1,
+          "retryReasons": [],
+          "status": "passed",
+          "title": "Test render"
+        },
+        {
+          "ancestorTitles": ["Button"],
+          "duration": 50,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "Button Test clear theme",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 1,
+          "retryReasons": [],
+          "status": "passed",
+          "title": "Test clear theme"
+        }
+      ],
+      "endTime": 1691223368367,
+      "message": "",
+      "name": "/home/alexey/Рабочий стол/Alexey/Ulbi-Example/src/widgets/ArticleAdditionalInfo/ui/articleAdditionalInfo.test.tsx",
+      "startTime": 1691223366855,
+      "status": "passed",
+      "summary": ""
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": ["app/router/AppRouter"],
+          "duration": 182,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "app/router/AppRouter Test render",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 1,
+          "retryReasons": [],
+          "status": "passed",
+          "title": "Test render"
+        },
+        {
+          "ancestorTitles": ["app/router/AppRouter"],
+          "duration": 17,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "app/router/AppRouter page undefined",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 1,
+          "retryReasons": [],
+          "status": "passed",
+          "title": "page undefined"
+        },
+        {
+          "ancestorTitles": ["app/router/AppRouter"],
+          "duration": 106,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "app/router/AppRouter redirect to mainPage for no authorization users ",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 1,
+          "retryReasons": [],
+          "status": "passed",
+          "title": "redirect to mainPage for no authorization users "
+        },
+        {
+          "ancestorTitles": ["app/router/AppRouter"],
+          "duration": 681,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "app/router/AppRouter success profilePage for authorization users ",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 1,
+          "retryReasons": [],
+          "status": "passed",
+          "title": "success profilePage for authorization users "
+        },
+        {
+          "ancestorTitles": ["app/router/AppRouter"],
+          "duration": 29,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "app/router/AppRouter unsuccess profilePage for authorization users with other role",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 1,
+          "retryReasons": [],
+          "status": "passed",
+          "title": "unsuccess profilePage for authorization users with other role"
+        },
+        {
+          "ancestorTitles": ["app/router/AppRouter"],
+          "duration": 58,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "app/router/AppRouter success profilePage for authorization users with admin role",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 1,
+          "retryReasons": [],
+          "status": "passed",
+          "title": "success profilePage for authorization users with admin role"
+        }
+      ],
+      "endTime": 1691223368442,
+      "message": "",
+      "name": "/home/alexey/Рабочий стол/Alexey/Ulbi-Example/src/app/providers/router/ui/AppRouter.test.tsx",
+      "startTime": 1691223363704,
+      "status": "passed",
+      "summary": ""
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": ["getProfileCurrency"],
+          "duration": 4,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "getProfileCurrency should return data",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 1,
+          "retryReasons": [],
+          "status": "passed",
+          "title": "should return data"
+        },
+        {
+          "ancestorTitles": ["getProfileCurrency"],
+          "duration": 1,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "getProfileCurrency should work with empty state",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 1,
+          "retryReasons": [],
+          "status": "passed",
+          "title": "should work with empty state"
+        }
+      ],
+      "endTime": 1691223368484,
+      "message": "",
+      "name": "/home/alexey/Рабочий стол/Alexey/Ulbi-Example/src/features/EditableProfileCard/model/selectors/getProfileCurrency/getProfileCurrency.test.ts",
+      "startTime": 1691223367649,
+      "status": "passed",
+      "summary": ""
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": ["getProfileCity"],
+          "duration": 6,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "getProfileCity should return data",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 1,
+          "retryReasons": [],
+          "status": "passed",
+          "title": "should return data"
+        },
+        {
+          "ancestorTitles": ["getProfileCity"],
+          "duration": 1,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "getProfileCity should work with empty state",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 1,
+          "retryReasons": [],
+          "status": "passed",
+          "title": "should work with empty state"
+        }
+      ],
+      "endTime": 1691223368580,
+      "message": "",
+      "name": "/home/alexey/Рабочий стол/Alexey/Ulbi-Example/src/features/EditableProfileCard/model/selectors/getProfileCity/getProfileCity.test.ts",
+      "startTime": 1691223367693,
+      "status": "passed",
+      "summary": ""
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": ["getProfileLastname"],
+          "duration": 3,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "getProfileLastname should return data",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 1,
+          "retryReasons": [],
+          "status": "passed",
+          "title": "should return data"
+        },
+        {
+          "ancestorTitles": ["getProfileLastname"],
+          "duration": 0,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "getProfileLastname should work with empty state",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 1,
+          "retryReasons": [],
+          "status": "passed",
+          "title": "should work with empty state"
+        }
+      ],
+      "endTime": 1691223368682,
+      "message": "",
+      "name": "/home/alexey/Рабочий стол/Alexey/Ulbi-Example/src/features/EditableProfileCard/model/selectors/getProfileLastname/getProfileLastname.test.ts",
+      "startTime": 1691223367775,
+      "status": "passed",
+      "summary": ""
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": ["updateProfileData"],
+          "duration": 10,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "updateProfileData success",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 3,
+          "retryReasons": [],
+          "status": "passed",
+          "title": "success"
+        },
+        {
+          "ancestorTitles": ["updateProfileData"],
+          "duration": 1,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "updateProfileData server error",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 2,
+          "retryReasons": [],
+          "status": "passed",
+          "title": "server error"
+        },
+        {
+          "ancestorTitles": ["updateProfileData"],
+          "duration": 2,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "updateProfileData validate error",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 2,
+          "retryReasons": [],
+          "status": "passed",
+          "title": "validate error"
+        }
+      ],
+      "endTime": 1691223368758,
+      "message": "",
+      "name": "/home/alexey/Рабочий стол/Alexey/Ulbi-Example/src/features/EditableProfileCard/model/services/updateProfileData/updateProfileData.test.ts",
+      "startTime": 1691223368080,
+      "status": "passed",
+      "summary": ""
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": ["Text"],
+          "duration": 38,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "Text Test render",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 1,
+          "retryReasons": [],
+          "status": "passed",
+          "title": "Test render"
+        },
+        {
+          "ancestorTitles": ["Text"],
+          "duration": 20,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "Text Test clear theme",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 2,
+          "retryReasons": [],
+          "status": "passed",
+          "title": "Test clear theme"
+        }
+      ],
+      "endTime": 1691223369027,
+      "message": "",
+      "name": "/home/alexey/Рабочий стол/Alexey/Ulbi-Example/src/shared/ui/deprecated/Text/Text.test.tsx",
+      "startTime": 1691223368399,
+      "status": "passed",
+      "summary": ""
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": ["Button"],
+          "duration": 40,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "Button Test render",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 1,
+          "retryReasons": [],
+          "status": "passed",
+          "title": "Test render"
+        }
+      ],
+      "endTime": 1691223369056,
+      "message": "",
+      "name": "/home/alexey/Рабочий стол/Alexey/Ulbi-Example/src/shared/ui/redesigned/Button/Button.test.tsx",
+      "startTime": 1691223368488,
+      "status": "passed",
+      "summary": ""
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": ["getProfileAge"],
+          "duration": 6,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "getProfileAge should return data",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 1,
+          "retryReasons": [],
+          "status": "passed",
+          "title": "should return data"
+        },
+        {
+          "ancestorTitles": ["getProfileAge"],
+          "duration": 1,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "getProfileAge should work with empty state",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 1,
+          "retryReasons": [],
+          "status": "passed",
+          "title": "should work with empty state"
+        }
+      ],
+      "endTime": 1691223369163,
+      "message": "",
+      "name": "/home/alexey/Рабочий стол/Alexey/Ulbi-Example/src/features/EditableProfileCard/model/selectors/getProfileAge/getProfileAge.test.ts",
+      "startTime": 1691223368517,
+      "status": "passed",
+      "summary": ""
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": ["getProfileCountry"],
+          "duration": 3,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "getProfileCountry should return data",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 1,
+          "retryReasons": [],
+          "status": "passed",
+          "title": "should return data"
+        },
+        {
+          "ancestorTitles": ["getProfileCountry"],
+          "duration": 0,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "getProfileCountry should work with empty state",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 1,
+          "retryReasons": [],
+          "status": "passed",
+          "title": "should work with empty state"
+        }
+      ],
+      "endTime": 1691223369180,
+      "message": "",
+      "name": "/home/alexey/Рабочий стол/Alexey/Ulbi-Example/src/features/EditableProfileCard/model/selectors/getProfileCountry/getProfileCountry.test.ts",
+      "startTime": 1691223368618,
+      "status": "passed",
+      "summary": ""
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": ["getProfileUsername"],
+          "duration": 3,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "getProfileUsername should return data",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 1,
+          "retryReasons": [],
+          "status": "passed",
+          "title": "should return data"
+        },
+        {
+          "ancestorTitles": ["getProfileUsername"],
+          "duration": 0,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "getProfileUsername should work with empty state",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 1,
+          "retryReasons": [],
+          "status": "passed",
+          "title": "should work with empty state"
+        }
+      ],
+      "endTime": 1691223369301,
+      "message": "",
+      "name": "/home/alexey/Рабочий стол/Alexey/Ulbi-Example/src/features/EditableProfileCard/model/selectors/getProfileUsername/getProfileUsername.test.ts",
+      "startTime": 1691223368702,
+      "status": "passed",
+      "summary": ""
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": ["features/EditableProfileCard"],
+          "duration": 393,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "features/EditableProfileCard readonly should will change",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 1,
+          "retryReasons": [],
+          "status": "passed",
+          "title": "readonly should will change"
+        },
+        {
+          "ancestorTitles": ["features/EditableProfileCard"],
+          "duration": 551,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "features/EditableProfileCard then click cancel value will initial",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 4,
+          "retryReasons": [],
+          "status": "passed",
+          "title": "then click cancel value will initial"
+        },
+        {
+          "ancestorTitles": ["features/EditableProfileCard"],
+          "duration": 203,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "features/EditableProfileCard then write incorrect values to be errors",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 1,
+          "retryReasons": [],
+          "status": "passed",
+          "title": "then write incorrect values to be errors"
+        },
+        {
+          "ancestorTitles": ["features/EditableProfileCard"],
+          "duration": 386,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "features/EditableProfileCard then none errors PUT-request going on the server",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 1,
+          "retryReasons": [],
+          "status": "passed",
+          "title": "then none errors PUT-request going on the server"
+        }
+      ],
+      "endTime": 1691223369379,
+      "message": "",
+      "name": "/home/alexey/Рабочий стол/Alexey/Ulbi-Example/src/features/EditableProfileCard/ui/EditableProfileCard/EditableProfileCard.test.tsx",
+      "startTime": 1691223363627,
+      "status": "passed",
+      "summary": ""
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": ["getProfileFirstName"],
+          "duration": 5,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "getProfileFirstName should return data",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 1,
+          "retryReasons": [],
+          "status": "passed",
+          "title": "should return data"
+        },
+        {
+          "ancestorTitles": ["getProfileFirstName"],
+          "duration": 1,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "getProfileFirstName should work with empty state",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 1,
+          "retryReasons": [],
+          "status": "passed",
+          "title": "should work with empty state"
+        }
+      ],
+      "endTime": 1691223369422,
+      "message": "",
+      "name": "/home/alexey/Рабочий стол/Alexey/Ulbi-Example/src/features/EditableProfileCard/model/selectors/getProfileFirstName/getProfileFirstName.test.ts",
+      "startTime": 1691223368826,
+      "status": "passed",
+      "summary": ""
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": ["getProfileForm"],
+          "duration": 5,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "getProfileForm should return data",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 1,
+          "retryReasons": [],
+          "status": "passed",
+          "title": "should return data"
+        },
+        {
+          "ancestorTitles": ["getProfileForm"],
+          "duration": 1,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "getProfileForm should work with empty state",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 1,
+          "retryReasons": [],
+          "status": "passed",
+          "title": "should work with empty state"
+        }
+      ],
+      "endTime": 1691223369744,
+      "message": "",
+      "name": "/home/alexey/Рабочий стол/Alexey/Ulbi-Example/src/features/EditableProfileCard/model/selectors/getProfileForm/getProfileForm.test.ts",
+      "startTime": 1691223369081,
+      "status": "passed",
+      "summary": ""
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": ["getProfileData"],
+          "duration": 5,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "getProfileData should return data",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 1,
+          "retryReasons": [],
+          "status": "passed",
+          "title": "should return data"
+        },
+        {
+          "ancestorTitles": ["getProfileData"],
+          "duration": 1,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "getProfileData should work with empty state",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 1,
+          "retryReasons": [],
+          "status": "passed",
+          "title": "should work with empty state"
+        }
+      ],
+      "endTime": 1691223369805,
+      "message": "",
+      "name": "/home/alexey/Рабочий стол/Alexey/Ulbi-Example/src/features/EditableProfileCard/model/selectors/getProfileData/getProfileData.test.ts",
+      "startTime": 1691223369211,
+      "status": "passed",
+      "summary": ""
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": ["Button"],
+          "duration": 38,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "Button Test render",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 1,
+          "retryReasons": [],
+          "status": "passed",
+          "title": "Test render"
+        },
+        {
+          "ancestorTitles": ["Button"],
+          "duration": 28,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "Button Test clear theme",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 2,
+          "retryReasons": [],
+          "status": "passed",
+          "title": "Test clear theme"
+        }
+      ],
+      "endTime": 1691223369833,
+      "message": "",
+      "name": "/home/alexey/Рабочий стол/Alexey/Ulbi-Example/src/shared/ui/deprecated/Button/Button.test.tsx",
+      "startTime": 1691223369211,
+      "status": "passed",
+      "summary": ""
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": ["useModal"],
+          "duration": 5,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "useModal",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 1,
+          "retryReasons": [],
+          "status": "passed",
+          "title": ""
+        }
+      ],
+      "endTime": 1691223369843,
+      "message": "",
+      "name": "/home/alexey/Рабочий стол/Alexey/Ulbi-Example/src/shared/lib/hooks/useModal/useModal.test.ts",
+      "startTime": 1691223369422,
+      "status": "passed",
+      "summary": ""
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": ["validateProfileData"],
+          "duration": 7,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "validateProfileData should return data",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 1,
+          "retryReasons": [],
+          "status": "passed",
+          "title": "should return data"
+        },
+        {
+          "ancestorTitles": ["validateProfileData"],
+          "duration": 2,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "validateProfileData without first and last name",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 1,
+          "retryReasons": [],
+          "status": "passed",
+          "title": "without first and last name"
+        },
+        {
+          "ancestorTitles": ["validateProfileData"],
+          "duration": 1,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "validateProfileData incorrect age",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 1,
+          "retryReasons": [],
+          "status": "passed",
+          "title": "incorrect age"
+        },
+        {
+          "ancestorTitles": ["validateProfileData"],
+          "duration": 1,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "validateProfileData incorrect country",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 1,
+          "retryReasons": [],
+          "status": "passed",
+          "title": "incorrect country"
+        },
+        {
+          "ancestorTitles": ["validateProfileData"],
+          "duration": 1,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "validateProfileData incorrect all",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 1,
+          "retryReasons": [],
+          "status": "passed",
+          "title": "incorrect all"
+        }
+      ],
+      "endTime": 1691223369860,
+      "message": "",
+      "name": "/home/alexey/Рабочий стол/Alexey/Ulbi-Example/src/features/EditableProfileCard/model/services/validateProfileData/validateProfileData.test.ts",
+      "startTime": 1691223369052,
+      "status": "passed",
+      "summary": ""
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": ["ArticleDetailsSlice"],
+          "duration": 6,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "ArticleDetailsSlice test get articleDetails service pending",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 1,
+          "retryReasons": [],
+          "status": "passed",
+          "title": "test get articleDetails service pending"
+        },
+        {
+          "ancestorTitles": ["ArticleDetailsSlice"],
+          "duration": 2,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "ArticleDetailsSlice test get articleDetails service fullfilled",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 1,
+          "retryReasons": [],
+          "status": "passed",
+          "title": "test get articleDetails service fullfilled"
+        }
+      ],
+      "endTime": 1691223369890,
+      "message": "",
+      "name": "/home/alexey/Рабочий стол/Alexey/Ulbi-Example/src/entities/Article/model/slice/articleDetailsSlice.test.ts",
+      "startTime": 1691223369449,
+      "status": "passed",
+      "summary": ""
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": ["loginSlice"],
+          "duration": 5,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "loginSlice test set username",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 1,
+          "retryReasons": [],
+          "status": "passed",
+          "title": "test set username"
+        },
+        {
+          "ancestorTitles": ["loginSlice"],
+          "duration": 2,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "loginSlice test set password",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 1,
+          "retryReasons": [],
+          "status": "passed",
+          "title": "test set password"
+        }
+      ],
+      "endTime": 1691223369899,
+      "message": "",
+      "name": "/home/alexey/Рабочий стол/Alexey/Ulbi-Example/src/features/AuthByUsername/model/slice/loginSlice.test.ts",
+      "startTime": 1691223369337,
+      "status": "passed",
+      "summary": ""
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": ["shared/url/addQueryParams"],
+          "duration": 6,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "shared/url/addQueryParams test with one param",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 1,
+          "retryReasons": [],
+          "status": "passed",
+          "title": "test with one param"
+        },
+        {
+          "ancestorTitles": ["shared/url/addQueryParams"],
+          "duration": 1,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "shared/url/addQueryParams test with multiple param",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 1,
+          "retryReasons": [],
+          "status": "passed",
+          "title": "test with multiple param"
+        },
+        {
+          "ancestorTitles": ["shared/url/addQueryParams"],
+          "duration": 1,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "shared/url/addQueryParams test with undefined",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 1,
+          "retryReasons": [],
+          "status": "passed",
+          "title": "test with undefined"
+        }
+      ],
+      "endTime": 1691223370191,
+      "message": "",
+      "name": "/home/alexey/Рабочий стол/Alexey/Ulbi-Example/src/shared/lib/url/addQueryParams/addQueryParams.test.ts",
+      "startTime": 1691223369771,
+      "status": "passed",
+      "summary": ""
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": ["RatingCard"],
+          "duration": 5,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "RatingCard",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 1,
+          "retryReasons": [],
+          "status": "passed",
+          "title": ""
+        }
+      ],
+      "endTime": 1691223370229,
+      "message": "",
+      "name": "/home/alexey/Рабочий стол/Alexey/Ulbi-Example/src/entities/Rating/ui/RatingCard/ratingCard.test.ts",
+      "startTime": 1691223369868,
+      "status": "passed",
+      "summary": ""
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": ["UiDesignSwitcher"],
+          "duration": 3,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "UiDesignSwitcher",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 1,
+          "retryReasons": [],
+          "status": "passed",
+          "title": ""
+        }
+      ],
+      "endTime": 1691223370261,
+      "message": "",
+      "name": "/home/alexey/Рабочий стол/Alexey/Ulbi-Example/src/features/UiDesignSwitcher/ui/uiDesignSwitcher.test.tsx",
+      "startTime": 1691223369897,
+      "status": "passed",
+      "summary": ""
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": ["getLoginUsername"],
+          "duration": 6,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "getLoginUsername should return value",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 1,
+          "retryReasons": [],
+          "status": "passed",
+          "title": "should return value"
+        },
+        {
+          "ancestorTitles": ["getLoginUsername"],
+          "duration": 0,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "getLoginUsername should work with empty state",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 1,
+          "retryReasons": [],
+          "status": "passed",
+          "title": "should work with empty state"
+        }
+      ],
+      "endTime": 1691223370263,
+      "message": "",
+      "name": "/home/alexey/Рабочий стол/Alexey/Ulbi-Example/src/features/AuthByUsername/model/selectors/getLoginUsername/getLoginUsername.test.ts",
+      "startTime": 1691223369877,
+      "status": "passed",
+      "summary": ""
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": ["articleEditFormSlice"],
+          "duration": 6,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "articleEditFormSlice test articleEditForm service pending",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 1,
+          "retryReasons": [],
+          "status": "passed",
+          "title": "test articleEditForm service pending"
+        }
+      ],
+      "endTime": 1691223370297,
+      "message": "",
+      "name": "/home/alexey/Рабочий стол/Alexey/Ulbi-Example/src/features/ArticleEditForm/model/slice/articleEditForm.test.ts",
+      "startTime": 1691223369832,
+      "status": "passed",
+      "summary": ""
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": ["ScrollToTopButton"],
+          "duration": 5,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "ScrollToTopButton",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 1,
+          "retryReasons": [],
+          "status": "passed",
+          "title": ""
+        }
+      ],
+      "endTime": 1691223370333,
+      "message": "",
+      "name": "/home/alexey/Рабочий стол/Alexey/Ulbi-Example/src/features/ScrollToTopButton/ui/scrollToTopButton.test.tsx",
+      "startTime": 1691223369923,
+      "status": "passed",
+      "summary": ""
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": ["getCounterValue"],
+          "duration": 5,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "getCounterValue should return counter value",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 1,
+          "retryReasons": [],
+          "status": "passed",
+          "title": "should return counter value"
+        }
+      ],
+      "endTime": 1691223370417,
+      "message": "",
+      "name": "/home/alexey/Рабочий стол/Alexey/Ulbi-Example/src/entities/Counter/model/selectors/getCounterValue/getCounterValue.test.ts",
+      "startTime": 1691223369921,
+      "status": "passed",
+      "summary": ""
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": ["useDetectDevice"],
+          "duration": 5,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "useDetectDevice",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 1,
+          "retryReasons": [],
+          "status": "passed",
+          "title": ""
+        }
+      ],
+      "endTime": 1691223370634,
+      "message": "",
+      "name": "/home/alexey/Рабочий стол/Alexey/Ulbi-Example/src/shared/lib/hooks/useDetectDevice/useDetectDevice.test.ts",
+      "startTime": 1691223370285,
+      "status": "passed",
+      "summary": ""
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": ["ArticleSortSelector"],
+          "duration": 5,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "ArticleSortSelector",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 1,
+          "retryReasons": [],
+          "status": "passed",
+          "title": ""
+        }
+      ],
+      "endTime": 1691223370666,
+      "message": "",
+      "name": "/home/alexey/Рабочий стол/Alexey/Ulbi-Example/src/features/ArticleSortSelector/ui/articleSortSelector.test.ts",
+      "startTime": 1691223370309,
+      "status": "passed",
+      "summary": ""
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": ["getLoginPassword"],
+          "duration": 4,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "getLoginPassword should return value",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 1,
+          "retryReasons": [],
+          "status": "passed",
+          "title": "should return value"
+        },
+        {
+          "ancestorTitles": ["getLoginPassword"],
+          "duration": 1,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "getLoginPassword should work with empty state",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 1,
+          "retryReasons": [],
+          "status": "passed",
+          "title": "should work with empty state"
+        }
+      ],
+      "endTime": 1691223370667,
+      "message": "",
+      "name": "/home/alexey/Рабочий стол/Alexey/Ulbi-Example/src/features/AuthByUsername/model/selectors/getLoginPassword/getLoginPassword.test.ts",
+      "startTime": 1691223370270,
+      "status": "passed",
+      "summary": ""
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": ["fetchArticleById"],
+          "duration": 24,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "fetchArticleById success",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 3,
+          "retryReasons": [],
+          "status": "passed",
+          "title": "success"
+        },
+        {
+          "ancestorTitles": ["fetchArticleById"],
+          "duration": 2,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "fetchArticleById server error",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 2,
+          "retryReasons": [],
+          "status": "passed",
+          "title": "server error"
+        }
+      ],
+      "endTime": 1691223370764,
+      "message": "",
+      "name": "/home/alexey/Рабочий стол/Alexey/Ulbi-Example/src/entities/Article/model/services/fetchArticleById/fetchArticleById.test.ts",
+      "startTime": 1691223370318,
+      "status": "passed",
+      "summary": ""
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": ["counterSlice"],
+          "duration": 8,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "counterSlice decrement",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 1,
+          "retryReasons": [],
+          "status": "passed",
+          "title": "decrement"
+        },
+        {
+          "ancestorTitles": ["counterSlice"],
+          "duration": 1,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "counterSlice increment",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 1,
+          "retryReasons": [],
+          "status": "passed",
+          "title": "increment"
+        },
+        {
+          "ancestorTitles": ["counterSlice"],
+          "duration": 1,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "counterSlice should work with empty state",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 1,
+          "retryReasons": [],
+          "status": "passed",
+          "title": "should work with empty state"
+        }
+      ],
+      "endTime": 1691223370764,
+      "message": "",
+      "name": "/home/alexey/Рабочий стол/Alexey/Ulbi-Example/src/entities/Counter/model/slice/counterSlice.test.ts",
+      "startTime": 1691223370227,
+      "status": "passed",
+      "summary": ""
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": ["NotificationList"],
+          "duration": 5,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "NotificationList",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 1,
+          "retryReasons": [],
+          "status": "passed",
+          "title": ""
+        }
+      ],
+      "endTime": 1691223370815,
+      "message": "",
+      "name": "/home/alexey/Рабочий стол/Alexey/Ulbi-Example/src/entities/Notification/ui/NotificationList/notificationList.test.ts",
+      "startTime": 1691223370440,
+      "status": "passed",
+      "summary": ""
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": ["getProfileError"],
+          "duration": 5,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "getProfileError should return data",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 1,
+          "retryReasons": [],
+          "status": "passed",
+          "title": "should return data"
+        },
+        {
+          "ancestorTitles": ["getProfileError"],
+          "duration": 1,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "getProfileError should work with empty state",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 1,
+          "retryReasons": [],
+          "status": "passed",
+          "title": "should work with empty state"
+        }
+      ],
+      "endTime": 1691223370827,
+      "message": "",
+      "name": "/home/alexey/Рабочий стол/Alexey/Ulbi-Example/src/features/EditableProfileCard/model/selectors/getProfileError/getProfileError.test.ts",
+      "startTime": 1691223370361,
+      "status": "passed",
+      "summary": ""
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": ["getCounter"],
+          "duration": 6,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "getCounter should return counter",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 1,
+          "retryReasons": [],
+          "status": "passed",
+          "title": "should return counter"
+        }
+      ],
+      "endTime": 1691223371055,
+      "message": "",
+      "name": "/home/alexey/Рабочий стол/Alexey/Ulbi-Example/src/entities/Counter/model/selectors/getCounter/getCounter.test.ts",
+      "startTime": 1691223370679,
+      "status": "passed",
+      "summary": ""
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": ["ScrollToolbar"],
+          "duration": 5,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "ScrollToolbar",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 1,
+          "retryReasons": [],
+          "status": "passed",
+          "title": ""
+        }
+      ],
+      "endTime": 1691223371127,
+      "message": "",
+      "name": "/home/alexey/Рабочий стол/Alexey/Ulbi-Example/src/widgets/ScrollToolbar/ui/scrollToolbar.test.tsx",
+      "startTime": 1691223370692,
+      "status": "passed",
+      "summary": ""
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": ["articleEditPageSlice"],
+          "duration": 21,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "articleEditPageSlice test articleEditPage service pending",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 1,
+          "retryReasons": [],
+          "status": "passed",
+          "title": "test articleEditPage service pending"
+        }
+      ],
+      "endTime": 1691223371192,
+      "message": "",
+      "name": "/home/alexey/Рабочий стол/Alexey/Ulbi-Example/src/pages/ArticleEditPage/model/slice/articleEditPage.test.ts",
+      "startTime": 1691223370690,
+      "status": "passed",
+      "summary": ""
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": ["SettingsPage"],
+          "duration": 5,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "SettingsPage",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 1,
+          "retryReasons": [],
+          "status": "passed",
+          "title": ""
+        }
+      ],
+      "endTime": 1691223371191,
+      "message": "",
+      "name": "/home/alexey/Рабочий стол/Alexey/Ulbi-Example/src/pages/SettingsPage/ui/settingsPage.test.tsx",
+      "startTime": 1691223370793,
+      "status": "passed",
+      "summary": ""
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": ["getArticleEditPage"],
+          "duration": 5,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "getArticleEditPage",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 1,
+          "retryReasons": [],
+          "status": "passed",
+          "title": ""
+        }
+      ],
+      "endTime": 1691223371261,
+      "message": "",
+      "name": "/home/alexey/Рабочий стол/Alexey/Ulbi-Example/src/pages/ArticleEditPage/model/selectors/getArticleEditPage/getArticleEditPage.test.ts",
+      "startTime": 1691223370790,
+      "status": "passed",
+      "summary": ""
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": ["getProfileIsReadonly"],
+          "duration": 5,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "getProfileIsReadonly should return data",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 1,
+          "retryReasons": [],
+          "status": "passed",
+          "title": "should return data"
+        },
+        {
+          "ancestorTitles": ["getProfileIsReadonly"],
+          "duration": 1,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "getProfileIsReadonly should work with empty state",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 1,
+          "retryReasons": [],
+          "status": "passed",
+          "title": "should work with empty state"
+        }
+      ],
+      "endTime": 1691223371259,
+      "message": "",
+      "name": "/home/alexey/Рабочий стол/Alexey/Ulbi-Example/src/features/EditableProfileCard/model/selectors/getProfileIsReadonly/getProfileIsReadonly.test.ts",
+      "startTime": 1691223370844,
+      "status": "passed",
+      "summary": ""
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": ["getAddCommentForm"],
+          "duration": 21,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "getAddCommentForm getAddCommentFormIsLoading",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 1,
+          "retryReasons": [],
+          "status": "passed",
+          "title": "getAddCommentFormIsLoading"
+        }
+      ],
+      "endTime": 1691223371325,
+      "message": "",
+      "name": "/home/alexey/Рабочий стол/Alexey/Ulbi-Example/src/features/AddCommentForm/model/selectors/getAddCommentForm/getAddCommentForm.test.ts",
+      "startTime": 1691223370855,
+      "status": "passed",
+      "summary": ""
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": ["className"],
+          "duration": 4,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "className with only first param",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 1,
+          "retryReasons": [],
+          "status": "passed",
+          "title": "with only first param"
+        },
+        {
+          "ancestorTitles": ["className"],
+          "duration": 1,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "className with additional class",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 1,
+          "retryReasons": [],
+          "status": "passed",
+          "title": "with additional class"
+        },
+        {
+          "ancestorTitles": ["className"],
+          "duration": 1,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "className with mods",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 1,
+          "retryReasons": [],
+          "status": "passed",
+          "title": "with mods"
+        },
+        {
+          "ancestorTitles": ["className"],
+          "duration": 0,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "className with mods false",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 1,
+          "retryReasons": [],
+          "status": "passed",
+          "title": "with mods false"
+        },
+        {
+          "ancestorTitles": ["className"],
+          "duration": 0,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "className with mods undefined",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 1,
+          "retryReasons": [],
+          "status": "passed",
+          "title": "with mods undefined"
+        }
+      ],
+      "endTime": 1691223371645,
+      "message": "",
+      "name": "/home/alexey/Рабочий стол/Alexey/Ulbi-Example/src/shared/lib/classNames/className.test.ts",
+      "startTime": 1691223371222,
+      "status": "passed",
+      "summary": ""
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": ["ArticleTypeTabs"],
+          "duration": 5,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "ArticleTypeTabs",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 1,
+          "retryReasons": [],
+          "status": "passed",
+          "title": ""
+        }
+      ],
+      "endTime": 1691223371655,
+      "message": "",
+      "name": "/home/alexey/Рабочий стол/Alexey/Ulbi-Example/src/features/ArticleTypeTabs/ui/articleTypeTabs.test.ts",
+      "startTime": 1691223371163,
+      "status": "passed",
+      "summary": ""
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": ["NotificationItem"],
+          "duration": 6,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "NotificationItem",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 1,
+          "retryReasons": [],
+          "status": "passed",
+          "title": ""
+        }
+      ],
+      "endTime": 1691223371746,
+      "message": "",
+      "name": "/home/alexey/Рабочий стол/Alexey/Ulbi-Example/src/entities/Notification/ui/NotificationItem/notificationItem.test.ts",
+      "startTime": 1691223371219,
+      "status": "passed",
+      "summary": ""
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": ["getArticleEditForm"],
+          "duration": 5,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "getArticleEditForm",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 1,
+          "retryReasons": [],
+          "status": "passed",
+          "title": ""
+        }
+      ],
+      "endTime": 1691223371786,
+      "message": "",
+      "name": "/home/alexey/Рабочий стол/Alexey/Ulbi-Example/src/features/ArticleEditForm/model/selectors/getArticleEditForm/getArticleEditForm.test.ts",
+      "startTime": 1691223371405,
+      "status": "passed",
+      "summary": ""
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": ["getLoginIsLoading"],
+          "duration": 4,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "getLoginIsLoading should return false",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 1,
+          "retryReasons": [],
+          "status": "passed",
+          "title": "should return false"
+        },
+        {
+          "ancestorTitles": ["getLoginIsLoading"],
+          "duration": 1,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "getLoginIsLoading should work with empty state",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 1,
+          "retryReasons": [],
+          "status": "passed",
+          "title": "should work with empty state"
+        }
+      ],
+      "endTime": 1691223371793,
+      "message": "",
+      "name": "/home/alexey/Рабочий стол/Alexey/Ulbi-Example/src/features/AuthByUsername/model/selectors/getLoginIsLoading/getLoginIsLoading.test.ts",
+      "startTime": 1691223371292,
+      "status": "passed",
+      "summary": ""
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": ["ArticleViewSelector"],
+          "duration": 6,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "ArticleViewSelector",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 1,
+          "retryReasons": [],
+          "status": "passed",
+          "title": ""
+        }
+      ],
+      "endTime": 1691223371806,
+      "message": "",
+      "name": "/home/alexey/Рабочий стол/Alexey/Ulbi-Example/src/features/ArticleViewSelector/ui/articleViewSelector.test.ts",
+      "startTime": 1691223371310,
+      "status": "passed",
+      "summary": ""
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": ["getProfileValidateErrors"],
+          "duration": 5,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "getProfileValidateErrors should return data",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 1,
+          "retryReasons": [],
+          "status": "passed",
+          "title": "should return data"
+        },
+        {
+          "ancestorTitles": ["getProfileValidateErrors"],
+          "duration": 1,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "getProfileValidateErrors should work with empty state",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 1,
+          "retryReasons": [],
+          "status": "passed",
+          "title": "should work with empty state"
+        }
+      ],
+      "endTime": 1691223371810,
+      "message": "",
+      "name": "/home/alexey/Рабочий стол/Alexey/Ulbi-Example/src/features/EditableProfileCard/model/selectors/getProfileValidateErrors/getProfileValidateErrors.test.ts",
+      "startTime": 1691223371362,
+      "status": "passed",
+      "summary": ""
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": ["AppImage"],
+          "duration": 4,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "AppImage",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 1,
+          "retryReasons": [],
+          "status": "passed",
+          "title": ""
+        }
+      ],
+      "endTime": 1691223372064,
+      "message": "",
+      "name": "/home/alexey/Рабочий стол/Alexey/Ulbi-Example/src/shared/ui/redesigned/AppImage/appImage.test.ts",
+      "startTime": 1691223371690,
+      "status": "passed",
+      "summary": ""
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": ["articleDetails"],
+          "duration": 6,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "articleDetails should return data",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 1,
+          "retryReasons": [],
+          "status": "passed",
+          "title": "should return data"
+        },
+        {
+          "ancestorTitles": ["articleDetails"],
+          "duration": 1,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "articleDetails should return isLoading",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 1,
+          "retryReasons": [],
+          "status": "passed",
+          "title": "should return isLoading"
+        },
+        {
+          "ancestorTitles": ["articleDetails"],
+          "duration": 1,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "articleDetails should return error",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 1,
+          "retryReasons": [],
+          "status": "passed",
+          "title": "should return error"
+        }
+      ],
+      "endTime": 1691223372081,
+      "message": "",
+      "name": "/home/alexey/Рабочий стол/Alexey/Ulbi-Example/src/entities/Article/model/selectors/articleDetails.test.ts",
+      "startTime": 1691223371693,
+      "status": "passed",
+      "summary": ""
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": ["getProfileIsLoading"],
+          "duration": 5,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "getProfileIsLoading should return data",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 1,
+          "retryReasons": [],
+          "status": "passed",
+          "title": "should return data"
+        },
+        {
+          "ancestorTitles": ["getProfileIsLoading"],
+          "duration": 1,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "getProfileIsLoading should work with empty state",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 1,
+          "retryReasons": [],
+          "status": "passed",
+          "title": "should work with empty state"
+        }
+      ],
+      "endTime": 1691223372163,
+      "message": "",
+      "name": "/home/alexey/Рабочий стол/Alexey/Ulbi-Example/src/features/EditableProfileCard/model/selectors/getProfileIsLoading/getProfileIsLoading.test.ts",
+      "startTime": 1691223371844,
+      "status": "passed",
+      "summary": ""
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": ["addCommentFormSlice"],
+          "duration": 6,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "addCommentFormSlice",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 1,
+          "retryReasons": [],
+          "status": "passed",
+          "title": ""
+        }
+      ],
+      "endTime": 1691223372174,
+      "message": "",
+      "name": "/home/alexey/Рабочий стол/Alexey/Ulbi-Example/src/features/AddCommentForm/model/slice/addCommentForm.test.ts",
+      "startTime": 1691223371776,
+      "status": "passed",
+      "summary": ""
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": ["getLoginError"],
+          "duration": 4,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "getLoginError should return error",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 1,
+          "retryReasons": [],
+          "status": "passed",
+          "title": "should return error"
+        },
+        {
+          "ancestorTitles": ["getLoginError"],
+          "duration": 0,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "getLoginError should work with empty state",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 1,
+          "retryReasons": [],
+          "status": "passed",
+          "title": "should work with empty state"
+        }
+      ],
+      "endTime": 1691223372204,
+      "message": "",
+      "name": "/home/alexey/Рабочий стол/Alexey/Ulbi-Example/src/features/AuthByUsername/model/selectors/getLoginError/getLoginError.test.ts",
+      "startTime": 1691223371869,
+      "status": "passed",
+      "summary": ""
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": ["getLoginState"],
+          "duration": 4,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "getLoginState should return value",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 1,
+          "retryReasons": [],
+          "status": "passed",
+          "title": "should return value"
+        },
+        {
+          "ancestorTitles": ["getLoginState"],
+          "duration": 0,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "getLoginState should work with empty state",
+          "invocations": 1,
+          "location": null,
+          "numPassingAsserts": 1,
+          "retryReasons": [],
+          "status": "passed",
+          "title": "should work with empty state"
+        }
+      ],
+      "endTime": 1691223372219,
+      "message": "",
+      "name": "/home/alexey/Рабочий стол/Alexey/Ulbi-Example/src/features/AuthByUsername/model/selectors/getLoginState/getLoginState.test.ts",
+      "startTime": 1691223371900,
+      "status": "passed",
+      "summary": ""
+    }
+  ],
+  "wasInterrupted": false
+}
