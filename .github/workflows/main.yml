@@ -125,14 +125,12 @@ jobs:
         uses: actions/upload-pages-artifact@v1
         if: always()
         with:
-          path: 'reports'
+          path: 'storybook-static'
       # деплоим в пейджи
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v1
         id: deployment
         if: always()
-        with:
-          path: 'storybook-static'
 
   # джоба для проверок, которые не требуют сборку проекта
   checks:
