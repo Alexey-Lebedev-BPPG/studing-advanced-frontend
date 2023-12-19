@@ -39,12 +39,17 @@
 #         if: always()
 
 # чтоб не было проблем с скриншотными тестами, обновляем пайплайны
+# название экшена
 name: linting, testing, building
+# когда будут включаться
 on:
+  # при пуше
   push:
     branches: [master]
+  # при создании пул реквеста
   pull_request:
     branches: [master]
+# определенные разрешения
 permissions:
   contents: write
   pages: write
@@ -52,11 +57,15 @@ permissions:
 concurrency:
   group: 'pages'
   cancel-in-progress: true
+# настройка последовательности действий
 jobs:
   # джоба для проверок, которые требуют сборку проекта
   build-and-ui-testing:
+    # для работы экшена выбираем ОС
     runs-on: ubuntu-latest
+    # добавляем для конкурентного режима
     concurrency: ci-${{ github.ref }}
+    # берется переменная из результата выполнения шага - name: Deploy to GitHub Pages
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -64,50 +73,66 @@ jobs:
       matrix:
         node-version: [20.x]
     steps:
+      # позволяет делать чекаут на наш репозиторий
       - uses: actions/checkout@v2
+      # устанавливаем pnpm
       - uses: pnpm/action-setup@v2
         with:
           version: 8
+      # устанавливаем ноду
       - name: Staring Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'pnpm'
+      # устанавливаем пакеты
       - name: install modules
         run: pnpm install
+      # делаем сборку
       - name: build production project
         run: pnpm run build:prod
         if: always()
+      # собираем сторибук
       - name: build storybook
         run: pnpm run build-storybook
         if: always()
+        # запускаем скриншотные тесты
       # - name: screenshot testing
       #   run: pnpm run test:ui:ci
       #   if: always()
+      # запускаем тесты
       - name: unit testing
         if: always()
         run: pnpm run test:unit
+        # запускаем хроматик
       # - name: chromatic testing
       #   if: always()
       #   run: pnpm run chromatic
+      # # генерерируем отчет по тестам
       # - name: Generate HTML report
       #   run: pnpm run test:ui:report
       #   if: always()
+        # генерируем отчет скриншотных тестов
       # - name: move loki
       #   run: mv .loki reports/
       #   if: always()
+        # конфигурирование github pages
       # - name: Setup Pages
       #   uses: actions/configure-pages@v2
       #   if: always()
+      # загрузка артифактов (то, что собирали - билд, болд сторибука и т.д.)
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         if: always()
         with:
           path: 'reports'
+      # деплоим в пейджи
       - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v1
         id: deployment
         if: always()
-        uses: actions/deploy-pages@v1
+        with:
+          path: 'storybook-static'
 
   # джоба для проверок, которые не требуют сборку проекта
   checks:
@@ -116,19 +141,25 @@ jobs:
       matrix:
         node-version: [20.x]
     steps:
+      # позволяет делать чекаут на наш репозиторий
       - uses: actions/checkout@v2
+      # устанавливаем pnpm
       - uses: pnpm/action-setup@v2
         with:
           version: 8
+      # устанавливаем ноду
       - name: Staring Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'pnpm'
+      # устанавливаем пакеты
       - name: install modules
         run: pnpm install
+      # проверка ес линтом
       - name: linting typescript
         run: pnpm run lint:ts
         if: always()
+      # проверка стайл линтом
       - name: linting css
         run: pnpm run lint:scss

@@ -5,6 +5,8 @@ import svgr from 'vite-plugin-svgr';
 
 // обязательное условие - вынести index.html в корень проекта (поэтому мы просто скопируем этот файл в корень)
 export default defineConfig({
+  // добавляем, чтоб при сборке в файле index.html в путь скрипта добавился мой репозиторий
+  // base: 'studing-advanced-frontend',
   // прокидываем глобальные переменные
   define: {
     __API__: JSON.stringify('http://localhost:8000'),
