@@ -41,12 +41,12 @@ export const SideBar: FC<ISideBarProps> = memo(props => {
         <aside
           data-testid='sidebar'
           className={classNames(
-            cls.sideBarRedesigned,
-            { [cls.collapsedRedesigned]: collapsed },
+            cls['sidebar-redesigned'],
+            { [cls['collapsed-redesigned']]: collapsed },
             [className],
           )}
         >
-          <AppLogo size={collapsed ? 30 : 50} className={cls.appLogo} />
+          <AppLogo size={collapsed ? 30 : 50} className={cls['app-logo']} />
           <VStack role='navigation' gap='8' className={cls.items}>
             {/* рендерим наши ссылки сайдбара */}
             {itemsList}
@@ -54,7 +54,7 @@ export const SideBar: FC<ISideBarProps> = memo(props => {
           <Icon
             clickable
             data-testid='sidebar-toggle'
-            className={cls.collapsedBtn}
+            className={cls['collapsed-btn']}
             Svg={ArrowIcon}
             onClick={onToggle}
           />
@@ -67,15 +67,17 @@ export const SideBar: FC<ISideBarProps> = memo(props => {
       off={
         <aside
           data-testid='sidebar'
-          className={classNames(cls.sideBar, { [cls.collapsed]: collapsed }, [
-            className,
-          ])}
+          className={classNames(
+            cls['side-bar'],
+            { [cls.collapsed]: collapsed },
+            [className],
+          )}
         >
           <Button
             square
             type='button'
             data-testid='sidebar-toggle'
-            className={cls.collapsedBtn}
+            className={cls['collapsed-btn']}
             theme='backgroundInverted'
             size='l'
             onClick={onToggle}

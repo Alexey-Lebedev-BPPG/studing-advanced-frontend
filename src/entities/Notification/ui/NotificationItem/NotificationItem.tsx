@@ -22,13 +22,13 @@ export const NotificationItem: FC<INotificationItemProps> = memo(props => {
       off={
         <CardDeprecated
           theme='outline'
-          className={classNames(cls.notificationItem, {}, [className])}
+          className={classNames(cls['notification-item'], {}, [className])}
         >
           <TextDeprecated title={item.title} text={item.description} />
         </CardDeprecated>
       }
       on={
-        <Card className={classNames(cls.notificationItem, {}, [className])}>
+        <Card className={classNames(cls['notification-item'], {}, [className])}>
           <Text title={item.title} text={item.description} />
         </Card>
       }

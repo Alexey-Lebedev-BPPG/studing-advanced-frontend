@@ -81,7 +81,7 @@ const LoginForm: FC<ILoginFormProps> = memo(props => {
       <ToggleFeatures
         nameFeatures={'isAppRedesigned'}
         off={
-          <div className={classNames(cls.loginForm, {}, [className])}>
+          <div className={classNames(cls['login-form'], {}, [className])}>
             <TextDeprecated title={`${t('Форма авторизации')}`} />
             {!!error && <TextDeprecated text={error} theme='error' />}
             <InputDeprecated
@@ -101,7 +101,7 @@ const LoginForm: FC<ILoginFormProps> = memo(props => {
             />
             <ButtonDeprecated
               theme='outline'
-              className={cls.loginBtn}
+              className={cls['login-btn']}
               disabled={isLoading}
               onClick={onLoginClick}
             >
@@ -130,7 +130,7 @@ const LoginForm: FC<ILoginFormProps> = memo(props => {
             />
             <Button
               variant='outline'
-              className={cls.loginBtn}
+              className={cls['login-btn']}
               disabled={isLoading}
               onClick={onLoginClick}
             >

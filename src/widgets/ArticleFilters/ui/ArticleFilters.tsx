@@ -41,7 +41,7 @@ export const ArticleFilters: FC<IArticleFiltersProps> = memo(props => {
 
   return (
     <Card
-      className={classNames(cls.articleFilters, {}, [className])}
+      className={classNames(cls['article-filters'], {}, [className])}
       padding='24'
     >
       <VStack gap='32'>

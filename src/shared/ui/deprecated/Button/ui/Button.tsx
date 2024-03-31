@@ -59,15 +59,15 @@ export const Button: FC<IButtonProps> = memo(props => {
   } = props;
 
   const mapSizeClass: Record<ButtonSize, string> = {
-    l: cls.size_l,
-    m: cls.size_m,
-    xl: cls.size_xl,
+    l: cls['size-l'],
+    m: cls['size-m'],
+    xl: cls['size-xl'],
   };
 
   const mods = {
     [cls.square]: square,
     [cls.disabled]: disabled,
-    [cls.fullWidth]: fullWidth,
+    [cls['full-width']]: fullWidth,
   };
 
   return (
@@ -75,7 +75,7 @@ export const Button: FC<IButtonProps> = memo(props => {
       type='button'
       className={classNames(cls.button, mods, [
         className,
-        cls[theme],
+        // cls[theme],
         mapSizeClass[size],
       ])}
       {...otherProps}

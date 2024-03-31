@@ -2,7 +2,7 @@
 
 exports[`Button Test clear theme 1`] = `
 <div
-  className="app app_light_theme"
+  className="app app-light-theme"
 >
   <div
     className="flex justifyStart alignStart directionColumn gap32 nowrap"

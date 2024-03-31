@@ -77,7 +77,12 @@ export const ArticleList: FC<IArticleListProps> = memo(props => {
 
   if (!isLoading && !articles.length)
     return (
-      <div className={classNames('', {}, [className, cls[view]])}>
+      <div
+        className={classNames('', {}, [
+          className,
+          cls[view === 'BIG' ? 'big' : 'small'],
+        ])}
+      >
         <Text size='l' title={`${t('Статьи не найдены')}`} />
       </div>
     );
@@ -90,7 +95,7 @@ export const ArticleList: FC<IArticleListProps> = memo(props => {
           wrap='wrap'
           gap='16'
           data-testid='ArticleList'
-          className={classNames(cls.ArticleListRedesigned, {})}
+          // className={classNames(cls.ArticleListRedesigned, {})}
         >
           {articles.map(item => (
             <ArticleListItem
@@ -126,8 +131,11 @@ export const ArticleList: FC<IArticleListProps> = memo(props => {
         //   }) => (
         <div
           // ref={registerChild}
-          className={classNames(cls.ArticleList, {}, [className, cls[view]])}
           data-testid='ArticleList'
+          className={classNames(cls['article-list'], {}, [
+            className,
+            cls[view === 'BIG' ? 'big' : 'small'],
+          ])}
         >
           {/* {virtualized ? (
           <List

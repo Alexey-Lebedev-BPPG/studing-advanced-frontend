@@ -11,7 +11,11 @@ interface IArticleCodeBlockComponentProps {
 
 export const ArticleCodeBlockComponent: FC<IArticleCodeBlockComponentProps> =
   memo(({ block, className }) => (
-    <div className={classNames(cls.articleCodeBlockComponent, {}, [className])}>
+    <div
+      className={classNames(cls['article-code-block-component'], {}, [
+        className,
+      ])}
+    >
       <Code text={block.code} />
     </div>
   ));

@@ -75,7 +75,7 @@ export const Page: FC<IPageProps> = props => {
         toggleFeatures({
           name: 'isAppRedesigned',
           off: () => cls.page,
-          on: () => cls.pageRedesigned,
+          on: () => cls['page-redesigned'],
         }),
         {},
         [className],

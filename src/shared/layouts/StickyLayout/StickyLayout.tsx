@@ -13,7 +13,7 @@ export const StickyLayout: FC<IStickyLayoutProps> = memo(props => {
   const { className, content, left, right } = props;
 
   return (
-    <div className={classNames(cls.stickyLayout, {}, [className])}>
+    <div className={classNames(cls['sticky-layout'], {}, [className])}>
       {!!left && <div className={cls.left}>{left}</div>}
       <div className={cls.content}>{content}</div>
       {!!right && <div className={cls.right}>{right}</div>}

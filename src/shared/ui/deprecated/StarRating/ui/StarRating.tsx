@@ -48,8 +48,8 @@ export const StarRating: FC<IStartRatingProps> = memo(props => {
       className={classNames(
         toggleFeatures({
           name: 'isAppRedesigned',
-          off: () => cls.starRating,
-          on: () => cls.starRatingRedesigned,
+          off: () => cls['star-rating'],
+          on: () => cls['star-rating-redesigned'],
         }),
         {},
         [className],
@@ -58,9 +58,11 @@ export const StarRating: FC<IStartRatingProps> = memo(props => {
       {stars.map(starNumber => {
         const commonProps = {
           Svg: StarIcon,
-          className: classNames(cls.starItem, { [cls.selected]: isSelected }, [
-            currentStarsCount >= starNumber ? cls.hovered : cls.normal,
-          ]),
+          className: classNames(
+            cls['star-item'],
+            { [cls.selected]: isSelected },
+            [currentStarsCount >= starNumber ? cls.hovered : cls.normal],
+          ),
           // для проверки количества выбранных звезд
           'data-selected': currentStarsCount >= starNumber,
           'data-testid': `StarRating.${starNumber}`,

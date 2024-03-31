@@ -8,7 +8,7 @@ export const PageError: FC<IPageErrorProps> = () => {
   const reloadPage = () => window.location.reload();
 
   return (
-    <div className={cls.pageError}>
+    <div className={cls['page-error']}>
       <p>{'Произошла непредвиденная ошибка'}</p>
       <Button onClick={reloadPage}>{'Обновить страницу'}</Button>
     </div>

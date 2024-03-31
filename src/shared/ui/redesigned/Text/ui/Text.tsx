@@ -12,9 +12,9 @@ type HeaderTagType = 'h1' | 'h2' | 'h3';
 
 // маппер, который определяет размер
 const mapSizeToClass: Record<TextSize, string> = {
-  l: cls.size_l,
-  m: cls.size_m,
-  s: cls.size_s,
+  l: cls['size-l'],
+  m: cls['size-m'],
+  s: cls['size-s'],
 };
 
 // маппер, который определяет тег в зависимости от размера

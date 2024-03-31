@@ -26,21 +26,21 @@ export const Code: FC<ICodeProps> = memo(props => {
         // pre позволяет сохранять пробелы и переносы для кода
         <pre className={classNames(cls.code, {}, [className])}>
           <ButtonDeprecated
-            className={cls.copyBtn}
+            className={cls['copy-btn']}
             theme='clear'
             onClick={onCopy}
           >
-            <CopyIcon className={cls.copyIcon} />
+            <CopyIcon className={cls['copy-icon']} />
           </ButtonDeprecated>
           <code>{text}</code>
         </pre>
       }
       on={
         // pre позволяет сохранять пробелы и переносы для кода
-        <pre className={classNames(cls.codeRedesigned, {}, [className])}>
+        <pre className={classNames(cls['code-redesigned'], {}, [className])}>
           <Icon
             clickable
-            className={cls.copyBtn}
+            className={cls['copy-btn']}
             Svg={CopyIconNew}
             onClick={onCopy}
           />

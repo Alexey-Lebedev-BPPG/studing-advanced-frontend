@@ -74,14 +74,14 @@ const DrawerContent: FC<DrawerProps> = props => {
   return (
     <Portal>
       <div
-        className={classNames(cls.Drawer, {}, [
+        className={classNames(cls.drawer, {}, [
           className,
           theme,
-          'app_drawer',
+          'app-drawer',
           toggleFeatures({
             name: 'isAppRedesigned',
-            off: () => cls.oldDrawer,
-            on: () => cls.newDrawer,
+            off: () => cls['old-drawer'],
+            on: () => cls['new-drawer'],
           }),
         ])}
       >

@@ -19,7 +19,7 @@ export const ScrollToTopButton: FC<IScrollToTopButtonProps> = memo(props => {
       Svg={CircleIcon}
       width={32}
       height={32}
-      className={classNames(cls.scrollToTopButton, {}, [className])}
+      className={classNames(cls['scroll-to-top-button'], {}, [className])}
       onClick={onClick}
     />
   );

@@ -74,11 +74,11 @@ export const Input: FC<IInputProps> = memo(props => {
   }, [autofocus]);
 
   return (
-    <div className={classNames(cls.inputWrapper, mods, [className])}>
+    <div className={classNames(cls['input-wrapper'], mods, [className])}>
       {!!placeholder && (
         <div className={cls.placeholder}>{`${placeholder}>`}</div>
       )}
-      <div className={cls.caretWrapper}>
+      <div className={cls['caret-wrapper']}>
         <input
           ref={ref}
           type={type}

@@ -19,8 +19,9 @@ export const ArticleListItemSkeleton = memo(
 
     const mainClass = toggleFeatures({
       name: 'isAppRedesigned',
-      off: () => cls.articleListItem,
-      on: () => cls.articleListItemRedesigned,
+      // off: () => cls.articleListItem,
+      off: () => '',
+      on: () => cls['article-list-item-redesigned'],
     });
 
     const Skeleton = toggleFeatures({
@@ -45,7 +46,12 @@ export const ArticleListItemSkeleton = memo(
         </>
       );
       return (
-        <div className={classNames(mainClass, {}, [className, cls[view]])}>
+        <div
+          className={classNames(mainClass, {}, [
+            className,
+            cls[view === 'BIG' ? 'big' : 'small'],
+          ])}
+        >
           <ToggleFeatures
             nameFeatures='isAppRedesigned'
             off={
@@ -76,12 +82,12 @@ export const ArticleListItemSkeleton = memo(
             />
           }
           off={
-            <div className={cls.imageWrapper}>
+            <div className={cls['image-wrapper']}>
               <Skeleton width={200} height={200} className={cls.img} />
             </div>
           }
         />
-        <div className={cls.infoWrapper}>
+        <div className={cls['info-wrapper']}>
           <Skeleton width={130} height={16} />
         </div>
         <Skeleton width={150} height={16} className={cls.title} />
@@ -89,7 +95,12 @@ export const ArticleListItemSkeleton = memo(
     );
 
     return (
-      <div className={classNames(mainClass, {}, [className, cls[view]])}>
+      <div
+        className={classNames(mainClass, {}, [
+          className,
+          cls[view === 'SMALL' ? 'small' : 'big'],
+        ])}
+      >
         <ToggleFeatures
           nameFeatures='isAppRedesigned'
           off={

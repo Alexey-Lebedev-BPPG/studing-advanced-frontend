@@ -41,7 +41,7 @@ export const Select = typedMemo(<T extends string>(props: ISelectProps<T>) => {
     onChange?.(event.target.value as T);
 
   return (
-    <div className={classNames(cls.selectWrapper, {}, [className])}>
+    <div className={classNames(cls['select-wrapper'], {}, [className])}>
       {label ? <span className={cls.label}>{`${label}>`}</span> : null}
       <select
         className={cls.select}

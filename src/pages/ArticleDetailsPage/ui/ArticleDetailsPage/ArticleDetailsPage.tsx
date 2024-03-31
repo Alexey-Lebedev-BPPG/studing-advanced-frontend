@@ -40,7 +40,9 @@ const ArticleDetailsPage: FC<IArticleDetailsPageProps> = props => {
       <ToggleFeatures
         nameFeatures={'isArticleRatingEnabled'}
         off={
-          <Page className={classNames(cls.articleDetailsPage, {}, [className])}>
+          <Page
+            className={classNames(cls['article-details-page'], {}, [className])}
+          >
             <VStack max gap='16'>
               <ArticleDetailsPageHeader />
               <DetailsContainer />
@@ -55,7 +57,9 @@ const ArticleDetailsPage: FC<IArticleDetailsPageProps> = props => {
             right={<AdditionalInfoContainer />}
             content={
               <Page
-                className={classNames(cls.articleDetailsPage, {}, [className])}
+                className={classNames(cls['article-details-page'], {}, [
+                  className,
+                ])}
               >
                 <VStack max gap='16'>
                   <ArticleDetails id={id} />

@@ -18,7 +18,7 @@ const ArticleEditPage: FC<IArticleEditPageProps> = memo(props => {
   const isEdit = Boolean(id);
 
   return (
-    <Page className={classNames(cls.articleEditPage, {}, [className])}>
+    <Page className={classNames(cls['article-edit-page'], {}, [className])}>
       {isEdit
         ? t('Редактирование статьи с ID = ') + id
         : t('Создание новой статьи')}
