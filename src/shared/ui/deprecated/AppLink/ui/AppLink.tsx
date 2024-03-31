@@ -27,7 +27,7 @@ export const AppLink: FC<AppLinkProps> = forwardRef(
       <Link
         ref={ref}
         to={to}
-        className={classNames(cls.appLink, {}, [className, cls[theme]])}
+        className={classNames(cls['app-link'], {}, [className, cls[theme]])}
         {...otherProps}
       >
         {children}

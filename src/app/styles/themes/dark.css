@@ -1,5 +1,5 @@
 /* меняем с .app.dark на это, чтоб стили в сторибук заработали */
-.app_dark_theme {
+.app-dark-theme {
   /* фон всего приложения */
   --bg-color: #090949;
   --inverted-bg-color: #e8e8ea;

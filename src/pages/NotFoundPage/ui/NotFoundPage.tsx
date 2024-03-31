@@ -14,7 +14,7 @@ export const NotFoundPage: FC<INotFoundPageProps> = props => {
   return (
     <div
       data-testid='NotFoundPage'
-      className={classNames(cls.notFoundPage, {}, [className])}
+      className={classNames(cls['not-found-page'], {}, [className])}
     >
       {t('Страница не найдена')}
     </div>

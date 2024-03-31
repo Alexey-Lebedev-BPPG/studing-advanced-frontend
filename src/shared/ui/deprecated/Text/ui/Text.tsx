@@ -18,9 +18,9 @@ const mapSizeToHeaderTag: Record<TextSize, HeaderTagType> = {
 };
 
 const mapSizeClass: Record<TextSize, string> = {
-  l: cls.size_l,
-  m: cls.size_m,
-  s: cls.size_s,
+  l: cls['size-l'],
+  m: cls['size-m'],
+  s: cls['size-s'],
 };
 
 interface ITextProps {
@@ -53,11 +53,12 @@ export const Text: FC<ITextProps> = memo(props => {
 
   return (
     <div
-      className={classNames(cls.textWrapper, {}, [
+      className={classNames(cls['text-wrapper'], {}, [
         className,
         mapSizeClass[size],
-        cls[theme],
+        // cls[theme],
         cls[align],
+        // @ts-ignore
         cls[size],
       ])}
     >

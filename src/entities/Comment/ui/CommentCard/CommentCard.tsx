@@ -35,14 +35,21 @@ export const CommentCard: FC<ICommentCardProps> = memo(props => {
       <VStack
         max
         gap='8'
-        className={classNames(cls.commentCard, {}, [className, cls.loading])}
         data-testid='CommentCard.Loading'
+        className={classNames(cls['comment-card'], {}, [
+          className,
+          cls.loading,
+        ])}
       >
         <div className={cls.header}>
           <Skeleton width={30} height={30} border='50%' />
           <Skeleton width={100} height={16} className={cls.username} />
         </div>
-        <Skeleton className={cls.text} width='100%' height={50} />
+        <Skeleton
+          // className={cls.text}
+          width='100%'
+          height={50}
+        />
       </VStack>
     );
 
@@ -55,7 +62,7 @@ export const CommentCard: FC<ICommentCardProps> = memo(props => {
         <VStack
           max
           gap='8'
-          className={classNames(cls.commentCard, {}, [className])}
+          className={classNames(cls['comment-card'], {}, [className])}
           data-testid='CommentCard.Content'
         >
           <AppLinkDeprecated
@@ -70,7 +77,10 @@ export const CommentCard: FC<ICommentCardProps> = memo(props => {
               title={comment?.user.username}
             />
           </AppLinkDeprecated>
-          <TextDeprecated className={cls.text} text={comment?.text} />
+          <TextDeprecated
+            // className={cls.text}
+            text={comment?.text}
+          />
         </VStack>
       }
       on={
@@ -78,8 +88,13 @@ export const CommentCard: FC<ICommentCardProps> = memo(props => {
           <VStack
             max
             gap='8'
-            className={classNames(cls.commentCardRedesigned, {}, [className])}
             data-testid='CommentCard.Content'
+            className={classNames(
+              // cls.commentCardRedesigned,
+              '',
+              {},
+              [className],
+            )}
           >
             <AppLink to={getRouteProfile(comment?.user.id)}>
               <HStack gap='8'>

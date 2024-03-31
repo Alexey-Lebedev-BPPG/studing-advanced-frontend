@@ -16,7 +16,7 @@ export const ScrollToolbar: FC<IScrollToolbarProps> = memo(props => {
       max
       justify='center'
       align='center'
-      className={classNames(cls.scrollToolbar, {}, [className])}
+      className={classNames(cls['scroll-toolbar'], {}, [className])}
     >
       <ScrollToTopButton />
     </VStack>

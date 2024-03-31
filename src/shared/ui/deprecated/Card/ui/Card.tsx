@@ -26,7 +26,7 @@ export const Card: FC<ICardProps> = props => {
 
   return (
     <div
-      className={classNames(cls.card, { [cls.fullWidth]: fullWidth }, [
+      className={classNames(cls.card, { [cls['full-width']]: fullWidth }, [
         className,
         cls[theme],
       ])}

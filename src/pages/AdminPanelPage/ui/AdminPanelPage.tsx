@@ -16,7 +16,7 @@ const AdminPanelPage: FC<IAdminPanelPageProps> = memo(props => {
   return (
     <Page
       data-testid='AdminPanelPage'
-      className={classNames(cls.adminPanelPage, {}, [className])}
+      className={classNames(cls['admin-panel-page'], {}, [className])}
     >
       {t('Админка')}
     </Page>

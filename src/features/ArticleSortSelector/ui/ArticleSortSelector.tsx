@@ -45,7 +45,11 @@ export const ArticleSortSelector: FC<IArticleSortSelectorProps> = memo(
       <ToggleFeatures
         nameFeatures={'isAppRedesigned'}
         off={
-          <div className={classNames(cls.articleSortSelector, {}, [className])}>
+          <div
+            className={classNames(cls['article-sort-selector'], {}, [
+              className,
+            ])}
+          >
             <Select
               options={sortFieldOption}
               label={`${t('Сортировать ПО')}`}
@@ -63,9 +67,12 @@ export const ArticleSortSelector: FC<IArticleSortSelectorProps> = memo(
         }
         on={
           <div
-            className={classNames(cls.articleSortSelectorRedesigned, {}, [
-              className,
-            ])}
+            className={classNames(
+              // cls.articleSortSelectorRedesigned,
+              '',
+              {},
+              [className],
+            )}
           >
             <VStack gap='8'>
               <Text text={t('Сортировать по:')} />

@@ -57,7 +57,7 @@ const AddCommentForm: FC<IAddCommentFormProps> = memo(props => {
           <HStack
             max
             justify='between'
-            className={classNames(cls.addCommentForm, {}, [className])}
+            className={classNames(cls['add-comment-form'], {}, [className])}
             data-testid='AddCommentForm'
           >
             <InputDeprecated
@@ -82,9 +82,12 @@ const AddCommentForm: FC<IAddCommentFormProps> = memo(props => {
               gap='16'
               justify='between'
               data-testid='AddCommentForm'
-              className={classNames(cls.addCommentFormRedesigned, {}, [
-                className,
-              ])}
+              className={classNames(
+                // cls.addCommentFormRedesigned,
+                '',
+                {},
+                [className],
+              )}
             >
               <Input
                 placeholder={`${t('Введите текст комментария')}`}

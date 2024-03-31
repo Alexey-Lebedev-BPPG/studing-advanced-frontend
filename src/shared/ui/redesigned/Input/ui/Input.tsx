@@ -63,8 +63,8 @@ export const Input: FC<IInputProps> = memo(props => {
   const mods = {
     [cls.readonly]: readonly,
     [cls.focused]: isFocused,
-    [cls.withAddonLeft]: Boolean(addonLeft),
-    [cls.withAddonRight]: Boolean(addonRight),
+    [cls['with-addon-left']]: Boolean(addonLeft),
+    [cls['with-addon-right']]: Boolean(addonRight),
   };
 
   // делаем автофокус при открытии
@@ -77,8 +77,10 @@ export const Input: FC<IInputProps> = memo(props => {
   }, [autofocus]);
 
   const input = (
-    <div className={classNames(cls.inputWrapper, mods, [className, cls[size]])}>
-      {!!addonLeft && <div className={cls.addonLeft}>{addonLeft}</div>}
+    <div
+      className={classNames(cls['input-wrapper'], mods, [className, cls[size]])}
+    >
+      {!!addonLeft && <div className={cls['addon-left']}>{addonLeft}</div>}
       <input
         ref={ref}
         type={type}
@@ -91,7 +93,7 @@ export const Input: FC<IInputProps> = memo(props => {
         onBlur={onBlurHandler}
         {...otherProps}
       />
-      {!!addonRight && <div className={cls.addonRight}>{addonRight}</div>}
+      {!!addonRight && <div className={cls['addon-right']}>{addonRight}</div>}
     </div>
   );
 

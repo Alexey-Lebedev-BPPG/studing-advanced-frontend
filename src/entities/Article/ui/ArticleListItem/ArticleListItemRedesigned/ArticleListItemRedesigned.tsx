@@ -20,7 +20,12 @@ export const ArticleListItemRedesigned: FC<IArticleListItemProps> = memo(
     const { article, className, target, view } = props;
     // const [isHover, bindHover] = useHover();
 
-    const types = <Text text={article.type.join(', ')} className={cls.type} />;
+    const types = (
+      <Text
+        text={article.type.join(', ')}
+        //  className={cls.type}
+      />
+    );
 
     const userInfo = (
       <>
@@ -32,7 +37,10 @@ export const ArticleListItemRedesigned: FC<IArticleListItemProps> = memo(
     const views = (
       <HStack gap='8'>
         <Icon Svg={EyeIcon} />
-        <Text text={String(article.views)} className={cls.views} />
+        <Text
+          text={String(article.views)}
+          className={cls[view === 'SMALL' ? 'small' : 'big']}
+        />
       </HStack>
     );
 
@@ -45,8 +53,11 @@ export const ArticleListItemRedesigned: FC<IArticleListItemProps> = memo(
         <Card
           fullWidth
           padding='24'
-          className={classNames('', {}, [className, cls[view]])}
           data-testid='ArticleListItem'
+          className={classNames('', {}, [
+            className,
+            cls[view === 'BIG' ? 'big' : 'small'],
+          ])}
         >
           <VStack max gap='16'>
             <HStack max gap='8'>
@@ -65,7 +76,7 @@ export const ArticleListItemRedesigned: FC<IArticleListItemProps> = memo(
             {!!textBlock?.paragraphs && (
               <Text
                 text={textBlock.paragraphs.slice(0, 2).join(' ')}
-                className={cls.textBlock}
+                className={cls['text-block']}
               />
             )}
             <HStack max justify='between'>
@@ -83,8 +94,13 @@ export const ArticleListItemRedesigned: FC<IArticleListItemProps> = memo(
       <AppLink
         target={target}
         to={getRouteArticleDetails(article.id)}
-        className={classNames(cls.articleListItem, {}, [className, cls[view]])}
         data-testid='ArticleListItem'
+        className={classNames(
+          // cls.articleListItem,
+          '',
+          {},
+          [className, cls[view === 'SMALL' ? 'small' : 'big']],
+        )}
         // {...bindHover}
       >
         <Card className={cls.card} border='partial' padding='0'>
@@ -95,10 +111,16 @@ export const ArticleListItemRedesigned: FC<IArticleListItemProps> = memo(
             alt={article.title}
           />
           <VStack className={cls.info} gap='4'>
-            <Text text={article.title} className={cls.title} />
+            <Text
+              text={article.title}
+              // className={cls.title}
+            />
             <VStack max gap='4' className={cls.footer}>
               <HStack max justify='between'>
-                <Text text={article.createdAt} className={cls.date} />
+                <Text
+                  text={article.createdAt}
+                  // className={cls.date}
+                />
                 {types}
                 {views}
               </HStack>

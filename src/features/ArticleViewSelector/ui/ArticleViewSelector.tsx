@@ -48,7 +48,11 @@ export const ArticleViewSelector: FC<IArticleViewSelectorProps> = memo(
       <ToggleFeatures
         nameFeatures={'isAppRedesigned'}
         off={
-          <div className={classNames(cls.articleViewSelector, {}, [className])}>
+          <div
+            className={classNames(cls['article-view-selector'], {}, [
+              className,
+            ])}
+          >
             {viewTypes.map(viewType => (
               <ButtonDeprecated
                 key={viewType.view}
@@ -61,7 +65,7 @@ export const ArticleViewSelector: FC<IArticleViewSelectorProps> = memo(
                   height={24}
                   className={classNames(
                     '',
-                    { [cls.notSelected]: viewType.view !== view },
+                    { [cls['not-selected']]: viewType.view !== view },
                     [],
                   )}
                 />
@@ -72,9 +76,9 @@ export const ArticleViewSelector: FC<IArticleViewSelectorProps> = memo(
         on={
           <Card
             border='round'
-            className={classNames(cls.articleViewSelectorRedesigned, {}, [
+            className={classNames(cls['article-view-selector-redesigned'], {}, [
               className,
-              cls.getHStach,
+              cls['get-h-stack'],
             ])}
           >
             {viewTypes.map(viewType => (
@@ -86,7 +90,7 @@ export const ArticleViewSelector: FC<IArticleViewSelectorProps> = memo(
                 height={24}
                 className={classNames(
                   '',
-                  { [cls.notSelected]: viewType.view !== view },
+                  { [cls['not-selected']]: viewType.view !== view },
                   [],
                 )}
                 onClick={onClick(viewType.view as ArticleView)}

@@ -1,7 +1,7 @@
-import { withTests } from '@storybook/addon-jest';
+// import { withTests } from '@storybook/addon-jest';
 import { Preview } from '@storybook/react';
 // import initStoryshots from '@storybook/addon-storyshots';
-import results from '../../../reports/unit/.jest-test-results.json';
+// import results from '../../../reports/unit/.jest-test-results.json';
 import { FeaturesFlagsDecorator } from '../../../src/shared/config/storybook/FeaturesFlagsDecorator/FeaturesFlagsDecorator';
 import { NewDesignDecorator } from '../../../src/shared/config/storybook/NewDesignDecorator/NewDesignDecorator';
 import { RouterDecorator } from '../../../src/shared/config/storybook/RouterDecorator/RouterDecorator';
@@ -59,7 +59,7 @@ const parameters: Preview = {
 };
 // здесь вызываются обертки для каждого сторибук компонента:
 export const decorators = [
-  withTests({ results }),
+  // withTests({ results }),
   // initStoryshots(),
   // добавляем декоратор для глобальных стилей
   StyleDecorator,

@@ -34,7 +34,7 @@ export const ProfileCardDeprecatedError = () => {
     <HStack
       max
       justify='center'
-      className={classNames(cls.profileCard, {}, [cls.error])}
+      className={classNames(cls['profile-card'], {}, [cls.error])}
     >
       <TextDeprecated
         theme='error'
@@ -50,7 +50,7 @@ export const ProfileCardDeprecatedSkeleton = () => (
   <HStack
     max
     justify='center'
-    className={classNames(cls.profileCard, { [cls.loading]: true })}
+    className={classNames(cls['profile-card'], { [cls.loading]: true })}
   >
     <LoaderDeprecated />
   </HStack>
@@ -84,7 +84,7 @@ export const ProfileCardDeprecated: FC<IProfileCardProps> = props => {
       max
       gap='16'
       data-testid='ProfileCard'
-      className={classNames(cls.profileCard, mods, [className])}
+      className={classNames(cls['profile-card'], mods, [className])}
     >
       {!!data?.avatar && (
         <HStack max justify='center'>

@@ -33,8 +33,8 @@ export const ArticlePageFilters: FC<IArticlePageFiltersProps> = memo(props => {
   } = useArticleFilters();
 
   return (
-    <div className={classNames(cls.articlePageFilters, {}, [className])}>
-      <div className={cls.sortWrapper}>
+    <div className={classNames(cls['article-page-filters'], {}, [className])}>
+      <div className={cls['sort-wrapper']}>
         <ArticleSortSelector
           order={order}
           sort={sort}
@@ -52,7 +52,7 @@ export const ArticlePageFilters: FC<IArticlePageFiltersProps> = memo(props => {
       </Card>
       <ArticleTypeTabs
         selectedValue={type}
-        className={cls.tabsWrapper}
+        className={cls['tabs-wrapper']}
         onChangeType={onChangeType}
       />
     </div>

@@ -39,7 +39,7 @@ export const ArticleDetails: FC<IArticleDetailsProps> = memo(props => {
       <VStack
         max
         gap='16'
-        className={classNames(cls.articleDetails, {}, [className])}
+        className={classNames(cls['article-details'], {}, [className])}
       >
         <ToggleFeatures
           nameFeatures={'isAppRedesigned'}

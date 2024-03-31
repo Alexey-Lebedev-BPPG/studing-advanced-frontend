@@ -17,7 +17,9 @@ export const ArticleTextBlockComponent: FC<IArticleTextBlockComponentProps> =
 
     return (
       <div
-        className={classNames(cls.articleTextBlockComponent, {}, [className])}
+        className={classNames(cls['article-text-block-component'], {}, [
+          className,
+        ])}
       >
         {!!block.title && (
           <ToggleFeatures

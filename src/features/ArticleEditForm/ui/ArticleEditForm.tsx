@@ -10,7 +10,7 @@ const ArticleEditForm: FC<IArticleEditFormProps> = memo(props => {
   const { className } = props;
 
   return (
-    <div className={classNames(cls.articleEditForm, {}, [className])}>
+    <div className={classNames(cls['article-edit-form'], {}, [className])}>
       <div />
     </div>
   );

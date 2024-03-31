@@ -15,11 +15,15 @@ export const MainLayout: FC<IMainLayoutProps> = memo(props => {
   const { className, content, header, sidebar, toolbar } = props;
 
   return (
-    <div className={classNames(cls.mainLayout, {}, [className])}>
+    <div className={classNames(cls['main-layout'], {}, [className])}>
       <div className={cls.sidebar}>{sidebar}</div>
       <div className={cls.content}>{content}</div>
       <div className={cls.rightbar}>
-        <div className={cls.header}>{header}</div>
+        <div
+        // className={cls.header}
+        >
+          {header}
+        </div>
         <div className={cls.toolbar}>{toolbar}</div>
       </div>
     </div>

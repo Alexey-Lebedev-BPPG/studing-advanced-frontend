@@ -39,7 +39,7 @@ export const Navbar = memo((props: NavbarProps) => {
   const mainClass = toggleFeatures({
     name: 'isAppRedesigned',
     off: () => cls.navbar,
-    on: () => cls.navbarRedesigned,
+    on: () => cls['navbar-redesigned'],
   });
 
   // для авторизованного юзера
@@ -59,7 +59,7 @@ export const Navbar = memo((props: NavbarProps) => {
           <header className={classNames(mainClass, {}, [className])}>
             <Text
               theme='inverted'
-              className={cls.appName}
+              className={cls['app-name']}
               title={`${t('Ulbi Example')}`}
             />
             <AppLink to={getRouteArticleCreate()} theme='secondary'>

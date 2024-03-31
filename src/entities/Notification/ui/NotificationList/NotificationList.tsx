@@ -31,7 +31,7 @@ export const NotificationList: FC<INotificationListProps> = memo(props => {
       <VStack
         max
         gap='16'
-        className={classNames(cls.notificationList, {}, [className])}
+        className={classNames(cls['notification-list'], {}, [className])}
       >
         <Skeleton width='100%' border='8px' height='80px' />
         <Skeleton width='100%' border='8px' height='80px' />
@@ -43,7 +43,7 @@ export const NotificationList: FC<INotificationListProps> = memo(props => {
     <VStack
       max
       gap='16'
-      className={classNames(cls.notificationList, {}, [className])}
+      className={classNames(cls['notification-list'], {}, [className])}
     >
       {data?.map(item => <NotificationItem key={item.id} item={item} />)}
     </VStack>

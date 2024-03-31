@@ -38,8 +38,8 @@ export const SidebarItem: FC<ISidebarItemProps> = memo(props => {
         <AppLink
           to={item.path}
           activeClassName={cls.active}
-          className={classNames(cls.itemRedesigned, {
-            [cls.collapsedRedesigned]: collapsed,
+          className={classNames(cls['item-redesigned'], {
+            [cls['collapsed-redesigned']]: collapsed,
           })}
         >
           <Icon Svg={item.Icon} />

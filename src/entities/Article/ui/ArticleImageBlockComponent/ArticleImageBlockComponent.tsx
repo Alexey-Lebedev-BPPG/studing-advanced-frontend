@@ -18,7 +18,9 @@ export const ArticleImageBlockComponent: FC<IArticleImageBlockComponentProps> =
 
     return (
       <div
-        className={classNames(cls.articleImageBlockComponent, {}, [className])}
+        className={classNames(cls['article-image-block-component'], {}, [
+          className,
+        ])}
       >
         <AppImage src={block.src} className={cls.img} alt={block.title} />
         {!!block.title && (
