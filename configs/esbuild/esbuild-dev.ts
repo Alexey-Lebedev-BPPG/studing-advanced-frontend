@@ -23,12 +23,12 @@
 // })();
 
 import path from 'path';
-import ESBuild from 'esbuild';
+import ESBuild, { BuildContext, BuildOptions } from 'esbuild';
 import { config } from './esbuild-config';
 
 (async () => {
   const PORT = Number(process.env?.port) || 5000;
-  let server;
+  let server: BuildContext<BuildOptions>;
 
   try {
     server = await ESBuild.context(config);
@@ -43,7 +43,9 @@ import { config } from './esbuild-config';
       servedir: config.outdir,
     });
 
-    console.log(`Hot refresh at http://${host}:${port}`);
+    console.log(
+      `Hot refresh at http://${host}:${port} (http://localhost:5000)`,
+    );
   } catch (error) {
     console.error('Ann error occurred:', error);
     // останавливаем процесс

@@ -29,7 +29,8 @@
     // позволяет выносить типы тайпскрипта в отдельные модули, чтоб упростить сборку бейблом (при этом типы нужно будет экспортить как export type {} from "...). Обязательное поле при использовании esbuild !!!
     "isolatedModules": true,
     // чтоб сработал автокомплит для модулей
-    "plugins": [{ "name": "typescript-plugin-css-modules" }]
+    "plugins": [{ "name": "typescript-plugin-css-modules" }],
+    "skipLibCheck": true
   },
   // чтоб при сборке не ругался на импорты
   "ts-node": { "compilerOptions": { "module": "CommonJS" } },

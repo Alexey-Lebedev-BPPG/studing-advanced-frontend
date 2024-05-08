@@ -12,7 +12,7 @@ describe('Button', () => {
 
   test('Test clear theme', () => {
     render(<Button theme='clear'>{'TEST'}</Button>);
-    expect(screen.getByText('TEST')).toHaveClass('clear');
+    expect(screen.getByText('TEST')).toHaveClass('button clear size-m');
     const tree = renderer
       .create(<Button theme='clear'>{'TEST'}</Button>)
       .toJSON();

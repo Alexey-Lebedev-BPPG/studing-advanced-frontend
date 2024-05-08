@@ -16,18 +16,13 @@ export default defineConfig({
   },
   plugins: [
     // позволяет работать с svg (указываем exportAsDefault, т.к. все svg мы импортили по дефолту)
-    svgr(),
+    svgr({ include: '**/*.svg' }),
     // react - сразу позволяет работать с реактом и тайпскриптом
     react(),
     checker({
-      eslint: {
-        // for example, lint .ts and .tsx
-        lintCommand: 'eslint "src/**/*.{js,jsx,ts,tsx}"',
-      },
+      eslint: { lintCommand: 'eslint "**/*.{js,jsx,ts,tsx}"' },
+      stylelint: { lintCommand: 'stylelint "**/*.{scss,sass,css}"' },
       typescript: true,
-      // stylelint: {
-      //   lintCommand: 'stylelint "src/**/*.{scss}"',
-      // },
     }),
   ],
   // указываем алиасы для путей
