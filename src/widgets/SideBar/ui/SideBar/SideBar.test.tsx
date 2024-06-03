@@ -4,7 +4,7 @@ import { SideBar } from './SideBar';
 import { componentRender } from '@/shared/lib/tests/componentRender/componentRender';
 
 describe('SideBar', () => {
-  test('Test render', () => {
+  test('render', () => {
     // чтоб можно было тестить с i18next
     // const SidebarWithTranslation = withTranslation()(SideBar);
     // render(<SidebarWithTranslation />);
@@ -13,7 +13,7 @@ describe('SideBar', () => {
     expect(screen.getByTestId('sidebar')).toBeInTheDocument();
   });
 
-  test('test toggle', () => {
+  test('toggle', () => {
     componentRender(<SideBar />);
     const toggleButton = screen.getByTestId('sidebar-toggle');
     expect(screen.getByTestId('sidebar')).toBeInTheDocument();

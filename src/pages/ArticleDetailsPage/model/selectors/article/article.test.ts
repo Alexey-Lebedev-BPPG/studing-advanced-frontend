@@ -25,7 +25,7 @@ describe('getAddCommentForm', () => {
     expect(getCanEditArticle(state as StateSchema)).toBe(false);
   });
 
-  test('should return false', () => {
+  test('should return false for authData', () => {
     // объявляем не весь стейт, а только его часть через DeepPartial (позволяет проигнорировать все поля стейта и объявить только те, которые необходимы)
     const state: DeepPartial<StateSchema> = {
       articleDetails: {},
@@ -35,7 +35,7 @@ describe('getAddCommentForm', () => {
     expect(getCanEditArticle(state as StateSchema)).toBe(false);
   });
 
-  test('should return false', () => {
+  test('should return false for dataArticleDetails', () => {
     // объявляем не весь стейт, а только его часть через DeepPartial (позволяет проигнорировать все поля стейта и объявить только те, которые необходимы)
     const state: DeepPartial<StateSchema> = {
       articleDetails: { data: dataArticleDetails },

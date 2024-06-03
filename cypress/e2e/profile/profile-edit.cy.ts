@@ -15,6 +15,7 @@ describe('Пользователь заходит на страницу', () => 
     cy.resetProfile(profileId);
   });
 
+  // eslint-disable-next-line jest/expect-expect
   it('Профиль успешно загрузился', () => {
     // получаем элемент и проверяем, что внутри инпута (это первый метод)
     // cy.get(selectByTestId("ProfileCard.firstName")).should(
@@ -24,6 +25,7 @@ describe('Пользователь заходит на страницу', () => 
     // второй метод уде через собственную команду
     cy.getByTestId('ProfileCard.firstName').should('have.value', 'test');
   });
+  // eslint-disable-next-line jest/expect-expect
   it('редактирование профиля', () => {
     const newFirstName = 'test';
     const newLastname = 'lastname';
@@ -32,5 +34,6 @@ describe('Пользователь заходит на страницу', () => 
     cy.getByTestId('ProfileCard.firstName').should('have.value', newFirstName);
     cy.getByTestId('ProfileCard.lastname').should('have.value', newLastname);
   });
+  // eslint-disable-next-line jest/expect-expect
   it('passes', () => {});
 });

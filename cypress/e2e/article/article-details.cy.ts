@@ -16,14 +16,17 @@ describe('Пользователь заходит на страницу стат
     cy.removeArticle(currentArticleId);
   });
 
+  // eslint-disable-next-line jest/expect-expect
   it('И видит содержимое статьи', () => {
     cy.getByTestId('ArticleDetails.Info').should('exist');
   });
 
+  // eslint-disable-next-line jest/expect-expect
   it('И видит список рекомендаций', () => {
     cy.getByTestId('ArticleRecommendationsList').should('exist');
   });
 
+  // eslint-disable-next-line jest/expect-expect
   it('И отправляет комментарий', () => {
     // подгружаем статью, чтоб не делать действия раньше подгрузки
     cy.getByTestId('ArticleDetails.Info');
@@ -35,6 +38,7 @@ describe('Пользователь заходит на страницу стат
     cy.getByTestId('CommentCard.Content').should('have.length', 1);
   });
 
+  // eslint-disable-next-line jest/expect-expect
   it('И ставит оценку', () => {
     // мокаем запрос с помощью интерцептора и указываем, что в качестве ответа будет наша фикстура (моковые данные)
     cy.intercept('GET', '**/articles/*', { fixture: 'article-details.json' });

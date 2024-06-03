@@ -56,3 +56,60 @@ exports[`Button Test clear theme 1`] = `
   </div>
 </div>
 `;
+
+exports[`Button clear theme 1`] = `
+<div
+  className="app app-light-theme"
+>
+  <div
+    className="flex justify-start align-start direction-column gap32 nowrap"
+  >
+    <div
+      className="flex justify-start align-center direction-row gap8 nowrap"
+    >
+      <div
+        className="skeleton"
+        style={
+          {
+            "borderRadius": "50%",
+            "height": 32,
+            "width": 32,
+          }
+        }
+      >
+        <div />
+      </div>
+      <div
+        className=" bold accent left size-m"
+      />
+      <div
+        className=" accent left size-m"
+      >
+        <p
+          className="text"
+          data-testid="Text.Paragraph"
+        >
+          22.10.2000
+        </p>
+      </div>
+    </div>
+    <button
+      className="button outline m normal"
+      onClick={[Function]}
+      type="button"
+    >
+      Редактировать
+    </button>
+    <div
+      className=" accent left size-m"
+    >
+      <p
+        className="text"
+        data-testid="Text.Paragraph"
+      >
+        10 просмотров
+      </p>
+    </div>
+  </div>
+</div>
+`;

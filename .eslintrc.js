@@ -1,3 +1,4 @@
+// старый конфиг eslint + нужно добавлять файл .eslintignore
 // чтоб появился этот файл делаем pnpm init @eslint/config
 module.exports = {
   env: { browser: true, es2021: true, jest: true, node: true },
@@ -7,6 +8,7 @@ module.exports = {
     'airbnb',
     'plugin:i18next/recommended',
     'plugin:storybook/recommended',
+    'plugin:jest/recommended',
     'plugin:import/warnings',
     'prettier',
     'plugin:typescript-sort-keys/recommended',
@@ -43,6 +45,8 @@ module.exports = {
     'unused-imports',
     // например настроить импорты по алфавиту
     'import',
+    // для тестов
+    'jest',
     'sort-keys-fix',
     'typescript-sort-keys',
     'sort-destructure-keys',

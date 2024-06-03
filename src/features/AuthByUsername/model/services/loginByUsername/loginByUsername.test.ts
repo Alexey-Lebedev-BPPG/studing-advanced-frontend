@@ -14,6 +14,7 @@ describe('loginByUsername', () => {
   //   dispatch = jest.fn();
   //   getState = jest.fn();
   // });
+  // eslint-disable-next-line jest/no-commented-out-tests
   // test("success login", async () => {
   //   // данные, которые мы получать будем в рамках теста
   //   const userValue = { username: "123", id: "1" };
@@ -34,6 +35,7 @@ describe('loginByUsername', () => {
   //   // проверяем, что сервер возвращает нам ожидаемые данные
   //   expect(result.payload).toEqual(userValue);
   // });
+  // eslint-disable-next-line jest/no-commented-out-tests
   // test("error login", async () => {
   //   // имитируем отправку post запроса, который возвращает нам ошибку
   //   mockedAxios.post.mockReturnValue(Promise.resolve({ status: 403 }));

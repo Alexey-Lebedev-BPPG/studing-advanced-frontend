@@ -3,7 +3,7 @@ import { ToggleFeatures } from './ToggleFeatures';
 import { componentRender } from '../../tests/componentRender/componentRender';
 
 describe('ToggleFeatures', () => {
-  test('Test off component', () => {
+  test('off component', () => {
     componentRender(
       <ToggleFeatures
         nameFeatures={'isAppRedesigned'}
@@ -14,7 +14,7 @@ describe('ToggleFeatures', () => {
     expect(screen.getByText('deprecated')).toBeInTheDocument();
   });
 
-  test('Test on component', () => {
+  test('on component', () => {
     componentRender(
       <ToggleFeatures
         nameFeatures={'isTest'}

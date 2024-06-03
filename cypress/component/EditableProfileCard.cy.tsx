@@ -5,6 +5,7 @@ const USER_ID = '4';
 
 // тестирование отдельных компонентов в изоляции от всего приложения (используется, т.к. в jest мы не можем понажимать на кнопки. там это все в некой абстракции.здесь все на виду. Однако есть отрицательные стороны: jest более стабилен, их легче поддерживать, быстрее работают)
 describe('EditableProfileCard.cy.tsx', () => {
+  // eslint-disable-next-line jest/expect-expect
   it('playground', () => {
     // получаем данные из стабов
     cy.intercept('GET', '**/profile/*', { fixture: 'profile.json' });

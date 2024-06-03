@@ -8,6 +8,7 @@ import { ArticleEditPageSchema } from '../types/articleEditPage';
 // const data = {};
 
 describe('articleEditPageSlice', () => {
+  // eslint-disable-next-line jest/no-commented-out-tests
   // test("", () => {
   //   const state: DeepPartial<ArticleEditPageSchema> = {};
   //   expect(
@@ -20,7 +21,7 @@ describe('articleEditPageSlice', () => {
 
   // тестируем экстра редьюсеры
   // сначала тестируем pending состояние
-  test('test articleEditPage service pending', () => {
+  test('articleEditPage service pending', () => {
     const state: DeepPartial<ArticleEditPageSchema> = {
       error: 'error',
       isLoading: false,
@@ -37,6 +38,7 @@ describe('articleEditPageSlice', () => {
   });
 
   // далее тестируем fulfilled состояние
+  // eslint-disable-next-line jest/no-commented-out-tests
   // test("test articleEditPage service fulfilled", () => {
   //   const state: DeepPartial<ArticleEditPageSchema> = {
   //     isLoading: true,

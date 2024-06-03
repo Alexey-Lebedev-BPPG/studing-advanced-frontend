@@ -77,7 +77,7 @@ const data: Article = {
 describe('ArticleDetailsSlice', () => {
   // тестируем экстра редьюсеры
   // сначала тестируем pending состояние
-  test('test get articleDetails service pending', () => {
+  test('get articleDetails service pending', () => {
     const state: DeepPartial<ArticleDetailsSchema> = {
       error: undefined,
       isLoading: false,
@@ -91,7 +91,7 @@ describe('ArticleDetailsSlice', () => {
   });
 
   // далее тестируем fulfilled состояние
-  test('test get articleDetails service fulfilled', () => {
+  test('get articleDetails service fulfilled', () => {
     const state: DeepPartial<ArticleDetailsSchema> = {
       error: undefined,
       isLoading: true,

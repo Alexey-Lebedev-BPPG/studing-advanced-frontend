@@ -17,3 +17,21 @@ exports[`Button Test render 1`] = `
   TEST
 </button>
 `;
+
+exports[`Button clear theme 1`] = `
+<button
+  className="button clear size-m"
+  type="button"
+>
+  TEST
+</button>
+`;
+
+exports[`Button render 1`] = `
+<button
+  className="button outline size-m"
+  type="button"
+>
+  TEST
+</button>
+`;

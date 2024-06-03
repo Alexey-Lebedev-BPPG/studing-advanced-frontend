@@ -5,6 +5,7 @@ describe('Пользователь заходит на страницу спис
       cy.visit('articles');
     });
   });
+  // eslint-disable-next-line jest/expect-expect
   it('Статьи успешно подгружаются', () => {
     // проверяем, что отрисовался
     cy.getByTestId('ArticleList').should('exist');
@@ -13,6 +14,7 @@ describe('Пользователь заходит на страницу спис
   });
 
   // пример теста как и выше, только с помощью фикстур
+  // eslint-disable-next-line jest/expect-expect
   it('На стабах (фикстурах)', () => {
     // мокаем запрос с помощью интерцептора и указываем, что в качестве ответа будет наша фикстура (моковые данные)
     cy.intercept('GET', '**/articles?*', { fixture: 'articles.json' });
@@ -25,6 +27,7 @@ describe('Пользователь заходит на страницу спис
   });
 
   // пример скипованного теста, когда тест пропускается
+  // eslint-disable-next-line jest/expect-expect, jest/no-disabled-tests
   it.skip('Скип', () => {
     // проверяем, что отрисовался
     cy.getByTestId('ArticleList').should('exist');

@@ -21,6 +21,7 @@ describe('updateFeatureFlags', () => {
     // expect(result.data).toEqual({});
   });
 
+  // eslint-disable-next-line jest/no-commented-out-tests
   // test('server error', async () => {
   //   // передаем наш thunk в наш класс и прокидываем инишиал стейт
   //   const thunk = new TestAsyncThunk(updateFeatureFlags);

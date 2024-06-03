@@ -4,7 +4,7 @@ import { ArticleAdditionalInfo } from './ArticleAdditionalInfo';
 import { TestProvider } from '@/shared/lib/tests/componentRender/componentRender';
 
 describe('Button', () => {
-  test('Test render', () => {
+  test('render', () => {
     render(
       <TestProvider options={{ initialState: { counter: { value: 10 } } }}>
         <ArticleAdditionalInfo
@@ -22,7 +22,7 @@ describe('Button', () => {
     expect(screen.getByText('22.10.2000')).toBeInTheDocument();
   });
 
-  test('Test clear theme', () => {
+  test('clear theme', () => {
     render(
       <TestProvider options={{ initialState: { counter: { value: 10 } } }}>
         <ArticleAdditionalInfo

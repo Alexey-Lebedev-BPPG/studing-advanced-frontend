@@ -12,3 +12,16 @@ exports[`Text Test clear theme 1`] = `
   </p>
 </div>
 `;
+
+exports[`Text clear theme 1`] = `
+<div
+  className="text-wrapper size-m left m"
+>
+  <p
+    className="text"
+    data-testid="Text.Paragraph"
+  >
+    TEST
+  </p>
+</div>
+`;

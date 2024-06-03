@@ -8,7 +8,7 @@ import {
 } from '@/shared/lib/tests/componentRender/componentRender';
 
 describe('Counter', () => {
-  test('Test render', () => {
+  test('render', () => {
     componentRender(<Counter />, { initialState: { counter: { value: 10 } } });
     // проверяем, что текст внутри элемента равен 10
     expect(screen.getByTestId('value-title')).toHaveTextContent('10');
@@ -33,5 +33,6 @@ describe('Counter', () => {
       </TestProvider>,
     )
     .toJSON();
+  // eslint-disable-next-line jest/no-standalone-expect
   expect(tree).toMatchSnapshot();
 });

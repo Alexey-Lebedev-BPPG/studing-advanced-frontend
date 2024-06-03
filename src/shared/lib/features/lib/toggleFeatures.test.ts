@@ -1,7 +1,7 @@
 import { toggleFeatures } from './toggleFeatures';
 
 describe('ToggleFeatures', () => {
-  test('Test off function', () => {
+  test('off function', () => {
     expect(
       toggleFeatures({
         name: 'isAppRedesigned',
@@ -11,7 +11,7 @@ describe('ToggleFeatures', () => {
     ).toBe('off');
   });
 
-  test('Test on function', () => {
+  test('on function', () => {
     expect(
       toggleFeatures({
         name: 'isTest',
