@@ -5,6 +5,7 @@ export enum AppRoutes {
   ARTICLE_CREATE = 'article_create',
   ARTICLE_DETAILS = 'article_details',
   ARTICLE_EDIT = 'article_edit',
+  CAROUSEL_NETFLIX = 'carousel_netflix',
   FORBIDDEN = 'forbidden',
   MAIN = 'main',
   NOT_FOUND = 'not_found',
@@ -22,6 +23,7 @@ export const getRouteArticleEdit = (id: string) => `/articles/${id}/edit`;
 export const getRouteAdminPanel = () => '/admin';
 export const getRouteForbidden = () => '/forbidden';
 export const getRouteSettings = () => '/settings';
+export const getRouteCarouselNetflix = () => '/carousel_netflix';
 
 // создаем объект, который поможет мапить текущий урл в вышеуказанные названия
 export const AppRouteByPathPattern: Record<string, AppRoutes> = {
@@ -35,4 +37,5 @@ export const AppRouteByPathPattern: Record<string, AppRoutes> = {
   [getRouteAdminPanel()]: AppRoutes.ADMIN_PANEL,
   [getRouteForbidden()]: AppRoutes.FORBIDDEN,
   [getRouteSettings()]: AppRoutes.SETTINGS,
+  [getRouteCarouselNetflix()]: AppRoutes.CAROUSEL_NETFLIX,
 };

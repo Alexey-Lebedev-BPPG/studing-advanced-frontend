@@ -11,6 +11,7 @@ import ProfileIconDeprecated from '@/shared/assets/icons/profile-20-20.svg';
 import {
   getRouteAbout,
   getRouteArticles,
+  getRouteCarouselNetflix,
   getRouteMain,
   getRouteProfile,
 } from '@/shared/const/router';
@@ -90,6 +91,15 @@ export const useSidebarItems = () => {
       }),
       path: getRouteAbout(),
       text: 'О сайте',
+    },
+    {
+      Icon: toggleFeatures({
+        name: 'isAppRedesigned',
+        off: () => AboutIconDeprecated,
+        on: () => AboutIcon,
+      }),
+      path: getRouteCarouselNetflix(),
+      text: 'Карусель Нетфликс',
     },
   ];
 
