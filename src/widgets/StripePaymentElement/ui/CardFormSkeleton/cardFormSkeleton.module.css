@@ -1,0 +1,58 @@
+.skeleton-block-wrapper {
+  width: 668px;
+}
+
+.skeleton-block {
+  overflow: hidden;
+
+  width: inherit;
+  height: 460px;
+  min-height: unset !important;
+  padding: var(--padding-2-x-l);
+
+  background-color: var(--bg-1);
+  backdrop-filter: blur(--padding-s);
+  border-radius: var(--padding-m);
+}
+
+.skeleton {
+  background-color: var(--bg-1);
+  border-radius: var(--padding-x-s);
+}
+
+.skeleton-row {
+  width: 100%;
+}
+
+.skeleton-column {
+  width: 50%;
+}
+
+.btn {
+  width: 100%;
+  padding-top: var(--padding-2-x-l);
+}
+
+@media screen and (width < 768px) {
+  .skeleton-block-wrapper {
+    width: 655px;
+  }
+}
+
+@media screen and (width < 720px) {
+  .skeleton-block-wrapper {
+    width: 34rem;
+  }
+}
+
+@media screen and (width < 600px) {
+  .skeleton-block-wrapper {
+    width: 26rem;
+  }
+}
+
+@media screen and (width < 475px) {
+  .skeleton-block-wrapper {
+    width: 17rem;
+  }
+}

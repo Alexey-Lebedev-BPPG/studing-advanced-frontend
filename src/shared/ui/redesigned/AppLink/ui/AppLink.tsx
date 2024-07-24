@@ -8,7 +8,7 @@ export type AppLinkVariant = 'primary' | 'secondary' | 'red';
 interface AppLinkProps extends LinkProps {
   activeClassName?: string;
   className?: string;
-  variant?: AppLinkVariant;
+  // variant?: AppLinkVariant;
 }
 
 // не используем memo в компонентах, где у нас есть children
@@ -23,7 +23,7 @@ export const AppLink: FC<AppLinkProps> = forwardRef(
       children,
       className,
       to,
-      variant = 'primary',
+      // variant = 'primary',
       ...otherProps
     } = props;
 
@@ -35,7 +35,7 @@ export const AppLink: FC<AppLinkProps> = forwardRef(
         className={({ isActive }) =>
           classNames(cls.appLink, { [activeClassName]: isActive }, [
             className,
-            cls[variant],
+            // cls[variant],
           ])
         }
         {...otherProps}

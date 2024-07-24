@@ -19,10 +19,7 @@ import {
   DynamicModuleLoader,
   ReducersList,
 } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
-import {
-  useAppDispatch,
-  useAppSelector,
-} from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { useAppDispatch, useAppSelector } from '@/shared/lib/hooks/redux';
 import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect/useInitialEffect';
 import { Text } from '@/shared/ui/deprecated/Text';
 import { VStack } from '@/shared/ui/redesigned/Stack';

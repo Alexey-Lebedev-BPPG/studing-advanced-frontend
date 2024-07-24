@@ -1,7 +1,7 @@
 import { FC, memo, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { saveJsonSettings, useJsonSettings } from '@/entities/User';
-import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { useAppDispatch } from '@/shared/lib/hooks/redux';
 import { useDetectDevice } from '@/shared/lib/hooks/useDetectDevice/useDetectDevice';
 import { Text } from '@/shared/ui/deprecated/Text';
 import { Drawer } from '@/shared/ui/redesigned/Drawer';

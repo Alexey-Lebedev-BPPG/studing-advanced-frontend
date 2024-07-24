@@ -1,0 +1,161 @@
+.wrapper {
+  position: fixed;
+  z-index: var(--cro-banner-wrapper-z-index);
+  bottom: 30px;
+  left: 3.2%;
+
+  border: 1px solid var(--neutral-20);
+  border-radius: 0.75rem;
+  box-shadow: 4px 4px 20px 0 rgb(140 178 168 / 8%);
+}
+
+.cro-banner {
+  z-index: var(--cro-banner-z-index);
+
+  width: 22.375rem;
+  height: 4.25rem;
+  padding: var(--padding-s);
+
+  background: var(--neutral-10);
+  border-radius: 0.75rem;
+}
+
+.count {
+  margin-right: var(--margin-s);
+  padding: var(--padding-x-x-s) var(--padding-x-s);
+
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.75rem;
+  color: var(--text-secondary);
+
+  background: var(--primary-80);
+  border-radius: var(--padding-x-s);
+}
+
+.text {
+  width: 12.75rem;
+}
+
+.close-button {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+}
+
+/* first */
+.first-banner-wrapper {
+  position: absolute;
+  top: 5px;
+  width: 95%;
+}
+
+.first-banner {
+  position: absolute;
+  z-index: var(--cro-first-message-z-index);
+  top: 5px;
+  left: 0;
+
+  width: 100%;
+  height: 40px;
+
+  animation: first-up 1s forwards linear;
+}
+
+.hide-first-banner-forcibly {
+  top: -50px;
+  animation: first-down 2s forwards linear;
+}
+
+/* third */
+.third-banner {
+  z-index: var(--cro-first-message-z-index);
+  animation:
+    first-up 1s forwards linear,
+    first-down 2s forwards linear;
+  animation-delay: 0s, 10s;
+}
+
+/* second */
+.second-banner {
+  z-index: var(--cro-second-message-z-index);
+  animation:
+    second-up 1s forwards linear,
+    second-down 2s forwards linear;
+  animation-delay: 0.5s, 10s;
+}
+
+@keyframes first-up {
+  0% {
+    top: 5px;
+  }
+
+  100% {
+    top: -52px;
+  }
+}
+
+@keyframes first-down {
+  0% {
+    top: -52px;
+  }
+
+  100% {
+    top: 5px;
+  }
+}
+
+@keyframes second-up {
+  0% {
+    top: 5px;
+  }
+
+  100% {
+    top: -98px;
+  }
+}
+
+@keyframes second-down {
+  0% {
+    top: -98px;
+  }
+
+  100% {
+    top: 5px;
+  }
+}
+
+@media screen and (width <= 1024px) {
+  .wrapper {
+    left: 4.2%;
+  }
+}
+
+@media screen and (width < 768px) {
+  .wrapper {
+    left: 3.2%;
+  }
+}
+
+@media screen and (width < 390px) {
+  .wrapper {
+    left: 7.2%;
+    max-width: 18rem;
+  }
+
+  .cro-banner {
+    width: 17rem;
+    height: 4rem;
+    padding: var(--padding-x-s);
+  }
+
+  .count {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+  }
+
+  .text {
+    width: 10.75rem;
+    font-size: 0.625rem;
+  }
+}

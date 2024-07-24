@@ -42,7 +42,17 @@ export const createReduxStore = (
   // export interface ThunkExtraArg {
   //   api: AxiosInstance;
   // }
-  // const persistConfig = { key: 'root', storage: localStorage };
+  // const persistConfig = {
+  //   key: 'root',
+  //   storage: localStorage,
+  //   whitelist: [
+  //     'packages',
+  //     'user',
+  //     'formPayment',
+  //     'partnersResetPassword',
+  //     'userSignIn',
+  //   ],
+  // };
   // const reducerManager = createReducerManager(rootReducer);
   // const persistedReducer = persistReducer(
   //   persistConfig,

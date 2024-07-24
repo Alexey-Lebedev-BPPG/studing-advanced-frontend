@@ -1,3 +1,4 @@
+/* stylelint-disable font-family-no-missing-generic-family-keyword */
 .pdf-wrapper {
   min-height: 100vh;
   background: var(--w-g-0);
@@ -32,16 +33,12 @@
       gap: 0.625rem;
 
       h1 {
-        @include H1;
-
         line-height: 2.5rem;
         color: var(--main-black);
         text-transform: uppercase;
       }
 
       div {
-        @include BodyM-XS-400;
-
         width: 87%;
       }
     }
@@ -141,8 +138,6 @@
         margin-bottom: 0.5rem;
 
         &__text {
-          @include BodyM-XS-600;
-
           font-style: normal;
           color: var(--main-black);
           text-transform: uppercase;
@@ -220,8 +215,6 @@
         gap: 0.625rem;
 
         h1 {
-          @include H3;
-
           line-height: 2.5rem;
           color: var(--main-black);
           text-transform: uppercase;
@@ -333,8 +326,6 @@
           margin-bottom: 0.5rem;
 
           &__text {
-            @include BodyM-XS-600;
-
             font-style: normal;
             color: var(--main-black);
             text-transform: uppercase;

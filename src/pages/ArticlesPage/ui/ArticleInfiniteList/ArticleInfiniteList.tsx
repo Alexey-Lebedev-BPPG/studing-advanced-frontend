@@ -6,7 +6,7 @@ import {
 } from '../../model/selectors/articlesPageSelectors';
 import { getArticles } from '../../model/slice/articlesPageSlice';
 import { ArticleList } from '@/entities/Article';
-import { useAppSelector } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { useAppSelector } from '@/shared/lib/hooks/redux';
 import { Text } from '@/shared/ui/deprecated/Text';
 
 export interface IArticleInfiniteListProps {

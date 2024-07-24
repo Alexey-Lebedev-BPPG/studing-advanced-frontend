@@ -12,10 +12,7 @@ import {
   ReducersList,
 } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { ToggleFeatures } from '@/shared/lib/features';
-import {
-  useAppDispatch,
-  useAppSelector,
-} from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { useAppDispatch, useAppSelector } from '@/shared/lib/hooks/redux';
 import { Button as ButtonDeprecated } from '@/shared/ui/deprecated/Button';
 import { Input as InputDeprecated } from '@/shared/ui/deprecated/Input';
 import { Button } from '@/shared/ui/redesigned/Button';

@@ -7,31 +7,31 @@ type HTMLInputProps = Omit<
   'checked' | 'onChange' | 'readOnly'
 >;
 export interface RadioButtonProps extends HTMLInputProps {
-  className?: string;
-  name?: string;
-  id?: string;
-  value?: string;
-  onChange: () => void;
   checked: boolean;
+  className?: string;
+  id?: string;
+  name?: string;
+  onChange: (value: boolean) => void;
   text?: string;
+  value?: string;
 }
 export const RadioButton = memo((props: RadioButtonProps) => {
-  const { className, checked, id, name, onChange, text, value, ...otherProps } =
+  const { checked, className, id, name, onChange, text, value, ...otherProps } =
     props;
 
   return (
-    <div className={classNames(cls.RadioButton, {}, [className])}>
-      <label htmlFor={id} className={cls.radioLabel}>
+    <div className={classNames(cls['radio-button'], {}, [className])}>
+      <label htmlFor={id} className={cls['radio-label']}>
         <input
-          className={cls.radioInput}
+          className={cls['radio-input']}
           type='radio'
           name={name}
           id={id}
           checked={checked}
-          onChange={onChange}
+          onChange={event => onChange(event.target.checked)}
           {...otherProps}
         />
-        <span className={cls.customRadio} />
+        <span className={cls['custom-radio']} />
       </label>
     </div>
   );

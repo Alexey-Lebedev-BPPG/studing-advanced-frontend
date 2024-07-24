@@ -10,6 +10,9 @@ export const rtkApi = createApi({
       const token = localStorage.getItem(USER_LOCALSTORAGE_KEY) || '';
       if (token) headers.set('Authorization', token);
 
+      // чтоб передать на бэк в заголовках язык приложения
+      // addLanguageHeaderExceptWhiteListForRTK(headers, api);
+
       return headers;
     },
   }),

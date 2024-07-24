@@ -1,0 +1,7 @@
+.view-count-pagination {
+  margin-right: var(--margin-x-l);
+
+  p {
+    color: var(--text-tertiary);
+  }
+}

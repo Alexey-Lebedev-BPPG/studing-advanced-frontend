@@ -26,7 +26,7 @@ export const ArticleImageBlockComponent: FC<IArticleImageBlockComponentProps> =
         {!!block.title && (
           <ToggleFeatures
             nameFeatures={'isAppRedesigned'}
-            on={<Text title={block.title} align='center' />}
+            on={<Text variant='accent' title={block.title} align='center' />}
             off={<TextDeprecated title={block.title} align='center' />}
           />
         )}

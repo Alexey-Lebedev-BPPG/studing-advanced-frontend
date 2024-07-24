@@ -1,7 +1,7 @@
 import { Reducer } from '@reduxjs/toolkit';
 import { FC, ReactNode, useEffect } from 'react';
 import { useStore } from 'react-redux';
-import { useAppDispatch } from '../../hooks/useAppDispatch/useAppDispatch';
+import { useAppDispatch } from '../../hooks/redux';
 import {
   ReduxStoreWithManager,
   StateSchema,

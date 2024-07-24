@@ -4,7 +4,7 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 
 type HTMLInputProps = Omit<
   InputHTMLAttributes<HTMLInputElement>,
-  'checked' | 'onChange'
+  'checked' | 'onChange' | 'size'
 >;
 
 export interface CheckboxProps extends HTMLInputProps {
@@ -14,6 +14,7 @@ export interface CheckboxProps extends HTMLInputProps {
   error?: boolean;
   id: string;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  size?: 'default' | 'small';
 }
 
 export const Checkbox = memo((props: CheckboxProps) => {
@@ -24,6 +25,7 @@ export const Checkbox = memo((props: CheckboxProps) => {
     error = false,
     id,
     onChange,
+    size = 'default',
     ...otherProps
   } = props;
 
@@ -32,16 +34,16 @@ export const Checkbox = memo((props: CheckboxProps) => {
   };
 
   return (
-    <div className={classNames(cls.checkbox, {}, [className])}>
+    <div className={classNames(cls.checkbox, {}, [className, cls[size]])}>
       <input
         type='checkbox'
-        id={`checkbox-${id}`}
+        id={id}
         checked={checked}
         aria-invalid={error}
         onChange={onChangeHandler}
         {...otherProps}
       />
-      <label htmlFor={`checkbox-${id}`}>{children}</label>
+      <label htmlFor={id}>{children}</label>
     </div>
   );
 });

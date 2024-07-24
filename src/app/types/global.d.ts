@@ -47,6 +47,10 @@ type OptionalRecord<K extends keyof any, T> = {
   [P in K]?: T;
 };
 
+type ValidRowModel = {
+  [key: string]: any;
+};
+
 // кастомный тип для обработки блоб файлов
 interface Navigator {
   msSaveOrOpenBlob?: (blobOrBase64: Blob | string, filename: string) => void;
@@ -72,3 +76,11 @@ interface IErrorMessage extends IMessage {
   error: string;
   statusCode: number;
 }
+
+type RefDiv = HTMLDivElement;
+type RefBTN = HTMLButtonElement;
+type RefInput = HTMLInputElement;
+type IntRange<F extends number, T extends number> = Exclude<
+  Enumerate<T>,
+  Enumerate<F>
+>;

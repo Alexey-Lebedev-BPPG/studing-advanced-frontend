@@ -53,12 +53,41 @@ module.exports = {
   ],
   rules: {
     '@typescript-eslint/no-restricted-imports': [
-      'warn',
+      'error',
       {
         importNames: ['useSelector', 'useDispatch'],
         message:
           'Use typed hooks `useAppDispatch` and `useAppSelector` instead.',
         name: 'react-redux',
+      },
+      {
+        importNames: [
+          'redirect',
+          'usePathname',
+          'useRouter',
+          'permanentRedirect',
+        ],
+        message:
+          'Use typed functions and hooks from the file "@/shared/lib/router/navigation".',
+        name: 'next/navigation',
+      },
+      {
+        importNames: ['useAppRouter'],
+        message:
+          'Use typed functions and hooks from the file "@/src/shared/lib/hooks/useAppNavigation/useAppNavigation".',
+        name: '@/shared/lib/router/navigation',
+      },
+      {
+        importNames: ['Link'],
+        message:
+          'Use typed component <Links /> from the file "src/shared/ui/Links/Links".',
+        name: 'next/link',
+      },
+      {
+        importNames: ['Image'],
+        message:
+          'Use typed component <AppImage /> from the file "src/shared/ui/AppImage/AppImage".',
+        name: 'next/image',
       },
     ],
     '@typescript-eslint/no-shadow': 'error',
@@ -113,9 +142,16 @@ module.exports = {
     'operator-linebreak': 'off',
     'path-checher-ulbi-example/layer-imports': [
       'warn',
-      { alias: '@', ignoreImportPatterns: ['**/StoreProvider', '**/testing'] },
+      {
+        alias: '@',
+        ignoreImportPatterns: ['**/StoreProvider', '**/testing'],
+        typeProject: 'react',
+      },
     ],
-    'path-checher-ulbi-example/path-checker': ['warn', { alias: '@' }],
+    'path-checher-ulbi-example/path-checker': [
+      'warn',
+      { alias: '@', typeProject: 'react' },
+    ],
     'path-checher-ulbi-example/public-api-imports': [
       'warn',
       {
@@ -125,6 +161,7 @@ module.exports = {
           '**/*.stories.*',
           '**/StoreDecorator.tsx',
         ],
+        typeProject: 'react',
       },
     ],
     'prettier/prettier': [

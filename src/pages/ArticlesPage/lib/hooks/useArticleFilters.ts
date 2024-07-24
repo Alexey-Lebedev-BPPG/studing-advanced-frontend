@@ -13,10 +13,7 @@ import {
   ArticleSortFields,
   ArticleType,
 } from '@/entities/Article';
-import {
-  useAppDispatch,
-  useAppSelector,
-} from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { useAppDispatch, useAppSelector } from '@/shared/lib/hooks/redux';
 import { useDebounce } from '@/shared/lib/hooks/useDebounce/useDebounce';
 import { SortOrder } from '@/shared/types/sort';
 

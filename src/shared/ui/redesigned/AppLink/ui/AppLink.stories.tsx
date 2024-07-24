@@ -14,15 +14,15 @@ export default {
 const Template: StoryFn<typeof AppLink> = args => <AppLink {...args} />;
 
 export const Primary = Template.bind({});
-Primary.args = { children: 'Text', variant: 'primary' };
+Primary.args = { children: 'Text' };
 
 export const Secondary = Template.bind({});
-Secondary.args = { children: 'Text', variant: 'secondary' };
+Secondary.args = { children: 'Text' };
 
 export const PrimaryDark = Template.bind({});
-PrimaryDark.args = { children: 'Text', variant: 'primary' };
+PrimaryDark.args = { children: 'Text' };
 PrimaryDark.decorators = [ThemeDecorator(Theme.LIGHT)];
 
 export const SecondaryDark = Template.bind({});
-SecondaryDark.args = { children: 'Text', variant: 'primary' };
+SecondaryDark.args = { children: 'Text' };
 SecondaryDark.decorators = [ThemeDecorator(Theme.DARK)];

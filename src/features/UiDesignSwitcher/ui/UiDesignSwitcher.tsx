@@ -1,10 +1,7 @@
 import { FC, memo, useState } from 'react';
 import { getUserAuthData } from '@/entities/User';
 import { getFeatureFlags, updateFeatureFlags } from '@/shared/lib/features';
-import {
-  useAppDispatch,
-  useAppSelector,
-} from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { useAppDispatch, useAppSelector } from '@/shared/lib/hooks/redux';
 import { useForceUpdate } from '@/shared/lib/render/forceUpdate';
 import { ListBox } from '@/shared/ui/redesigned/Popups';
 import { Skeleton } from '@/shared/ui/redesigned/Skeleton';
@@ -47,7 +44,7 @@ export const UiDesignSwitcher: FC<IUiDesignSwitcherProps> = memo(props => {
 
   return (
     <HStack>
-      <Text text='Вариант интерфейса' />
+      <Text variant='accent' text='Вариант интерфейса' />
       {isLoading ? (
         <Skeleton width={120} height={40} />
       ) : (

@@ -101,10 +101,10 @@ export const CommentCard: FC<ICommentCardProps> = memo(props => {
                 {!!comment?.user.avatar && (
                   <Avatar size={30} src={comment.user.avatar} />
                 )}
-                <Text bold text={comment?.user.username} />
+                <Text bold variant='accent' text={comment?.user.username} />
               </HStack>
             </AppLink>
-            <Text text={comment?.text} />
+            <Text variant='accent' text={comment?.text} />
           </VStack>
         </Card>
       }

@@ -2,7 +2,7 @@ import { Dispatch, FC, SetStateAction, useEffect, useState } from 'react';
 import { isBoxValid } from './ModalContentItems/helpers';
 import { newBoxInFormData } from './helpers';
 import { IBox, ICreateBoxProps, IFormDataCreateBox } from './types';
-import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { useAppDispatch } from '@/shared/lib/hooks/redux';
 // import { FileUploader } from 'react-drag-drop-files';
 
 interface IModalContentProps {

@@ -15,10 +15,7 @@ import {
   ReducersList,
 } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { ToggleFeatures } from '@/shared/lib/features';
-import {
-  useAppDispatch,
-  useAppSelector,
-} from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { useAppDispatch, useAppSelector } from '@/shared/lib/hooks/redux';
 import { useForceUpdate } from '@/shared/lib/render/forceUpdate';
 import { Button as ButtonDeprecated } from '@/shared/ui/deprecated/Button';
 import { Input as InputDeprecated } from '@/shared/ui/deprecated/Input';
@@ -111,8 +108,8 @@ const LoginForm: FC<ILoginFormProps> = memo(props => {
         }
         on={
           <VStack gap='16'>
-            <Text title={`${t('Форма авторизации')}`} />
-            {!!error && <Text text={error} variant='error' />}
+            <Text variant='accent' title={`${t('Форма авторизации')}`} />
+            {!!error && <Text variant='accent' text={error} />}
             <Input
               autofocus
               type='text'

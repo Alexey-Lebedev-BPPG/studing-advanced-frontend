@@ -1,0 +1,24 @@
+.wrapper {
+  align-self: flex-start;
+
+  width: 100%;
+  max-width: 42rem;
+  padding: var(--padding-2-x-l);
+
+  background-color: var(--bg-1);
+  border-radius: var(--padding-m);
+}
+
+.green-text {
+  color: var(--primary-90);
+}
+
+.ordinary-text {
+  color: var(--text-tertiary);
+}
+
+@media screen and (width <= 320px) {
+  .wrapper {
+    max-width: 272px;
+  }
+}

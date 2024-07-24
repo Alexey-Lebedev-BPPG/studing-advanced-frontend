@@ -16,7 +16,7 @@ import {
   getRouteProfile,
 } from '@/shared/const/router';
 import { toggleFeatures } from '@/shared/lib/features';
-import { useAppSelector } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { useAppSelector } from '@/shared/lib/hooks/redux';
 
 // предназначен для того, чтоб получать items для сайдбара во взаимодействии с редаксом
 // используем createSelector, чтоб мемоизировать значения, т.к. они изменяться не будут

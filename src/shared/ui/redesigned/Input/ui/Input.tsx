@@ -100,7 +100,7 @@ export const Input: FC<IInputProps> = memo(props => {
   if (label)
     return (
       <HStack max gap='8'>
-        <Text text={label} />
+        <Text variant='accent' text={label} />
         {input}
       </HStack>
     );

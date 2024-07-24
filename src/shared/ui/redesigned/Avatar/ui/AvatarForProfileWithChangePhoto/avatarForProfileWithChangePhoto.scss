@@ -64,19 +64,11 @@
       color: var(--main-black);
 
       h1 {
-        @include H4-CL;
-
         letter-spacing: -0.02em;
       }
 
-      h2 {
-        @include BodyS-400;
-      }
 
       &__other {
-
-        @include BodyM-400;
-
         display: flex;
         gap: 1rem;
         align-items: center;
@@ -138,6 +130,7 @@
 
       transition: visibility 0s, opacity 0.2s ease-out;
 
+      /* stylelint-disable-next-line no-descending-specificity */
       path {
         fill: var(--main-white);
       }

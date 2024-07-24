@@ -13,8 +13,12 @@ export default {
 const Template: StoryFn<typeof Card> = arg => <Card {...arg} />;
 
 export const Normal = Template.bind({});
-Normal.args = { children: <Text title='lorem' text='lorem lorem' /> };
+Normal.args = {
+  children: <Text variant='accent' title='lorem' text='lorem lorem' />,
+};
 
 export const Dark = Template.bind({});
-Dark.args = { children: <Text title='lorem' text='lorem lorem' /> };
+Dark.args = {
+  children: <Text variant='accent' title='lorem' text='lorem lorem' />,
+};
 Dark.decorators = [ThemeDecorator(Theme.DARK)];

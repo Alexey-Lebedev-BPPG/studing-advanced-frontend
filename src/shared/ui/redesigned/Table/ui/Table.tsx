@@ -1,52 +1,124 @@
-import { memo, useCallback, useMemo } from 'react';
-import cls from './Table.module.scss';
+import { ChangeEvent, useCallback, useMemo, useState } from 'react';
+import cls from './Table.module.css';
+import { Checkbox } from '../../Button/ui/Checkbox/Checkbox';
 import { Spinner } from '../../Loaders';
+import { Pagination } from '../../Pagination/Pagination';
 import { HStack, VStack } from '../../Stack';
-import { ITableProps, ValidRowModel } from '../model/types/table';
+import { Text } from '../../Text';
+import { ITableBaseOld } from '../model/types/table';
 import { classNames } from '@/shared/lib/classNames/classNames';
-
-const typedMemo: <T>(c: T) => T = memo;
+import { useDetectDevice } from '@/shared/lib/hooks/useDetectDevice/useDetectDevice';
+import { typedMemo } from '@/shared/lib/typedMemo/typedMemo';
 
 export const Table = typedMemo(
-  <T extends ValidRowModel>(props: ITableProps<T>) => {
+  <T extends ValidRowModel>(props: ITableBaseOld<T>) => {
     const {
+      checkedIds,
+      checkedItem,
       className,
       columns,
       emptyContent,
       findTotal,
-      gap = '4',
+      gap = '0',
+      isCheckedAllItems,
       isLoading,
-      refLoader,
-      rowLink,
+      onChangeCheckAllItem,
+      onChangeCheckItem,
+      onChangePage,
+      page,
       rows,
+      rowsPerPage,
+      setRowsPerPage,
+      viewCheckboxFor,
+      viewMobileHeader = true,
       withCheckbox = false,
-      withoutLastBorder = false,
+      withPagination = true,
     } = props;
 
-    const headerContent = useMemo(
-      () =>
-        columns.map((column, index) => {
-          const {
-            field,
-            fullWidth,
-            headerName,
-            justify = 'start',
-            style,
-            width = 5,
-          } = column;
+    const isMobile = useDetectDevice();
 
-          return (
-            <HStack
-              key={field + index}
-              justify={justify}
-              max={fullWidth}
-              style={{ minWidth: width, ...style }}
-            >
-              {headerName}
-            </HStack>
-          );
-        }),
-      [columns],
+    const [isCheckAllRows, setIsCheckAllRows] = useState(false);
+    const [checkedRows, setCheckedRows] = useState<string[]>([]);
+
+    const toCheckAll = useCallback(
+      (e: ChangeEvent<HTMLInputElement>) => {
+        const { checked } = e.currentTarget;
+        setIsCheckAllRows(checked);
+        if (isCheckAllRows) setCheckedRows([]);
+
+        const checkedItems =
+          checked && viewCheckboxFor
+            ? viewCheckboxFor.map(item => item.id)
+            : [];
+        if (checkedItems.length > 0) {
+          setCheckedRows(checkedItems);
+          onChangeCheckItem?.(checkedItems);
+        }
+      },
+      [isCheckAllRows, viewCheckboxFor, onChangeCheckItem],
+    );
+
+    const toCheck = useCallback(
+      (e: ChangeEvent<HTMLInputElement>) => {
+        const { checked, id } = e.currentTarget;
+
+        const filteredChecks = [...checkedRows].filter(item => item !== id);
+
+        const checkedItems = checked ? [...checkedRows, id] : filteredChecks;
+
+        setCheckedRows(checkedItems);
+        onChangeCheckItem?.(checkedItems);
+
+        setIsCheckAllRows(
+          Boolean(
+            viewCheckboxFor && viewCheckboxFor.length === checkedItems.length,
+          ),
+        );
+      },
+      [viewCheckboxFor, checkedRows, onChangeCheckItem],
+    );
+
+    const headerClass = useMemo(() => {
+      if (!viewMobileHeader && isMobile) return cls['th-off-header'];
+
+      return cls.th;
+    }, [viewMobileHeader, isMobile]);
+
+    const headerContent = useMemo(
+      () => (
+        <>
+          {!!withCheckbox && (
+            <Checkbox
+              width='3rem'
+              id='selectAll'
+              checked={isCheckAllRows}
+              onChange={toCheckAll}
+            />
+          )}
+          {columns.map((column, indexColumn) => {
+            const {
+              field,
+              fullWidth,
+              headerName,
+              justify = 'start',
+              style,
+              width = 5,
+            } = column;
+
+            return (
+              <HStack
+                key={field + indexColumn}
+                max
+                style={{ minWidth: width, ...style }}
+                justify={justify}
+              >
+                <Text variant='accent' text={headerName} />
+              </HStack>
+            );
+          })}
+        </>
+      ),
+      [columns, isCheckAllRows, toCheckAll, withCheckbox],
     );
 
     const currentChildren = useCallback(
@@ -63,12 +135,16 @@ export const Table = typedMemo(
 
           return (
             <HStack
-              key={field + indexColumn}
+              key={row.id + field + indexColumn}
+              max
               justify={justify}
-              max={fullWidth}
               style={{ minWidth: width, ...style }}
             >
-              {render ? render(row) : row[field]}
+              {render ? (
+                render(row)
+              ) : (
+                <Text variant='accent' text={row[field]} />
+              )}
             </HStack>
           );
         }),
@@ -77,27 +153,67 @@ export const Table = typedMemo(
 
     const bodyContent = useMemo(
       () =>
-        rows.map((row, indexRow) =>
-          rowLink ? (
-            <a
-              key={row.id + indexRow}
-              href={rowLink(row)}
-              style={{ gap: `${gap}rem` }}
-              className={classNames(cls.row, {}, [cls.cursor])}
+        rows?.map(row => {
+          const arrayWithoutCheckbox = viewCheckboxFor?.filter(
+            s => s.id === row.id,
+          );
+
+          return !viewMobileHeader && isMobile ? (
+            <VStack
+              key={row.id}
+              max
+              gap='16'
+              className={cls.row}
+              justify='center'
             >
-              {currentChildren(row)}
-            </a>
+              <HStack max justify='between'>
+                <Text variant='accent' text={row.productTitle} />
+                <Text variant='accent' text={`$${row.price}`} />
+              </HStack>
+              <HStack max justify='between'>
+                <Text
+                  variant='accent'
+                  text={row.updatedAt.substring(0, 10).replaceAll('-', '.')}
+                />
+              </HStack>
+            </VStack>
           ) : (
-            <div
-              key={row.id + indexRow}
+            <HStack
+              key={row.id}
+              max
               className={cls.row}
               style={{ gap: `${gap}rem` }}
             >
+              {!!withCheckbox &&
+                arrayWithoutCheckbox?.map(item => (
+                  <Checkbox
+                    key={`checkbox-${item.id}`}
+                    width='3rem'
+                    id={row.id}
+                    checked={checkedRows?.includes(row.id)}
+                    onChange={toCheck}
+                  />
+                ))}
+              {!!withCheckbox &&
+                !!arrayWithoutCheckbox &&
+                arrayWithoutCheckbox.length < 1 && (
+                  <div style={{ width: '9.8rem' }} />
+                )}
               {currentChildren(row)}
-            </div>
-          ),
-        ),
-      [currentChildren, gap, rowLink, rows],
+            </HStack>
+          );
+        }),
+      [
+        checkedRows,
+        currentChildren,
+        gap,
+        isMobile,
+        rows,
+        toCheck,
+        viewCheckboxFor,
+        viewMobileHeader,
+        withCheckbox,
+      ],
     );
 
     const emptyTableContent = useMemo(
@@ -109,7 +225,7 @@ export const Table = typedMemo(
             justify='center'
             className={cls['empty-table']}
           >
-            <p>{'Not found'}</p>
+            <Text variant='accent' text={'Not found'} />
           </HStack>
         ),
       [emptyContent],
@@ -118,33 +234,31 @@ export const Table = typedMemo(
     const selectContent = useMemo(() => {
       if (isLoading)
         return (
-          <HStack justify='center'>
+          <HStack justify='center' style={{ position: 'relative' }}>
             <Spinner />
           </HStack>
         );
-      return rows.length > 0 ? bodyContent : emptyTableContent;
-    }, [bodyContent, emptyTableContent, isLoading, rows.length]);
+      return rows?.length ? bodyContent : emptyTableContent;
+    }, [bodyContent, emptyTableContent, isLoading, rows]);
 
     return (
-      <VStack
-        max
-        className={classNames(
-          cls['list-table'],
-          { [cls['without-last-border']]: withoutLastBorder },
-          [className],
-        )}
-      >
-        <HStack max className={cls.th} gap={gap}>
+      <VStack max className={classNames(cls['list-table'], {}, [className])}>
+        <HStack max className={headerClass}>
           {headerContent}
         </HStack>
         <VStack max className={cls.tb} align='center'>
           {selectContent}
-          {!!findTotal && !!rows.length && findTotal > rows.length && (
-            <HStack ref={refLoader} max justify='center' className={cls.loader}>
-              <Spinner size='1.5rem' />
-            </HStack>
-          )}
         </VStack>
+        {!!withPagination && !!rows?.length && !!onChangePage && (
+          <HStack max className={cls['pagination-wrapper']} justify='between'>
+            <Pagination
+              rowsPerPage={rowsPerPage || 20}
+              page={page || 1}
+              findTotal={findTotal || 0}
+              onChangePage={onChangePage}
+            />
+          </HStack>
+        )}
       </VStack>
     );
   },

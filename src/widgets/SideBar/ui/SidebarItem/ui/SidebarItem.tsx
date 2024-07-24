@@ -4,7 +4,7 @@ import { SidebarItemType } from '../../../model/types/sidebar';
 import { getUserAuthData } from '@/entities/User';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { ToggleFeatures } from '@/shared/lib/features';
-import { useAppSelector } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { useAppSelector } from '@/shared/lib/hooks/redux';
 import { AppLink as AppLinkDeprecated } from '@/shared/ui/deprecated/AppLink';
 import { AppLink } from '@/shared/ui/redesigned/AppLink';
 import { Icon } from '@/shared/ui/redesigned/Icon';

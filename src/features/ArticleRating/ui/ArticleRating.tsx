@@ -6,7 +6,7 @@ import {
 } from '../api/articleRatingApi';
 import { RatingCard } from '@/entities/Rating';
 import { getUserAuthData } from '@/entities/User';
-import { useAppSelector } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { useAppSelector } from '@/shared/lib/hooks/redux';
 import { Skeleton } from '@/shared/ui/deprecated/Skeleton';
 
 export interface IArticleRatingProps {

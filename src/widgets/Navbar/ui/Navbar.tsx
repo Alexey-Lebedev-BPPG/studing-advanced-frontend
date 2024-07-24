@@ -8,7 +8,7 @@ import { NotificationButton } from '@/features/NotificationButton';
 import { getRouteArticleCreate } from '@/shared/const/router';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { ToggleFeatures, toggleFeatures } from '@/shared/lib/features';
-import { useAppSelector } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { useAppSelector } from '@/shared/lib/hooks/redux';
 import { AppLink } from '@/shared/ui/deprecated/AppLink';
 import { Button as ButtonDeprecated } from '@/shared/ui/deprecated/Button';
 import { Text } from '@/shared/ui/deprecated/Text';

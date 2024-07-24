@@ -22,6 +22,7 @@ export const ArticleListItemRedesigned: FC<IArticleListItemProps> = memo(
 
     const types = (
       <Text
+        variant='accent'
         text={article.type.join(', ')}
         //  className={cls.type}
       />
@@ -30,7 +31,7 @@ export const ArticleListItemRedesigned: FC<IArticleListItemProps> = memo(
     const userInfo = (
       <>
         <Avatar size={32} src={article.user.avatar} className={cls.avatar} />
-        <Text bold text={article.user.username} />
+        <Text bold variant='accent' text={article.user.username} />
       </>
     );
 
@@ -38,6 +39,7 @@ export const ArticleListItemRedesigned: FC<IArticleListItemProps> = memo(
       <HStack gap='8'>
         <Icon Svg={EyeIcon} />
         <Text
+          variant='accent'
           text={String(article.views)}
           className={cls[view === 'SMALL' ? 'small' : 'big']}
         />
@@ -62,10 +64,10 @@ export const ArticleListItemRedesigned: FC<IArticleListItemProps> = memo(
           <VStack max gap='16'>
             <HStack max gap='8'>
               {userInfo}
-              <Text text={article.createdAt} />
+              <Text variant='accent' text={article.createdAt} />
             </HStack>
-            <Text bold text={article.title} />
-            <Text text={article.subtitle} size='s' />
+            <Text bold variant='accent' text={article.title} />
+            <Text variant='accent' text={article.subtitle} size='s' />
             {types}
             <AppImage
               fallback={<Skeleton width='100%' height={250} />}
@@ -75,6 +77,7 @@ export const ArticleListItemRedesigned: FC<IArticleListItemProps> = memo(
             />
             {!!textBlock?.paragraphs && (
               <Text
+                variant='accent'
                 text={textBlock.paragraphs.slice(0, 2).join(' ')}
                 className={cls['text-block']}
               />
@@ -112,12 +115,14 @@ export const ArticleListItemRedesigned: FC<IArticleListItemProps> = memo(
           />
           <VStack className={cls.info} gap='4'>
             <Text
+              variant='accent'
               text={article.title}
               // className={cls.title}
             />
             <VStack max gap='4' className={cls.footer}>
               <HStack max justify='between'>
                 <Text
+                  variant='accent'
                   text={article.createdAt}
                   // className={cls.date}
                 />

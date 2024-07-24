@@ -2,7 +2,7 @@
 // import { FC } from 'react';
 // import { CSVLink } from 'react-csv';
 // import { IExportSVGProps } from './types';
-// import { useAppSelector } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
+// import { useAppSelector } from '@/shared/lib/hooks/redux';
 
 // const ExportCSV: FC<IExportSVGProps> = ({
 //   text = 'Download All NFTs',

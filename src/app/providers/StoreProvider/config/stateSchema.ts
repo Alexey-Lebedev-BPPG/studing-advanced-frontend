@@ -18,6 +18,7 @@ import { ScrollSaveSchema } from '@/features/ScrollSave';
 import { ArticleDetailsPageSchema } from '@/pages/ArticleDetailsPage';
 import { ArticlesPageSchema } from '@/pages/ArticlesPage';
 import { rtkApi } from '@/shared/api/rtkApi';
+import { StripePaymentSchema } from '@/widgets/StripePaymentElement';
 
 // типизация всего стейта
 export interface StateSchema {
@@ -36,6 +37,7 @@ export interface StateSchema {
   // Асинхронные(подгружаемые) редьюсеры
   loginForm?: LoginSchema;
   profile?: ProfileSchema;
+  stripePayment?: StripePaymentSchema;
   user: UserSchema;
 }
 

@@ -9,10 +9,7 @@ import { profileActions } from '../../model/slice/profileSlice';
 import { getUserAuthData } from '@/entities/User';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { ToggleFeatures } from '@/shared/lib/features';
-import {
-  useAppDispatch,
-  useAppSelector,
-} from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { useAppDispatch, useAppSelector } from '@/shared/lib/hooks/redux';
 import { Button as ButtonDeprecated } from '@/shared/ui/deprecated/Button';
 import { Text as TextDeprecated } from '@/shared/ui/deprecated/Text';
 import { Button } from '@/shared/ui/redesigned/Button';
@@ -96,7 +93,7 @@ export const EditableProfileCardHeader: FC<IEditableProfileCardHeaderProps> = ({
             justify='between'
             className={classNames('', {}, [className])}
           >
-            <Text title={`${t('Профиль')}`} />
+            <Text variant='accent' title={`${t('Профиль')}`} />
             {!!canEdit && (
               <div>
                 {readonly ? (

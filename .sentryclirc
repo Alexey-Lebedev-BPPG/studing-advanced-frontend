@@ -1,6 +1,6 @@
 [defaults]
-project=@collector-crypt1/frontend
-org=@collector-crypt1/frontend
+project=@test/frontend
+org=@test/frontend
 
 [auth]
-token=fb7046b519014c6fb1935710f28a5ea61196dc991a14428398664a0f834cfb2e
+token=fb7046b519014c6fb1935710f28a5ea61196dc991a14428398664a0f834cfb2 e

@@ -43,6 +43,9 @@ devDependencies:
   '@reduxjs/toolkit':
     specifier: ^2.2.2
     version: 2.2.5(react-redux@9.1.2)(react@18.3.1)
+  '@splidejs/react-splide':
+    specifier: ^0.7.12
+    version: 0.7.12
   '@storybook/addon-actions':
     specifier: ^8.0.5
     version: 8.1.5
@@ -94,6 +97,12 @@ devDependencies:
   '@storybook/testing-library':
     specifier: ^0.2.2
     version: 0.2.2
+  '@stripe/react-stripe-js':
+    specifier: ^2.7.3
+    version: 2.7.3(@stripe/stripe-js@4.1.0)(react-dom@18.3.1)(react@18.3.1)
+  '@stripe/stripe-js':
+    specifier: ^4.1.0
+    version: 4.1.0
   '@svgr/webpack':
     specifier: ^8.1.0
     version: 8.1.0(typescript@5.4.5)
@@ -127,6 +136,9 @@ devDependencies:
   '@types/react-dom':
     specifier: ^18.2.23
     version: 18.3.0
+  '@types/react-gtm-module':
+    specifier: ^2.0.3
+    version: 2.0.3
   '@types/react-router-dom':
     specifier: ^5.3.3
     version: 5.3.3
@@ -355,6 +367,9 @@ devDependencies:
   react-ga4:
     specifier: ^2.1.0
     version: 2.1.0
+  react-gtm-module:
+    specifier: ^2.0.11
+    version: 2.0.11
   react-i18next:
     specifier: ^14.1.0
     version: 14.1.2(i18next@23.11.5)(react-dom@18.3.1)(react@18.3.1)
@@ -4263,6 +4278,16 @@ packages:
       '@sinonjs/commons': 3.0.1
     dev: true
 
+  /@splidejs/react-splide@0.7.12:
+    resolution: {integrity: sha512-UfXH+j47jsMc4x5HA/aOwuuHPqn6y9+ZTNYPWDRD8iLKvIVMZlzq2unjUEvyDAU+TTVPZOXkG2Ojeoz0P4AkZw==}
+    dependencies:
+      '@splidejs/splide': 4.1.4
+    dev: true
+
+  /@splidejs/splide@4.1.4:
+    resolution: {integrity: sha512-5I30evTJcAJQXt6vJ26g2xEkG+l1nXcpEw4xpKh0/FWQ8ozmAeTbtniVtVmz2sH1Es3vgfC4SS8B2X4o5JMptA==}
+    dev: true
+
   /@storybook/addon-actions@8.1.5:
     resolution: {integrity: sha512-XbCUGGXQ4XX/zTRgUsR1l1yZJQIWR33P/M1OEAn0HbsfwS+P87GqfApkj4N7QrMfLkUkoLtdfprp5BZul98AKA==}
     dependencies:
@@ -6057,6 +6082,24 @@ packages:
       file-system-cache: 2.3.0
     dev: true
 
+  /@stripe/react-stripe-js@2.7.3(@stripe/stripe-js@4.1.0)(react-dom@18.3.1)(react@18.3.1):
+    resolution: {integrity: sha512-05t6oY7cmAJt7asknmeoI4z4GnutgKRZ7dcdTWCkeYclONzIRMuMTiyjBMQ/q3I2sdNizSl25YZ8G6Lg4nN1aw==}
+    peerDependencies:
+      '@stripe/stripe-js': ^1.44.1 || ^2.0.0 || ^3.0.0 || ^4.0.0
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+      react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+    dependencies:
+      '@stripe/stripe-js': 4.1.0
+      prop-types: 15.8.1
+      react: 18.3.1
+      react-dom: 18.3.1(react@18.3.1)
+    dev: true
+
+  /@stripe/stripe-js@4.1.0:
+    resolution: {integrity: sha512-HhstGRUz/4JdbZpb26OcOf8Qb/cFR02arvHvgz4sPFLSnI6ZNHC53Jc6JP/FGNwxtrF719YyUnK0gGy4oyhucQ==}
+    engines: {node: '>=12.16'}
+    dev: true
+
   /@svgr/babel-plugin-add-jsx-attribute@8.0.0(@babel/core@7.24.6):
     resolution: {integrity: sha512-b9MIk7yhdS1pMCZM8VeNfUlSKVRhsHZNMl5O9SfaX0l0t5wjdgu4IDzGB8bpnGBBOjGST3rRFVsaaEtI4W6f7g==}
     engines: {node: '>=14'}
@@ -6919,6 +6962,10 @@ packages:
     resolution: {integrity: sha512-EhwApuTmMBmXuFOikhQLIBUn6uFg81SwLMOAUgodJF14SOBOCMdU04gDoYi0WOJJHD144TL32z4yDqCW3dnkQg==}
     dependencies:
       '@types/react': 18.3.3
+    dev: true
+
+  /@types/react-gtm-module@2.0.3:
+    resolution: {integrity: sha512-fL2zKdDFN5LckSsVBXEhhm9M4tFTM9oHJfGcfZJzktQkzpOTGtDM8oXIP9d9UBDxO4xLNZhS22dlgRVv6wgK9w==}
     dev: true
 
   /@types/react-router-dom@5.3.3:
@@ -18330,6 +18377,10 @@ packages:
 
   /react-ga4@2.1.0:
     resolution: {integrity: sha512-ZKS7PGNFqqMd3PJ6+C2Jtz/o1iU9ggiy8Y8nUeksgVuvNISbmrQtJiZNvC/TjDsqD0QlU5Wkgs7i+w9+OjHhhQ==}
+    dev: true
+
+  /react-gtm-module@2.0.11:
+    resolution: {integrity: sha512-8gyj4TTxeP7eEyc2QKawEuQoAZdjKvMY4pgWfycGmqGByhs17fR+zEBs0JUDq4US/l+vbTl+6zvUIx27iDo/Vw==}
     dev: true
 
   /react-i18next@14.1.2(i18next@23.11.5)(react-dom@18.3.1)(react@18.3.1):

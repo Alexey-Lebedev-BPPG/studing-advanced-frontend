@@ -23,12 +23,15 @@ export const ArticleAdditionalInfo: FC<IArticleAdditionalInfoProps> = memo(
       <VStack gap='32' className={className}>
         <HStack gap='8'>
           <Avatar src={author?.avatar || ''} size={32} />
-          <Text bold text={author?.username} />
-          <Text text={createdAt} />
+          <Text bold variant='accent' text={author?.username} />
+          <Text variant='accent' text={createdAt} />
         </HStack>
         <Button onClick={onEdit}>{t('Редактировать')}</Button>
         {/* используем плюральные формы для подстановки окончаний слова */}
-        <Text text={t('{{count}} просмотров', { count: views })} />
+        <Text
+          variant='accent'
+          text={t('{{count}} просмотров', { count: views })}
+        />
       </VStack>
     );
   },

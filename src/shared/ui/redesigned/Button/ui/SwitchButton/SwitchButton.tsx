@@ -1,34 +1,45 @@
-import {
-  ChangeEvent,
-  Dispatch,
-  FC,
-  InputHTMLAttributes,
-  SetStateAction,
-  memo,
-} from 'react';
+import { ChangeEvent, FC, InputHTMLAttributes, memo } from 'react';
 import cls from './Switch.module.scss';
+import { HStack } from '../../../Stack';
 import { classNames } from '@/shared/lib/classNames/classNames';
 
-type HTMLInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'value'>;
+type HTMLInputProps = Omit<
+  InputHTMLAttributes<HTMLInputElement>,
+  'value' | 'size'
+>;
 
 interface ISwitchProps extends HTMLInputProps {
-  text: string;
+  disabled?: boolean;
+  setValue: (value: boolean) => void;
+  size?: 'default' | 'small';
+  text?: string;
+  titleClass?: string;
   value: boolean;
-  setValue: Dispatch<SetStateAction<boolean>>;
 }
 
 export const SwitchButton: FC<ISwitchProps> = memo(props => {
-  const { text, value, id, setValue, onChange, ...otherProps } = props;
+  const {
+    disabled = false,
+    id,
+    onChange,
+    setValue,
+    size = 'default',
+    text,
+    titleClass,
+    value,
+    ...otherProps
+  } = props;
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    onChange && onChange(event);
-    setValue(!value);
+    onChange?.(event);
+    setValue(event.target.checked);
   };
 
   return (
-    <div className={cls.switchWrapper}>
+    <HStack gap='16' align='center' className={classNames('', {}, [cls[size]])}>
       <label htmlFor={`switch-button-${id}`} className={cls.switch}>
         <input
+          disabled={disabled}
           checked={value}
           id={`switch-button-${id}`}
           type='checkbox'
@@ -37,7 +48,9 @@ export const SwitchButton: FC<ISwitchProps> = memo(props => {
         />
         <span className={classNames(cls.slider, {}, [cls.round])} />
       </label>
-      <span className={cls.title}>{text}</span>
-    </div>
+      {!!text && (
+        <span className={classNames(cls.title, {}, [titleClass])}>{text}</span>
+      )}
+    </HStack>
   );
 });

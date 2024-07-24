@@ -18,7 +18,13 @@ export const $api = axios.create({
 });
 
 $api.interceptors.request.use(
-  async config => config,
+  async config =>
+    // чтоб передать на бэк язык приложения в заголовках
+    // const getNewAxiosConfigWithLanguageHeader =
+    //   addLanguageHeaderExceptWhiteListForAxios(config);
+
+    // return getNewAxiosConfigWithLanguageHeader;
+    config,
   error => Promise.reject(error),
 );
 

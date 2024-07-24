@@ -1,0 +1,22 @@
+.dots {
+  position: relative;
+  z-index: var(--margin-2-x-l);
+  padding-top: 2.7rem;
+
+  .dot {
+    width: var(--margin-x-s);
+    height: var(--margin-x-s);
+    margin: var(--margin-x-s);
+
+    background-color: var(--neutral-30);
+    border-radius: var(--margin-x-s);
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    &.selected {
+      background: var(--gradient-2);
+    }
+  }
+}

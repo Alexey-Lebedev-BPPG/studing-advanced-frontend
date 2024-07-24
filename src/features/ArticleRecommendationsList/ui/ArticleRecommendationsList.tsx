@@ -32,7 +32,7 @@ export const ArticleRecommendationsList: FC<IArticleRecommendationsListProps> =
       >
         <ToggleFeatures
           nameFeatures={'isAppRedesigned'}
-          on={<Text size='l' title={`${t('Рекомендуем')}`} />}
+          on={<Text variant='accent' size='l' title={`${t('Рекомендуем')}`} />}
           off={<TextDeprecated size='l' title={`${t('Рекомендуем')}`} />}
         />
         <ArticleList

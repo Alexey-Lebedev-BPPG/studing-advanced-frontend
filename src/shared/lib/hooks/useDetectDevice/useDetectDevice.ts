@@ -9,10 +9,23 @@ export const useDetectDevice = () => {
 
 // другой вариант
 // export const useDetectDevice = () => {
+//   if (!window || !window.matchMedia)
+//     return {
+//       isDesktop: false,
+//       isMobile: false,
+//       isTablet: false,
+//       isTabletHorizontal: false,
+//     };
+
 //   const currentMatchMedia = window.matchMedia;
 
+//   const deviceTabletHorizontal = currentMatchMedia(
+//     '(width < 1440px) and (width > 1024px)',
+//   );
+//   const isTabletHorizontal = deviceTabletHorizontal.matches;
+
 //   const deviceTablet = currentMatchMedia(
-//     '(width < 1440px) and (width > 767px)',
+//     '(width <= 1024px) and (width >= 768px)',
 //   );
 //   const isTablet = deviceTablet.matches;
 
@@ -20,9 +33,10 @@ export const useDetectDevice = () => {
 //   const isMobile = deviceMobile.matches;
 
 //   return {
-//     isDesktop: !isMobile && !isTablet,
+//     isDesktop: !isMobile && !isTablet && !isTabletHorizontal,
 //     isMobile,
 //     isTablet,
+//     isTabletHorizontal,
 //   };
 // };
 // здесь мы задаем параметры и вызываем хук где необходимо, доставая необходимые параметры

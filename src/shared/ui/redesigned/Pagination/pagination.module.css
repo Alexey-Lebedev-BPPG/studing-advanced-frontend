@@ -1,0 +1,23 @@
+.pagination {
+  margin: var(--margin-x-l) 0 0 var(--margin-x-l);
+
+  .page-link {
+    cursor: pointer;
+
+    width: 1.75rem;
+    height: 1.75rem;
+
+    color: var(--text-tertiary);
+
+    background: transparent;
+    border: none;
+  }
+
+  .active {
+    .page-link {
+      color: var(--text-secondary);
+      background: var(--primary-80);
+      border-radius: 4px;
+    }
+  }
+}

@@ -3,7 +3,7 @@ import { Navigate, useLocation } from 'react-router-dom';
 import { UserRole } from '../../../consts/consts';
 import { getUserAuthData, getUserRoles } from '@/entities/User';
 import { getRouteForbidden, getRouteMain } from '@/shared/const/router';
-import { useAppSelector } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { useAppSelector } from '@/shared/lib/hooks/redux';
 
 interface RequireAuthProps {
   children: JSX.Element;

@@ -75,7 +75,7 @@ export const ArticleSortSelector: FC<IArticleSortSelectorProps> = memo(
             )}
           >
             <VStack gap='8'>
-              <Text text={t('Сортировать по:')} />
+              <Text variant='accent' text={t('Сортировать по:')} />
               <ListBox
                 items={sortFieldOption}
                 value={sort}

@@ -11,6 +11,8 @@
 }
 
 .bold {
+
+  /* stylelint-disable-next-line rule-empty-line-before */
   .title,
   .text {
     font-weight: 700;
@@ -48,6 +50,19 @@
 .center {
   text-align: center;
 }
+
+.start {
+  text-align: start;
+}
+
+.end {
+  text-align: end;
+}
+
+.justify {
+  text-align: justify;
+}
+
 
 .size-s {
   .title {

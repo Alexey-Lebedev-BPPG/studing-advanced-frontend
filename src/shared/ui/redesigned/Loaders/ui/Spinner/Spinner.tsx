@@ -3,8 +3,8 @@ import './spinner.scss';
 
 interface ISpinnerProps extends HTMLAttributes<SVGElement> {
   color?: string;
-  secondaryColor?: string;
   enabled?: boolean;
+  secondaryColor?: string;
   size?: number | string;
   speed?: number;
   still?: boolean;
@@ -14,13 +14,13 @@ interface ISpinnerProps extends HTMLAttributes<SVGElement> {
 export const Spinner: FC<ISpinnerProps> = memo(props => {
   const {
     color = '#282828',
+    enabled = true,
     secondaryColor = '#FF7C01',
+    size = 72,
     speed = 100,
     still = false,
-    thickness = 100,
-    enabled = true,
-    size = 72,
     style,
+    thickness = 100,
     ...svgProps
   } = props;
 

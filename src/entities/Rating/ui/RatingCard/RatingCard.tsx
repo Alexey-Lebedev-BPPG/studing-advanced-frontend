@@ -84,7 +84,7 @@ export const RatingCard: FC<IRatingCardProps> = memo(props => {
       }
       on={
         <>
-          <Text title={feedbackTitle} />
+          <Text variant='accent' title={feedbackTitle} />
           <Input
             data-testId='RatingCard.InputDeprecated'
             value={feedback}
@@ -100,7 +100,12 @@ export const RatingCard: FC<IRatingCardProps> = memo(props => {
     <VStack max gap='8' align='center'>
       <ToggleFeatures
         nameFeatures={'isAppRedesigned'}
-        on={<Text title={starsCount ? `${t('Спасибо за оценку!')}` : title} />}
+        on={
+          <Text
+            variant='accent'
+            title={starsCount ? `${t('Спасибо за оценку!')}` : title}
+          />
+        }
         off={
           <TextDeprecated
             title={starsCount ? `${t('Спасибо за оценку!')}` : title}

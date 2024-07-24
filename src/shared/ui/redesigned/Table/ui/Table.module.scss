@@ -1,38 +1,60 @@
 .list-table {
-  padding: 2rem;
-  background-color: var(--g-900);
-  border-radius: 1rem;
+  min-height: 38.75rem;
+  background-color: transparent;
+  border: 1px solid var(--other-dark-gray);
+  border-radius: var(--margin-s);
 
   .th {
-    @include BodyM-XS-600;
+    padding: var(--padding-m) var(--padding-s);
 
-    color: var(--g-300);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
+    color: var(--text-tertiary);
+    white-space: nowrap;
+
+    background: var(--bg-1);
+    border-top-left-radius: var(--margin-s);
+    border-top-right-radius: var(--margin-s);
+
+    div {
+      padding: 0 var(--padding-s);
+    }
   }
 
   .tb {
-    @include BodyS-600;
-
-    color: var(--main-white);
+    color: var(--neutral-100);
 
     .row {
       display: flex;
 
       width: 100%;
-      padding: 1rem 0;
+      min-height: 70px;
+      padding: var(--padding-s);
 
       color: inherit;
       text-decoration: unset;
 
-      border-bottom: 1px solid var(--g-700);
+      border-bottom: 1px solid var(--other-dark-gray);
+
+      div {
+        padding: 0 var(--padding-s);
+      }
 
       p {
         overflow: hidden;
         display: -webkit-box;
         -webkit-box-orient: vertical;
+        word-wrap: break-word;
 
-        -webkit-line-clamp: 2;
+        /* -webkit-line-clamp: 2; */
+      }
+    }
+
+    .row:last-child {
+      border-bottom: none;
+    }
+
+    .without-last-border {
+      .row:last-child {
+        border: none;
       }
     }
 
@@ -41,22 +63,40 @@
     }
 
     .empty-table {
-      @include BodyS-400;
-
-      height: 100%;
-      color: var(--g-200);
+      height: 16.5rem;
+      color: var(--text-tertiary);
     }
 
     .loader {
       cursor: initial;
-      padding-top: 1rem;
+      padding-top: var(--padding-m);
       border: none;
     }
   }
+
+  .pagination-wrapper {
+    margin-top: auto;
+    padding-bottom: var(--padding-x-l);
+  }
 }
 
-.without-last-border {
-  .row:last-child {
+@media screen and (width < 768px) {
+  .list-table {
     border: none;
+
+    .th-off-header {
+      display: none;
+    }
+
+    .tb {
+      .row {
+        padding: 0;
+        border-bottom: 1px solid var(--other-dark-gray);
+
+        div {
+          padding: 0;
+        }
+      }
+    }
   }
 }

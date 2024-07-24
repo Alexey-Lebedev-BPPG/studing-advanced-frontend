@@ -6,6 +6,7 @@ import {
   forwardRef,
 } from 'react';
 import cls from './Button.module.scss';
+import { Spinner } from '../../Loaders';
 import { classNames } from '@/shared/lib/classNames/classNames';
 
 type ButtonVariant = 'clear' | 'outline' | 'filled';
@@ -25,6 +26,7 @@ interface IButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
    * Увеличивает кнопку на всю свободную ширину
    */
   fullWidth?: boolean;
+  isLoading?: boolean;
   /**
    * Флаг, отвечающий за работу кнопки
    */
@@ -54,6 +56,7 @@ export const Button: FC<IButtonProps> = forwardRef(
       className,
       color = 'normal',
       fullWidth,
+      isLoading,
       readonly,
       size = 'm',
       square,
@@ -81,7 +84,7 @@ export const Button: FC<IButtonProps> = forwardRef(
         ref={ref}
       >
         {!!addonLeft && <div className={cls['addon-left']}>{addonLeft}</div>}
-        {children}
+        {isLoading ? <Spinner /> : children}
         {!!addonRight && <div className={cls['addon-right']}>{addonRight}</div>}
       </button>
     );

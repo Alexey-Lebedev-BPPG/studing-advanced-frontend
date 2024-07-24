@@ -1,0 +1,86 @@
+.wrapper {
+  overflow: hidden;
+  visibility: hidden;
+}
+
+.form {
+  overflow: hidden;
+
+  min-height: 350px;
+
+  /* max-height: 30.125rem; */
+  padding: var(--padding-2-x-l) var(--padding-2-x-l) var(--padding-x-x-s)
+    var(--padding-2-x-l);
+
+  background-color: var(--bg-1);
+  border-radius: var(--margin-m);
+}
+
+.payment-element {
+  width: 591px !important;
+}
+
+.btn {
+  width: 668px;
+  padding-top: var(--padding-2-x-l);
+}
+
+.name-not-showed {
+  padding: var(--padding-2-x-l) var(--padding-m) var(--padding-3-x-l) 2.65rem;
+}
+
+.skeleton-is-showing {
+  height: unset;
+}
+
+.skeleton {
+  background-color: var(--bg-1);
+  border-radius: var(--margin-x-x-s);
+}
+
+.element-is-showing {
+  visibility: visible;
+}
+
+@media screen and (width < 768px) {
+  .form {
+    width: 100%;
+    max-width: 668px;
+  }
+
+  .btn {
+    width: 100%;
+  }
+
+  .payment-element {
+    width: 36.938rem !important;
+  }
+
+  .element-is-showing {
+    min-height: unset;
+  }
+}
+
+@media screen and (width < 720px) {
+  .payment-element {
+    width: 30rem !important;
+  }
+}
+
+@media screen and (width < 600px) {
+  .payment-element {
+    width: 22rem !important;
+  }
+}
+
+@media screen and (width < 475px) {
+  .form {
+    padding: var(--padding-2-x-l);
+    background-color: var(--bg-1);
+    border-radius: var(--margin-m);
+  }
+
+  .payment-element {
+    width: 13.0625rem !important;
+  }
+}

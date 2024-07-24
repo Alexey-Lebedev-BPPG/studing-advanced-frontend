@@ -2,17 +2,17 @@ import { HTMLInputTypeAttribute } from 'react';
 import { Validate } from '@/shared/const/Validate';
 
 export interface IValidateInputsProps {
-  type: HTMLInputTypeAttribute;
-  required?: boolean;
-  min?: number;
   max?: number;
+  min?: number;
+  required?: boolean;
+  type: HTMLInputTypeAttribute;
 }
 
 const checkFieldValidate = (
   iteratedString: string,
   options: IValidateInputsProps,
 ) => {
-  const { type, required, min, max } = options;
+  const { max, min, required, type } = options;
   let errorField = '';
 
   if (required && iteratedString === '') {
@@ -78,7 +78,7 @@ const checkForStringConditions = (
   lengthIteratedString: number,
   options: IValidateInputsProps,
 ) => {
-  const { SPECIALS, UPPERCASE_LETTERS, DIGITS } = Validate;
+  const { DIGITS, SPECIALS, UPPERCASE_LETTERS } = Validate;
   const { type } = options;
   let errorSymbol = '';
   let errorCountEmail = 0;

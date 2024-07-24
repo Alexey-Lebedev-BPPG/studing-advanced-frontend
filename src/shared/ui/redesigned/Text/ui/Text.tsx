@@ -1,14 +1,12 @@
-import { FC, memo } from 'react';
+import { ElementType, useMemo } from 'react';
 import cls from './Text.module.scss';
+import {
+  ITextProps,
+  TTagName,
+  TextSize,
+  mapSizeToHeaderTag,
+} from '../model/types';
 import { classNames } from '@/shared/lib/classNames/classNames';
-
-type TextVariant = 'error' | 'accent';
-
-type TextAlign = 'center' | 'left' | 'right';
-
-type TextSize = 'l' | 'm' | 's';
-
-type HeaderTagType = 'h1' | 'h2' | 'h3';
 
 // маппер, который определяет размер
 const mapSizeToClass: Record<TextSize, string> = {
@@ -17,62 +15,57 @@ const mapSizeToClass: Record<TextSize, string> = {
   s: cls['size-s'],
 };
 
-// маппер, который определяет тег в зависимости от размера
-const mapSizeToHeaderTag: Record<TextSize, HeaderTagType> = {
-  l: 'h1',
-  m: 'h2',
-  s: 'h3',
-};
-
-interface ITextProps {
-  align?: TextAlign;
-  bold?: boolean;
-  className?: string;
-  'data-testid'?: string;
-  nowrap?: boolean;
-  size?: TextSize;
-  text?: string | null;
-  title?: string | null;
-  variant?: TextVariant;
-}
-
-export const Text: FC<ITextProps> = memo(props => {
+export const Text = <T extends ElementType = TTagName>(
+  props: ITextProps<T>,
+) => {
   const {
     align = 'left',
+    as = 'p',
     bold,
     className,
-    // ввиду того, что такое свойство не позволительно деструктуризировать, нужно переименовать его
     'data-testid': dataTestId = 'Text',
     nowrap = false,
+    // ввиду того, что такое свойство не позволительно деструктуризировать, нужно переименовать его
     size = 'm',
     text,
     title,
     variant = 'accent',
+    wrap = 'wrap',
+    ...otherProps
   } = props;
+
+  const TagName = as;
 
   const HeaderTag = mapSizeToHeaderTag[size];
   const sizeClass = mapSizeToClass[size];
 
-  const additionalClasses = [className, cls[variant], cls[align], sizeClass];
+  const currentClass = useMemo(
+    () =>
+      classNames('', { [cls.bold]: bold, [cls.wrap]: wrap === 'nowrap' }, [
+        className,
+        cls[variant],
+        cls[align],
+        sizeClass,
+      ]),
+    [align, bold, className, sizeClass, variant, wrap],
+  );
 
   return (
-    <div
-      className={classNames(
-        '',
-        { [cls.bold]: bold, [cls.wrap]: nowrap },
-        additionalClasses,
-      )}
-    >
+    <div className={currentClass}>
       {!!title && (
-        <HeaderTag className={cls.title} data-testid={`${dataTestId}.Header`}>
+        <HeaderTag
+          className={cls.title}
+          data-testid={`${dataTestId}.Header`}
+          {...otherProps}
+        >
           {title}
         </HeaderTag>
       )}
       {!!text && (
-        <p className={cls.text} data-testid={`${dataTestId}.Paragraph`}>
+        <TagName className={cls.text} data-testid={`${dataTestId}.Paragraph`}>
           {text}
-        </p>
+        </TagName>
       )}
     </div>
   );
-});
+};

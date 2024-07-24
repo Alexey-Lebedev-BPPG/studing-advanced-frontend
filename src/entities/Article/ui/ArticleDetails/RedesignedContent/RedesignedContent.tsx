@@ -7,7 +7,7 @@ import {
 } from '../../../model/selectors/articleDetails';
 import cls from '../ArticleDetails.module.scss';
 import { renderArticleBlock } from '../renderBlock';
-import { useAppSelector } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { useAppSelector } from '@/shared/lib/hooks/redux';
 import { AppImage } from '@/shared/ui/redesigned/AppImage';
 import { Skeleton } from '@/shared/ui/redesigned/Skeleton';
 import { VStack } from '@/shared/ui/redesigned/Stack';
@@ -38,6 +38,7 @@ export const RedesignedContent: FC = memo(props => {
   if (error)
     return (
       <Text
+        variant='accent'
         title={`${t('Произошла ошибка при загрузке статьи.')}`}
         align='center'
       />
@@ -45,8 +46,8 @@ export const RedesignedContent: FC = memo(props => {
 
   return (
     <>
-      <Text bold title={article?.title} size='l' />
-      <Text title={article?.subtitle} />
+      <Text bold variant='accent' title={article?.title} size='l' />
+      <Text variant='accent' title={article?.subtitle} />
       <AppImage
         fallback={<Skeleton width='100%' height={420} border='16px' />}
         src={article?.img}

@@ -4,8 +4,6 @@
   justify-content: space-between;
 
   p {
-    @include BodyM-400;
-
     padding-right: 0.5rem;
     color: var(--main-white);
     text-transform: capitalize;

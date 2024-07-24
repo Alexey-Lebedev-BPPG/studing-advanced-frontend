@@ -8,10 +8,7 @@ import { CommentList } from '@/entities/Comment';
 import { AddCommentForm } from '@/features/AddCommentForm';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { ToggleFeatures } from '@/shared/lib/features';
-import {
-  useAppDispatch,
-  useAppSelector,
-} from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { useAppDispatch, useAppSelector } from '@/shared/lib/hooks/redux';
 import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect/useInitialEffect';
 import { Text as TextDeprecated } from '@/shared/ui/deprecated/Text';
 import { VStack } from '@/shared/ui/redesigned/Stack';
@@ -43,7 +40,7 @@ const ArticleDetailsComments: FC<IArticleDetailsCommentsProps> = memo(props => {
     <VStack max gap='16' className={classNames('', {}, [className])}>
       <ToggleFeatures
         nameFeatures={'isAppRedesigned'}
-        on={<Text size='l' title={`${t('Комментарии')}`} />}
+        on={<Text variant='accent' size='l' title={`${t('Комментарии')}`} />}
         off={<TextDeprecated size='l' title={`${t('Комментарии')}`} />}
       />
       <AddCommentForm onSendComment={onSendComment} />

@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import cls from './additionalInfoContainer.module.scss';
 import { getArticleDetailsData } from '@/entities/Article';
 import { getRouteArticleEdit } from '@/shared/const/router';
-import { useAppSelector } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { useAppSelector } from '@/shared/lib/hooks/redux';
 import { Card } from '@/shared/ui/redesigned/Card';
 import { ArticleAdditionalInfo } from '@/widgets/ArticleAdditionalInfo';
 

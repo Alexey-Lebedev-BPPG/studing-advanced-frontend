@@ -18,7 +18,7 @@ const SettingsPage: FC<ISettingsPageProps> = memo(props => {
   return (
     <Page className={classNames(cls['settings-page'], {}, [className])}>
       <VStack gap='16'>
-        <Text title={'Настройки пользователя'} />
+        <Text variant='accent' title={'Настройки пользователя'} />
         <UiDesignSwitcher />
       </VStack>
     </Page>

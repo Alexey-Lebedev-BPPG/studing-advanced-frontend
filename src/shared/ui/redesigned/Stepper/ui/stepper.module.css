@@ -1,0 +1,38 @@
+.stepper {
+  .dot {
+    margin-left: -7px;
+  }
+
+  .line {
+    width: 100%;
+    min-width: 6.125rem;
+    min-height: var(--margin-x-x-s);
+    margin-left: -7px;
+
+    background: #171717;
+  }
+
+  .start {
+    background: linear-gradient(270deg,
+        rgb(23 23 23 / 0%) 65.22%,
+        #20c6eb 100%);
+  }
+
+  .middle {
+    background: linear-gradient(90deg, #20c6eb 0%, rgb(0 0 0 / 0%) 80.75%),
+      linear-gradient(90deg, rgb(0 0 0 / 0%) 21.12%, #20c6eb 100%);
+  }
+
+  .error {
+    background: linear-gradient(90deg, #20c6eb 0%, rgb(0 0 0 / 0%) 80.75%),
+      linear-gradient(90deg, rgb(0 0 0 / 0%) 21.12%, #ff5449 100%);
+  }
+}
+
+@media screen and (width < 414px) {
+  .stepper {
+    .line {
+      min-width: auto;
+    }
+  }
+}

@@ -25,7 +25,13 @@ export const ArticleTextBlockComponent: FC<IArticleTextBlockComponentProps> =
           <ToggleFeatures
             nameFeatures={'isAppRedesigned'}
             off={<TextDeprecated title={block.title} className={cls.title} />}
-            on={<Text title={block.title} className={cls.title} />}
+            on={
+              <Text
+                variant='accent'
+                title={block.title}
+                className={cls.title}
+              />
+            }
           />
         )}
         {block.paragraphs.map((paragraph, index) => (
@@ -33,7 +39,13 @@ export const ArticleTextBlockComponent: FC<IArticleTextBlockComponentProps> =
             key={index + paragraph.slice(0, 5)}
             nameFeatures={'isAppRedesigned'}
             off={<TextDeprecated text={paragraph} className={cls.paragraph} />}
-            on={<Text text={paragraph} className={cls.paragraph} />}
+            on={
+              <Text
+                variant='accent'
+                text={paragraph}
+                className={cls.paragraph}
+              />
+            }
           />
         ))}
       </div>
