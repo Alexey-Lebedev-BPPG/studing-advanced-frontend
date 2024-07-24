@@ -18,6 +18,12 @@ export const StoreProvider: FC<IStoreProviderProps> = ({
   children,
   initialState,
 }) => {
+  // для персиста
+  // const { store, persist } = createReduxStore(
+  //   initialState as PreloadedState<CombinedState<NoInfer<StateSchema>>>,
+  //   asyncReducers as ReducersMapObject<StateSchema>,
+  // );
+
   // в стор можно прокинуть навигейт, однако тогда компоненты будут перерендерится.
   // const navigate = useNavigate();
   const store = createReduxStore(
@@ -28,5 +34,12 @@ export const StoreProvider: FC<IStoreProviderProps> = ({
     // navigate
   );
 
-  return <Provider store={store}>{children}</Provider>;
+  return (
+    <Provider store={store}>
+      {/* для персиста */}
+      {/* <PersistGate loading={null} persistor={persist}> */}
+      {children}
+      {/* </PersistGate> */}
+    </Provider>
+  );
 };

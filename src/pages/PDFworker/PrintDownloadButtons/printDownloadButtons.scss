@@ -1,0 +1,18 @@
+.print-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  justify-content: flex-end;
+
+  &__buttons {
+    display: flex;
+
+    p {
+      color: var(--g-200) !important;
+    }
+
+    button:hover {
+      background: transparent;
+    }
+  }
+}

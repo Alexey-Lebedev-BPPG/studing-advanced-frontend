@@ -32,6 +32,7 @@ export const buildWebpackConfig = (
       mergeDuplicateChunks: true,
       minimize: !isDev,
       minimizer: [
+        // new HtmlMinimizerPlugin({ exclude: /\/excludes/, parallel: 4 }),
         // для удаления комментов из сборки
         new TerserPlugin({
           extractComments: false,

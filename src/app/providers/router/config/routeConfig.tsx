@@ -87,3 +87,11 @@ export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
     path: getRouteCarouselNetflix(),
   },
 };
+
+// функция, которая возвращает роуты, у которых noHeaderFooter равен true
+// export const pathNoHeaderFooter = () => {
+//   const locals = Object.values(routeConfig)
+//     .filter(path => path.noHeaderFooter)
+//     .map(p => p.path);
+//   return locals;
+// };

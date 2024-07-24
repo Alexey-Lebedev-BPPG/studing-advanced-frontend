@@ -2,11 +2,11 @@ import { DetailedHTMLProps, FC, HTMLAttributes, ReactNode } from 'react';
 import cls from './Flex.module.scss';
 import { classNames } from '@/shared/lib/classNames/classNames';
 
-type FlexJustify = 'start' | 'center' | 'end' | 'between';
+export type FlexJustify = 'start' | 'center' | 'end' | 'between';
 type FlexAlign = 'start' | 'center' | 'end';
 export type FlexDirection = 'row' | 'column';
 type FlexWrap = 'nowrap' | 'wrap';
-type FlexGap = '4' | '8' | '16' | '24' | '32';
+export type FlexGap = '4' | '8' | '16' | '24' | '32';
 
 // делаем сопоставлении пропса с классом, который хотим потом повесить
 const justifyClasses: Record<FlexJustify, string> = {

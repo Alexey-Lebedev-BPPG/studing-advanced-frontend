@@ -5,9 +5,7 @@ import { initReactI18next } from 'react-i18next';
 i18n.use(initReactI18next).init({
   debug: false,
   fallbackLng: 'ru',
-  interpolation: {
-    escapeValue: false,
-  },
+  interpolation: { escapeValue: false },
   lng: 'ru',
   react: { useSuspense: false },
   resources: { ru: { translations: {} } },

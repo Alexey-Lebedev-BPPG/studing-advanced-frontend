@@ -1,0 +1,18 @@
+/* stylelint-disable selector-class-pattern */
+
+.HightResModal {
+  cursor: pointer;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.shape {
+  width: 32px;
+  height: 32px;
+  background: var(--g-700);
+  border-radius: 8px;
+
+  &:hover {
+    background: var(--g-600);
+  }
+}

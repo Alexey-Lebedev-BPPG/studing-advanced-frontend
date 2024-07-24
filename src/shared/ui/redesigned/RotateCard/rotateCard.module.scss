@@ -1,0 +1,33 @@
+.rotate-card {
+  height: 100%;
+  border-radius: 1rem;
+  padding: 2.5rem;
+  position: relative;
+
+  &:hover {
+
+    & .front {
+      transform: rotateY(180deg);
+    }
+
+    & .back {
+      transform: rotateY(360deg);
+    }
+  }
+
+  .front {
+    backface-visibility: hidden;
+    transition: all 1.5s;
+  }
+
+  .back {
+    position: absolute;
+    backface-visibility: hidden;
+    transition: all 1.5s;
+    transform: rotateY(180deg);
+    height: 100%;
+    top: 0;
+    left: 0;
+    padding: inherit;
+  }
+}

@@ -5,6 +5,7 @@ export const getQueryParams = (params: OptionalRecord<string, string>) => {
   // проходимся по переданным параметрам и добавляем их в реальные параметры
   Object.entries(params).forEach(([name, value]) => {
     if (value !== undefined) searchParams.set(name, value);
+    if (!value?.length) searchParams.delete(name);
   });
 
   return `?${searchParams.toString()}`;

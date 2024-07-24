@@ -1,0 +1,112 @@
+/* stylelint-disable selector-class-pattern */
+
+.figureClass {
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+
+  width: 100%;
+  height: 63vh;
+}
+
+.mainWrapper {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  width: 100% !important;
+  min-width: 5500px;
+}
+
+.zoomWrapper {
+  cursor: pointer !important;
+
+  position: relative !important;
+  z-index: 16 !important;
+
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.zoomContent {
+  display: flex;
+  justify-content: center;
+
+  width: 100% !important;
+  height: 100% !important;
+
+  background: var(--g-900);
+
+  -webkit-user-drag: none !important;
+}
+
+.imageWrapper {
+  display: flex !important;
+}
+
+.panning {
+  cursor: all-scroll !important;
+}
+
+.AppImages {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+
+  max-width: 100%;
+  margin: 0 auto;
+
+  object-fit: contain;
+}
+
+.zoomActions {
+  position: absolute;
+  z-index: 100;
+  top: 0;
+  right: 0;
+
+  width: 3rem;
+  height: 100%;
+
+  background: var(--g-900);
+}
+
+.actionWrapper {
+  z-index: 100;
+  align-items: flex-end;
+  height: 100%;
+  margin-top: 145px;
+}
+
+.btn {
+  width: 2.4rem;
+  height: 2.4rem;
+  background: var(--g-700) !important;
+  border-radius: 4px !important;
+
+  &>svg {
+    fill: var(--g-200);
+  }
+
+  &:hover {
+    background: var(--g-600) !important;
+  }
+
+  &:active {
+    background: var(--main-black) !important;
+  }
+
+  &:disabled {
+    background: var(--main-black) !important;
+
+    &>svg {
+      fill: var(--g-600) !important;
+    }
+  }
+}
+
+@media screen and (height <=768px) {
+  .actionWrapper {
+    margin-top: 100px;
+  }
+}

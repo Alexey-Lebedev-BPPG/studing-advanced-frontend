@@ -1,0 +1,47 @@
+/* stylelint-disable selector-class-pattern */
+// example toast messages
+
+:root {
+  --toastify-toast-width: 30rem;
+  --toastify-toast-min-height: 3rem;
+  --toastify-color-error: #ff7c01;
+  --toastify-color-success: #2ef098;
+  --toastify-color-info: #5beaff;
+}
+
+.Toastify__toast-container.Toastify__toast-container--top-center {
+  position: absolute;
+  top: 2.5rem;
+  padding: 0;
+}
+
+.Toastify__toast-container--bottom-left {
+  left: 2.7rem;
+  width: auto;
+  min-width: var(--toastify-toast-width);
+}
+
+.Toastify__toast {
+  display: flex;
+  gap: 1rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 2.5rem;
+}
+
+.Toastify__toast-body {
+  width: 50%;
+  margin: 0;
+  padding: 0;
+}
+
+.snackbar {
+  display: flex;
+  align-items: center;
+  max-width: 30rem;
+
+  p {
+    @include BodyS-600;
+
+    color: var(--main-black);
+  }
+}

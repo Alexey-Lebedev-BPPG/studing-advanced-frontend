@@ -1,3 +1,5 @@
+// для оптимизации загрузки приложения (https://million.dev/)
+// import MillionLint from '@million/lint';
 import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
 import CircularDependencyPlugin from 'circular-dependency-plugin';
 import { CleanWebpackPlugin } from 'clean-webpack-plugin';
@@ -113,6 +115,8 @@ export const buildPlugins = (props: BuildOptions): Configuration['plugins'] => {
     // для горячей перезагрузки (чтоб при изменениях в коде не обновлять страницу)
     // впоследствии поменяем на ReactRefreshWebpackPlugin
     plugins.push(new ReactRefreshWebpackPlugin());
+  // для оптимизации загрузки приложения (https://million.dev/)
+  // plugins.push(MillionLint.webpack());
 
   if (isDevDebug)
     plugins.push(

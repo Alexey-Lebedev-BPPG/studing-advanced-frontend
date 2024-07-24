@@ -1,0 +1,44 @@
+.modal {
+  position: relative;
+
+  width: 98%;
+  height: 94%;
+  margin: 1rem auto;
+  padding: 0;
+
+  .open {
+    position: absolute;
+    z-index: 300;
+    top: 102px;
+    right: 48px;
+  }
+
+  .shape {
+    width: 2.4rem;
+    height: 2.4rem;
+    padding: 3px;
+
+    background: var(--g-700);
+    border-radius: 4px;
+
+    &:hover {
+      background: var(--g-600);
+    }
+
+    &:active {
+      background: var(--main-black);
+    }
+  }
+
+  .header {
+    padding: 0.75rem 0.75rem 0.75rem 1.5rem;
+    background: var(--g-700);
+    border-radius: 10px 10px 0 0;
+
+    h1 {
+      @include H5;
+
+      color: var(--main-white);
+    }
+  }
+}

@@ -46,3 +46,29 @@ type DeepPartial<T> = T extends object
 type OptionalRecord<K extends keyof any, T> = {
   [P in K]?: T;
 };
+
+// кастомный тип для обработки блоб файлов
+interface Navigator {
+  msSaveOrOpenBlob?: (blobOrBase64: Blob | string, filename: string) => void;
+}
+
+// service
+interface IResponse<R = unknown> {
+  data: R;
+  status: number;
+  success?: boolean;
+}
+
+interface IAction<P = unknown> {
+  payload?: P;
+  type: string;
+}
+
+interface IMessage {
+  message: string;
+}
+
+interface IErrorMessage extends IMessage {
+  error: string;
+  statusCode: number;
+}
