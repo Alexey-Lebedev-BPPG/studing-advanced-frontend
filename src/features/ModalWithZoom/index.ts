@@ -1,1 +1,1 @@
-// export { HightResAsync as HightRes } from './ui/HightResWrapper/HightRes.async';
+export { HightResAsync as HightRes } from './ui/HightResWrapper/HightRes.async';

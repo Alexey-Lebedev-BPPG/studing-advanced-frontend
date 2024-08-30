@@ -1,65 +1,65 @@
-// import { memo, useCallback, useMemo, useState } from 'react';
-// import cls from './HightResModal.module.scss';
-// import { CarouselUi } from '../CarouselUi/CarouselUi';
-// import { ShapeIconSVG } from '@/shared/assets/svg';
-// import { CloseWhiteSVG } from '@/shared/assets/svg/buttons';
-// import { IconButton } from '@/shared/ui/Buttons';
-// import { Modal } from '@/shared/ui/Modal';
-// import { Tooltip } from '@/shared/ui/Popovers';
-// import { HStack, VStack } from '@/shared/ui/Stack';
+import { memo, useCallback, useMemo, useState } from 'react';
+import cls from './HightResModal.module.scss';
+import { CarouselUi } from '../CarouselUi/CarouselUi';
+import ShapeIconSVG from '@/shared/assets/icons/Info.svg';
+import { Icon } from '@/shared/ui/redesigned/Icon';
+import { Modal } from '@/shared/ui/redesigned/Modal';
+import Tooltip from '@/shared/ui/redesigned/Popups/ui/Tooltip/Tooltip';
+import { HStack, VStack } from '@/shared/ui/redesigned/Stack';
 
-// interface HightResModalProps {
-//   openModal: boolean;
-//   onCloseModal: () => void;
-//   frontImage: string | undefined;
-//   backImage: string | undefined;
-//   cardName: string;
-// }
+interface HightResModalProps {
+  backImage?: string;
+  cardName: string;
+  frontImage?: string;
+  onCloseModal: () => void;
+  openModal: boolean;
+}
 
-// const HightResModalUi = (props: HightResModalProps) => {
-//   const { onCloseModal, openModal, backImage, cardName, frontImage } = props;
-//   const [activeImg, setActiveImg] = useState(0);
+const HightResModalUi = (props: HightResModalProps) => {
+  const { backImage, cardName, frontImage, onCloseModal, openModal } = props;
+  const [activeImg, setActiveImg] = useState(0);
 
-//   const images = useMemo(
-//     () => [frontImage, backImage],
-//     [frontImage, backImage],
-//   );
+  const images = useMemo(
+    () => [frontImage, backImage],
+    [frontImage, backImage],
+  );
 
-//   const onOpenImage = useCallback(() => {
-//     window.open(images[activeImg], '_blank', 'noreferrer');
-//   }, [activeImg, images]);
+  const onOpenImage = useCallback(() => {
+    window.open(images[activeImg], '_blank', 'noreferrer');
+  }, [activeImg, images]);
 
-//   const onChangeActiveImg = useCallback((slide: number) => {
-//     setActiveImg(slide);
-//   }, []);
+  const onChangeActiveImg = useCallback((slide: number) => {
+    setActiveImg(slide);
+  }, []);
 
-//   return (
-//     <Modal isOpen={openModal} className={cls.modal} onClose={onCloseModal}>
-//       <VStack justify='between' className={cls.open}>
-//         <Tooltip
-//           textWidth='105px'
-//           placement='bottom'
-//           titleText={
-//             <>
-//               View <br />
-//               original media
-//             </>
-//           }
-//         >
-//           <IconButton className={cls.shape} onClick={onOpenImage}>
-//             <ShapeIconSVG />
-//           </IconButton>
-//         </Tooltip>
-//       </VStack>
-//       <HStack justify='between' className={cls.header}>
-//         <h1>{cardName}</h1>
-//         <IconButton onClick={onCloseModal}>
-//           <CloseWhiteSVG />
-//         </IconButton>
-//       </HStack>
-//       <CarouselUi items={images} onChangeActiveImg={onChangeActiveImg} />
-//     </Modal>
-//   );
-// };
+  return (
+    <Modal isOpen={openModal} className={cls.modal} onClose={onCloseModal}>
+      <VStack justify='between' className={cls.open}>
+        <Tooltip
+          textWidth='105px'
+          placement='bottom'
+          titleText={
+            <>
+              {'View'} <br />
+              {'original media'}
+            </>
+          }
+        >
+          <Icon
+            clickable
+            className={cls.shape}
+            Svg={ShapeIconSVG}
+            onClick={onOpenImage}
+          />
+        </Tooltip>
+      </VStack>
+      <HStack justify='between' className={cls.header}>
+        <h1>{cardName}</h1>
+        <Icon clickable Svg={ShapeIconSVG} onClick={onCloseModal} />
+      </HStack>
+      <CarouselUi items={images} onChangeActiveImg={onChangeActiveImg} />
+    </Modal>
+  );
+};
 
-// export const HightResModal = memo(HightResModalUi);
+export const HightResModal = memo(HightResModalUi);

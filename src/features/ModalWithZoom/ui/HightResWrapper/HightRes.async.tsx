@@ -1,3 +1,3 @@
-// import { lazyRetry } from '@/shared/lib/lazyRetry/lazyWithRetry';
+import { lazy } from 'react';
 
-// export const HightResAsync = lazyRetry(() => import('./HightResWrapper'));
+export const HightResAsync = lazy(() => import('./HightResWrapper'));

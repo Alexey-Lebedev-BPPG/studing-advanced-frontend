@@ -9,6 +9,9 @@ export enum AppRoutes {
   FORBIDDEN = 'forbidden',
   MAIN = 'main',
   NOT_FOUND = 'not_found',
+  PRINTING_INBOUND_SHIPMENT = 'printing_inbound_shipment',
+  PRINTING_OUTBOUND_SHIPMENT = 'printing_outbound_shipment',
+  PRINT_DOWNLOAD = 'print_download',
   PROFILE = 'profile',
   SETTINGS = 'settings',
 }
@@ -24,6 +27,11 @@ export const getRouteAdminPanel = () => '/admin';
 export const getRouteForbidden = () => '/forbidden';
 export const getRouteSettings = () => '/settings';
 export const getRouteCarouselNetflix = () => '/carousel_netflix';
+export const getRoutePrintDownload = () => '/print_download';
+export const getRoutePrintingInboundShipment = () =>
+  'printing_inbound_shipment';
+export const getRoutePrintingOutboundShipment = () =>
+  'printing_outbound_shipment';
 
 // создаем объект, который поможет мапить текущий урл в вышеуказанные названия
 export const AppRouteByPathPattern: Record<string, AppRoutes> = {
@@ -38,4 +46,7 @@ export const AppRouteByPathPattern: Record<string, AppRoutes> = {
   [getRouteForbidden()]: AppRoutes.FORBIDDEN,
   [getRouteSettings()]: AppRoutes.SETTINGS,
   [getRouteCarouselNetflix()]: AppRoutes.CAROUSEL_NETFLIX,
+  [getRoutePrintDownload()]: AppRoutes.PRINT_DOWNLOAD,
+  [getRoutePrintingInboundShipment()]: AppRoutes.PRINTING_INBOUND_SHIPMENT,
+  [getRoutePrintingOutboundShipment()]: AppRoutes.PRINTING_OUTBOUND_SHIPMENT,
 };

@@ -60,6 +60,7 @@ export const Button: FC<IButtonProps> = forwardRef(
       readonly,
       size = 'm',
       square,
+      title,
       variant = 'outline',
       ...otherProps
     } = props;
@@ -85,6 +86,7 @@ export const Button: FC<IButtonProps> = forwardRef(
       >
         {!!addonLeft && <div className={cls['addon-left']}>{addonLeft}</div>}
         {isLoading ? <Spinner /> : children}
+        {!!title && <span>{title}</span>}
         {!!addonRight && <div className={cls['addon-right']}>{addonRight}</div>}
       </button>
     );

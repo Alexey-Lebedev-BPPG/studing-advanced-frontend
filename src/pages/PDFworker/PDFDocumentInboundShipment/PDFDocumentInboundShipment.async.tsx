@@ -1,5 +1,5 @@
-// import { lazyRetry } from '@/shared/lib/lazyRetry/lazyWithRetry';
+import { lazy } from 'react';
 
-// export const PDFDocumentInboundShipmentAsync = lazyRetry(
-//   () => import('./PDFDocumentInboundShipment'),
-// );
+export const PDFDocumentInboundShipmentAsync = lazy(
+  () => import('./PDFDocumentInboundShipment'),
+);

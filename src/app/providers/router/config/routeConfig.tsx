@@ -8,6 +8,11 @@ import { CarouselNetflixPage } from '@/pages/CarouselNetflixPage';
 import { ForbiddenPage } from '@/pages/ForbiddenPage';
 import { MainPage } from '@/pages/MainPage';
 import { NotFoundPage } from '@/pages/NotFoundPage';
+import {
+  PDFDocumentInboundShipment,
+  PDFDocumentOutboundShipment,
+  PDFPrintPage,
+} from '@/pages/PDFworker';
 import { ProfilePage } from '@/pages/ProfilePage';
 import { SettingsPage } from '@/pages/SettingsPage';
 import {
@@ -23,6 +28,9 @@ import {
   getRouteProfile,
   getRouteSettings,
   getRouteCarouselNetflix,
+  getRoutePrintDownload,
+  getRoutePrintingInboundShipment,
+  getRoutePrintingOutboundShipment,
 } from '@/shared/const/router';
 import { AppRoutesProps } from '@/shared/types/router';
 
@@ -85,6 +93,18 @@ export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
   [AppRoutes.CAROUSEL_NETFLIX]: {
     element: <CarouselNetflixPage />,
     path: getRouteCarouselNetflix(),
+  },
+  [AppRoutes.PRINT_DOWNLOAD]: {
+    element: <PDFPrintPage />,
+    path: getRoutePrintDownload(),
+  },
+  [AppRoutes.PRINTING_INBOUND_SHIPMENT]: {
+    element: <PDFDocumentInboundShipment />,
+    path: getRoutePrintingInboundShipment(),
+  },
+  [AppRoutes.PRINTING_OUTBOUND_SHIPMENT]: {
+    element: <PDFDocumentOutboundShipment />,
+    path: getRoutePrintingOutboundShipment(),
   },
 };
 

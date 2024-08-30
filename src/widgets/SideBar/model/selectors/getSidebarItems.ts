@@ -13,6 +13,7 @@ import {
   getRouteArticles,
   getRouteCarouselNetflix,
   getRouteMain,
+  getRoutePrintDownload,
   getRouteProfile,
 } from '@/shared/const/router';
 import { toggleFeatures } from '@/shared/lib/features';
@@ -100,6 +101,15 @@ export const useSidebarItems = () => {
       }),
       path: getRouteCarouselNetflix(),
       text: 'Карусель Нетфликс',
+    },
+    {
+      Icon: toggleFeatures({
+        name: 'isAppRedesigned',
+        off: () => AboutIconDeprecated,
+        on: () => AboutIcon,
+      }),
+      path: getRoutePrintDownload(),
+      text: 'QR-Code и скачать PDF',
     },
   ];
 

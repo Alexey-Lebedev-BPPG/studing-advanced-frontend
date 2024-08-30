@@ -1,9 +1,9 @@
 import { Dispatch, FC, SetStateAction, useEffect, useState } from 'react';
+import { FileUploader } from 'react-drag-drop-files';
 import { isBoxValid } from './ModalContentItems/helpers';
 import { newBoxInFormData } from './helpers';
 import { IBox, ICreateBoxProps, IFormDataCreateBox } from './types';
 import { useAppDispatch } from '@/shared/lib/hooks/redux';
-// import { FileUploader } from 'react-drag-drop-files';
 
 interface IModalContentProps {
   box: IBox;
@@ -11,6 +11,8 @@ interface IModalContentProps {
   setBox: Dispatch<SetStateAction<IBox>>;
   typeModal: 'create' | 'edit';
 }
+
+const fileTypes = ['JPEG', 'PNG', 'GIF', 'JPG'];
 
 export const ModalContent: FC<IModalContentProps> = ({
   box,
@@ -158,7 +160,7 @@ export const ModalContent: FC<IModalContentProps> = ({
             }
           />
           <div>{item}</div>
-          {/* <FileUploader
+          <FileUploader
             multiple
             name='file'
             disabled={!roleAdmin}
@@ -166,7 +168,7 @@ export const ModalContent: FC<IModalContentProps> = ({
             hoverTitle='Drop here'
             label='Drag and drop file here'
             handleChange={(file: any) => handleFile && handleFile(file, index)}
-          /> */}
+          />
           <input
             id='input-files'
             value={valueInput[index]}
