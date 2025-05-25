@@ -1,0 +1,51 @@
+.css-typing-text-effect p {
+  overflow: hidden;
+
+  padding: 0.5rem;
+
+  font-weight: bold;
+  text-align: center;
+  letter-spacing: 0.1rem;
+}
+
+.css-typing-text-effect p span.typing-text {
+  font-weight: normal;
+  color: #dd7732;
+}
+
+.css-typing-text-effect p span.cursor {
+  display: inline-block;
+
+  width: 3px;
+  margin-left: 0.1rem;
+
+  background-color: #ccc;
+
+  animation: blink 1s infinite;
+}
+
+.css-typing-text-effect p span.cursor.typing {
+  animation: none;
+}
+
+@keyframes blink {
+  0% {
+    background-color: #ccc;
+  }
+
+  49% {
+    background-color: #ccc;
+  }
+
+  50% {
+    background-color: transparent;
+  }
+
+  99% {
+    background-color: transparent;
+  }
+
+  100% {
+    background-color: #ccc;
+  }
+}

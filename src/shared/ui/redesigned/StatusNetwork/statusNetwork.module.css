@@ -1,0 +1,14 @@
+.status-network {
+  width: 3rem;
+  height: 3rem;
+  color: blue;
+  border-radius: 50%;
+}
+
+.online {
+  background: green;
+}
+
+.offline {
+  background: red;
+}

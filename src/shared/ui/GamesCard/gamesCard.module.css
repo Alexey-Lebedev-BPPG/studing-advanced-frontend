@@ -1,0 +1,96 @@
+.games-card {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4rem 0;
+  justify-content: center;
+
+  margin-top: 6rem;
+}
+
+.card {
+  cursor: pointer;
+
+  position: relative;
+  z-index: 10;
+
+  width: 300px;
+  height: auto;
+  min-height: 390px;
+  margin: 25px;
+
+  background: #fff;
+  border-radius: 30px;
+  box-shadow: 0 0 0 #00000014;
+
+  transition: all 0.25s ease;
+}
+
+.image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: calc(100% - 60px);
+  margin: 0 30px;
+  margin-top: -90px;
+
+  & img {
+    height: 300px;
+  }
+
+  & img.blur {
+    position: absolute;
+    z-index: -1;
+    transform: translate(20px, 10px) scale(0.85);
+
+    filter: blur(5px);
+
+    transition: all 0.35s ease-out;
+  }
+}
+
+h3 {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  margin: 0;
+  padding: 15px;
+}
+
+i {
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  padding: 15px;
+
+  font-size: 1.3rem;
+}
+
+.text {
+  padding: 20px;
+
+  & h2 {
+    margin: 0;
+  }
+
+  & p {
+    margin-top: 10px;
+    opacity: 0.6;
+  }
+}
+
+.card:hover {
+  transform: translate(0, -10px);
+  box-shadow: 0 17px 35px 0 #00000012;
+
+  & .image {
+    transform: translate(0, -15px);
+  }
+
+  & img.blur {
+    transform: translate(25px, 26px) scale(0.85);
+    opacity: 0.5;
+  }
+}

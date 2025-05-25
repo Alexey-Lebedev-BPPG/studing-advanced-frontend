@@ -25,6 +25,7 @@ interface IInputProps extends HTMLInputProps {
   addonRight?: ReactNode;
   autofocus?: boolean;
   className?: string;
+  isAnimatedPlaceholder?: boolean;
   label?: string;
   onChange?: (value: string) => void;
   readonly?: boolean;
@@ -38,6 +39,8 @@ export const Input: FC<IInputProps> = memo(props => {
     addonRight,
     autofocus,
     className,
+    id,
+    isAnimatedPlaceholder = false,
     label,
     onChange,
     placeholder,
@@ -65,6 +68,7 @@ export const Input: FC<IInputProps> = memo(props => {
     [cls.focused]: isFocused,
     [cls['with-addon-left']]: Boolean(addonLeft),
     [cls['with-addon-right']]: Boolean(addonRight),
+    [cls['is-animated-field']]: isAnimatedPlaceholder,
   };
 
   // делаем автофокус при открытии
@@ -85,14 +89,20 @@ export const Input: FC<IInputProps> = memo(props => {
         ref={ref}
         type={type}
         value={value}
-        className={cls.input}
         readOnly={readonly}
         placeholder={placeholder}
+        id={id}
+        className={classNames(cls.input, {}, [cls['is-animated-placeholder']])}
         onChange={onChangeHandler}
         onFocus={onFocusHandler}
         onBlur={onBlurHandler}
         {...otherProps}
       />
+      {!!isAnimatedPlaceholder && (
+        <label htmlFor={id} className={cls.label}>
+          {placeholder}
+        </label>
+      )}
       {!!addonRight && <div className={cls['addon-right']}>{addonRight}</div>}
     </div>
   );

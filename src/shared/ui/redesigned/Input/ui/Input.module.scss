@@ -60,3 +60,27 @@
 .l {
   height: 44px;
 }
+
+.is-animated-field {
+  position: relative;
+}
+
+.label {
+  position: absolute;
+  top: 0.6em;
+  left: 16px;
+
+  color: darkgray;
+
+  transition-duration: 0.2s;
+}
+
+.is-animated-placeholder {
+  display: block;
+}
+
+.is-animated-placeholder:not(:placeholder-shown)+.label {
+  translate: -16px -30px;
+  scale: 0.7;
+  color: black;
+}
